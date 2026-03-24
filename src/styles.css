@@ -860,28 +860,28 @@ a {
   transform: scale(0.99);
 }
 
-/* Feeling button colors - Pastel tones */
+/* Feeling button colors - Option C tones */
 .feeling-chip[data-feeling="melancholic"] {
-  background: #C9B4DD;
-  color: #5a4a7f;
+  background: #C4A8D8;
+  color: #5a4a7a;
   border: 2px solid transparent;
 }
 
 .feeling-chip[data-feeling="ethereal"] {
-  background: #B8E6E0;
-  color: #4a7a75;
+  background: #A8D8CC;
+  color: #4a7a6f;
   border: 2px solid transparent;
 }
 
 .feeling-chip[data-feeling="radiant"] {
-  background: #FFF4B3;
-  color: #8a7a33;
+  background: #F0D8A8;
+  color: #8a7a4a;
   border: 2px solid transparent;
 }
 
 .feeling-chip[data-feeling="solitary"] {
-  background: #D4E0D9;
-  color: #6a7a6f;
+  background: #A8C4D8;
+  color: #4a6a8a;
   border: 2px solid transparent;
 }
 
@@ -890,8 +890,8 @@ a {
 .feeling-chip[data-feeling="melancholic"]:focus-visible,
 .feeling-chip[data-feeling="melancholic"].is-active {
   background: #ffffff;
-  color: #C9B4DD;
-  border-color: #C9B4DD;
+  color: #C4A8D8;
+  border-color: #C4A8D8;
   transform: scale(1);
 }
 
@@ -899,8 +899,8 @@ a {
 .feeling-chip[data-feeling="ethereal"]:focus-visible,
 .feeling-chip[data-feeling="ethereal"].is-active {
   background: #ffffff;
-  color: #B8E6E0;
-  border-color: #B8E6E0;
+  color: #A8D8CC;
+  border-color: #A8D8CC;
   transform: scale(1);
 }
 
@@ -908,8 +908,8 @@ a {
 .feeling-chip[data-feeling="radiant"]:focus-visible,
 .feeling-chip[data-feeling="radiant"].is-active {
   background: #ffffff;
-  color: #FFF4B3;
-  border-color: #FFF4B3;
+  color: #F0D8A8;
+  border-color: #F0D8A8;
   transform: scale(1);
 }
 
@@ -917,8 +917,8 @@ a {
 .feeling-chip[data-feeling="solitary"]:focus-visible,
 .feeling-chip[data-feeling="solitary"].is-active {
   background: #ffffff;
-  color: #D4E0D9;
-  border-color: #D4E0D9;
+  color: #A8C4D8;
+  border-color: #A8C4D8;
   transform: scale(1);
 }
 
