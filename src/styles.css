@@ -843,13 +843,13 @@ a {
 .feeling-chip {
   min-width: 7.65rem;
   padding: 0.95rem 1.2rem;
-  border: 0;
+  border: 2px solid transparent;
   border-radius: 1rem;
   background: var(--surface-low);
   color: var(--ink);
   font-size: 1rem;
   font-weight: 500;
-  transition: background-color 180ms ease-out, transform 180ms ease-out;
+  transition: background-color 180ms ease-out, color 180ms ease-out, border-color 180ms ease-out, transform 180ms ease-out;
 }
 
 .feeling-chip:hover,
@@ -860,53 +860,66 @@ a {
   transform: scale(0.99);
 }
 
-/* Feeling button colors */
+/* Feeling button colors - Pastel tones */
 .feeling-chip[data-feeling="melancholic"] {
-  background: #6B5B95;
-  color: #ffffff;
+  background: #C9B4DD;
+  color: #5a4a7f;
+  border: 2px solid transparent;
 }
 
 .feeling-chip[data-feeling="ethereal"] {
-  background: #7FDBCA;
-  color: #ffffff;
+  background: #B8E6E0;
+  color: #4a7a75;
+  border: 2px solid transparent;
 }
 
 .feeling-chip[data-feeling="radiant"] {
-  background: #FFD700;
-  color: #1a1a1a;
+  background: #FFF4B3;
+  color: #8a7a33;
+  border: 2px solid transparent;
 }
 
 .feeling-chip[data-feeling="solitary"] {
-  background: #8FA99F;
-  color: #ffffff;
+  background: #D4E0D9;
+  color: #6a7a6f;
+  border: 2px solid transparent;
 }
 
+/* Inverted hover states with colored borders */
 .feeling-chip[data-feeling="melancholic"]:hover,
 .feeling-chip[data-feeling="melancholic"]:focus-visible,
 .feeling-chip[data-feeling="melancholic"].is-active {
-  background: #5a4a7f;
-  color: #ffffff;
+  background: #ffffff;
+  color: #C9B4DD;
+  border-color: #C9B4DD;
+  transform: scale(1);
 }
 
 .feeling-chip[data-feeling="ethereal"]:hover,
 .feeling-chip[data-feeling="ethereal"]:focus-visible,
 .feeling-chip[data-feeling="ethereal"].is-active {
-  background: #6ac4b3;
-  color: #ffffff;
+  background: #ffffff;
+  color: #B8E6E0;
+  border-color: #B8E6E0;
+  transform: scale(1);
 }
 
 .feeling-chip[data-feeling="radiant"]:hover,
 .feeling-chip[data-feeling="radiant"]:focus-visible,
 .feeling-chip[data-feeling="radiant"].is-active {
-  background: #e6c200;
-  color: #1a1a1a;
+  background: #ffffff;
+  color: #FFF4B3;
+  border-color: #FFF4B3;
+  transform: scale(1);
 }
 
 .feeling-chip[data-feeling="solitary"]:hover,
 .feeling-chip[data-feeling="solitary"]:focus-visible,
 .feeling-chip[data-feeling="solitary"].is-active {
-  background: #7a948a;
-  color: #ffffff;
+  background: #ffffff;
+  color: #D4E0D9;
+  border-color: #D4E0D9;
+  transform: scale(1);
 }
 
 .feature-stack__layer {

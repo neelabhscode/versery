@@ -4,10 +4,10 @@ import { filterByPortal, filterByPortals, filterByPoet } from "./lib/search.js";
 const feelings = ["Melancholic", "Ethereal", "Radiant", "Solitary"];
 
 const FEELING_COLORS = {
-  Melancholic: "#6B5B95",  // Deep purple - introspective, contemplative
-  Ethereal: "#7FDBCA",     // Soft cyan - light, airy, otherworldly
-  Radiant: "#FFD700",      // Golden yellow - bright, energetic, uplifting
-  Solitary: "#8FA99F",     // Muted sage - quiet, calm, introspective
+  Melancholic: "#C9B4DD",  // Pastel purple - introspective, contemplative
+  Ethereal: "#B8E6E0",     // Pastel cyan - light, airy, otherworldly
+  Radiant: "#FFF4B3",      // Pastel yellow - bright, energetic, uplifting
+  Solitary: "#D4E0D9",     // Pastel sage - quiet, calm, introspective
 };
 
 const portals = [
