@@ -4,10 +4,21 @@ import { filterByPortal, filterByPortals, filterByPoet } from "./lib/search.js";
 const feelings = ["Melancholic", "Ethereal", "Radiant", "Solitary"];
 
 const FEELING_COLORS = {
-  Melancholic: "#C4A8D8",  // Cool plum - introspective, contemplative
-  Ethereal: "#A8D8CC",     // Seafoam - light, airy, otherworldly
-  Radiant: "#F0D8A8",      // Light gold - bright, energetic, uplifting
-  Solitary: "#A8C4D8",     // Stone blue - quiet, calm, introspective
+  Melancholic: "#E6D9F0",  // Soft lavender - introspective, contemplative
+  Ethereal: "#D9F0E6",     // Soft mint - light, airy, otherworldly
+  Radiant: "#F0E6D9",      // Soft peach - bright, energetic, uplifting
+  Solitary: "#D9E6F0",     // Soft gray-blue - quiet, calm, introspective
+};
+
+const PORTAL_COLORS = {
+  Calm: "#D4E8F0",         // Soft cyan-blue - stillness
+  Pulse: "#F0D9E6",        // Soft rose - rhythm
+  Focus: "#E6DDF0",        // Soft indigo - clarity
+  Warmth: "#F0ECD9",       // Soft amber - glow
+  Static: "#E8E8E8",       // Soft neutral gray - fragmentation
+  Lush: "#D9F0DD",         // Soft verdant green - density
+  Drift: "#E6D9F0",        // Soft nebula purple - atmosphere
+  Echo: "#DDE8E8",         // Soft slate - resonance
 };
 
 const portals = [
@@ -291,6 +302,7 @@ function poemToEntry(rawPoem) {
     footerIcon: "eco",
     poetId: rawPoem.poetId ?? null,
     author: rawPoem.author ?? null,
+    portalTags: rawPoem.portalTags ?? [],
   };
 }
 
@@ -1112,6 +1124,8 @@ function AppLoaded({ poems, poets }) {
                 key={portal.name}
                 className={`portal-card portal-card--${portal.tone}`}
                 type="button"
+                data-portal={portal.name.toLowerCase()}
+                style={{ "--portal-color": PORTAL_COLORS[portal.name] }}
                 onClick={() => openDiscovery(portal.name, "compass", "compass")}
               >
                 <span className="portal-card__glow" aria-hidden="true"></span>
@@ -1720,7 +1734,10 @@ function AppLoaded({ poems, poets }) {
             <div className="feature-stack__layer feature-stack__layer--back"></div>
             <div className="feature-stack__layer feature-stack__layer--mid"></div>
 
-            <article className="feature-card-main">
+            <article
+              className="feature-card-main"
+              style={{ "--featured-color": featuredPoem.portalTags?.[0] ? PORTAL_COLORS[featuredPoem.portalTags[0]] : "#000" }}
+            >
               <div className="feature-card-main__badge">
                 <span className="material-symbols-outlined">auto_awesome</span>
                 <span>4m read</span>
