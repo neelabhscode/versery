@@ -1279,6 +1279,10 @@ a {
   display: none;
 }
 
+.screen-content--voices .voices-filters {
+  display: none;
+}
+
 .filter-chip {
   border: 0;
   padding: 0.6rem 1.1rem;
@@ -1342,6 +1346,7 @@ a {
   object-fit: contain;
   filter: grayscale(100%);
   transition: filter 240ms ease-out;
+  border-radius: 0.75rem;
 }
 
 .voice-card:hover .voice-card__image img {

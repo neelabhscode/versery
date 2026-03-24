@@ -728,6 +728,7 @@ function AppLoaded({ poems, poets }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeEraFilter, setActiveEraFilter] = useState("All Eras");
   const [collectionImages, setCollectionImages] = useState({});
+  const loadMoreButtonRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 768);
@@ -1178,9 +1179,15 @@ function AppLoaded({ poems, poets }) {
           <div className="voices-more">
             {canLoadMoreVoices && (
               <button
+                ref={loadMoreButtonRef}
                 className="load-more"
                 type="button"
-                onClick={() => setVisibleVoiceCount((count) => Math.min(count + 6, voices.length))}
+                onClick={() => {
+                  setVisibleVoiceCount((count) => Math.min(count + 6, voices.length));
+                  setTimeout(() => {
+                    loadMoreButtonRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                  }, 50);
+                }}
               >
                 <span className="load-more__icon material-symbols-outlined">expand_more</span>
                 <span>Load More Voices</span>
