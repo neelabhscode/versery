@@ -1,0 +1,882 @@
+[
+  {
+    "id": "omar-khayyam",
+    "name": "Omar Khayyam",
+    "fullName": "Omar Khayyam",
+    "born": 1048,
+    "died": 1131,
+    "from": "Persia",
+    "era": "Medieval Islamic",
+    "tag": "Persian Sage",
+    "essence": "Mortality and wine — the fleeting moment seized in quatrains",
+    "bio": "Omar Khayyam was a Persian polymath: mathematician, astronomer, and poet. His Rubaiyat — translated into English by Edward FitzGerald — are meditations on fate, pleasure, and the brevity of life.",
+    "poemCount": 86,
+    "moods": [
+      "longing",
+      "wonder",
+      "solitude"
+    ],
+    "portalTags": [
+      "Melancholic",
+      "Drift",
+      "Radiant",
+      "Ethereal"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Iii.",
+        "subtitle": "And, as the Cock crew, those…",
+        "poemId": "omar-khayyam--iii"
+      },
+      {
+        "id": "02",
+        "title": "Xxxix.",
+        "subtitle": "How long, how long, in infinite…",
+        "poemId": "omar-khayyam--xxxix"
+      },
+      {
+        "id": "03",
+        "title": "Lxxii.",
+        "subtitle": "Alas, that Spring should vanish with…",
+        "poemId": "omar-khayyam--lxxii"
+      }
+    ]
+  },
+  {
+    "id": "rumi",
+    "name": "Rumi",
+    "fullName": "Jalal ad-Din Muhammad Rumi",
+    "born": 1207,
+    "died": 1273,
+    "from": "Persia",
+    "era": "Medieval Islamic",
+    "tag": "Sufi Master",
+    "essence": "Divine love and longing — the soul dancing toward the infinite",
+    "bio": "Rumi was a 13th-century Persian mystic poet and founder of the whirling dervishes. His poetry expresses ecstatic union with the divine, transcending doctrine and dogma through the intoxication of spiritual love.",
+    "poemCount": 43,
+    "moods": [
+      "love",
+      "joy",
+      "longing"
+    ],
+    "portalTags": [
+      "Radiant",
+      "Warmth",
+      "Melancholic",
+      "Pulse"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Iii.",
+        "subtitle": "Looking now at the _poetical form_…",
+        "poemId": "rumi--iii"
+      },
+      {
+        "id": "02",
+        "title": "Xxiv.",
+        "subtitle": "Clean be kept thy Garment, and…",
+        "poemId": "rumi--xxiv"
+      },
+      {
+        "id": "03",
+        "title": "Xxxviii.",
+        "subtitle": "Ever shall I more desire Than…",
+        "poemId": "rumi--xxxviii"
+      }
+    ]
+  },
+  {
+    "id": "hafez",
+    "name": "Hafez",
+    "fullName": "Hafez Shirazi",
+    "born": 1315,
+    "died": 1390,
+    "from": "Persia",
+    "era": "Medieval Islamic",
+    "tag": "Persian Mystic",
+    "essence": "Wine, ambiguity, and divine hints hidden in earthly pleasures",
+    "bio": "Hafez was a Persian poet and mystic whose ghazals are among the most beloved in Persian literature. His poetry speaks in paradox and symbol, where wine and beloved become gateways to the divine.",
+    "poemCount": 27,
+    "moods": [
+      "love",
+      "longing",
+      "grief"
+    ],
+    "portalTags": [
+      "Radiant",
+      "Warmth",
+      "Melancholic",
+      "Drift"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "TRANSLATED BY",
+        "subtitle": "GERTRUDE LOWTHIAN BELL [Illustration: [Logo]]…",
+        "poemId": "hafez--translated-by"
+      },
+      {
+        "id": "02",
+        "title": "XXVII",
+        "subtitle": "My friend has fled! alas, my…",
+        "poemId": "hafez--xxvii"
+      },
+      {
+        "id": "03",
+        "title": "XXXVII",
+        "subtitle": "Arise! and fill a golden goblet…",
+        "poemId": "hafez--xxxvii"
+      }
+    ]
+  },
+  {
+    "id": "kabir",
+    "name": "Kabir",
+    "fullName": "Kabir",
+    "born": 1398,
+    "died": 1518,
+    "from": "India",
+    "era": "Medieval",
+    "tag": "Weaver-Saint",
+    "essence": "Blunt truth and direct communion — the weaver speaking to God as equal",
+    "bio": "Kabir was an Indian mystic poet and saint who broke caste boundaries with radical directness. His vernacular verse attacks hypocrisy and claims direct personal access to the divine without priests or ritual.",
+    "poemCount": 101,
+    "moods": [
+      "love",
+      "grief",
+      "longing"
+    ],
+    "portalTags": [
+      "Radiant",
+      "Melancholic",
+      "Warmth",
+      "Static"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "E.  U.",
+        "subtitle": "The reference of the headlines of…",
+        "poemId": "kabir--e-u"
+      },
+      {
+        "id": "02",
+        "title": "II. 105. _man mast huâ tab kyon bole_",
+        "subtitle": "Where is the need of words,…",
+        "poemId": "kabir--ii-105-man-mast-hu-tab-kyon-bole"
+      },
+      {
+        "id": "03",
+        "title": "I. 20. _man na rangâye_",
+        "subtitle": "The Yogi dyes his garments, instead…",
+        "poemId": "kabir--i-20-man-na-rangye"
+      }
+    ]
+  },
+  {
+    "id": "john-milton",
+    "name": "John Milton",
+    "fullName": "John Milton",
+    "born": 1608,
+    "died": 1674,
+    "from": "England",
+    "era": "Renaissance",
+    "tag": "Epic Poet",
+    "essence": "The clash of light and shadow — Paradise lost and regained in verse",
+    "bio": "John Milton was an English poet and political thinker whose Paradise Lost is one of the greatest epic poems in English. His mastery of blank verse and philosophical depth made him a foundational voice of Western literature.",
+    "poemCount": 26,
+    "moods": [
+      "wonder",
+      "joy",
+      "longing"
+    ],
+    "portalTags": [
+      "Radiant",
+      "Ethereal",
+      "Lush",
+      "Focus"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Paradise Lost: Book 07",
+        "subtitle": "Descend from Heaven, Urania, by that…",
+        "poemId": "john-milton--paradise-lost-book-07"
+      },
+      {
+        "id": "02",
+        "title": "Paradise Lost: Book 12",
+        "subtitle": "As one who in his journey…",
+        "poemId": "john-milton--paradise-lost-book-12"
+      },
+      {
+        "id": "03",
+        "title": "Paradise Lost: Book 03",
+        "subtitle": "Hail, holy Light, offspring of Heaven…",
+        "poemId": "john-milton--paradise-lost-book-03"
+      }
+    ]
+  },
+  {
+    "id": "george-herbert",
+    "name": "George Herbert",
+    "fullName": "George Herbert",
+    "born": 1593,
+    "died": 1633,
+    "from": "England",
+    "era": "Renaissance",
+    "tag": "Metaphysical Poet",
+    "essence": "Devotion in precise form — the soul laid bare in sacred verse",
+    "bio": "George Herbert was an English poet and cleric whose metaphysical verses marry technical brilliance with spiritual anguish. Works like The Altar and Love (III) use wit and paradox to explore faith and doubt.",
+    "poemCount": 16,
+    "moods": [
+      "love",
+      "grief",
+      "longing"
+    ],
+    "portalTags": [
+      "Radiant",
+      "Warmth",
+      "Melancholic",
+      "Static"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Easter Wings",
+        "subtitle": "Lord, who createdst man in wealth…",
+        "poemId": "george-herbert--easter-wings"
+      },
+      {
+        "id": "02",
+        "title": "The Forerunners",
+        "subtitle": "The harbingers are come. See, see…",
+        "poemId": "george-herbert--the-forerunners"
+      },
+      {
+        "id": "03",
+        "title": "The Flower",
+        "subtitle": "How fresh, O Lord, how sweet…",
+        "poemId": "george-herbert--the-flower"
+      }
+    ]
+  },
+  {
+    "id": "coleridge",
+    "name": "Samuel Taylor Coleridge",
+    "fullName": "Samuel Taylor Coleridge",
+    "born": 1772,
+    "died": 1834,
+    "from": "England",
+    "era": "Romantic",
+    "tag": "Visionary Poet",
+    "essence": "The dream and the nightmare — imagination stretched to its gothic extreme",
+    "bio": "Samuel Taylor Coleridge was an English poet, philosopher, and literary critic, co-founder of the Romantic Age. The Rime of the Ancient Mariner and Kubla Khan are masterworks of visionary power and linguistic music.",
+    "poemCount": 107,
+    "moods": [
+      "love",
+      "grief",
+      "longing"
+    ],
+    "portalTags": [
+      "Radiant",
+      "Melancholic",
+      "Warmth",
+      "Static"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Inscription For A Time-Piece\n\nA Tombless Epitaph\n\nEpitaph\n\nNotes\n\n\n\n\nIntroduction",
+        "subtitle": "In one of Rossetti's invaluable notes…",
+        "poemId": "coleridge--inscription-for-a-time-piece-a-tombless-epitaph-epitaph-note"
+      },
+      {
+        "id": "02",
+        "title": "Domestic Peace",
+        "subtitle": "[FROM THE FALL OF ROBESPIERRE, ACT…",
+        "poemId": "coleridge--domestic-peace"
+      },
+      {
+        "id": "03",
+        "title": "The Death Of The Starling",
+        "subtitle": "Lugete, O Veneres, Cupidinesque.--CATULLUS. Pity! mourn…",
+        "poemId": "coleridge--the-death-of-the-starling"
+      }
+    ]
+  },
+  {
+    "id": "william-blake",
+    "name": "William Blake",
+    "fullName": "William Blake",
+    "born": 1757,
+    "died": 1827,
+    "from": "England",
+    "era": "Romantic",
+    "tag": "Visionary Romantic",
+    "essence": "Imagination as the divine force that liberates the human soul",
+    "bio": "William Blake was an English poet, painter, and printmaker, a seminal figure of the Romantic Age. His visionary work bridged the spiritual and revolutionary, from Songs of Innocence to the prophetic books.",
+    "poemCount": 49,
+    "moods": [
+      "joy",
+      "grief",
+      "love"
+    ],
+    "portalTags": [
+      "Radiant",
+      "Melancholic",
+      "Pulse",
+      "Static"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "London",
+        "subtitle": "I wandered through each chartered street,…",
+        "poemId": "william-blake--london"
+      },
+      {
+        "id": "02",
+        "title": "Night",
+        "subtitle": "The sun descending in the west,…",
+        "poemId": "william-blake--night"
+      },
+      {
+        "id": "03",
+        "title": "The Garden of Love",
+        "subtitle": "I laid me down upon a…",
+        "poemId": "william-blake--the-garden-of-love"
+      }
+    ]
+  },
+  {
+    "id": "keats",
+    "name": "John Keats",
+    "fullName": "John Keats",
+    "born": 1795,
+    "died": 1821,
+    "from": "England",
+    "era": "Romantic",
+    "tag": "Romantic Ode Master",
+    "essence": "Beauty, transience, and the ache of the senses pressed against mortality",
+    "bio": "John Keats was one of the most celebrated English Romantic poets. Despite dying at 25, he produced sensuous, philosophical verse of extraordinary richness, including his celebrated odes.",
+    "poemCount": 24,
+    "moods": [
+      "love",
+      "joy",
+      "wonder"
+    ],
+    "portalTags": [
+      "Radiant",
+      "Warmth",
+      "Pulse",
+      "Melancholic"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Happy Is England! I Could Be Content",
+        "subtitle": "Happy is England! I could be…",
+        "poemId": "keats--happy-is-england-i-could-be-content"
+      },
+      {
+        "id": "02",
+        "title": "Song of the Indian Maid, from 'Endymion'",
+        "subtitle": "O SORROW! Why dost borrow…",
+        "poemId": "keats--song-of-the-indian-maid-from-endymion"
+      },
+      {
+        "id": "03",
+        "title": "In Drear-Nighted December",
+        "subtitle": "In drear-nighted December, Too happy, happy…",
+        "poemId": "keats--in-drear-nighted-december"
+      }
+    ]
+  },
+  {
+    "id": "shakespeare",
+    "name": "William Shakespeare",
+    "fullName": "William Shakespeare",
+    "born": 1564,
+    "died": 1616,
+    "from": "England",
+    "era": "Renaissance",
+    "tag": "Renaissance Master",
+    "essence": "The universal voice of human nature, passion, and time's decay",
+    "bio": "William Shakespeare was an English playwright and poet, widely regarded as the greatest writer in the English language. His 154 sonnets are meditations on love, beauty, mortality, and the power of time.",
+    "poemCount": 162,
+    "moods": [
+      "love",
+      "longing",
+      "joy"
+    ],
+    "portalTags": [
+      "Radiant",
+      "Warmth",
+      "Melancholic",
+      "Drift"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "A Lover's Complaint",
+        "subtitle": "FROM off a hill whose concave…",
+        "poemId": "shakespeare--a-lovers-complaint"
+      },
+      {
+        "id": "02",
+        "title": "Sonnet 47: Betwixt mine eye and heart a league is took",
+        "subtitle": "Betwixt mine eye and heart a…",
+        "poemId": "shakespeare--sonnet-47-betwixt-mine-eye-and-heart-a-league-is-took"
+      },
+      {
+        "id": "03",
+        "title": "Sonnet 101: O truant Muse what shall be thy amends",
+        "subtitle": "O truant Muse what shall be…",
+        "poemId": "shakespeare--sonnet-101-o-truant-muse-what-shall-be-thy-amends"
+      }
+    ]
+  },
+  {
+    "id": "dickinson",
+    "name": "Emily Dickinson",
+    "fullName": "Emily Dickinson",
+    "born": 1830,
+    "died": 1886,
+    "from": "America",
+    "era": "Victorian",
+    "tag": "American Recluse",
+    "essence": "Death, eternity, and the interior life compressed into dashes and hymn",
+    "bio": "Emily Dickinson was an American poet whose unconventional syntax and imagery created a body of work unlike anything before it. Her poems speak across time with startling immediacy and psychological depth.",
+    "poemCount": 362,
+    "moods": [
+      "longing",
+      "wonder",
+      "grief"
+    ],
+    "portalTags": [
+      "Melancholic",
+      "Drift",
+      "Radiant",
+      "Ethereal"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Not at Home to Callers",
+        "subtitle": "Not at Home to Callers Says…",
+        "poemId": "dickinson--not-at-home-to-callers"
+      },
+      {
+        "id": "02",
+        "title": "Estranged from Beauty -- none can be --",
+        "subtitle": "Estranged from Beauty -- none can…",
+        "poemId": "dickinson--estranged-from-beauty-none-can-be-"
+      },
+      {
+        "id": "03",
+        "title": "To lose one's faith -- surpass",
+        "subtitle": "To lose one's faith -- surpass…",
+        "poemId": "dickinson--to-lose-ones-faith-surpass"
+      }
+    ]
+  },
+  {
+    "id": "whitman",
+    "name": "Walt Whitman",
+    "fullName": "Walt Whitman",
+    "born": 1819,
+    "died": 1892,
+    "from": "America",
+    "era": "Transcendentalist",
+    "tag": "American Bard",
+    "essence": "The democratic soul — all bodies, all voices, one immense song",
+    "bio": "Walt Whitman was an American poet whose groundbreaking Leaves of Grass introduced expansive free verse. His long lines and catalogs of American life transformed what poetry could contain and express.",
+    "poemCount": 67,
+    "moods": [
+      "love",
+      "joy",
+      "grief"
+    ],
+    "portalTags": [
+      "Radiant",
+      "Melancholic",
+      "Warmth",
+      "Pulse"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Primeval my Love for the Woman I Love.",
+        "subtitle": "PRIMEVAL my love for the woman…",
+        "poemId": "whitman--primeval-my-love-for-the-woman-i-love"
+      },
+      {
+        "id": "02",
+        "title": "On Journeys Through The States.",
+        "subtitle": "ON journeys through the States we…",
+        "poemId": "whitman--on-journeys-through-the-states"
+      },
+      {
+        "id": "03",
+        "title": "Song of the Universal.",
+        "subtitle": "1 COME, said the Muse,…",
+        "poemId": "whitman--song-of-the-universal"
+      }
+    ]
+  },
+  {
+    "id": "poe",
+    "name": "Edgar Allan Poe",
+    "fullName": "Edgar Allan Poe",
+    "born": 1809,
+    "died": 1849,
+    "from": "America",
+    "era": "Gothic Romanticism",
+    "tag": "Gothic Romantic",
+    "essence": "Beauty as shadow — the music of grief, madness, and the sublime dark",
+    "bio": "Edgar Allan Poe was an American writer known for poetry and stories of mystery and the macabre. His poems — The Raven, Annabel Lee, The Bells — are masterworks of sonic intensity and psychological darkness.",
+    "poemCount": 47,
+    "moods": [
+      "love",
+      "grief",
+      "longing"
+    ],
+    "portalTags": [
+      "Melancholic",
+      "Radiant",
+      "Warmth",
+      "Static"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "The Raven",
+        "subtitle": "Once upon a midnight dreary, while…",
+        "poemId": "poe--the-raven"
+      },
+      {
+        "id": "02",
+        "title": "The City In The Sea",
+        "subtitle": "Lo! Death has reared himself a…",
+        "poemId": "poe--the-city-in-the-sea"
+      },
+      {
+        "id": "03",
+        "title": "The Valley Of Unrest",
+        "subtitle": "_Once_ it smiled a silent dell…",
+        "poemId": "poe--the-valley-of-unrest"
+      }
+    ]
+  },
+  {
+    "id": "dunbar",
+    "name": "Paul Laurence Dunbar",
+    "fullName": "Paul Laurence Dunbar",
+    "born": 1872,
+    "died": 1906,
+    "from": "America",
+    "era": "Victorian",
+    "tag": "American Folk Voice",
+    "essence": "Dignity, music, and the double consciousness of joy worn over grief",
+    "bio": "Paul Laurence Dunbar was the first African-American poet to gain national prominence. He wrote in both standard English and dialect, weaving folk song, lyric beauty, and unflinching truth about race in America.",
+    "poemCount": 9,
+    "moods": [
+      "love",
+      "joy",
+      "longing"
+    ],
+    "portalTags": [
+      "Radiant",
+      "Warmth",
+      "Melancholic",
+      "Pulse"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "My Little March Girl",
+        "subtitle": "Come to the pane, draw the…",
+        "poemId": "dunbar--my-little-march-girl"
+      },
+      {
+        "id": "02",
+        "title": "Encouraged",
+        "subtitle": "Because you love me I have…",
+        "poemId": "dunbar--encouraged"
+      },
+      {
+        "id": "03",
+        "title": "Life's Tragedy",
+        "subtitle": "It may be misery not to…",
+        "poemId": "dunbar--lifes-tragedy"
+      }
+    ]
+  },
+  {
+    "id": "wheatley",
+    "name": "Phillis Wheatley",
+    "fullName": "Phillis Wheatley",
+    "born": 1753,
+    "died": 1784,
+    "from": "America",
+    "era": "Colonial",
+    "tag": "Pioneer Voice",
+    "essence": "The first published Black poet in English — breaking chains with eloquence",
+    "bio": "Phillis Wheatley was an African-American poet and the first Black author to publish a book in English. Enslaved in Boston, she proved her humanity and genius through classical verse that challenged racism itself.",
+    "poemCount": 12,
+    "moods": [
+      "love",
+      "grief",
+      "longing"
+    ],
+    "portalTags": [
+      "Warmth",
+      "Radiant",
+      "Static",
+      "Melancholic"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Niobe in Distress",
+        "subtitle": "Apollo's wrath to man the dreadful…",
+        "poemId": "wheatley--niobe-in-distress"
+      },
+      {
+        "id": "02",
+        "title": "To a Gentleman and Lady on the Death of the Lady's Brother and Sister",
+        "subtitle": "On Death's domain intent I fix…",
+        "poemId": "wheatley--to-a-gentleman-and-lady-on-the-death-of-the-ladys-brother-an"
+      },
+      {
+        "id": "03",
+        "title": "To A Lady On The Death Of The Three Relations",
+        "subtitle": "WE trace the pow'r of Death…",
+        "poemId": "wheatley--to-a-lady-on-the-death-of-the-three-relations"
+      }
+    ]
+  },
+  {
+    "id": "burns",
+    "name": "Robert Burns",
+    "fullName": "Robert Burns",
+    "born": 1759,
+    "died": 1796,
+    "from": "Scotland",
+    "era": "Romantic",
+    "tag": "Scottish Bard",
+    "essence": "Love, nature, and the egalitarian warmth of the Scottish soul",
+    "bio": "Robert Burns was Scotland's national poet. Writing in Scots dialect and English, he produced love songs, drinking songs, and political verse of enduring power, from A Red, Red Rose to A Man's a Man.",
+    "poemCount": 99,
+    "moods": [
+      "love",
+      "joy",
+      "longing"
+    ],
+    "portalTags": [
+      "Radiant",
+      "Melancholic",
+      "Warmth",
+      "Pulse"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "292. Song—Farewell to the Highlands",
+        "subtitle": "FAREWELL to the Highlands, farewell to…",
+        "poemId": "burns--292-songfarewell-to-the-highlands"
+      },
+      {
+        "id": "02",
+        "title": "540. Inscription to Chloris",
+        "subtitle": "’TIS Friendship’s pledge, my young, fair…",
+        "poemId": "burns--540-inscription-to-chloris"
+      },
+      {
+        "id": "03",
+        "title": "83. The Cotter’s Saturday Night",
+        "subtitle": "MY lov’d, my honour’d, much respected…",
+        "poemId": "burns--83-the-cotters-saturday-night"
+      }
+    ]
+  },
+  {
+    "id": "edward-thomas",
+    "name": "Edward Thomas",
+    "fullName": "Edward Thomas",
+    "born": 1878,
+    "died": 1917,
+    "from": "England",
+    "era": "Modern",
+    "tag": "Nature Poet",
+    "essence": "Subtle observation of landscape and memory — the ordinary made luminous",
+    "bio": "Edward Thomas was an English poet whose nature poetry subtly captures the English countryside with psychological complexity. Works like Adlestrop and The Path bridge late Romanticism and modernism, melding observation with emotional depth.",
+    "poemCount": 131,
+    "moods": [
+      "longing",
+      "grief",
+      "joy"
+    ],
+    "portalTags": [
+      "Melancholic",
+      "Drift",
+      "Static",
+      "Radiant"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "When He Should Laugh",
+        "subtitle": "WHEN he should laugh the wise…",
+        "poemId": "edward-thomas--when-he-should-laugh"
+      },
+      {
+        "id": "02",
+        "title": "The Gypsy",
+        "subtitle": "A FORTNIGHT before Christmas Gypsies were…",
+        "poemId": "edward-thomas--the-gypsy"
+      },
+      {
+        "id": "03",
+        "title": "Liberty",
+        "subtitle": "THE last light has gone out…",
+        "poemId": "edward-thomas--liberty"
+      }
+    ]
+  },
+  {
+    "id": "hopkins",
+    "name": "Gerard Manley Hopkins",
+    "fullName": "Gerard Manley Hopkins",
+    "born": 1844,
+    "died": 1889,
+    "from": "England",
+    "era": "Victorian",
+    "tag": "Modern Innovator",
+    "essence": "Sprung rhythm and divine radiance — language remade for beauty and faith",
+    "bio": "Gerard Manley Hopkins was an English poet whose innovative sprung rhythm and vivid language created a distinctly modern voice. His spiritual intensity and technical brilliance, as in God's Grandeur, influenced generations of poets.",
+    "poemCount": 26,
+    "moods": [
+      "grief",
+      "love",
+      "longing"
+    ],
+    "portalTags": [
+      "Melancholic",
+      "Radiant",
+      "Static",
+      "Warmth"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Thee, God, I Come from",
+        "subtitle": "Thee, God, I come from, to…",
+        "poemId": "hopkins--thee-god-i-come-from"
+      },
+      {
+        "id": "02",
+        "title": "The Sea And The Skylark",
+        "subtitle": "On ear and ear two noises…",
+        "poemId": "hopkins--the-sea-and-the-skylark"
+      },
+      {
+        "id": "03",
+        "title": "The Child Is Father To The Man",
+        "subtitle": "'The child is father to the…",
+        "poemId": "hopkins--the-child-is-father-to-the-man"
+      }
+    ]
+  },
+  {
+    "id": "owen",
+    "name": "Wilfred Owen",
+    "fullName": "Wilfred Owen",
+    "born": 1893,
+    "died": 1918,
+    "from": "England",
+    "era": "Modern",
+    "tag": "War Poet",
+    "essence": "The horror and pity of war — beauty twisted into terrible truth",
+    "bio": "Wilfred Owen was a British poet of World War I who used traditional forms to convey the psychological and physical devastation of trench warfare. His poems, from Dulce et Decorum Est to Strange Meeting, are testimony and elegy.",
+    "poemCount": 5,
+    "moods": [
+      "grief",
+      "joy",
+      "longing"
+    ],
+    "portalTags": [
+      "Static",
+      "Melancholic",
+      "Radiant",
+      "Ethereal"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Disabled",
+        "subtitle": "He sat in a wheeled chair,…",
+        "poemId": "owen--disabled"
+      },
+      {
+        "id": "02",
+        "title": "Winter Song",
+        "subtitle": "The browns, the olives, and the…",
+        "poemId": "owen--winter-song"
+      },
+      {
+        "id": "03",
+        "title": "Spring Offensive",
+        "subtitle": "Halted against the shade of a…",
+        "poemId": "owen--spring-offensive"
+      }
+    ]
+  },
+  {
+    "id": "rossetti",
+    "name": "Christina Rossetti",
+    "fullName": "Christina Georgina Rossetti",
+    "born": 1830,
+    "died": 1894,
+    "from": "England",
+    "era": "Victorian",
+    "tag": "Pre-Raphaelite Voice",
+    "essence": "Devotion, longing, and the quiet persistence of love beyond death",
+    "bio": "Christina Rossetti was one of the foremost Victorian poets. Her devotional verse and sonnets, including Monna Innominata, combine formal rigour with intense emotional depth and spiritual yearning.",
+    "poemCount": 13,
+    "moods": [
+      "grief",
+      "longing",
+      "joy"
+    ],
+    "portalTags": [
+      "Melancholic",
+      "Radiant",
+      "Static",
+      "Drift"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "From Sunset to Star Rise",
+        "subtitle": "Go from me, summer friends, and…",
+        "poemId": "rossetti--from-sunset-to-star-rise"
+      },
+      {
+        "id": "02",
+        "title": "Spring Quiet",
+        "subtitle": "Gone were but the Winter, Come…",
+        "poemId": "rossetti--spring-quiet"
+      },
+      {
+        "id": "03",
+        "title": "The Thread of Life",
+        "subtitle": "I The irresponsive silence of the…",
+        "poemId": "rossetti--the-thread-of-life"
+      }
+    ]
+  }
+]
