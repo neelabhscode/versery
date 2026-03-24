@@ -3,6 +3,13 @@ import { filterByPortal, filterByPortals, filterByPoet } from "./lib/search.js";
 
 const feelings = ["Melancholic", "Ethereal", "Radiant", "Solitary"];
 
+const FEELING_COLORS = {
+  Melancholic: "#6B5B95",  // Deep purple - introspective, contemplative
+  Ethereal: "#7FDBCA",     // Soft cyan - light, airy, otherworldly
+  Radiant: "#FFD700",      // Golden yellow - bright, energetic, uplifting
+  Solitary: "#8FA99F",     // Muted sage - quiet, calm, introspective
+};
+
 const portals = [
   { name: "Calm", subtitle: "Cyan Void", icon: "waves", tone: "cyan" },
   { name: "Pulse", subtitle: "Rose Flow", icon: "bolt", tone: "rose" },
@@ -1696,6 +1703,7 @@ function AppLoaded({ poems, poets }) {
                     key={feeling}
                     className={`feeling-chip${activeFeeling === feeling ? " is-active" : ""}`}
                     type="button"
+                    data-feeling={feeling.toLowerCase()}
                     onClick={() => {
                       setActiveFeeling(feeling);
                       openDiscovery(feeling, "home", "feeling");

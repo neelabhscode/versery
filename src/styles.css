@@ -860,6 +860,55 @@ a {
   transform: scale(0.99);
 }
 
+/* Feeling button colors */
+.feeling-chip[data-feeling="melancholic"] {
+  background: #6B5B95;
+  color: #ffffff;
+}
+
+.feeling-chip[data-feeling="ethereal"] {
+  background: #7FDBCA;
+  color: #ffffff;
+}
+
+.feeling-chip[data-feeling="radiant"] {
+  background: #FFD700;
+  color: #1a1a1a;
+}
+
+.feeling-chip[data-feeling="solitary"] {
+  background: #8FA99F;
+  color: #ffffff;
+}
+
+.feeling-chip[data-feeling="melancholic"]:hover,
+.feeling-chip[data-feeling="melancholic"]:focus-visible,
+.feeling-chip[data-feeling="melancholic"].is-active {
+  background: #5a4a7f;
+  color: #ffffff;
+}
+
+.feeling-chip[data-feeling="ethereal"]:hover,
+.feeling-chip[data-feeling="ethereal"]:focus-visible,
+.feeling-chip[data-feeling="ethereal"].is-active {
+  background: #6ac4b3;
+  color: #ffffff;
+}
+
+.feeling-chip[data-feeling="radiant"]:hover,
+.feeling-chip[data-feeling="radiant"]:focus-visible,
+.feeling-chip[data-feeling="radiant"].is-active {
+  background: #e6c200;
+  color: #1a1a1a;
+}
+
+.feeling-chip[data-feeling="solitary"]:hover,
+.feeling-chip[data-feeling="solitary"]:focus-visible,
+.feeling-chip[data-feeling="solitary"].is-active {
+  background: #7a948a;
+  color: #ffffff;
+}
+
 .feature-stack__layer {
   position: absolute;
   width: 85%;
