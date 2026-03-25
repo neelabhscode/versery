@@ -126,13 +126,23 @@ a {
   border-radius: 1rem;
   background: transparent;
   color: var(--accent);
-  transition: background-color 180ms ease-out, transform 180ms ease-out, opacity 180ms ease-out;
+  transition: background-color 180ms ease-out, transform 160ms ease-out, opacity 180ms ease-out;
 }
 
-.icon-surface:hover,
+@media (hover: hover) and (pointer: fine) {
+  .icon-surface:hover {
+    background: var(--surface-low);
+    transform: scale(0.98);
+  }
+}
+
 .icon-surface:focus-visible {
   background: var(--surface-low);
   transform: scale(0.98);
+}
+
+.icon-surface:active {
+  transform: scale(0.97);
 }
 
 .icon-surface:focus-visible,
@@ -161,24 +171,37 @@ a {
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  transition: color 180ms ease-out, opacity 180ms ease-out, transform 180ms ease-out;
+  transition: color 180ms ease-out, opacity 180ms ease-out, transform 160ms ease-out;
 }
 
-.inline-action:hover,
+@media (hover: hover) and (pointer: fine) {
+  .inline-action:hover {
+    color: var(--accent);
+  }
+
+  .inline-action:hover .material-symbols-outlined {
+    opacity: 0.8;
+    transform: translateX(1px);
+  }
+}
+
 .inline-action:focus-visible {
   color: var(--accent);
+}
+
+.inline-action:focus-visible .material-symbols-outlined {
+  opacity: 0.8;
+  transform: translateX(1px);
+}
+
+.inline-action:active {
+  transform: scale(0.97);
 }
 
 .inline-action .material-symbols-outlined {
   font-size: 1rem;
   opacity: 0.58;
-  transition: transform 180ms ease-out, opacity 180ms ease-out;
-}
-
-.inline-action:hover .material-symbols-outlined,
-.inline-action:focus-visible .material-symbols-outlined {
-  opacity: 0.8;
-  transform: translateX(1px);
+  transition: transform 160ms ease-out, opacity 180ms ease-out;
 }
 
 .primary-action {
@@ -192,13 +215,23 @@ a {
   text-transform: uppercase;
   letter-spacing: 0.22em;
   box-shadow: 0 14px 24px rgba(0, 0, 0, 0.16);
-  transition: transform 180ms ease-out, opacity 180ms ease-out;
+  transition: transform 160ms ease-out, opacity 180ms ease-out;
 }
 
-.primary-action:hover,
+@media (hover: hover) and (pointer: fine) {
+  .primary-action:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+  }
+}
+
 .primary-action:focus-visible {
   transform: translateY(-1px);
   opacity: 0.92;
+}
+
+.primary-action:active {
+  transform: scale(0.97);
 }
 
 .screen-content {
@@ -341,13 +374,23 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform 180ms ease-out, background-color 180ms ease-out;
+  transition: transform 160ms ease-out, background-color 180ms ease-out;
 }
 
-.screen-action-btn:hover,
+@media (hover: hover) and (pointer: fine) {
+  .screen-action-btn:hover {
+    transform: scale(0.98);
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+
 .screen-action-btn:focus-visible {
   transform: scale(0.98);
   background: rgba(255, 255, 255, 0.9);
+}
+
+.screen-action-btn:active {
+  transform: scale(0.97);
 }
 
 .screen-actions--overlay .screen-action-btn {
@@ -356,7 +399,12 @@ a {
   color: #ffffff;
 }
 
-.screen-actions--overlay .screen-action-btn:hover,
+@media (hover: hover) and (pointer: fine) {
+  .screen-actions--overlay .screen-action-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+  }
+}
+
 .screen-actions--overlay .screen-action-btn:focus-visible {
   background: rgba(255, 255, 255, 0.35);
 }
@@ -1355,8 +1403,18 @@ a {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: background-color 180ms ease-out, color 180ms ease-out;
+  transition: background-color 160ms ease-out, color 160ms ease-out, transform 160ms ease-out;
   white-space: nowrap;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .filter-chip:hover {
+    background: var(--surface-high);
+  }
+}
+
+.filter-chip:active {
+  transform: scale(0.97);
 }
 
 .filter-chip.is-active {
@@ -1376,11 +1434,17 @@ a {
   overflow: hidden;
   box-shadow: var(--shadow-soft);
   animation: mobile-fade-in 150ms ease-out;
-  transition: transform 180ms ease-out, box-shadow 180ms ease-out;
+  transition: transform 160ms ease-out, box-shadow 180ms ease-out;
 }
 
-.voice-card:hover {
-  transform: translateY(-1px);
+@media (hover: hover) and (pointer: fine) {
+  .voice-card:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.voice-card:active {
+  transform: scale(0.97);
 }
 
 .voice-card--offset {
@@ -2015,6 +2079,7 @@ a {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: 700;
+  transition: transform 160ms ease-out;
 }
 
 .load-more__icon {
@@ -2027,13 +2092,23 @@ a {
   justify-content: center;
   font-size: 1.4rem;
   color: var(--ink-soft);
-  transition: background-color 180ms ease-out, color 180ms ease-out;
+  transition: background-color 160ms ease-out, color 160ms ease-out;
 }
 
-.load-more:hover .load-more__icon,
+@media (hover: hover) and (pointer: fine) {
+  .load-more:hover .load-more__icon {
+    background: var(--accent);
+    color: #faf7f6;
+  }
+}
+
 .load-more:focus-visible .load-more__icon {
   background: var(--accent);
   color: #faf7f6;
+}
+
+.load-more:active {
+  transform: scale(0.97);
 }
 
 .poet-feature {
@@ -2123,12 +2198,21 @@ a {
   background: var(--surface-low);
   overflow: hidden;
   animation: mobile-slide-up 150ms ease-out;
-  transition: transform 180ms ease-out, background-color 180ms ease-out;
+  transition: transform 160ms ease-out, background-color 180ms ease-out;
 }
 
-.portal-card:hover,
+@media (hover: hover) and (pointer: fine) {
+  .portal-card:hover {
+    transform: translateY(-1px);
+  }
+}
+
 .portal-card:focus-visible {
   transform: translateY(-1px);
+}
+
+.portal-card:active {
+  transform: scale(0.97);
 }
 
 @keyframes breathing-glow {
@@ -2146,7 +2230,7 @@ a {
   position: absolute;
   inset: -20%;
   background: radial-gradient(circle at center, var(--portal-color, rgba(165, 243, 252, 0.3)) 0%, transparent 60%);
-  animation: breathing-glow 4s ease-in-out infinite;
+  animation: breathing-glow 4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
   border-radius: 50%;
 }
 
@@ -2239,13 +2323,23 @@ a {
   height: 3.5rem;
   border-radius: 1rem;
   color: var(--ink-soft);
-  transition: transform 180ms ease-out, opacity 180ms ease-out, background-color 180ms ease-out;
+  transition: transform 160ms ease-out, opacity 180ms ease-out, background-color 180ms ease-out;
 }
 
-.bottom-nav__item:hover,
+@media (hover: hover) and (pointer: fine) {
+  .bottom-nav__item:hover {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+}
+
 .bottom-nav__item:focus-visible {
   opacity: 0.8;
   transform: scale(0.98);
+}
+
+.bottom-nav__item:active {
+  transform: scale(0.97);
 }
 
 .bottom-nav__item.is-active {
@@ -2726,68 +2820,89 @@ a {
 
   /* ── Desktop Animation Overrides ── */
   .portal-card {
-    animation: desktop-cascade 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
-    transition: transform 350ms ease-out, background-color 350ms ease-out;
+    animation: desktop-cascade 600ms ease-out;
+    transition: transform 280ms ease-out, background-color 280ms ease-out;
   }
 
-  .portal-card:hover,
+  @media (hover: hover) and (pointer: fine) {
+    .portal-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+  }
+
   .portal-card:focus-visible {
     transform: translateY(-8px);
-    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.15));
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
   }
 
   .voice-card {
-    animation: desktop-cascade 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
-    transition: transform 350ms ease-out, box-shadow 350ms ease-out;
+    animation: desktop-cascade 600ms ease-out;
+    transition: transform 280ms ease-out, box-shadow 280ms ease-out;
   }
 
-  .voice-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+  @media (hover: hover) and (pointer: fine) {
+    .voice-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+    }
   }
 
   .inline-action {
-    transition: color 350ms ease-out, opacity 350ms ease-out, transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: color 280ms ease-out, opacity 280ms ease-out, transform 280ms ease-out;
   }
 
-  .inline-action:hover {
-    transform: scale(1.02);
-  }
+  @media (hover: hover) and (pointer: fine) {
+    .inline-action:hover {
+      transform: scale(1.02);
+    }
 
-  .inline-action:hover .material-symbols-outlined {
-    transition: transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 350ms ease-out;
-    transform: translateX(3px);
-  }
-
-  .primary-action:hover,
-  .screen-action-btn:hover {
-    transform: translateY(-2px);
-    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+    .inline-action:hover .material-symbols-outlined {
+      transition: transform 280ms ease-out, opacity 280ms ease-out;
+      transform: translateX(3px);
+    }
   }
 
   .primary-action,
   .screen-action-btn {
-    transition: transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1), background-color 350ms ease-out, filter 350ms ease-out;
+    transition: transform 280ms ease-out, background-color 280ms ease-out, box-shadow 280ms ease-out;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .primary-action:hover,
+    .screen-action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
   }
 
   .collections-archive-card {
-    animation: desktop-cascade 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
-    transition: transform 350ms ease-out, box-shadow 350ms ease-out;
+    animation: desktop-cascade 600ms ease-out;
+    transition: transform 280ms ease-out, box-shadow 280ms ease-out;
   }
 
-  .collections-archive-card:hover,
+  @media (hover: hover) and (pointer: fine) {
+    .collections-archive-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .collections-archive-card:hover .collections-archive-card__media img {
+      transform: scale(1.05);
+    }
+  }
+
   .collections-archive-card:focus-visible {
     transform: translateY(-8px);
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
   }
 
-  .collections-archive-card__media img {
-    transition: transform 400ms ease-out;
-  }
-
-  .collections-archive-card:hover .collections-archive-card__media img,
   .collections-archive-card:focus-visible .collections-archive-card__media img {
     transform: scale(1.05);
+  }
+
+  .collections-archive-card__media img {
+    transition: transform 300ms ease-out;
   }
 }
 
@@ -2796,8 +2911,14 @@ a {
   *::before,
   *::after {
     animation: none !important;
-    transition: none !important;
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-property: color, background-color, opacity !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
