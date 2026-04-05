@@ -1,6 +1,48 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { filterByPortal, filterByPortals, filterByPoet } from "./lib/search.js";
 
+const DEFAULT_META_DESCRIPTION =
+  "Read poetry online by mood, poet, or theme—without noisy feeds. Versery is a calm reader for daily picks, archives, and slow discovery.";
+
+/** Home-only FAQ: visible copy must stay in sync with injected FAQPage JSON-LD. */
+const HOME_FAQ_ITEMS = [
+  {
+    question: "What is Versery?",
+    answer:
+      "Versery is a web reader for hand-picked poetry. You can browse by mood, open poet profiles, or explore themed collections—without ads or cluttered feeds.",
+  },
+  {
+    question: "How do I find poems by mood?",
+    answer:
+      "Pick a feeling on the home screen, or use the Emotional Compass for atmosphere-led browsing. Each path surfaces a rotating set of poems from the archive.",
+  },
+  {
+    question: "Is Versery free to read?",
+    answer:
+      "Yes. Reading and browsing the archive is free; Versery is built for quiet, intentional discovery rather than paywalls or aggressive upsells.",
+  },
+  {
+    question: "Can I read classic poets alongside contemporary work?",
+    answer:
+      "Yes. The Poet voices library mixes historical figures and modern voices so you can move between eras in one place.",
+  },
+];
+
+function homeFaqJsonLd(items) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
 const feelings = ["Melancholic", "Ethereal", "Radiant", "Solitary"];
 
 const FEELING_COLORS = {
@@ -479,7 +521,7 @@ export default function App() {
 
   if (!rawPoems || !rawPoets) {
     return (
-      <div className="page-shell loading-screen">
+      <div className="page-shell loading-screen" data-testid="screen-loading">
         <span className="material-symbols-outlined loading-icon">auto_stories</span>
         <p>Loading poems…</p>
       </div>
@@ -1085,6 +1127,69 @@ function AppLoaded({ poems, poets }) {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [screen, activeVoiceId, activeCollectionId, activePoemId, collectionPage, visibleVoiceCount, voiceWorksPage]);
 
+  useEffect(() => {
+    let title = "Versery — Curated poetry for quiet reading";
+    let description = DEFAULT_META_DESCRIPTION;
+    if (onPoemDetail) {
+      title = `${activePoem.title} · Versery`;
+      const ex = activePoem.subtitle || activePoem.note;
+      if (ex) description = ex.length > 160 ? `${ex.slice(0, 157)}…` : ex;
+    } else if (onCollectionDetail) {
+      title = `${activeCollection.title} · Versery`;
+      const d = activeCollection.description;
+      if (d) description = d.length > 160 ? `${d.slice(0, 157)}…` : d;
+    } else if (onVoiceDetail) {
+      title = `${activeVoice.name} · Versery`;
+    } else if (onVoiceWorks) {
+      title = `Works · ${activeVoice.name} · Versery`;
+    } else if (onDiscoveryResults && activeDiscovery) {
+      title = `${activeDiscovery.title} · Versery`;
+      const s = activeDiscovery.subtitle;
+      if (s) description = s.length > 160 ? `${s.slice(0, 157)}…` : s;
+    } else if (onCompass) {
+      title = `Emotional compass · Versery`;
+    } else if (onVoices) {
+      title = `Poet voices · Versery`;
+    } else if (onCollections) {
+      title = `Curated poetry collections · Versery`;
+    }
+    document.title = title;
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", description);
+  }, [
+    screen,
+    onPoemDetail,
+    onCollectionDetail,
+    onVoiceDetail,
+    onVoiceWorks,
+    onDiscoveryResults,
+    onCompass,
+    onVoices,
+    onCollections,
+    activePoem.title,
+    activePoem.subtitle,
+    activePoem.note,
+    activeCollection.title,
+    activeCollection.description,
+    activeVoice.name,
+    activeDiscovery?.title,
+    activeDiscovery?.subtitle,
+  ]);
+
+  useEffect(() => {
+    const id = "versery-faq-jsonld";
+    const existing = document.getElementById(id);
+    if (screen !== "home") {
+      existing?.remove();
+      return;
+    }
+    const script = existing ?? document.createElement("script");
+    script.id = id;
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(homeFaqJsonLd(HOME_FAQ_ITEMS));
+    if (!existing) document.head.appendChild(script);
+  }, [screen]);
+
   return (
     <div
       className={`page-shell${onCompass ? " page-shell--compass" : ""}${
@@ -1096,7 +1201,7 @@ function AppLoaded({ poems, poets }) {
       {!onVoiceDetail && !onVoiceWorks && !onCollectionDetail && !onDiscoveryResults && !onPoemDetail && (
         <header className="top-app-bar">
           <div className="top-app-bar__inner">
-            <h1
+            <p
               className="top-app-bar__title"
               onClick={() => {
                 if (isDesktop && screen !== "home") {
@@ -1106,15 +1211,15 @@ function AppLoaded({ poems, poets }) {
               style={{ cursor: isDesktop ? "pointer" : "default" }}
             >
               Versery
-            </h1>
+            </p>
           </div>
         </header>
       )}
 
       {onCompass ? (
-        <main className="screen-content screen-content--compass">
+        <main className="screen-content screen-content--compass" data-testid="screen-compass">
           <header className="compass-header">
-            <h2>Emotional Compass</h2>
+            <h1>Emotional Compass</h1>
             <p>Select your current sensory resonance</p>
           </header>
 
@@ -1125,6 +1230,7 @@ function AppLoaded({ poems, poets }) {
                 className={`portal-card portal-card--${portal.tone}`}
                 type="button"
                 data-portal={portal.name.toLowerCase()}
+                aria-label={`Open ${portal.name} portal — ${portal.subtitle}`}
                 style={{ "--portal-color": PORTAL_COLORS[portal.name] }}
                 onClick={() => openDiscovery(portal.name, "compass", "compass")}
               >
@@ -1139,11 +1245,12 @@ function AppLoaded({ poems, poets }) {
           </section>
         </main>
       ) : onVoices ? (
-        <main className="screen-content screen-content--voices">
+        <main className="screen-content screen-content--voices" data-testid="screen-voices">
           <section className="voices-header">
-            <h2>20 Voices</h2>
-            <p>
-              A curated collection of experimental poets exploring the boundaries of rhythm and digital resonance.
+            <h1>Poet voices in the archive</h1>
+            <p className="voices-header__lead">
+              Browse poet profiles to read poetry online in context—eras, origins, and a path into each voice&rsquo;s
+              works.
             </p>
 
             <label className="voices-search" aria-label="Search voices">
@@ -1162,6 +1269,8 @@ function AppLoaded({ poems, poets }) {
                   key={filter}
                   className={`filter-chip${activeEraFilter === filter ? " is-active" : ""}`}
                   type="button"
+                  aria-label={filter === "All Eras" ? "Show all eras" : `Filter poets by ${filter} era`}
+                  aria-pressed={activeEraFilter === filter}
                   onClick={() => setActiveEraFilter(filter)}
                 >
                   {filter}
@@ -1217,14 +1326,14 @@ function AppLoaded({ poems, poets }) {
           </div>
         </main>
       ) : onCollections ? (
-        <main className="screen-content screen-content--collections">
+        <main className="screen-content screen-content--collections" data-testid="screen-collections">
           <section className="collections-archive" aria-label="Curated collections archive">
             <header className="collections-archive__header">
               <span>Seasonal Selection</span>
-              <h2>Curated Collections</h2>
+              <h1>Curated poetry collections</h1>
               <p>
-                A digital gallery of human thought, organized into thematic vessels of art, literature,
-                and philosophy.
+                Themed shelves you can open in a few taps—love, nature, solitude, witness, and more—each built for
+                longer reading sessions.
               </p>
             </header>
 
@@ -1293,7 +1402,7 @@ function AppLoaded({ poems, poets }) {
           </section>
         </main>
       ) : onDiscoveryResults ? (
-        <main className="screen-content screen-content--discovery">
+        <main className="screen-content screen-content--discovery" data-testid="screen-discovery">
           <section className="discovery-results-page">
             <header className="screen-actions screen-actions--static discovery-results-page__header">
               <button
@@ -1308,7 +1417,7 @@ function AppLoaded({ poems, poets }) {
 
             <header className="voice-works-page__intro discovery-results-page__intro">
               <span>{discoveryContext.source === "compass" ? "Emotional Compass" : "Daily Resonance"}</span>
-              <h2>{activeDiscovery.title}</h2>
+              <h1>{activeDiscovery.title}</h1>
               <p>{activeDiscovery.subtitle}</p>
             </header>
 
@@ -1378,7 +1487,7 @@ function AppLoaded({ poems, poets }) {
 
             <section className="discovery-poets" aria-label={`${activeDiscovery.title} poets`}>
               <div className="discovery-poets__header">
-                <h3>Poets in the current resonance</h3>
+                <h2 className="discovery-poets__heading">Poets in this resonance</h2>
               </div>
               <div className="discovery-poets__rail">
                 {discoveryPoets.map((voice) => (
@@ -1386,6 +1495,7 @@ function AppLoaded({ poems, poets }) {
                     key={voice.id}
                     type="button"
                     className="discovery-poet-chip"
+                    aria-label={`Open poet ${voice.name}`}
                     onClick={() => openVoice(voice.id, "discoveryResults")}
                   >
                     <span className="discovery-poet-chip__avatar">
@@ -1399,7 +1509,7 @@ function AppLoaded({ poems, poets }) {
           </section>
         </main>
       ) : onCollectionDetail ? (
-        <main className="screen-content screen-content--collection-detail">
+        <main className="screen-content screen-content--collection-detail" data-testid="screen-collection-detail">
           <section className="collection-detail">
             <header className="screen-actions screen-actions--static collection-detail__back">
               <button
@@ -1463,9 +1573,9 @@ function AppLoaded({ poems, poets }) {
           </section>
         </main>
       ) : onVoiceDetail ? (
-        <main className="screen-content screen-content--voice-detail">
+        <main className="screen-content screen-content--voice-detail" data-testid="screen-voice-detail">
           <header className="voice-hero">
-            <img src={activeVoice.image} alt={`Portrait of ${activeVoice.name}`} />
+            <img src={activeVoice.image} alt={`Portrait of ${activeVoice.name}`} fetchPriority="high" />
             <div className="voice-hero__overlay"></div>
             <div className="screen-actions screen-actions--overlay">
               <button
@@ -1479,7 +1589,7 @@ function AppLoaded({ poems, poets }) {
             </div>
             <div className="voice-hero__title">
               <span>Historical Figure</span>
-              <h2>{activeVoice.name}</h2>
+              <h1>{activeVoice.name}</h1>
               <p>
                 <span>{activeVoice.era}</span>
                 <span className="voice-hero__dot"></span>
@@ -1490,7 +1600,7 @@ function AppLoaded({ poems, poets }) {
 
           <section className="voice-body">
             <div className="voice-section">
-              <h3>{activeVoice.title}</h3>
+              <h2>{activeVoice.title}</h2>
               <p>
                 {activeVoice.bio} <span className="voice-body__highlight">Transcends national borders</span> and remembers the quiet parts between languages.
               </p>
@@ -1509,7 +1619,7 @@ function AppLoaded({ poems, poets }) {
             </div>
 
             <div className="voice-section">
-              <h3>Global Resonance</h3>
+              <h2>Global resonance</h2>
               <p>
                 {activeVoice.name}'s work travels across languages, formats, and digital stages, quietly influencing new generations of readers.
               </p>
@@ -1518,7 +1628,7 @@ function AppLoaded({ poems, poets }) {
 
           <section className="voice-works">
             <div className="voice-works__header">
-              <h3>Essential Works</h3>
+              <h2>Essential works</h2>
               <button className="inline-action" type="button" onClick={() => openVoiceWorks("voiceDetail")}>
                 View All
               </button>
@@ -1563,7 +1673,7 @@ function AppLoaded({ poems, poets }) {
           </section>
         </main>
       ) : onVoiceWorks ? (
-        <main className="screen-content screen-content--voice-works">
+        <main className="screen-content screen-content--voice-works" data-testid="screen-voice-works">
           <section className="voice-works-page">
             <header className="screen-actions screen-actions--static voice-works-page__header">
               <button
@@ -1578,7 +1688,7 @@ function AppLoaded({ poems, poets }) {
 
             <header className="voice-works-page__intro">
               <span>The Complete Works</span>
-              <h2>{activeVoice.name}</h2>
+              <h1>{activeVoice.name}</h1>
               <p>{activeVoice.title}</p>
             </header>
 
@@ -1645,7 +1755,7 @@ function AppLoaded({ poems, poets }) {
           </section>
         </main>
       ) : onPoemDetail ? (
-        <main className="screen-content screen-content--poem-detail">
+        <main className="screen-content screen-content--poem-detail" data-testid="screen-poem">
           <header className="screen-actions screen-actions--reader">
             <button className="screen-action-btn" type="button" aria-label="Go back" onClick={handlePoemBack}>
               <span className="material-symbols-outlined">arrow_back</span>
@@ -1682,7 +1792,7 @@ function AppLoaded({ poems, poets }) {
             </div>
 
             <footer className="poem-reader__note">
-              <h4>Contextual Note</h4>
+              <h2>Contextual Note</h2>
               <p>{activePoem.note}</p>
             </footer>
           </article>
@@ -1696,7 +1806,12 @@ function AppLoaded({ poems, poets }) {
                 <h3>{nextPoemData.poem.title}</h3>
               </div>
               <p>{nextPoemData.poem.subtitle}</p>
-              <button className="primary-action" type="button" onClick={openNextPoem}>
+              <button
+                className="primary-action"
+                type="button"
+                aria-label={`Open next poem: ${nextPoemData.poem.title}`}
+                onClick={openNextPoem}
+              >
                 Open Poem
               </button>
               <div className="poem-next__divider"></div>
@@ -1704,12 +1819,24 @@ function AppLoaded({ poems, poets }) {
           </aside>
         </main>
       ) : (
-        <main className="screen-content">
+        <main className="screen-content screen-content--home" data-testid="screen-home">
           <section className="feeling-section">
             <div className="eyebrow-pill">Daily Resonance</div>
 
+            <div className="home-intro">
+              <h1>Curated poetry for how you feel</h1>
+              <p className="home-intro__lead">
+                Versery is a calm place to read poems online: follow a mood, follow a voice, or open a themed
+                archive.
+              </p>
+              <p className="home-intro__support">
+                No infinite scroll—just slow, intentional discovery when you have a few quiet minutes.
+              </p>
+            </div>
+
             <div className="feeling-card">
               <h2>How are you feeling today?</h2>
+              <p className="feeling-card__hint">Tap a mood to see poems tuned to that tone.</p>
 
               <div className="feeling-grid" aria-label="Feeling options">
                 {feelings.map((feeling) => (
@@ -1718,6 +1845,7 @@ function AppLoaded({ poems, poets }) {
                     className={`feeling-chip${activeFeeling === feeling ? " is-active" : ""}`}
                     type="button"
                     data-feeling={feeling.toLowerCase()}
+                    aria-label={`Browse ${feeling} poems`}
                     onClick={() => {
                       setActiveFeeling(feeling);
                       openDiscovery(feeling, "home", "feeling");
@@ -1730,7 +1858,10 @@ function AppLoaded({ poems, poets }) {
             </div>
           </section>
 
-          <section className="feature-stack" aria-label="Featured poem">
+          <section className="feature-stack" aria-labelledby="home-featured-heading">
+            <h2 id="home-featured-heading" className="feature-stack__section-title">
+              Today&rsquo;s poem
+            </h2>
             <div className="feature-stack__layer feature-stack__layer--back"></div>
             <div className="feature-stack__layer feature-stack__layer--mid"></div>
 
@@ -1762,12 +1893,14 @@ function AppLoaded({ poems, poets }) {
                   <img
                     src={`/poets/${featuredPoem.poetId}.jpg`}
                     alt={`Portrait of ${featuredPoem.author}`}
+                    loading="lazy"
                   />
                 </div>
 
                 <button
                   className="excerpt-link"
                   type="button"
+                  aria-label={`Read featured poem: ${featuredPoem.title}`}
                   onClick={() =>
                     openPoem({
                       poemId: featuredPoem.id,
@@ -1783,8 +1916,10 @@ function AppLoaded({ poems, poets }) {
             </article>
           </section>
 
-          <section className="poet-feature" aria-label="Poet of the week">
-            <div className="poet-feature__badge">Poet of the Week</div>
+          <section className="poet-feature" aria-labelledby="poet-week-heading">
+            <h2 id="poet-week-heading" className="poet-feature__badge">
+              Poet of the week
+            </h2>
             <div className="poet-feature__content">
               <div className="poet-feature__avatar">
                 <img
@@ -1804,10 +1939,15 @@ function AppLoaded({ poems, poets }) {
             <div className="section-header">
               <div>
                 <p className="section-label">Archives</p>
-                <h4>Curated Collections</h4>
+                <h2>Curated Collections</h2>
               </div>
 
-              <button className="section-link inline-action" type="button" onClick={() => setScreen("collections")}>
+              <button
+                className="section-link inline-action"
+                type="button"
+                aria-label="View all curated collections"
+                onClick={() => setScreen("collections")}
+              >
                 View All
               </button>
             </div>
@@ -1842,56 +1982,85 @@ function AppLoaded({ poems, poets }) {
               ))}
             </div>
           </section>
+
+          <section className="home-faq" aria-labelledby="home-faq-heading">
+            <h2 id="home-faq-heading" className="home-faq__title">
+              Quick answers
+            </h2>
+            <p className="home-faq__intro">
+              A few things readers often ask before settling in.
+            </p>
+            <div className="home-faq__list">
+              {HOME_FAQ_ITEMS.map((item) => (
+                <details key={item.question} className="home-faq__item">
+                  <summary>{item.question}</summary>
+                  <p className="home-faq__answer">{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
         </main>
       )}
 
-      <nav className="bottom-nav" aria-label="Bottom navigation">
+      <nav className="bottom-nav" aria-label="Primary">
         <div className="bottom-nav__inner">
           <a
             className={`bottom-nav__item${navState === "home" ? " is-active" : ""}`}
             href="/"
-            aria-label="Poetry home"
+            aria-label="Home — daily poem and moods"
+            aria-current={navState === "home" ? "page" : undefined}
             onClick={(event) => {
               event.preventDefault();
               setScreen("home");
             }}
           >
-            <span className="material-symbols-outlined">home</span>
+            <span className="material-symbols-outlined" aria-hidden="true">
+              home
+            </span>
           </a>
           <a
             className={`bottom-nav__item${navState === "compass" ? " is-active" : ""}`}
             href="/"
-            aria-label="Compass"
+            aria-label="Emotional compass — browse by portal"
+            aria-current={navState === "compass" ? "page" : undefined}
             onClick={(event) => {
               event.preventDefault();
               setScreen("compass");
             }}
           >
-            <span className="material-symbols-outlined">explore</span>
+            <span className="material-symbols-outlined" aria-hidden="true">
+              explore
+            </span>
           </a>
           <a
             className={`bottom-nav__item${navState === "voices" || navState === "voiceDetail" ? " is-active" : ""}`}
             href="/"
-            aria-label="Library"
+            aria-label="Poet library — voices and bios"
+            aria-current={navState === "voices" || navState === "voiceDetail" ? "page" : undefined}
             onClick={(event) => {
               event.preventDefault();
               setScreen("voices");
             }}
           >
-            <span className="material-symbols-outlined">menu_book</span>
+            <span className="material-symbols-outlined" aria-hidden="true">
+              menu_book
+            </span>
           </a>
           <a
             className={`bottom-nav__item${
               navState === "collections" || navState === "collectionDetail" ? " is-active" : ""
             }`}
             href="/"
-            aria-label="Collection"
+            aria-label="Curated collections archive"
+            aria-current={navState === "collections" || navState === "collectionDetail" ? "page" : undefined}
             onClick={(event) => {
               event.preventDefault();
               setScreen("collections");
             }}
           >
-            <span className="material-symbols-outlined">collections_bookmark</span>
+            <span className="material-symbols-outlined" aria-hidden="true">
+              collections_bookmark
+            </span>
           </a>
         </div>
       </nav>

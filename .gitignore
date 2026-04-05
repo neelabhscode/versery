@@ -1,5 +1,9 @@
 node_modules/
 dist/
+test-results/
+playwright-report/
+playwright/.cache/
+qa-screenshots/
 .DS_Store
 *.local
 .env
