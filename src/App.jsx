@@ -1828,9 +1828,6 @@ function AppLoaded({ poems, poets }) {
                 Versery is a calm place to read poems online: follow a mood, follow a voice, or open a themed
                 archive.
               </p>
-              <p className="home-intro__support">
-                No infinite scroll—just slow, intentional discovery when you have a few quiet minutes.
-              </p>
             </div>
 
             <div className="feeling-card">
