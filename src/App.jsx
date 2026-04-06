@@ -790,12 +790,42 @@ function AppLoaded({ poems, poets }) {
   const [activeEraFilter, setActiveEraFilter] = useState("All Eras");
   const [collectionImages, setCollectionImages] = useState({});
   const loadMoreButtonRef = useRef(null);
+  const heroSectionRef = useRef(null);
+  const [showBottomNav, setShowBottomNav] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    if (screen !== "home") {
+      setShowBottomNav(true);
+      return;
+    }
+
+    const updateBottomNavVisibility = () => {
+      const heroSection = heroSectionRef.current;
+      if (!heroSection) {
+        setShowBottomNav(false);
+        return;
+      }
+
+      const rect = heroSection.getBoundingClientRect();
+      const hasScrolledPastHalf = -rect.top >= rect.height * 0.5;
+      setShowBottomNav(hasScrolledPastHalf);
+    };
+
+    updateBottomNavVisibility();
+    window.addEventListener("scroll", updateBottomNavVisibility, { passive: true });
+    window.addEventListener("resize", updateBottomNavVisibility);
+
+    return () => {
+      window.removeEventListener("scroll", updateBottomNavVisibility);
+      window.removeEventListener("resize", updateBottomNavVisibility);
+    };
+  }, [screen]);
 
   // Initialize daily collection image mapping
   useEffect(() => {
@@ -1819,7 +1849,7 @@ function AppLoaded({ poems, poets }) {
         </main>
       ) : (
         <main className="screen-content screen-content--home" data-testid="screen-home">
-          <section className="feeling-section">
+          <section ref={heroSectionRef} className="feeling-section">
             <div className="eyebrow-pill">Daily Resonance</div>
 
             <div className="home-intro">
@@ -1855,9 +1885,6 @@ function AppLoaded({ poems, poets }) {
           </section>
 
           <section className="feature-stack" aria-labelledby="home-featured-heading">
-            <h2 id="home-featured-heading" className="feature-stack__section-title">
-              Today&rsquo;s poem
-            </h2>
             <div className="feature-stack__layer feature-stack__layer--back"></div>
             <div className="feature-stack__layer feature-stack__layer--mid"></div>
 
@@ -1871,6 +1898,9 @@ function AppLoaded({ poems, poets }) {
               </div>
 
               <div className="feature-card-main__content">
+                <h2 id="home-featured-heading" className="feature-card-main__heading">
+                  Today&rsquo;s poem
+                </h2>
                 <div className="feature-card-main__icon">
                   <span className="material-symbols-outlined">cloud</span>
                 </div>
@@ -1924,7 +1954,7 @@ function AppLoaded({ poems, poets }) {
                   loading="lazy"
                 />
               </div>
-              <div>
+              <div className="poet-feature__text">
                 <h3>{poetOfWeek?.name}</h3>
                 <p>"{poetOfWeek?.quote}"</p>
               </div>
@@ -1998,7 +2028,7 @@ function AppLoaded({ poems, poets }) {
         </main>
       )}
 
-      <nav className="bottom-nav" aria-label="Primary">
+      <nav className={`bottom-nav${showBottomNav ? " is-visible" : " is-hidden"}`} aria-label="Primary">
         <div className="bottom-nav__inner">
           <a
             className={`bottom-nav__item${navState === "home" ? " is-active" : ""}`}

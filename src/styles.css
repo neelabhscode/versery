@@ -1135,6 +1135,15 @@ a {
   margin-top: 2.15rem;
 }
 
+.feature-card-main__heading {
+  margin: 0 0 1.05rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
 .feature-card-main__icon {
   display: inline-flex;
   align-items: center;
@@ -2248,17 +2257,25 @@ a {
 .poet-feature__content {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
+  gap: 1.25rem;
   margin-top: 1.1rem;
 }
 
 .poet-feature__avatar {
+  order: 2;
   width: 4.5rem;
   height: 4.5rem;
   border-radius: 999px;
   overflow: hidden;
   border: 3px solid var(--surface-low);
   flex-shrink: 0;
+}
+
+.poet-feature__text {
+  order: 1;
+  flex: 1;
+  min-width: 0;
 }
 
 .poet-feature__avatar img {
@@ -2497,6 +2514,7 @@ a {
 }
 
 .bottom-nav {
+  --bottom-nav-shift: 0px;
   position: fixed;
   inset: auto 0 0;
   z-index: 20;
@@ -2504,6 +2522,25 @@ a {
   background: rgba(255, 255, 255, 0.9);
   box-shadow: var(--shadow-bottom);
   backdrop-filter: blur(12px);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(0, var(--bottom-nav-shift), 0);
+  transition: opacity 260ms ease, transform 320ms ease, visibility 260ms ease;
+}
+
+.bottom-nav.is-hidden {
+  --bottom-nav-shift: 14px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.bottom-nav.is-visible {
+  --bottom-nav-shift: 0px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .bottom-nav__inner {
@@ -3009,7 +3046,7 @@ a {
   .bottom-nav {
     width: min(100% - 3rem, 32rem);
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate3d(-50%, var(--bottom-nav-shift), 0);
     bottom: 1rem;
     border-radius: 1.75rem;
     background: rgba(255, 255, 255, 0.65);
