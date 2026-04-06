@@ -112,7 +112,7 @@ const COLLECTION_TEMPLATES = [
     count: "32 Collections",
     featured: true,
     tone: "deep",
-    curator: { name: "Neelabh Srivastava", role: "Editor-in-Chief" },
+    curator: { role: "Editor-in-Chief" },
     portalTags: ["Lush", "Ethereal", "Drift"],
   },
   {
@@ -125,7 +125,7 @@ const COLLECTION_TEMPLATES = [
     artwork: "/collections/mystics.jpg",
     count: "24 Collections",
     tone: "sand",
-    curator: { name: "Neelabh Srivastava", role: "Archive Curator" },
+    curator: { role: "Archive Curator" },
     portalTags: ["Ethereal", "Calm", "Echo"],
   },
   {
@@ -138,7 +138,7 @@ const COLLECTION_TEMPLATES = [
     artwork: "/collections/nature.jpg",
     count: "18 Collections",
     tone: "mist",
-    curator: { name: "Neelabh Srivastava", role: "Field Editor" },
+    curator: { role: "Field Editor" },
     portalTags: ["Lush", "Calm", "Drift"],
   },
   {
@@ -151,7 +151,7 @@ const COLLECTION_TEMPLATES = [
     artwork: "/collections/love.jpg",
     count: "21 Collections",
     tone: "sand",
-    curator: { name: "Neelabh Srivastava", role: "Guest Editor" },
+    curator: { role: "Guest Editor" },
     portalTags: ["Warmth", "Radiant"],
   },
   {
@@ -164,7 +164,7 @@ const COLLECTION_TEMPLATES = [
     artwork: "/collections/solitude.jpg",
     count: "15 Collections",
     tone: "plain",
-    curator: { name: "Neelabh Srivastava", role: "Resident Curator" },
+    curator: { role: "Resident Curator" },
     portalTags: ["Calm", "Solitary", "Echo"],
   },
   {
@@ -177,7 +177,7 @@ const COLLECTION_TEMPLATES = [
     artwork: "/collections/witness.jpg",
     count: "11 Collections",
     tone: "plain",
-    curator: { name: "Neelabh Srivastava", role: "Guest Editor" },
+    curator: { role: "Guest Editor" },
     portalTags: ["Static", "Pulse"],
   },
   {
@@ -190,7 +190,7 @@ const COLLECTION_TEMPLATES = [
     artwork: "/collections/transcendentalists.jpg",
     count: "14 Collections",
     tone: "mist",
-    curator: { name: "Neelabh Srivastava", role: "Guest Curator" },
+    curator: { role: "Guest Curator" },
     portalTags: ["Lush", "Radiant", "Focus"],
   },
   {
@@ -203,7 +203,7 @@ const COLLECTION_TEMPLATES = [
     artwork: "/collections/after-hours.jpg",
     count: "12 Collections",
     tone: "deep",
-    curator: { name: "Neelabh Srivastava", role: "Night Editor" },
+    curator: { role: "Night Editor" },
     portalTags: ["Static", "Melancholic", "Solitary"],
   },
 ];
@@ -1566,7 +1566,6 @@ function AppLoaded({ poems, poets }) {
 
             {activeCollection.curator && (
               <footer className="collection-detail__curator">
-                <p>Curated by {activeCollection.curator.name}</p>
                 <span>{activeCollection.curator.role}</span>
               </footer>
             )}
