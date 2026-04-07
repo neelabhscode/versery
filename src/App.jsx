@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { filterByPortal, filterByPortals, filterByPoet } from "./lib/search.js";
+import { captureFirstTouchAttribution, trackEvent } from "./lib/analytics.js";
 
 const DEFAULT_META_DESCRIPTION =
   "Read poetry online by mood, poet, or theme—without noisy feeds. Versery is a calm reader for daily picks, archives, and slow discovery.";
@@ -508,14 +509,26 @@ function clamp(value, min, max) {
 export default function App() {
   const [rawPoems, setRawPoems] = useState(null);
   const [rawPoets, setRawPoets] = useState(null);
+  const hasTrackedSessionRef = useRef(false);
 
   useEffect(() => {
+    captureFirstTouchAttribution();
+    if (!hasTrackedSessionRef.current) {
+      trackEvent("session_started", {
+        app: "versery",
+      });
+      hasTrackedSessionRef.current = true;
+    }
     Promise.all([
       fetch("/poems.json").then((r) => r.json()),
       fetch("/poets.json").then((r) => r.json()),
     ]).then(([poemsData, poetsData]) => {
       setRawPoems(poemsData);
       setRawPoets(poetsData);
+      trackEvent("content_loaded", {
+        poems_count: poemsData.length,
+        poets_count: poetsData.length,
+      });
     });
   }, []);
 
@@ -796,12 +809,22 @@ function AppLoaded({ poems, poets }) {
   const loadMoreButtonRef = useRef(null);
   const heroSectionRef = useRef(null);
   const [showBottomNav, setShowBottomNav] = useState(false);
+  const lastTrackedScreenRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    if (lastTrackedScreenRef.current === screen) return;
+    trackEvent("screen_viewed", {
+      screen,
+      is_desktop: isDesktop,
+    });
+    lastTrackedScreenRef.current = screen;
+  }, [screen, isDesktop]);
 
   useEffect(() => {
     if (!isDesktop) {
@@ -1005,18 +1028,31 @@ function AppLoaded({ poems, poets }) {
   }
 
   function openVoice(voiceId, previousScreen = "voices") {
+    trackEvent("voice_opened", {
+      voice_id: voiceId,
+      source_screen: previousScreen,
+    });
     setActiveVoiceId(voiceId);
     setVoiceDetailContext({ previousScreen });
     setScreen("voiceDetail");
   }
 
   function openCollection(collectionId, previousScreen = "collections") {
+    trackEvent("collection_opened", {
+      collection_id: collectionId,
+      source_screen: previousScreen,
+    });
     setActiveCollectionId(collectionId);
     setCollectionDetailContext({ previousScreen });
     setScreen("collectionDetail");
   }
 
   function openDiscovery(key, previousScreen, source) {
+    trackEvent("discovery_opened", {
+      discovery_key: key,
+      source_screen: previousScreen,
+      source_type: source,
+    });
     setDiscoveryContext({ key, previousScreen, source });
     setScreen("discoveryResults");
   }
@@ -1030,6 +1066,10 @@ function AppLoaded({ poems, poets }) {
   }
 
   function openVoiceWorks(previousScreen = "voiceDetail") {
+    trackEvent("voice_works_opened", {
+      voice_id: activeVoiceId,
+      source_screen: previousScreen,
+    });
     setVoiceWorksPage(0);
     setVoiceWorksContext({ previousScreen });
     setScreen("voiceWorks");
@@ -1047,6 +1087,14 @@ function AppLoaded({ poems, poets }) {
     sourceCollectionId = null,
     feeling = null,
   }) {
+    trackEvent("poem_opened", {
+      poem_id: poemId,
+      source_origin: sourceOrigin,
+      source_screen: previousScreen,
+      source_voice_id: sourceVoiceId,
+      source_collection_id: sourceCollectionId,
+      feeling,
+    });
     setActivePoemId(poemId);
     setPoemContext({ previousScreen, sourceOrigin, sourceVoiceId, sourceCollectionId, feeling });
     setScreen("poemDetail");
@@ -1057,6 +1105,11 @@ function AppLoaded({ poems, poets }) {
   }
 
   function openNextPoem() {
+    trackEvent("next_poem_clicked", {
+      current_poem_id: activePoem.id,
+      next_poem_id: nextPoemData.poem.id,
+      source_origin: poemContext.sourceOrigin,
+    });
     openPoem({
       poemId: nextPoemData.poem.id,
       previousScreen: poemContext.previousScreen,
@@ -1885,6 +1938,10 @@ function AppLoaded({ poems, poets }) {
                     aria-label={`Browse ${feeling} poems`}
                     onClick={() => {
                       setActiveFeeling(feeling);
+                      trackEvent("feeling_selected", {
+                        feeling,
+                        source_screen: "home",
+                      });
                       openDiscovery(feeling, "home", "feeling");
                     }}
                   >
@@ -1983,7 +2040,10 @@ function AppLoaded({ poems, poets }) {
                 className="section-link inline-action"
                 type="button"
                 aria-label="View all curated collections"
-                onClick={() => setScreen("collections")}
+                onClick={() => {
+                  trackEvent("collections_view_all_clicked", { source_screen: "home" });
+                  setScreen("collections");
+                }}
               >
                 View All
               </button>
@@ -2048,6 +2108,7 @@ function AppLoaded({ poems, poets }) {
             aria-current={navState === "home" ? "page" : undefined}
             onClick={(event) => {
               event.preventDefault();
+              trackEvent("bottom_nav_clicked", { target_screen: "home" });
               setScreen("home");
             }}
           >
@@ -2062,6 +2123,7 @@ function AppLoaded({ poems, poets }) {
             aria-current={navState === "compass" ? "page" : undefined}
             onClick={(event) => {
               event.preventDefault();
+              trackEvent("bottom_nav_clicked", { target_screen: "compass" });
               setScreen("compass");
             }}
           >
@@ -2076,6 +2138,7 @@ function AppLoaded({ poems, poets }) {
             aria-current={navState === "voices" || navState === "voiceDetail" ? "page" : undefined}
             onClick={(event) => {
               event.preventDefault();
+              trackEvent("bottom_nav_clicked", { target_screen: "voices" });
               setScreen("voices");
             }}
           >
@@ -2092,6 +2155,7 @@ function AppLoaded({ poems, poets }) {
             aria-current={navState === "collections" || navState === "collectionDetail" ? "page" : undefined}
             onClick={(event) => {
               event.preventDefault();
+              trackEvent("bottom_nav_clicked", { target_screen: "collections" });
               setScreen("collections");
             }}
           >
