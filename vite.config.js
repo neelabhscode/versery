@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  const siteUrl = (env.VITE_SITE_URL || "https://versery.app").replace(/\/$/, "");
+  const siteUrl = (env.VITE_SITE_URL || "https://www.versery.today").replace(/\/$/, "");
 
   return {
     plugins: [
