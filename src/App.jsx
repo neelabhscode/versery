@@ -804,6 +804,12 @@ function AppLoaded({ poems, poets }) {
   }, []);
 
   useEffect(() => {
+    if (!isDesktop) {
+      // On mobile, keep the dock visible at all times.
+      setShowBottomNav(true);
+      return;
+    }
+
     if (screen !== "home") {
       setShowBottomNav(true);
       return;
@@ -829,7 +835,7 @@ function AppLoaded({ poems, poets }) {
       window.removeEventListener("scroll", updateBottomNavVisibility);
       window.removeEventListener("resize", updateBottomNavVisibility);
     };
-  }, [screen]);
+  }, [screen, isDesktop]);
 
   // Initialize daily collection image mapping
   useEffect(() => {
