@@ -522,8 +522,12 @@ export default function App() {
   if (!rawPoems || !rawPoets) {
     return (
       <div className="page-shell loading-screen" data-testid="screen-loading">
-        <span className="material-symbols-outlined loading-icon">auto_stories</span>
-        <p>Loading poems…</p>
+        <p className="loading-label">Loading poems</p>
+        <div className="loading-dots" aria-label="Loading" role="status">
+          <span className="loading-dot" />
+          <span className="loading-dot" />
+          <span className="loading-dot" />
+        </div>
       </div>
     );
   }
