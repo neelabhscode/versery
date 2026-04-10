@@ -1,4 +1,6 @@
 node_modules/
+# Machine-local exports (e.g. SPA routing patch series); never commit.
+/.local/
 dist/
 test-results/
 playwright-report/

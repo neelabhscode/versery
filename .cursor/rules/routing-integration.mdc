@@ -1,0 +1,9 @@
+---
+description: SPA routing is intentionally gated; follow docs before shipping path URLs
+globs: src/App.jsx,src/main.jsx,vercel.json,e2e/**/*.js
+alwaysApply: false
+---
+
+# SPA routing (gated)
+
+Full procedure, activation phrase, and audit checklist live in **`docs/routing-integration.md`**. Do not merge or push the routing stack to production unless the user explicitly triggers integration using that doc.
