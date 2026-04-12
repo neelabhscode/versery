@@ -1,16 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { trackEvent } from "../lib/analytics.js";
 
-const ACTION_URL = import.meta.env.VITE_NEWSLETTER_ACTION_URL?.trim() || "";
-const LS_EMAIL = "versery_newsletter_email";
-
-function persistPlaceholderEmail(emailTrimmed) {
-  try {
-    window.localStorage.setItem(LS_EMAIL, emailTrimmed);
-  } catch {
-    /* */
-  }
-}
+const CUSTOM_NEWSLETTER_URL = import.meta.env.VITE_NEWSLETTER_ACTION_URL?.trim() || "";
+const ACTION_URL = CUSTOM_NEWSLETTER_URL || "/api/newsletter-signup";
 
 function isValidEmail(value) {
   const v = String(value).trim();
@@ -49,7 +41,6 @@ export function NewsletterForm({
   const [shake, setShake] = useState(false);
   const shakeTimerRef = useRef(null);
 
-  const configured = Boolean(ACTION_URL);
   const rootClass = `newsletter-form newsletter-form--${variant}${
     variant === "spotlight" && omitSpotlightHeadline ? " newsletter-form--spotlight-no-title" : ""
   }${variant === "spotlight" && status === "ok" ? " newsletter-form--spotlight-done" : ""}${
@@ -90,17 +81,6 @@ export function NewsletterForm({
     setStatus("sending");
     trackEvent("newsletter_submit", { surface, variant });
 
-    if (!configured) {
-      console.log("[Versery newsletter] No VITE_NEWSLETTER_ACTION_URL — placeholder signup:", trimmed);
-      persistPlaceholderEmail(trimmed);
-      setStatus("ok");
-      setEmail("");
-      if (variant === "spotlight") onSpotlightHeadSuccess?.();
-      onSuccess?.();
-      trackEvent("newsletter_submit_ok", { surface, variant, mode: "placeholder" });
-      return;
-    }
-
     try {
       const body = new URLSearchParams();
       body.set("email", trimmed);
@@ -115,7 +95,11 @@ export function NewsletterForm({
         setEmail("");
         if (variant === "spotlight") onSpotlightHeadSuccess?.();
         onSuccess?.();
-        trackEvent("newsletter_submit_ok", { surface, variant, mode: "endpoint" });
+        trackEvent("newsletter_submit_ok", {
+          surface,
+          variant,
+          mode: CUSTOM_NEWSLETTER_URL ? "external" : "versery_store",
+        });
       } else {
         setStatus("idle");
         setApiHint("Couldn’t subscribe — try again later.");

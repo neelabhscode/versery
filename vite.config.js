@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
+import { persistNewsletterSignup } from "./lib/newsletter-signup-append.js";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
@@ -58,6 +59,48 @@ export default defineConfig(({ mode }) => {
         name: "html-transform-site-url",
         transformIndexHtml(html) {
           return html.replaceAll("__SITE_URL__", siteUrl);
+        },
+      },
+      {
+        name: "newsletter-signup-dev-api",
+        configureServer(server) {
+          server.middlewares.use(async (req, res, next) => {
+            const pathname = req.url?.split("?")[0] ?? "";
+            if (pathname !== "/api/newsletter-signup" || req.method !== "POST") {
+              next();
+              return;
+            }
+            try {
+              const chunks = [];
+              let size = 0;
+              for await (const chunk of req) {
+                size += chunk.length;
+                if (size > 4096) {
+                  res.statusCode = 413;
+                  res.setHeader("Content-Type", "application/json");
+                  res.end(JSON.stringify({ error: "body_too_large" }));
+                  return;
+                }
+                chunks.push(chunk);
+              }
+              const raw = Buffer.concat(chunks).toString("utf8");
+              const params = new URLSearchParams(raw);
+              await persistNewsletterSignup(params.get("email"));
+              res.statusCode = 204;
+              res.end();
+            } catch (e) {
+              if (e.code === "INVALID_EMAIL") {
+                res.statusCode = 400;
+                res.setHeader("Content-Type", "application/json");
+                res.end(JSON.stringify({ error: "invalid_email" }));
+                return;
+              }
+              console.error("[newsletter-signup dev]", e);
+              res.statusCode = 503;
+              res.setHeader("Content-Type", "application/json");
+              res.end(JSON.stringify({ error: "unavailable" }));
+            }
+          });
         },
       },
     ],

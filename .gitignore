@@ -1,4 +1,5 @@
 node_modules/
+data/newsletter-signups.txt
 # Machine-local exports (e.g. SPA routing patch series); never commit.
 /.local/
 dist/
