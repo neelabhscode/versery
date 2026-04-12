@@ -2326,7 +2326,7 @@ function AppLoaded({ poems, poets, collections }) {
                     onClick={handleWhatsNewPillClick}
                   >
                     <span className="material-symbols-outlined whats-new-trigger__icon" aria-hidden="true">
-                      new_releases
+                      notifications
                     </span>
                     <span className="whats-new-trigger__label">What&rsquo;s new</span>
                     <span className="whats-new-trigger__dot" aria-hidden="true" />

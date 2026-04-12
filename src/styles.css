@@ -3570,6 +3570,13 @@ html[data-theme="dark"] .discovery-poet-chip__avatar::after {
   text-overflow: ellipsis;
 }
 
+@media (max-width: 767px) {
+  .home-spotlight-aside__head-pair .newsletter-form__title {
+    font-size: 0.6rem;
+    letter-spacing: 0.11em;
+  }
+}
+
 .home-spotlight-aside__head-success {
   position: absolute;
   inset: 0;
