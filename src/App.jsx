@@ -76,6 +76,18 @@ function upsertCanonicalLink(href) {
   el.setAttribute("href", href);
 }
 
+const prefetchedVerseryPaths = new Set();
+
+/** Predictive prefetch for bottom-nav targets (wiki: prefetch-use-selectively). */
+function prefetchVerseryPath(href) {
+  if (!href || typeof href !== "string" || href === "/" || prefetchedVerseryPaths.has(href)) return;
+  prefetchedVerseryPaths.add(href);
+  const link = document.createElement("link");
+  link.rel = "prefetch";
+  link.href = href;
+  document.head.appendChild(link);
+}
+
 function pathFromVerserySnapshot(snap) {
   if (!snap || typeof snap !== "object") return "/";
   switch (snap.screen) {
@@ -3148,7 +3160,7 @@ function AppLoaded({ poems, poets, collections }) {
             <div className="eyebrow-pill">Daily Resonance</div>
 
             <div className="home-intro home-intro--hero">
-              <h1>Curated poetry for how you feel</h1>
+              <p className="home-intro__headline">Curated poetry for how you feel</p>
               <p className="home-intro__lead">
                 Versery is a calm place to read poems online: follow a mood, follow a voice, or open a themed
                 archive.
@@ -3474,6 +3486,7 @@ function AppLoaded({ poems, poets, collections }) {
             href={pathFromVerserySnapshot({ screen: "home" })}
             aria-label="Home — daily poem and moods"
             aria-current={navState === "home" ? "page" : undefined}
+            onPointerEnter={() => prefetchVerseryPath(pathFromVerserySnapshot({ screen: "home" }))}
             onClick={(event) => {
               event.preventDefault();
               trackEvent("bottom_nav_clicked", { target_screen: "home" });
@@ -3489,6 +3502,7 @@ function AppLoaded({ poems, poets, collections }) {
             href={pathFromVerserySnapshot({ screen: "compass" })}
             aria-label="Emotional compass — browse by portal"
             aria-current={navState === "compass" ? "page" : undefined}
+            onPointerEnter={() => prefetchVerseryPath(pathFromVerserySnapshot({ screen: "compass" }))}
             onClick={(event) => {
               event.preventDefault();
               trackEvent("bottom_nav_clicked", { target_screen: "compass" });
@@ -3504,6 +3518,7 @@ function AppLoaded({ poems, poets, collections }) {
             href={pathFromVerserySnapshot({ screen: "voices" })}
             aria-label="Poet library — voices and bios"
             aria-current={navState === "voices" || navState === "voiceDetail" ? "page" : undefined}
+            onPointerEnter={() => prefetchVerseryPath(pathFromVerserySnapshot({ screen: "voices" }))}
             onClick={(event) => {
               event.preventDefault();
               trackEvent("bottom_nav_clicked", { target_screen: "voices" });
@@ -3521,6 +3536,7 @@ function AppLoaded({ poems, poets, collections }) {
             href={pathFromVerserySnapshot({ screen: "collections" })}
             aria-label="Curated collections archive"
             aria-current={navState === "collections" || navState === "collectionDetail" ? "page" : undefined}
+            onPointerEnter={() => prefetchVerseryPath(pathFromVerserySnapshot({ screen: "collections" }))}
             onClick={(event) => {
               event.preventDefault();
               trackEvent("bottom_nav_clicked", { target_screen: "collections" });

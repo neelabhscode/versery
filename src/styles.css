@@ -6,14 +6,14 @@
   /* Short UI crossfades / opacity swaps: gentle at both ends, avoids a sudden “snap” */
   --ease-smooth: cubic-bezier(0.45, 0, 0.55, 1);
   --motion-smooth-short: 260ms;
-  --motion-smooth-medium: 320ms;
-  /* FAQ accordion: slightly longer than micro-interactions so expansion reads as “physical” */
-  --motion-faq: 360ms;
+  --motion-smooth-medium: 280ms;
+  /* FAQ accordion: keep ≤300ms per UI motion guidelines */
+  --motion-faq: 280ms;
   /* Collapse: slightly quicker + ease-in bias so compression doesn’t feel sluggish */
-  --motion-faq-collapse: 320ms;
+  --motion-faq-collapse: 260ms;
   --ease-faq-collapse: cubic-bezier(0.55, 0.06, 1, 1);
   /* Light ⟷ dark: duration/easing shared by View Transitions + CSS fallback */
-  --theme-crossfade-duration: 420ms;
+  --theme-crossfade-duration: 280ms;
   --theme-crossfade-ease: var(--ease-smooth);
   --surface: #f9f9f9;
   --surface-lowest: #ffffff;
@@ -282,6 +282,8 @@ body {
   background: var(--surface);
   color: var(--ink);
   font-family: "Satoshi", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button,
@@ -559,8 +561,10 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  width: auto;
+  height: auto;
   margin: 0;
   padding: 0;
   border: 0;
@@ -877,10 +881,14 @@ a {
 .portal-grid,
 .voices-header,
 .voices-grid,
-.poet-feature,
-.home-spotlight-aside,
-.home-faq {
+.poet-feature {
   animation: rise-in 260ms var(--ease-out) both;
+}
+
+/* Home: fewer simultaneous entrance motions (staging) */
+.screen-content--home .home-spotlight-aside,
+.screen-content--home .home-faq {
+  animation: none;
 }
 
 .feature-stack {
@@ -892,7 +900,7 @@ a {
   justify-content: center;
   min-height: 26.25rem;
   margin-top: 3rem;
-  animation: rise-in 300ms var(--ease-out) both;
+  animation: rise-in 260ms var(--ease-out) both;
 }
 
 .screen-content--home .home-mid-stack {
@@ -1755,7 +1763,8 @@ a {
   text-align: center;
 }
 
-.home-intro h1 {
+.home-intro h1,
+.home-intro .home-intro__headline {
   margin: 0 1px;
   padding: 0;
   width: min(410px, calc(100% - 2px));
@@ -1768,6 +1777,10 @@ a {
   text-wrap: balance;
 }
 
+.home-intro .home-intro__headline {
+  font-weight: 700;
+}
+
 .home-intro p {
   margin: 0.85rem 1px 0;
   padding: 0;
@@ -1777,6 +1790,7 @@ a {
   color: var(--ink-soft);
   font-size: 0.92rem;
   line-height: 1.65;
+  text-wrap: pretty;
 }
 
 .home-intro__lead {
@@ -1931,7 +1945,8 @@ a {
   filter: blur(0.35px);
   opacity: 0.62;
   transform: translateX(-160%);
-  animation: daily-pill-shimmer 4.8s var(--ease-in-out) infinite;
+  /* One sweep on load — avoids competing infinite motion with hero rise-in */
+  animation: daily-pill-shimmer 1.85s var(--ease-in-out) 1 forwards;
   pointer-events: none;
 }
 
@@ -2320,7 +2335,10 @@ html[data-theme="dark"] .feeling-chip[data-feeling="solitary"].is-active {
   border-radius: 1.75rem;
   background: var(--surface-lowest);
   border: 1px solid rgba(173, 179, 180, 0.18);
-  box-shadow: 0 20px 42px rgba(45, 52, 53, 0.055);
+  box-shadow:
+    0 1px 0 rgba(45, 52, 53, 0.04),
+    0 14px 28px rgba(45, 52, 53, 0.045),
+    0 28px 56px rgba(45, 52, 53, 0.05);
   overflow: hidden;
 }
 
@@ -3691,6 +3709,7 @@ html[data-theme="dark"] .discovery-poet-chip__avatar::after {
   color: var(--ink-soft);
   font-size: 0.86rem;
   line-height: 1.55;
+  text-wrap: pretty;
 }
 
 .home-faq__list {

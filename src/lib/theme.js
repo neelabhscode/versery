@@ -6,7 +6,7 @@
 export const THEME_STORAGE_KEY = "versery-theme";
 
 /** Matches `--theme-crossfade-duration` in `styles.css` (fallback path timeout buffer). */
-export const THEME_TRANSITION_MS = 420;
+export const THEME_TRANSITION_MS = 280;
 
 const THEME_TRANSITION_CLASS = "theme-transition-active";
 
