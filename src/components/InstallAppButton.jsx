@@ -76,7 +76,7 @@ export function InstallAppButton({
       onClick={handleClick}
     >
       <span className="material-symbols-outlined" aria-hidden="true">
-        add_to_home_screen
+        download
       </span>
     </button>
   );
