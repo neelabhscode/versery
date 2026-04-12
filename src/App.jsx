@@ -22,6 +22,22 @@ const DEFAULT_TWITTER_DESCRIPTION =
 
 const DEFAULT_DOCUMENT_TITLE = "Versery — Curated poetry for quiet reading";
 
+const WHATS_NEW_BULLETS = [
+  "Dark mode — switch anytime from the navbar",
+  "More voices — Ghalib, Tagore, Rilke, Hafez, and more",
+  "Share a poem — pick lines, generate a card, send it",
+  "Daily poem — sign up to get one in your inbox",
+  "Install as App — add Versery to your home screen",
+];
+
+const WHATS_NEW_EMDASH = " — ";
+
+function splitWhatsNewBulletLine(text) {
+  const idx = text.indexOf(WHATS_NEW_EMDASH);
+  if (idx === -1) return { lead: text, rest: null };
+  return { lead: text.slice(0, idx), rest: text.slice(idx + WHATS_NEW_EMDASH.length) };
+}
+
 function trimTo160Chars(text) {
   if (!text || typeof text !== "string") return "";
   const t = text.trim();
@@ -131,6 +147,53 @@ function homeFaqJsonLd(items) {
       },
     })),
   };
+}
+
+const FAQ_DETAILS_ANIM =
+  typeof CSS !== "undefined" &&
+  typeof CSS.supports === "function" &&
+  CSS.supports("selector(details::details-content)");
+
+/** Native <details> removes [open] before paint, so collapse snaps. Defer close until ::details-content exit runs. */
+function handleHomeFaqDetailsClick(event) {
+  const el = event.currentTarget;
+  if (!(el instanceof HTMLDetailsElement)) return;
+  if (!event.target.closest("summary")) return;
+  if (el.dataset.faqClosing === "1") {
+    event.preventDefault();
+    return;
+  }
+  if (!el.open) return;
+  if (!FAQ_DETAILS_ANIM) return;
+  if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  event.preventDefault();
+  el.dataset.faqClosing = "1";
+  el.classList.add("home-faq__item--closing");
+
+  let finished = false;
+  const cleanup = () => {
+    if (finished) return;
+    finished = true;
+    el.removeEventListener("transitionend", onTransitionEnd);
+    window.clearTimeout(fallbackTimer);
+    el.classList.remove("home-faq__item--closing");
+    el.dataset.faqClosing = "";
+    el.open = false;
+  };
+
+  const onTransitionEnd = (ev) => {
+    if (ev.target !== el) return;
+    const pe = ev.pseudoElement || "";
+    if (pe && pe !== "::details-content") return;
+    if (ev.propertyName !== "block-size" && ev.propertyName !== "height") return;
+    cleanup();
+  };
+
+  el.addEventListener("transitionend", onTransitionEnd);
+  const fallbackTimer = window.setTimeout(cleanup, 520);
 }
 
 const feelings = ["Melancholic", "Ethereal", "Radiant", "Solitary"];
@@ -1136,21 +1199,32 @@ function AppLoaded({ poems, poets, collections }) {
     typeof Highlight !== "undefined";
   const [showBottomNav, setShowBottomNav] = useState(false);
   const [poemSubscribeOpen, setPoemSubscribeOpen] = useState(false);
+  const [newsletterSpotlightHeadSuccess, setNewsletterSpotlightHeadSuccess] = useState(false);
   const [deferredInstallPrompt, setDeferredInstallPrompt] = useState(null);
   const [uiTheme, setUiTheme] = useState(() =>
     typeof document !== "undefined" && document.documentElement.dataset.theme === "dark" ? "dark" : "light",
   );
   const lastTrackedScreenRef = useRef(null);
+  const [whatsNewMenuOpen, setWhatsNewMenuOpen] = useState(false);
+  const [whatsNewMenuEntered, setWhatsNewMenuEntered] = useState(false);
+  const whatsNewTriggerRef = useRef(null);
+  const whatsNewPanelRef = useRef(null);
 
   useLayoutEffect(() => {
     const t = readStoredTheme();
-    applyTheme(t);
+    applyTheme(t, { animate: false });
     setUiTheme(t);
   }, []);
 
   useEffect(() => subscribeThemeStorage((stored) => {
-    applyTheme(stored);
-    setUiTheme(stored);
+    applyTheme(stored, {
+      animate: true,
+      onAfterThemeCommit: () => {
+        flushSync(() => {
+          setUiTheme(stored);
+        });
+      },
+    });
   }), []);
 
   useEffect(() => {
@@ -1165,6 +1239,42 @@ function AppLoaded({ poems, poets, collections }) {
   useEffect(() => {
     if (screen !== "poemDetail") setPoemSubscribeOpen(false);
   }, [screen]);
+
+  useEffect(() => {
+    if (screen !== "home") {
+      setWhatsNewMenuOpen(false);
+      setWhatsNewMenuEntered(false);
+      setNewsletterSpotlightHeadSuccess(false);
+    }
+  }, [screen]);
+
+  useLayoutEffect(() => {
+    if (!whatsNewMenuOpen) {
+      setWhatsNewMenuEntered(false);
+      return undefined;
+    }
+    const id = window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        setWhatsNewMenuEntered(true);
+      });
+    });
+    return () => window.cancelAnimationFrame(id);
+  }, [whatsNewMenuOpen]);
+
+  useEffect(() => {
+    if (!whatsNewMenuOpen) return undefined;
+
+    function onPointerDown(event) {
+      const t = event.target;
+      if (!(t instanceof Node)) return;
+      if (whatsNewTriggerRef.current?.contains(t)) return;
+      if (whatsNewPanelRef.current?.contains(t)) return;
+      setWhatsNewMenuEntered(false);
+    }
+
+    document.addEventListener("pointerdown", onPointerDown, true);
+    return () => document.removeEventListener("pointerdown", onPointerDown, true);
+  }, [whatsNewMenuOpen]);
 
   useEffect(() => {
     setPoemSubscribeOpen(false);
@@ -2181,6 +2291,26 @@ function AppLoaded({ poems, poets, collections }) {
     }
   }, [hasSelectionContent, canShareFullPoem, activePoemId]);
 
+  function handleWhatsNewPillClick() {
+    if (whatsNewMenuOpen) {
+      setWhatsNewMenuEntered(false);
+      return;
+    }
+    setWhatsNewMenuOpen(true);
+  }
+
+  function handleWhatsNewGotIt() {
+    setWhatsNewMenuEntered(false);
+  }
+
+  function handleWhatsNewPanelTransitionEnd(event) {
+    if (event.target !== whatsNewPanelRef.current) return;
+    if (event.propertyName !== "opacity") return;
+    if (!whatsNewMenuEntered) {
+      setWhatsNewMenuOpen(false);
+    }
+  }
+
   return (
     <div
       className={`page-shell${onCompass ? " page-shell--compass" : ""}${
@@ -2192,7 +2322,68 @@ function AppLoaded({ poems, poets, collections }) {
       {!onVoiceDetail && !onVoiceWorks && !onCollectionDetail && !onDiscoveryResults && !onPoemDetail && (
         <header className="top-app-bar">
           <div className="top-app-bar__inner top-app-bar__inner--home">
-            <span className="top-app-bar__pad" aria-hidden="true" />
+            <div className="top-app-bar__leading">
+              {screen === "home" ? (
+                <div className="whats-new-anchor" ref={whatsNewTriggerRef}>
+                  <button
+                    type="button"
+                    className="whats-new-trigger"
+                    aria-haspopup="true"
+                    aria-expanded={whatsNewMenuOpen}
+                    aria-controls="versery-whats-new-panel"
+                    onClick={handleWhatsNewPillClick}
+                  >
+                    <span className="whats-new-trigger__label">What&rsquo;s new</span>
+                    <span className="whats-new-trigger__dot" aria-hidden="true" />
+                  </button>
+                  {whatsNewMenuOpen ? (
+                    <div
+                      ref={whatsNewPanelRef}
+                      id="versery-whats-new-panel"
+                      role="region"
+                      aria-label="What is new in Versery version 2"
+                      className={`whats-new-panel${whatsNewMenuEntered ? " whats-new-panel--visible" : ""}`}
+                      onTransitionEnd={handleWhatsNewPanelTransitionEnd}
+                    >
+                      <div className="whats-new-panel__head">
+                        <p className="feature-card-main__heading">What&rsquo;s new in v2</p>
+                        <button
+                          type="button"
+                          className="whats-new-panel__close"
+                          aria-label="Close"
+                          onClick={handleWhatsNewGotIt}
+                        >
+                          <span className="material-symbols-outlined" aria-hidden="true">
+                            close
+                          </span>
+                        </button>
+                      </div>
+                      <ul className="whats-new-panel__list">
+                        {WHATS_NEW_BULLETS.map((text, index) => {
+                          const { lead, rest } = splitWhatsNewBulletLine(text);
+                          return (
+                            <li key={index} className="whats-new-panel__item">
+                              <span className="whats-new-panel__item-dot" aria-hidden="true" />
+                              <span className="whats-new-panel__item-text">
+                                <span className="whats-new-panel__item-lead">{lead}</span>
+                                {rest != null ? (
+                                  <span className="whats-new-panel__item-rest">
+                                    {WHATS_NEW_EMDASH}
+                                    {rest}
+                                  </span>
+                                ) : null}
+                              </span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  ) : null}
+                </div>
+              ) : (
+                <span className="top-app-bar__pad" aria-hidden="true" />
+              )}
+            </div>
             <p
               className="top-app-bar__title"
               onClick={() => {
@@ -2220,8 +2411,14 @@ function AppLoaded({ poems, poets, collections }) {
                     aria-label={uiTheme === "dark" ? "Switch to light appearance" : "Switch to dark appearance"}
                     onClick={() => {
                       const next = uiTheme === "dark" ? "light" : "dark";
-                      applyTheme(next);
-                      setUiTheme(next);
+                      applyTheme(next, {
+                        animate: true,
+                        onAfterThemeCommit: () => {
+                          flushSync(() => {
+                            setUiTheme(next);
+                          });
+                        },
+                      });
                       trackEvent("theme_changed", { theme: next });
                     }}
                   >
@@ -3143,22 +3340,43 @@ function AppLoaded({ poems, poets, collections }) {
 
             <section
               className="home-spotlight-aside"
-              aria-labelledby="home-spotlight-title home-spotlight-heading"
+              aria-labelledby={
+                newsletterSpotlightHeadSuccess ? "home-spotlight-success" : "home-spotlight-heading home-spotlight-title"
+              }
             >
-              <div className="home-spotlight-aside__head">
-                <h3 id="home-spotlight-title" className="newsletter-form__title">
-                  {NEWSLETTER_SPOTLIGHT_HEADLINE}
-                </h3>
-                <h2 id="home-spotlight-heading" className="home-spotlight-aside__label">
-                  Newsletter
-                </h2>
+              <div
+                className={
+                  "home-spotlight-aside__head" +
+                  (newsletterSpotlightHeadSuccess ? " home-spotlight-aside__head--success" : "")
+                }
+              >
+                <div
+                  className="home-spotlight-aside__head-pair"
+                  aria-hidden={newsletterSpotlightHeadSuccess}
+                >
+                  <h2 id="home-spotlight-heading" className="poet-feature__badge">
+                    Newsletter
+                  </h2>
+                  <h3 id="home-spotlight-title" className="newsletter-form__title">
+                    {NEWSLETTER_SPOTLIGHT_HEADLINE}
+                  </h3>
+                </div>
+                <p
+                  id="home-spotlight-success"
+                  className="home-spotlight-aside__head-success"
+                  role="status"
+                  aria-live="polite"
+                >
+                  You&rsquo;re in. A poem finds you soon.
+                </p>
               </div>
-              <div className="home-spotlight-aside__content">
+              <div className="home-spotlight-aside__body">
                 <NewsletterForm
                   variant="spotlight"
                   surface="home_spotlight"
                   className="home-spotlight-aside__text"
                   omitSpotlightHeadline
+                  onSpotlightHeadSuccess={() => setNewsletterSpotlightHeadSuccess(true)}
                 />
               </div>
             </section>
@@ -3237,8 +3455,18 @@ function AppLoaded({ poems, poets, collections }) {
             </p>
             <div className="home-faq__list">
               {HOME_FAQ_ITEMS.map((item) => (
-                <details key={item.question} className="home-faq__item">
-                  <summary>{item.question}</summary>
+                <details
+                  key={item.question}
+                  className="home-faq__item"
+                  onClick={handleHomeFaqDetailsClick}
+                >
+                  <summary>
+                    <span className="home-faq__summary-text">{item.question}</span>
+                    <span className="home-faq__disclosure" aria-hidden="true">
+                      <span className="home-faq__disclosure-glyph home-faq__disclosure-glyph--plus">+</span>
+                      <span className="home-faq__disclosure-glyph home-faq__disclosure-glyph--minus">−</span>
+                    </span>
+                  </summary>
                   <p className="home-faq__answer">{item.answer}</p>
                 </details>
               ))}

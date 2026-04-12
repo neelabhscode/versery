@@ -44,12 +44,15 @@ export function PoemSubscribeDialog({ open, onClose }) {
       }}
     >
       <div className="subscribe-dialog__panel" onClick={(e) => e.stopPropagation()}>
-        <button type="button" className="subscribe-dialog__close" onClick={onClose} aria-label="Close">
-          <span className="material-symbols-outlined" aria-hidden="true">
-            close
-          </span>
-        </button>
-        <NewsletterForm variant="poemModal" surface="poem_modal" onSuccess={onClose} />
+        <div className="whats-new-panel__head">
+          <p className="feature-card-main__heading">Newsletter</p>
+          <button type="button" className="whats-new-panel__close" onClick={onClose} aria-label="Close">
+            <span className="material-symbols-outlined" aria-hidden="true">
+              close
+            </span>
+          </button>
+        </div>
+        <NewsletterForm variant="poemModal" surface="poem_modal" />
       </div>
     </dialog>
   );

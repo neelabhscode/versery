@@ -1,10 +1,28 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { trackEvent } from "../lib/analytics.js";
 
 const ACTION_URL = import.meta.env.VITE_NEWSLETTER_ACTION_URL?.trim() || "";
+const LS_EMAIL = "versery_newsletter_email";
 
-/** Shown on the home newsletter card (also rendered from `App` when the headline is lifted into the card head row). */
-export const NEWSLETTER_SPOTLIGHT_HEADLINE = "A curated collection in your inbox weekly.";
+function persistPlaceholderEmail(emailTrimmed) {
+  try {
+    window.localStorage.setItem(LS_EMAIL, emailTrimmed);
+  } catch {
+    /* */
+  }
+}
+
+function isValidEmail(value) {
+  const v = String(value).trim();
+  if (!v) return false;
+  const el = document.createElement("input");
+  el.type = "email";
+  el.value = v;
+  return el.validity.valid;
+}
+
+/** Homepage + modal tagline (lowercase). */
+export const NEWSLETTER_SPOTLIGHT_HEADLINE = "A poem in your inbox, every week.";
 
 /**
  * @param {{
@@ -13,32 +31,79 @@ export const NEWSLETTER_SPOTLIGHT_HEADLINE = "A curated collection in your inbox
  *   onSuccess?: () => void;
  *   className?: string;
  *   omitSpotlightHeadline?: boolean;
+ *   onSpotlightHeadSuccess?: () => void;
  * }} props
  */
-export function NewsletterForm({ variant, surface, onSuccess, className = "", omitSpotlightHeadline = false }) {
+export function NewsletterForm({
+  variant,
+  surface,
+  onSuccess,
+  className = "",
+  omitSpotlightHeadline = false,
+  onSpotlightHeadSuccess,
+}) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("idle");
-  const [message, setMessage] = useState("");
+  const [validationHint, setValidationHint] = useState(false);
+  const [apiHint, setApiHint] = useState("");
+  const [shake, setShake] = useState(false);
+  const shakeTimerRef = useRef(null);
 
   const configured = Boolean(ACTION_URL);
   const rootClass = `newsletter-form newsletter-form--${variant}${
     variant === "spotlight" && omitSpotlightHeadline ? " newsletter-form--spotlight-no-title" : ""
-  }${className ? ` ${className}` : ""}`;
+  }${variant === "spotlight" && status === "ok" ? " newsletter-form--spotlight-done" : ""}${
+    className ? ` ${className}` : ""
+  }`;
   const fieldId = `versery-news-${String(surface).replace(/[^a-zA-Z0-9_-]/g, "-")}-${variant}`;
+
+  const triggerShake = useCallback(() => {
+    if (shakeTimerRef.current) window.clearTimeout(shakeTimerRef.current);
+    setShake(true);
+    shakeTimerRef.current = window.setTimeout(() => {
+      setShake(false);
+      shakeTimerRef.current = null;
+    }, 420);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (shakeTimerRef.current) window.clearTimeout(shakeTimerRef.current);
+    };
+  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if (!email.trim() || status === "sending") return;
-    if (!configured) {
-      setMessage("We’re not taking signups yet — check back soon.");
+    if (status === "sending") return;
+
+    const trimmed = email.trim();
+    if (!isValidEmail(trimmed)) {
+      setValidationHint(true);
+      setApiHint("");
+      triggerShake();
+      trackEvent("newsletter_submit_invalid", { surface, variant });
       return;
     }
+
+    setValidationHint(false);
+    setApiHint("");
     setStatus("sending");
-    setMessage("");
     trackEvent("newsletter_submit", { surface, variant });
+
+    if (!configured) {
+      console.log("[Versery newsletter] No VITE_NEWSLETTER_ACTION_URL — placeholder signup:", trimmed);
+      persistPlaceholderEmail(trimmed);
+      setStatus("ok");
+      setEmail("");
+      if (variant === "spotlight") onSpotlightHeadSuccess?.();
+      onSuccess?.();
+      trackEvent("newsletter_submit_ok", { surface, variant, mode: "placeholder" });
+      return;
+    }
+
     try {
       const body = new URLSearchParams();
-      body.set("email", email.trim());
+      body.set("email", trimmed);
       const res = await fetch(ACTION_URL, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded", Accept: "application/json" },
@@ -47,20 +112,28 @@ export function NewsletterForm({ variant, surface, onSuccess, className = "", om
       });
       if (res.ok || res.status === 302 || res.status === 204) {
         setStatus("ok");
-        setMessage("You’re on the list.");
         setEmail("");
+        if (variant === "spotlight") onSpotlightHeadSuccess?.();
         onSuccess?.();
-        trackEvent("newsletter_submit_ok", { surface, variant });
+        trackEvent("newsletter_submit_ok", { surface, variant, mode: "endpoint" });
       } else {
-        setStatus("error");
-        setMessage("Couldn’t subscribe — try again later.");
+        setStatus("idle");
+        setApiHint("Couldn’t subscribe — try again later.");
         trackEvent("newsletter_submit_error", { surface, variant, status: res.status });
       }
     } catch {
-      setStatus("error");
-      setMessage("Couldn’t subscribe — check your connection.");
+      setStatus("idle");
+      setApiHint("Couldn’t subscribe — check your connection.");
       trackEvent("newsletter_submit_error", { surface, variant, status: "network" });
     }
+  }
+
+  function renderSuccess() {
+    return (
+      <p className="newsletter-form__success" role="status">
+        You&rsquo;re in. A poem finds you soon.
+      </p>
+    );
   }
 
   function renderPillForm() {
@@ -69,7 +142,11 @@ export function NewsletterForm({ variant, surface, onSuccess, className = "", om
         <label className="visually-hidden" htmlFor={fieldId}>
           Email
         </label>
-        <div className="newsletter-form__pill">
+        <div
+          className={
+            "newsletter-form__pill" + (shake ? " newsletter-form__pill--shake" : "")
+          }
+        >
           <input
             id={fieldId}
             className="newsletter-form__pill-input"
@@ -80,7 +157,11 @@ export function NewsletterForm({ variant, surface, onSuccess, className = "", om
             placeholder="you@email.com"
             value={email}
             disabled={status === "sending"}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              if (validationHint) setValidationHint(false);
+              if (apiHint) setApiHint("");
+            }}
           />
           <button
             type="submit"
@@ -88,7 +169,7 @@ export function NewsletterForm({ variant, surface, onSuccess, className = "", om
               "newsletter-form__pill-action" +
               (status === "sending" ? " newsletter-form__pill-action--busy" : "")
             }
-            disabled={status === "sending" || !email.trim()}
+            disabled={status === "sending"}
             aria-label="Join newsletter"
           >
             <span className="material-symbols-outlined" aria-hidden="true">
@@ -96,6 +177,12 @@ export function NewsletterForm({ variant, surface, onSuccess, className = "", om
             </span>
           </button>
         </div>
+        {validationHint ? (
+          <p className="newsletter-form__field-hint">A valid email helps.</p>
+        ) : null}
+        {apiHint ? (
+          <p className="newsletter-form__field-hint newsletter-form__field-hint--api">{apiHint}</p>
+        ) : null}
       </form>
     );
   }
@@ -107,10 +194,6 @@ export function NewsletterForm({ variant, surface, onSuccess, className = "", om
           <h3 className="newsletter-form__title">{NEWSLETTER_SPOTLIGHT_HEADLINE}</h3>
         ) : null}
         {renderPillForm()}
-        {configured ? (
-          <p className="newsletter-form__hint">No spam — unsubscribe anytime.</p>
-        ) : null}
-        {message ? <p className="newsletter-form__feedback">{message}</p> : null}
       </div>
     );
   }
@@ -118,15 +201,11 @@ export function NewsletterForm({ variant, surface, onSuccess, className = "", om
   if (variant === "poemModal") {
     return (
       <div className={rootClass}>
-        <p className="newsletter-form__poem-modal-label">Newsletter</p>
         <h2 id="poem-subscribe-heading" className="newsletter-form__poem-modal-heading">
-          Weekly Curated Poems in your Inbox
+          {NEWSLETTER_SPOTLIGHT_HEADLINE}
         </h2>
+        {status === "ok" ? renderSuccess() : null}
         {renderPillForm()}
-        {configured ? (
-          <p className="newsletter-form__hint newsletter-form__hint--poem-modal">No spam — unsubscribe anytime.</p>
-        ) : null}
-        {message ? <p className="newsletter-form__feedback">{message}</p> : null}
       </div>
     );
   }
