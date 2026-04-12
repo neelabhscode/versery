@@ -2507,14 +2507,7 @@ function AppLoaded({ poems, poets, collections }) {
                 onClick={() => openVoice(voice.id, "voices")}
               >
                 <div className="voice-card__image">
-                  <img
-                    src={voice.image}
-                    alt={`Portrait of ${voice.name}`}
-                    width={560}
-                    height={700}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <img src={voice.image} alt={`Portrait of ${voice.name}`} loading="lazy" />
                 </div>
                 <div className="voice-card__meta">
                   <h3>{voice.name}</h3>
