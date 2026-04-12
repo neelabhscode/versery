@@ -26,7 +26,7 @@ const WHATS_NEW_BULLETS = [
   "Dark mode — switch anytime from the navbar",
   "More voices — Ghalib, Tagore, Rilke, Hafez, and more",
   "Share a poem — pick lines, generate a card, send it",
-  "Daily poem — sign up to get one in your inbox",
+  "Weekly poem — sign up to get one in your inbox",
   "Install as App — add Versery to your home screen",
 ];
 
