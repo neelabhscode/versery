@@ -1,135 +1,771 @@
 [
   {
-    "id": "omar-khayyam",
-    "name": "Omar Khayyam",
-    "fullName": "Omar Khayyam",
-    "born": 1048,
-    "died": 1131,
-    "from": "Persia",
-    "era": "Medieval Islamic",
-    "tag": "Persian Sage",
-    "essence": "Mortality and wine — the fleeting moment seized in quatrains",
-    "bio": "Omar Khayyam was a Persian polymath: mathematician, astronomer, and poet. His Rubaiyat — translated into English by Edward FitzGerald — are meditations on fate, pleasure, and the brevity of life.",
-    "poemCount": 86,
+    "id": "alfred-lord-tennyson",
+    "name": "Alfred, Lord Tennyson",
+    "fullName": "Alfred, Lord Tennyson",
+    "born": 1809,
+    "died": 1892,
+    "from": "England",
+    "era": "Victorian",
+    "tag": "Poet Laureate",
+    "essence": "Laureate gravity, mythic air, and the long English line at full strength.",
+    "bio": "Alfred Tennyson carried Victorian poetry into its public height: sonorous blank verse, Arthurian tableaux, and compressed lyrics that still feel like carved stone. Poet Laureate for over forty years, he shaped how a nation heard grief, doubt, and endurance.",
+    "poemCount": 1,
     "moods": [
-      "longing",
-      "wonder",
-      "solitude"
+      "Sublime",
+      "Mournful",
+      "Ceremonial"
     ],
     "portalTags": [
-      "Melancholic",
-      "Drift",
-      "Radiant",
-      "Ethereal"
+      "Focus",
+      "Lush",
+      "Ethereal",
+      "Calm"
     ],
     "works": [
       {
         "id": "01",
-        "title": "Iii.",
-        "subtitle": "And, as the Cock crew, those…",
-        "poemId": "omar-khayyam--iii"
+        "title": "The Eagle",
+        "subtitle": "He clasps the crag with crooked hands; Close…",
+        "poemId": "alfred-lord-tennyson--the-eagle"
       },
       {
         "id": "02",
-        "title": "Xxxix.",
-        "subtitle": "How long, how long, in infinite…",
-        "poemId": "omar-khayyam--xxxix"
+        "title": "The Eagle",
+        "subtitle": "He clasps the crag with crooked hands; Close…",
+        "poemId": "alfred-lord-tennyson--the-eagle"
       },
       {
         "id": "03",
-        "title": "Lxxii.",
-        "subtitle": "Alas, that Spring should vanish with…",
-        "poemId": "omar-khayyam--lxxii"
+        "title": "The Eagle",
+        "subtitle": "He clasps the crag with crooked hands; Close…",
+        "poemId": "alfred-lord-tennyson--the-eagle"
       }
-    ]
+    ],
+    "heroLabel": "Victorian voice",
+    "resonance": "Tennyson’s lines teach a kind of listening—slow, weighted, willing to stay inside a single image until it turns.",
+    "quote": "I am a part of all that I have met.",
+    "quoteSource": "Ulysses (excerpted tradition)"
   },
   {
-    "id": "rumi",
-    "name": "Rumi",
-    "fullName": "Jalal ad-Din Muhammad Rumi",
-    "born": 1207,
-    "died": 1273,
-    "from": "Persia",
-    "era": "Medieval Islamic",
-    "tag": "Sufi Master",
-    "essence": "Divine love and longing — the soul dancing toward the infinite",
-    "bio": "Rumi was a 13th-century Persian mystic poet and founder of the whirling dervishes. His poetry expresses ecstatic union with the divine, transcending doctrine and dogma through the intoxication of spiritual love.",
-    "poemCount": 43,
+    "id": "bhagavad-gita",
+    "name": "Bhagavad Gita",
+    "fullName": "Bhagavad Gita",
+    "born": null,
+    "died": null,
+    "from": "Indian subcontinent (Sanskrit tradition)",
+    "era": "Classical Sanskrit dialogue",
+    "tag": "Sacred dialogue",
+    "essence": "A battlefield counsel on duty, devotion, and the self that moves beneath appearances.",
+    "bio": "The Bhagavad Gita is a philosophical dialogue set within the epic Mahabharata: the warrior Arjuna falters, and Krishna unfolds teachings on action without clinging, knowledge, and love. Its verses have guided readers across centuries and languages as a mirror for conscience and calm.",
+    "poemCount": 49,
     "moods": [
-      "love",
-      "joy",
-      "longing"
+      "Contemplative",
+      "Steadying",
+      "Devotional"
     ],
     "portalTags": [
-      "Radiant",
-      "Warmth",
-      "Melancholic",
+      "Calm",
+      "Pulse",
+      "Drift",
+      "Melancholic"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "The Warrior Who Trembled",
+        "subtitle": "My bow slips. My mouth is dry.…",
+        "poemId": "bhagavad-gita--the-warrior-who-trembled"
+      },
+      {
+        "id": "02",
+        "title": "I Am the Taste of Water",
+        "subtitle": "I am the taste in water, the light…",
+        "poemId": "bhagavad-gita--i-am-the-taste-of-water"
+      },
+      {
+        "id": "03",
+        "title": "Beyond the Three Qualities",
+        "subtitle": "Nature moves through three strands: clarity,…",
+        "poemId": "bhagavad-gita--beyond-the-three-qualities"
+      }
+    ],
+    "heroLabel": "Sacred text",
+    "resonance": "Versery presents modern English renderings of this voice—meant as literary companions, not substitutes for study with teachers or traditions you trust.",
+    "quote": "On this path effort never goes to waste, and there is no failure.",
+    "quoteSource": "Bhagavad Gita (paraphrased English tradition)"
+  },
+  {
+    "id": "carl-sandburg",
+    "name": "Carl Sandburg",
+    "fullName": "Carl Sandburg",
+    "born": 1878,
+    "died": 1967,
+    "from": "United States",
+    "era": "American modern",
+    "tag": "Prairie modernist",
+    "essence": "Fog-quiet observation, industrial America, and plain speech with a camera’s patience.",
+    "bio": "Carl Sandburg wrote across genres—poetry, biography, journalism—yet his poems stay close to the grain of American speech: trains, cities, labor, and weather held in short, luminous strokes.",
+    "poemCount": 1,
+    "moods": [
+      "Grounded",
+      "Urban",
+      "Gentle"
+    ],
+    "portalTags": [
+      "Calm",
+      "Echo",
+      "Solitary",
       "Pulse"
     ],
     "works": [
       {
         "id": "01",
-        "title": "Iii.",
-        "subtitle": "Looking now at the _poetical form_…",
-        "poemId": "rumi--iii"
+        "title": "Fog",
+        "subtitle": "The fog comes on little cat feet.…",
+        "poemId": "carl-sandburg--fog"
       },
       {
         "id": "02",
-        "title": "Xxiv.",
-        "subtitle": "Clean be kept thy Garment, and…",
-        "poemId": "rumi--xxiv"
+        "title": "Fog",
+        "subtitle": "The fog comes on little cat feet.…",
+        "poemId": "carl-sandburg--fog"
       },
       {
         "id": "03",
-        "title": "Xxxviii.",
-        "subtitle": "Ever shall I more desire Than…",
-        "poemId": "rumi--xxxviii"
+        "title": "Fog",
+        "subtitle": "The fog comes on little cat feet.…",
+        "poemId": "carl-sandburg--fog"
       }
-    ]
+    ],
+    "heroLabel": "American voice",
+    "resonance": "His miniatures reward slow reading; a single metaphor does the work of a whole scene.",
+    "quote": "The fog comes / on little cat feet.",
+    "quoteSource": "Fog"
   },
   {
-    "id": "hafez",
-    "name": "Hafez",
-    "fullName": "Hafez Shirazi",
-    "born": 1315,
-    "died": 1390,
-    "from": "Persia",
-    "era": "Medieval Islamic",
-    "tag": "Persian Mystic",
-    "essence": "Wine, ambiguity, and divine hints hidden in earthly pleasures",
-    "bio": "Hafez was a Persian poet and mystic whose ghazals are among the most beloved in Persian literature. His poetry speaks in paradox and symbol, where wine and beloved become gateways to the divine.",
-    "poemCount": 27,
+    "id": "claude-mckay",
+    "name": "Claude McKay",
+    "fullName": "Claude McKay",
+    "born": 1889,
+    "died": 1948,
+    "from": "Jamaica / United States",
+    "era": "Harlem Renaissance",
+    "tag": "Harlem Renaissance",
+    "essence": "Defiance forged into sonnets, exile, and the ache of belonging refused and demanded.",
+    "bio": "Claude McKay brought Jamaican rhythm into American political verse. His work helped define the Harlem Renaissance’s moral voltage: pride under pressure, beauty beside rage.",
+    "poemCount": 1,
     "moods": [
-      "love",
-      "longing",
-      "grief"
+      "Defiant",
+      "Lyrical",
+      "Urgent"
     ],
     "portalTags": [
-      "Radiant",
-      "Warmth",
-      "Melancholic",
+      "Static",
+      "Calm",
+      "Pulse",
       "Drift"
     ],
     "works": [
       {
         "id": "01",
-        "title": "TRANSLATED BY",
-        "subtitle": "GERTRUDE LOWTHIAN BELL [Illustration: [Logo]]…",
-        "poemId": "hafez--translated-by"
+        "title": "If We Must Die",
+        "subtitle": "If we must die—let it not be like…",
+        "poemId": "claude-mckay--if-we-must-die"
       },
       {
         "id": "02",
-        "title": "XXVII",
-        "subtitle": "My friend has fled! alas, my…",
-        "poemId": "hafez--xxvii"
+        "title": "If We Must Die",
+        "subtitle": "If we must die—let it not be like…",
+        "poemId": "claude-mckay--if-we-must-die"
       },
       {
         "id": "03",
-        "title": "XXXVII",
-        "subtitle": "Arise! and fill a golden goblet…",
-        "poemId": "hafez--xxxvii"
+        "title": "If We Must Die",
+        "subtitle": "If we must die—let it not be like…",
+        "poemId": "claude-mckay--if-we-must-die"
       }
-    ]
+    ],
+    "heroLabel": "Harlem Renaissance",
+    "resonance": "McKay reminds us that formal mastery can carry protest without softening its edge.",
+    "quote": "If we must die—let it not be like hogs / Hunted and penned in an inglorious spot.",
+    "quoteSource": "If We Must Die"
+  },
+  {
+    "id": "countee-cullen",
+    "name": "Countee Cullen",
+    "fullName": "Countee Cullen",
+    "born": 1903,
+    "died": 1946,
+    "from": "United States",
+    "era": "Harlem Renaissance",
+    "tag": "Harlem Renaissance",
+    "essence": "Elegant quatrains meeting racial wound and spiritual argument without flinching.",
+    "bio": "Countee Cullen was a central lyric voice of the Harlem Renaissance: formal, musical, and unafraid to place Black experience inside the wider house of English poetic forms—then question that house itself.",
+    "poemCount": 1,
+    "moods": [
+      "Musical",
+      "Interrogative",
+      "Devout"
+    ],
+    "portalTags": [
+      "Pulse",
+      "Static",
+      "Melancholic",
+      "Radiant"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Yet Do I Marvel",
+        "subtitle": "I doubt not God is good, well-meaning, kind,…",
+        "poemId": "countee-cullen--yet-do-i-marvel"
+      },
+      {
+        "id": "02",
+        "title": "Yet Do I Marvel",
+        "subtitle": "I doubt not God is good, well-meaning, kind,…",
+        "poemId": "countee-cullen--yet-do-i-marvel"
+      },
+      {
+        "id": "03",
+        "title": "Yet Do I Marvel",
+        "subtitle": "I doubt not God is good, well-meaning, kind,…",
+        "poemId": "countee-cullen--yet-do-i-marvel"
+      }
+    ],
+    "heroLabel": "Harlem Renaissance",
+    "resonance": "His poems stage doubt as cleanly as prayer—wondering what justice means when the world’s grammar feels rigged.",
+    "quote": "Yet do I marvel at this curious thing: / To make a poet black, and bid him sing!",
+    "quoteSource": "Yet Do I Marvel"
+  },
+  {
+    "id": "edna-st-vincent-millay",
+    "name": "Edna St. Vincent Millay",
+    "fullName": "Edna St. Vincent Millay",
+    "born": 1892,
+    "died": 1950,
+    "from": "United States",
+    "era": "American modern",
+    "tag": "Lyric modernist",
+    "essence": "Sonnets with a razor’s wit—desire, independence, and grief in high polish.",
+    "bio": "Edna St. Vincent Millay became a celebrity of American poetry for lines that could glitter and cut in the same breath. She worked sonnets like a playwright works scenes: tight, dramatic, unforgettable.",
+    "poemCount": 1,
+    "moods": [
+      "Passionate",
+      "Ironic",
+      "Tender"
+    ],
+    "portalTags": [
+      "Pulse",
+      "Static",
+      "Melancholic",
+      "Radiant"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "First Fig",
+        "subtitle": "My candle burns at both ends; It will…",
+        "poemId": "edna-st-vincent-millay--first-fig"
+      },
+      {
+        "id": "02",
+        "title": "First Fig",
+        "subtitle": "My candle burns at both ends; It will…",
+        "poemId": "edna-st-vincent-millay--first-fig"
+      },
+      {
+        "id": "03",
+        "title": "First Fig",
+        "subtitle": "My candle burns at both ends; It will…",
+        "poemId": "edna-st-vincent-millay--first-fig"
+      }
+    ],
+    "heroLabel": "Modern lyric",
+    "resonance": "Millay’s archive presence is all voltage controlled—feeling measured so precisely it burns hotter.",
+    "quote": "My candle burns at both ends; / It will not last the night.",
+    "quoteSource": "First Fig"
+  },
+  {
+    "id": "elizabeth-barrett-browning",
+    "name": "Elizabeth Barrett Browning",
+    "fullName": "Elizabeth Barrett Browning",
+    "born": 1806,
+    "died": 1861,
+    "from": "England",
+    "era": "Victorian",
+    "tag": "Victorian lyric",
+    "essence": "Romantic argument in ottava rima and sonnet—politics, love, and spiritual courage intertwined.",
+    "bio": "Elizabeth Barrett Browning helped redefine what a woman poet could publish in English: epic ambition, social conscience, and some of the language’s most intimate love poetry.",
+    "poemCount": 1,
+    "moods": [
+      "Impassioned",
+      "Principled",
+      "Intimate"
+    ],
+    "portalTags": [
+      "Radiant",
+      "Melancholic",
+      "Calm",
+      "Drift"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "How Do I Love Thee?",
+        "subtitle": "How do I love thee? Let me count…",
+        "poemId": "elizabeth-barrett-browning--how-do-i-love-thee"
+      },
+      {
+        "id": "02",
+        "title": "How Do I Love Thee?",
+        "subtitle": "How do I love thee? Let me count…",
+        "poemId": "elizabeth-barrett-browning--how-do-i-love-thee"
+      },
+      {
+        "id": "03",
+        "title": "How Do I Love Thee?",
+        "subtitle": "How do I love thee? Let me count…",
+        "poemId": "elizabeth-barrett-browning--how-do-i-love-thee"
+      }
+    ],
+    "heroLabel": "Victorian voice",
+    "resonance": "Her work models how private voice can carry public stakes without losing warmth.",
+    "quote": "How do I love thee? Let me count the ways.",
+    "quoteSource": "Sonnets from the Portuguese (Sonnet 43)"
+  },
+  {
+    "id": "emily-dickinson",
+    "name": "Emily Dickinson",
+    "fullName": "Emily Dickinson",
+    "born": 1830,
+    "died": 1886,
+    "from": "United States",
+    "era": "American nineteenth century",
+    "tag": "Reclusive innovator",
+    "essence": "Slant truth, hymn meters, and metaphysics in the size of a postage stamp.",
+    "bio": "Emily Dickinson wrote with a telescope aimed inward: spare dashes, hymn stanzas, and riddles that open onto death, nature, and eternity. Her manuscripts still teach readers how much silence a poem can hold.",
+    "poemCount": 20,
+    "moods": [
+      "Elliptical",
+      "Devout",
+      "Playful"
+    ],
+    "portalTags": [
+      "Calm",
+      "Melancholic",
+      "Focus",
+      "Static"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "This is my letter to the world",
+        "subtitle": "This is my letter to the world, That…",
+        "poemId": "emily-dickinson--this-is-my-letter-to-the-world"
+      },
+      {
+        "id": "02",
+        "title": "I'm nobody! Who are you?",
+        "subtitle": "I'm nobody! Who are you? Are you nobody,…",
+        "poemId": "emily-dickinson--im-nobody-who-are-you"
+      },
+      {
+        "id": "03",
+        "title": "Because I could not stop for Death",
+        "subtitle": "Because I could not stop for Death, He…",
+        "poemId": "emily-dickinson--because-i-could-not-stop-for-death"
+      }
+    ],
+    "heroLabel": "American voice",
+    "resonance": "Dickinson rewards rereading; each short poem is a door disguised as a wall.",
+    "quote": "Tell all the truth but tell it slant—",
+    "quoteSource": "Tell all the truth but tell it slant (1263)"
+  },
+  {
+    "id": "ezra-pound",
+    "name": "Ezra Pound",
+    "fullName": "Ezra Pound",
+    "born": 1885,
+    "died": 1972,
+    "from": "United States / Europe",
+    "era": "High modernism",
+    "tag": "Modernist",
+    "essence": "Image, economy, and translation as creative acts—modernism’s controversial engineer.",
+    "bio": "Ezra Pound was a decisive editor and theorist of early modernist poetry, championing imagism and reshaping how English hears other traditions. His life and politics were deeply flawed; the archive includes him here for literary-historical context and selective reading.",
+    "poemCount": 1,
+    "moods": [
+      "Incisive",
+      "Allusive",
+      "Restless"
+    ],
+    "portalTags": [
+      "Focus",
+      "Lush",
+      "Ethereal",
+      "Calm"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "In a Station of the Metro",
+        "subtitle": "The apparition of these faces in the crowd;…",
+        "poemId": "ezra-pound--in-a-station-of-the-metro"
+      },
+      {
+        "id": "02",
+        "title": "In a Station of the Metro",
+        "subtitle": "The apparition of these faces in the crowd;…",
+        "poemId": "ezra-pound--in-a-station-of-the-metro"
+      },
+      {
+        "id": "03",
+        "title": "In a Station of the Metro",
+        "subtitle": "The apparition of these faces in the crowd;…",
+        "poemId": "ezra-pound--in-a-station-of-the-metro"
+      }
+    ],
+    "heroLabel": "Modernist",
+    "resonance": "Engage Pound as you would any sharp tool: for craft lessons, with ethical distance intact.",
+    "quote": "Go in fear of abstractions.",
+    "quoteSource": "A Retrospect"
+  },
+  {
+    "id": "hafez",
+    "name": "Hafez",
+    "fullName": "Hafez",
+    "born": 1315,
+    "died": 1390,
+    "from": "Shiraz (Persia)",
+    "era": "Persian medieval lyric",
+    "tag": "Ghazal master",
+    "essence": "Wine, night, and the Beloved braided into ghazals that feel like breathing.",
+    "bio": "Hafez (Shams al-Din Muhammad) is among the most beloved poets of the Persian language. His ghazals turn tavern, garden, and prayer into one luminous field where human longing meets divine presence—always through translation’s imperfect glass.",
+    "poemCount": 20,
+    "moods": [
+      "Ecstatic",
+      "Nocturnal",
+      "Witty"
+    ],
+    "portalTags": [
+      "Calm",
+      "Melancholic",
+      "Ethereal",
+      "Radiant"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Pour the cup again I thought love would be easy",
+        "subtitle": "Pour the cup again I thought love would…",
+        "poemId": "hafez--pour-the-cup-again-i-thought-love-would-be-easy"
+      },
+      {
+        "id": "02",
+        "title": "Return and let courage enter this wounded heart",
+        "subtitle": "Return and let courage enter this wounded heart…",
+        "poemId": "hafez--return-and-let-courage-enter-this-wounded-heart"
+      },
+      {
+        "id": "03",
+        "title": "My house became heaven when she lived in it",
+        "subtitle": "My house became heaven when she lived in…",
+        "poemId": "hafez--my-house-became-heaven-when-she-lived-in-it"
+      }
+    ],
+    "heroLabel": "Persian voice",
+    "resonance": "English renderings vary widely; Versery favors lines that keep music and mystery intact.",
+    "quote": "I wish I could show you / when you are lonely or in darkness, / the astonishing light / of your own being.",
+    "quoteSource": "Attributed tradition (English paraphrase)"
+  },
+  {
+    "id": "hd",
+    "name": "H.D.",
+    "fullName": "Hilda Doolittle (H.D.)",
+    "born": 1886,
+    "died": 1961,
+    "from": "United States / United Kingdom",
+    "era": "Imagist / modernist",
+    "tag": "Imagist",
+    "essence": "Hard-edged images, classical myth, and the sea’s psychology pressed into line breaks.",
+    "bio": "H.D. helped launch imagism—poetry of precise image and open rhythm—then moved into longer mythic sequences. Her work listens to antiquity as if it were a living shoreline.",
+    "poemCount": 1,
+    "moods": [
+      "Liminal",
+      "Classical",
+      "Intense"
+    ],
+    "portalTags": [
+      "Ethereal",
+      "Calm",
+      "Focus",
+      "Lush"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Oread",
+        "subtitle": "Whirl up, sea— whirl your pointed pines,…",
+        "poemId": "hd--oread"
+      },
+      {
+        "id": "02",
+        "title": "Oread",
+        "subtitle": "Whirl up, sea— whirl your pointed pines,…",
+        "poemId": "hd--oread"
+      },
+      {
+        "id": "03",
+        "title": "Oread",
+        "subtitle": "Whirl up, sea— whirl your pointed pines,…",
+        "poemId": "hd--oread"
+      }
+    ],
+    "heroLabel": "Modernist",
+    "resonance": "H.D. teaches compression without explanation: the image does the thinking.",
+    "quote": "O white face, / why do you lean over the salt sea?",
+    "quoteSource": "Sea Violet"
+  },
+  {
+    "id": "james-weldon-johnson",
+    "name": "James Weldon Johnson",
+    "fullName": "James Weldon Johnson",
+    "born": 1871,
+    "died": 1938,
+    "from": "United States",
+    "era": "Harlem Renaissance",
+    "tag": "Harlem Renaissance",
+    "essence": "Anthem, sermon, and story—Black uplift voiced with lawyerly clarity and hymnody.",
+    "bio": "James Weldon Johnson was a poet, diplomat, and NAACP leader who co-authored Lift Every Voice and Sing. His poems and essays braid civic hope with lyrical sorrow.",
+    "poemCount": 1,
+    "moods": [
+      "Solemn",
+      "Hopeful",
+      "Oratorical"
+    ],
+    "portalTags": [
+      "Melancholic",
+      "Radiant",
+      "Focus",
+      "Lush"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Lift Every Voice and Sing",
+        "subtitle": "Lift every voice and sing, Till earth and…",
+        "poemId": "james-weldon-johnson--lift-every-voice-and-sing"
+      },
+      {
+        "id": "02",
+        "title": "Lift Every Voice and Sing",
+        "subtitle": "Lift every voice and sing, Till earth and…",
+        "poemId": "james-weldon-johnson--lift-every-voice-and-sing"
+      },
+      {
+        "id": "03",
+        "title": "Lift Every Voice and Sing",
+        "subtitle": "Lift every voice and sing, Till earth and…",
+        "poemId": "james-weldon-johnson--lift-every-voice-and-sing"
+      }
+    ],
+    "heroLabel": "Harlem Renaissance",
+    "resonance": "Johnson’s public voice never forgets private feeling; dignity and ache share one breath.",
+    "quote": "We have come over a way that with tears has been watered.",
+    "quoteSource": "Lift Every Voice and Sing"
+  },
+  {
+    "id": "john-clare",
+    "name": "John Clare",
+    "fullName": "John Clare",
+    "born": 1793,
+    "died": 1864,
+    "from": "England",
+    "era": "Romantic",
+    "tag": "Romantic pastoral",
+    "essence": "Field notebooks of a disappearing countryside—dialect, detail, and tender unease.",
+    "bio": "John Clare wrote from deep inside rural England: birds, seasons, enclosure, and poverty recorded with almost folkloric fidelity. His work anticipates ecological attention long before the word existed.",
+    "poemCount": 1,
+    "moods": [
+      "Pastoral",
+      "Melancholic",
+      "Precise"
+    ],
+    "portalTags": [
+      "Ethereal",
+      "Melancholic",
+      "Calm",
+      "Focus"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "I Am!",
+        "subtitle": "I am! yet what I am none cares…",
+        "poemId": "john-clare--i-am"
+      },
+      {
+        "id": "02",
+        "title": "I Am!",
+        "subtitle": "I am! yet what I am none cares…",
+        "poemId": "john-clare--i-am"
+      },
+      {
+        "id": "03",
+        "title": "I Am!",
+        "subtitle": "I am! yet what I am none cares…",
+        "poemId": "john-clare--i-am"
+      }
+    ],
+    "heroLabel": "Romantic voice",
+    "resonance": "Clare reminds us that local names for things are a kind of love language.",
+    "quote": "I am—yet what I am none cares or knows.",
+    "quoteSource": "I Am"
+  },
+  {
+    "id": "john-donne",
+    "name": "John Donne",
+    "fullName": "John Donne",
+    "born": 1572,
+    "died": 1631,
+    "from": "England",
+    "era": "Metaphysical",
+    "tag": "Metaphysical poet",
+    "essence": "Passion stretched across theology and astronomy—wit as a form of devotion.",
+    "bio": "John Donne remade English love poetry with conceits that snap shut like locks: body and soul, map and star, lover and compass. Dean of St. Paul’s, he also wrote sermons of thunderous compassion.",
+    "poemCount": 1,
+    "moods": [
+      "Witty",
+      "Erotic",
+      "Theological"
+    ],
+    "portalTags": [
+      "Calm",
+      "Warmth",
+      "Static",
+      "Ethereal"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Holy Sonnet 10",
+        "subtitle": "Death, be not proud, though some have called…",
+        "poemId": "john-donne--holy-sonnet-10"
+      },
+      {
+        "id": "02",
+        "title": "Holy Sonnet 10",
+        "subtitle": "Death, be not proud, though some have called…",
+        "poemId": "john-donne--holy-sonnet-10"
+      },
+      {
+        "id": "03",
+        "title": "Holy Sonnet 10",
+        "subtitle": "Death, be not proud, though some have called…",
+        "poemId": "john-donne--holy-sonnet-10"
+      }
+    ],
+    "heroLabel": "Renaissance voice",
+    "resonance": "Donne rewards readers who enjoy being outpaced—then caught—by a metaphor.",
+    "quote": "No man is an island, entire of itself.",
+    "quoteSource": "Meditation XVII"
+  },
+  {
+    "id": "john-keats",
+    "name": "John Keats",
+    "fullName": "John Keats",
+    "born": 1795,
+    "died": 1821,
+    "from": "England",
+    "era": "Romantic",
+    "tag": "Romantic",
+    "essence": "Sensuous negative capability—beauty, mortality, and language at white heat.",
+    "bio": "John Keats wrote for only a few years before tuberculosis ended his life, yet his odes reset English lyric pitch. His letters are as essential as his poems: a mind thinking in real time about art, suffering, and empathy.",
+    "poemCount": 20,
+    "moods": [
+      "Sensuous",
+      "Tender",
+      "Philosophical"
+    ],
+    "portalTags": [
+      "Calm",
+      "Ethereal",
+      "Radiant",
+      "Focus"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "When I have fears that I may cease to be",
+        "subtitle": "When I have fears that I may cease…",
+        "poemId": "john-keats--when-i-have-fears-that-i-may-cease-to-be"
+      },
+      {
+        "id": "02",
+        "title": "On Seeing the Elgin Marbles",
+        "subtitle": "My spirit is too weak—mortality Weighs heavily on…",
+        "poemId": "john-keats--on-seeing-the-elgin-marbles"
+      },
+      {
+        "id": "03",
+        "title": "To Autumn",
+        "subtitle": "Season of mists and mellow fruitfulness, Close bosom-friend…",
+        "poemId": "john-keats--to-autumn"
+      }
+    ],
+    "heroLabel": "Romantic voice",
+    "resonance": "Keats teaches negative capability—the willingness to dwell in uncertainty without irritable reaching after fact.",
+    "quote": "A thing of beauty is a joy for ever:",
+    "quoteSource": "Endymion (opening line)"
+  },
+  {
+    "id": "john-masefield",
+    "name": "John Masefield",
+    "fullName": "John Masefield",
+    "born": 1878,
+    "died": 1967,
+    "from": "England",
+    "era": "Georgian / twentieth century",
+    "tag": "Poet Laureate",
+    "essence": "Salt air, narrative verse, and the sea as moral weather.",
+    "bio": "John Masefield served as UK Poet Laureate for decades; his ballads and sea poems brought narrative muscle back into popular poetry between wars.",
+    "poemCount": 1,
+    "moods": [
+      "Nautical",
+      "Narrative",
+      "Robust"
+    ],
+    "portalTags": [
+      "Calm",
+      "Ethereal",
+      "Melancholic",
+      "Focus"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Sea Fever",
+        "subtitle": "I must go down to the seas again,…",
+        "poemId": "john-masefield--sea-fever"
+      },
+      {
+        "id": "02",
+        "title": "Sea Fever",
+        "subtitle": "I must go down to the seas again,…",
+        "poemId": "john-masefield--sea-fever"
+      },
+      {
+        "id": "03",
+        "title": "Sea Fever",
+        "subtitle": "I must go down to the seas again,…",
+        "poemId": "john-masefield--sea-fever"
+      }
+    ],
+    "heroLabel": "English voice",
+    "resonance": "Masefield’s archive presence is kinetic—motion, work, and weather in shared rhythm.",
+    "quote": "I must go down to the seas again, to the lonely sea and the sky,",
+    "quoteSource": "Sea-Fever"
   },
   {
     "id": "kabir",
@@ -137,679 +773,643 @@
     "fullName": "Kabir",
     "born": 1398,
     "died": 1518,
-    "from": "India",
-    "era": "Medieval",
-    "tag": "Weaver-Saint",
-    "essence": "Blunt truth and direct communion — the weaver speaking to God as equal",
-    "bio": "Kabir was an Indian mystic poet and saint who broke caste boundaries with radical directness. His vernacular verse attacks hypocrisy and claims direct personal access to the divine without priests or ritual.",
-    "poemCount": 101,
+    "from": "India (Sant tradition)",
+    "era": "Bhakti / Sant poetry",
+    "tag": "Mystic poet",
+    "essence": "Plain-language paradox—Hindu and Muslim listeners addressed as one human knot.",
+    "bio": "Kabir’s couplets cut through ritual pride toward a God beyond idols and quarrel. Attributed across centuries, his voice survives in oral lineage and countless translations—always partial, always provocative.",
+    "poemCount": 20,
     "moods": [
-      "love",
-      "grief",
-      "longing"
+      "Iconoclastic",
+      "Devout",
+      "Plain-spoken"
     ],
     "portalTags": [
       "Radiant",
-      "Melancholic",
-      "Warmth",
-      "Static"
+      "Calm",
+      "Focus",
+      "Ethereal"
     ],
     "works": [
       {
         "id": "01",
-        "title": "E.  U.",
-        "subtitle": "The reference of the headlines of…",
-        "poemId": "kabir--e-u"
+        "title": "O servant, where dost thou seek Me?",
+        "subtitle": "O servant, where dost thou seek Me? Lo!…",
+        "poemId": "kabir--o-servant-where-dost-thou-seek-me"
       },
       {
         "id": "02",
-        "title": "II. 105. _man mast huâ tab kyon bole_",
-        "subtitle": "Where is the need of words,…",
-        "poemId": "kabir--ii-105-man-mast-hu-tab-kyon-bole"
+        "title": "O brother, my heart yearns for that true Guru, who fills the cup",
+        "subtitle": "O brother, my heart yearns for that true…",
+        "poemId": "kabir--o-brother-my-heart-yearns-for-that-true-guru-who-fills-the-cup"
       },
       {
         "id": "03",
-        "title": "I. 20. _man na rangâye_",
-        "subtitle": "The Yogi dyes his garments, instead…",
-        "poemId": "kabir--i-20-man-na-rangye"
+        "title": "Where Spring, the lord of the seasons, reigneth, there the",
+        "subtitle": "Where Spring, the lord of the seasons, reigneth,…",
+        "poemId": "kabir--where-spring-the-lord-of-the-seasons-reigneth-there-the"
       }
-    ]
+    ],
+    "heroLabel": "Bhakti voice",
+    "resonance": "Kabir asks for sincerity over performance; the shortest line can overturn a habit.",
+    "quote": "Are you looking for me? I am in the next seat.",
+    "quoteSource": "Kabir (Tagore/Rabindranath-era English tradition)"
   },
   {
-    "id": "john-milton",
-    "name": "John Milton",
-    "fullName": "John Milton",
-    "born": 1608,
-    "died": 1674,
-    "from": "England",
-    "era": "Renaissance",
-    "tag": "Epic Poet",
-    "essence": "The clash of light and shadow — Paradise lost and regained in verse",
-    "bio": "John Milton was an English poet and political thinker whose Paradise Lost is one of the greatest epic poems in English. His mastery of blank verse and philosophical depth made him a foundational voice of Western literature.",
-    "poemCount": 26,
+    "id": "kahlil-gibran",
+    "name": "Kahlil Gibran",
+    "fullName": "Kahlil Gibran",
+    "born": 1883,
+    "died": 1931,
+    "from": "Lebanon / United States",
+    "era": "Mahjar / early modern",
+    "tag": "Prophetic lyric",
+    "essence": "Parables in English prose-poetry—spiritual intimacy with a pamphlet’s reach.",
+    "bio": "Kahlil Gibran emigrated from Ottoman Lebanon to Boston and New York, writing in Arabic and English. The Prophet became a global phenomenon; his shorter lyrics keep the same confessional glow.",
+    "poemCount": 20,
     "moods": [
-      "wonder",
-      "joy",
-      "longing"
+      "Oracular",
+      "Tender",
+      "Universalist"
     ],
     "portalTags": [
+      "Melancholic",
+      "Calm",
       "Radiant",
+      "Drift"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "On Love",
+        "subtitle": "And he raised his head and looked upon…",
+        "poemId": "kahlil-gibran--on-love"
+      },
+      {
+        "id": "02",
+        "title": "On Freedom",
+        "subtitle": "And he answered: At the city gate and…",
+        "poemId": "kahlil-gibran--on-freedom"
+      },
+      {
+        "id": "03",
+        "title": "The Path of the Night",
+        "subtitle": "One may not reach the dawn save by…",
+        "poemId": "kahlil-gibran--the-path-of-the-night"
+      }
+    ],
+    "heroLabel": "Lebanese–American",
+    "resonance": "Gibran’s sentences read like whispered advice that accidentally became scripture.",
+    "quote": "Work is love made visible.",
+    "quoteSource": "The Prophet"
+  },
+  {
+    "id": "langston-hughes",
+    "name": "Langston Hughes",
+    "fullName": "Langston Hughes",
+    "born": 1902,
+    "died": 1967,
+    "from": "United States",
+    "era": "Harlem Renaissance",
+    "tag": "Harlem Renaissance",
+    "essence": "Blues cadence in ink—Black American life with humor, ache, and civic pride.",
+    "bio": "Langston Hughes made everyday Black speech a dignified poetic instrument. His jazz-age portraits, protest lyrics, and Montage of a Dream Deferred still anchor American literature.",
+    "poemCount": 1,
+    "moods": [
+      "Bluesy",
+      "Warm",
+      "Political"
+    ],
+    "portalTags": [
+      "Calm",
+      "Pulse",
+      "Static",
+      "Ethereal"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Mother to Son",
+        "subtitle": "Well, son, I'll tell you: Life for me…",
+        "poemId": "langston-hughes--mother-to-son"
+      },
+      {
+        "id": "02",
+        "title": "Mother to Son",
+        "subtitle": "Well, son, I'll tell you: Life for me…",
+        "poemId": "langston-hughes--mother-to-son"
+      },
+      {
+        "id": "03",
+        "title": "Mother to Son",
+        "subtitle": "Well, son, I'll tell you: Life for me…",
+        "poemId": "langston-hughes--mother-to-son"
+      }
+    ],
+    "heroLabel": "Harlem Renaissance",
+    "resonance": "Hughes proves that musicality is a form of truth-telling—not decoration.",
+    "quote": "What happens to a dream deferred?",
+    "quoteSource": "Harlem"
+  },
+  {
+    "id": "lao-tzu",
+    "name": "Lao Tzu",
+    "fullName": "Lao Tzu",
+    "born": null,
+    "died": null,
+    "from": "Ancient China (Daoist tradition)",
+    "era": "Classical Chinese philosophy",
+    "tag": "Daoist classic",
+    "essence": "Water-wisdom: softness overcoming hardness, names released, way as verb.",
+    "bio": "The Dao De Jing, traditionally linked to Laozi, is a brief masterpiece of paradox and governance ethics. Its poems-as-chapters teach attention over assertion—always through translation’s many interpretations.",
+    "poemCount": 20,
+    "moods": [
+      "Quiet",
+      "Paradoxical",
+      "Steadying"
+    ],
+    "portalTags": [
+      "Focus",
+      "Calm",
       "Ethereal",
-      "Lush",
+      "Lush"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "The Nameless",
+        "subtitle": "The way you can explain is not the…",
+        "poemId": "lao-tzu--the-nameless"
+      },
+      {
+        "id": "02",
+        "title": "Return to the Root",
+        "subtitle": "Make emptiness complete. Keep stillness steady.…",
+        "poemId": "lao-tzu--return-to-the-root"
+      },
+      {
+        "id": "03",
+        "title": "The Movement of the Way",
+        "subtitle": "Returning is the motion of the Way. Yielding…",
+        "poemId": "lao-tzu--the-movement-of-the-way"
+      }
+    ],
+    "heroLabel": "Classical voice",
+    "resonance": "Versery excerpts foreground the poetic texture of philosophical lines—companions for reflection, not a course in comparative religion.",
+    "quote": "Knowing others is intelligence; knowing yourself is true wisdom.",
+    "quoteSource": "Dao De Jing (English tradition)"
+  },
+  {
+    "id": "mirza-ghalib",
+    "name": "Mirza Ghalib",
+    "fullName": "Mirza Ghalib",
+    "born": 1797,
+    "died": 1869,
+    "from": "Delhi (Mughal India)",
+    "era": "Urdu / Persian ghazal",
+    "tag": "Ghazal master",
+    "essence": "Wit sharp as a dagger disguised as a rose—loss, wine, and metaphysics in couplets.",
+    "bio": "Mirza Asadullah Khan Ghalib wrote Urdu and Persian ghazals that merge lover, skeptic, and mystic. His letters, equally celebrated, show a mind laughing at empire while mourning its ruins.",
+    "poemCount": 20,
+    "moods": [
+      "Witty",
+      "Melancholic",
+      "Cosmopolitan"
+    ],
+    "portalTags": [
+      "Calm",
+      "Drift",
+      "Static",
+      "Melancholic"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Before anything existed, there was God.",
+        "subtitle": "Before anything existed, there was God. If nothing…",
+        "poemId": "mirza-ghalib--before-anything-existed-there-was-god"
+      },
+      {
+        "id": "02",
+        "title": "I rehearsed my death until it felt like craft.",
+        "subtitle": "I rehearsed my death until it felt like…",
+        "poemId": "mirza-ghalib--i-rehearsed-my-death-until-it-felt-like-craft"
+      },
+      {
+        "id": "03",
+        "title": "It was never in my fate to meet you.",
+        "subtitle": "It was never in my fate to meet…",
+        "poemId": "mirza-ghalib--it-was-never-in-my-fate-to-meet-you"
+      }
+    ],
+    "heroLabel": "Urdu voice",
+    "resonance": "Ghalib’s archive presence is all double meanings—read once for music, twice for sting.",
+    "quote": "Each particle of dust sits crowned upon my head—",
+    "quoteSource": "Ghalib (translated tradition)"
+  },
+  {
+    "id": "rainer-maria-rilke",
+    "name": "Rainer Maria Rilke",
+    "fullName": "Rainer Maria Rilke",
+    "born": 1875,
+    "died": 1926,
+    "from": "Bohemia / Austria / France",
+    "era": "Symbolist / early modern",
+    "tag": "European modern",
+    "essence": "Angels, inwardness, and the thing-poem—language tuned until it vibrates alone.",
+    "bio": "Rainer Maria Rilke moved between Prague, Paris, and Swiss solitude, writing the Duino Elegies and Sonnets to Orpheus. His letters to young poets remain a secular scripture on patience and perception.",
+    "poemCount": 20,
+    "moods": [
+      "Mystical",
+      "Patient",
+      "Introspective"
+    ],
+    "portalTags": [
+      "Calm",
+      "Focus",
+      "Melancholic",
+      "Drift"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Autumn Day",
+        "subtitle": "Lord it is time. The summer was immense.…",
+        "poemId": "rainer-maria-rilke--autumn-day"
+      },
+      {
+        "id": "02",
+        "title": "Love Song",
+        "subtitle": "How shall I hold my soul so that…",
+        "poemId": "rainer-maria-rilke--love-song"
+      },
+      {
+        "id": "03",
+        "title": "Sonnets to Orpheus I, 5",
+        "subtitle": "Set up no monument. Let the rose bloom…",
+        "poemId": "rainer-maria-rilke--sonnets-to-orpheus-i-5"
+      }
+    ],
+    "heroLabel": "Modern voice",
+    "resonance": "Rilke asks us to love the questions themselves—then live slowly enough to hear answers form.",
+    "quote": "You must change your life.",
+    "quoteSource": "Archaic Torso of Apollo (Stephen Mitchell translation tradition)"
+  },
+  {
+    "id": "ralph-waldo-emerson",
+    "name": "Ralph Waldo Emerson",
+    "fullName": "Ralph Waldo Emerson",
+    "born": 1803,
+    "died": 1882,
+    "from": "United States",
+    "era": "Transcendentalist",
+    "tag": "Transcendentalist",
+    "essence": "Self-reliance as spiritual practice—nature, intuition, and democratic awe.",
+    "bio": "Ralph Waldo Emerson helped midwife American intellectual independence. His essays and poems braid Unitarian sermon with Romantic nature mysticism.",
+    "poemCount": 1,
+    "moods": [
+      "Prophetic",
+      "Optimistic",
+      "Philosophical"
+    ],
+    "portalTags": [
+      "Melancholic",
+      "Drift",
+      "Calm",
       "Focus"
     ],
     "works": [
       {
         "id": "01",
-        "title": "Paradise Lost: Book 07",
-        "subtitle": "Descend from Heaven, Urania, by that…",
-        "poemId": "john-milton--paradise-lost-book-07"
+        "title": "Brahma",
+        "subtitle": "If the red slayer think he slays, Or…",
+        "poemId": "ralph-waldo-emerson--brahma"
       },
       {
         "id": "02",
-        "title": "Paradise Lost: Book 12",
-        "subtitle": "As one who in his journey…",
-        "poemId": "john-milton--paradise-lost-book-12"
+        "title": "Brahma",
+        "subtitle": "If the red slayer think he slays, Or…",
+        "poemId": "ralph-waldo-emerson--brahma"
       },
       {
         "id": "03",
-        "title": "Paradise Lost: Book 03",
-        "subtitle": "Hail, holy Light, offspring of Heaven…",
-        "poemId": "john-milton--paradise-lost-book-03"
+        "title": "Brahma",
+        "subtitle": "If the red slayer think he slays, Or…",
+        "poemId": "ralph-waldo-emerson--brahma"
       }
-    ]
+    ],
+    "heroLabel": "American voice",
+    "resonance": "Emerson rewards readers building an inner compass—less doctrine, more invitation.",
+    "quote": "Trust thyself: every heart vibrates to that iron string.",
+    "quoteSource": "Self-Reliance"
   },
   {
-    "id": "george-herbert",
-    "name": "George Herbert",
-    "fullName": "George Herbert",
-    "born": 1593,
-    "died": 1633,
-    "from": "England",
-    "era": "Renaissance",
-    "tag": "Metaphysical Poet",
-    "essence": "Devotion in precise form — the soul laid bare in sacred verse",
-    "bio": "George Herbert was an English poet and cleric whose metaphysical verses marry technical brilliance with spiritual anguish. Works like The Altar and Love (III) use wit and paradox to explore faith and doubt.",
-    "poemCount": 16,
+    "id": "robert-frost",
+    "name": "Robert Frost",
+    "fullName": "Robert Frost",
+    "born": 1874,
+    "died": 1963,
+    "from": "United States",
+    "era": "American twentieth century",
+    "tag": "Regional modern",
+    "essence": "New England roads, fences, and snow—plain talk hiding ethical crossroads.",
+    "bio": "Robert Frost won four Pulitzers and a nation’s ear for blank verse that sounds like conversation—until the conversation turns uncanny. Farm walls and forest paths become metaphysics.",
+    "poemCount": 20,
     "moods": [
-      "love",
-      "grief",
-      "longing"
+      "Plain-spoken",
+      "Ambiguous",
+      "Pastoral"
     ],
     "portalTags": [
-      "Radiant",
-      "Warmth",
-      "Melancholic",
-      "Static"
-    ],
-    "works": [
-      {
-        "id": "01",
-        "title": "Easter Wings",
-        "subtitle": "Lord, who createdst man in wealth…",
-        "poemId": "george-herbert--easter-wings"
-      },
-      {
-        "id": "02",
-        "title": "The Forerunners",
-        "subtitle": "The harbingers are come. See, see…",
-        "poemId": "george-herbert--the-forerunners"
-      },
-      {
-        "id": "03",
-        "title": "The Flower",
-        "subtitle": "How fresh, O Lord, how sweet…",
-        "poemId": "george-herbert--the-flower"
-      }
-    ]
-  },
-  {
-    "id": "coleridge",
-    "name": "Samuel Taylor Coleridge",
-    "fullName": "Samuel Taylor Coleridge",
-    "born": 1772,
-    "died": 1834,
-    "from": "England",
-    "era": "Romantic",
-    "tag": "Visionary Poet",
-    "essence": "The dream and the nightmare — imagination stretched to its gothic extreme",
-    "bio": "Samuel Taylor Coleridge was an English poet, philosopher, and literary critic, co-founder of the Romantic Age. The Rime of the Ancient Mariner and Kubla Khan are masterworks of visionary power and linguistic music.",
-    "poemCount": 107,
-    "moods": [
-      "love",
-      "grief",
-      "longing"
-    ],
-    "portalTags": [
-      "Radiant",
-      "Melancholic",
-      "Warmth",
-      "Static"
-    ],
-    "works": [
-      {
-        "id": "01",
-        "title": "Inscription For A Time-Piece\n\nA Tombless Epitaph\n\nEpitaph\n\nNotes\n\n\n\n\nIntroduction",
-        "subtitle": "In one of Rossetti's invaluable notes…",
-        "poemId": "coleridge--inscription-for-a-time-piece-a-tombless-epitaph-epitaph-note"
-      },
-      {
-        "id": "02",
-        "title": "Domestic Peace",
-        "subtitle": "[FROM THE FALL OF ROBESPIERRE, ACT…",
-        "poemId": "coleridge--domestic-peace"
-      },
-      {
-        "id": "03",
-        "title": "The Death Of The Starling",
-        "subtitle": "Lugete, O Veneres, Cupidinesque.--CATULLUS. Pity! mourn…",
-        "poemId": "coleridge--the-death-of-the-starling"
-      }
-    ]
-  },
-  {
-    "id": "william-blake",
-    "name": "William Blake",
-    "fullName": "William Blake",
-    "born": 1757,
-    "died": 1827,
-    "from": "England",
-    "era": "Romantic",
-    "tag": "Visionary Romantic",
-    "essence": "Imagination as the divine force that liberates the human soul",
-    "bio": "William Blake was an English poet, painter, and printmaker, a seminal figure of the Romantic Age. His visionary work bridged the spiritual and revolutionary, from Songs of Innocence to the prophetic books.",
-    "poemCount": 49,
-    "moods": [
-      "joy",
-      "grief",
-      "love"
-    ],
-    "portalTags": [
-      "Radiant",
+      "Calm",
       "Melancholic",
       "Pulse",
-      "Static"
-    ],
-    "works": [
-      {
-        "id": "01",
-        "title": "London",
-        "subtitle": "I wandered through each chartered street,…",
-        "poemId": "william-blake--london"
-      },
-      {
-        "id": "02",
-        "title": "Night",
-        "subtitle": "The sun descending in the west,…",
-        "poemId": "william-blake--night"
-      },
-      {
-        "id": "03",
-        "title": "The Garden of Love",
-        "subtitle": "I laid me down upon a…",
-        "poemId": "william-blake--the-garden-of-love"
-      }
-    ]
-  },
-  {
-    "id": "keats",
-    "name": "John Keats",
-    "fullName": "John Keats",
-    "born": 1795,
-    "died": 1821,
-    "from": "England",
-    "era": "Romantic",
-    "tag": "Romantic Ode Master",
-    "essence": "Beauty, transience, and the ache of the senses pressed against mortality",
-    "bio": "John Keats was one of the most celebrated English Romantic poets. Despite dying at 25, he produced sensuous, philosophical verse of extraordinary richness, including his celebrated odes.",
-    "poemCount": 24,
-    "moods": [
-      "love",
-      "joy",
-      "wonder"
-    ],
-    "portalTags": [
-      "Radiant",
-      "Warmth",
-      "Pulse",
-      "Melancholic"
-    ],
-    "works": [
-      {
-        "id": "01",
-        "title": "Happy Is England! I Could Be Content",
-        "subtitle": "Happy is England! I could be…",
-        "poemId": "keats--happy-is-england-i-could-be-content"
-      },
-      {
-        "id": "02",
-        "title": "Song of the Indian Maid, from 'Endymion'",
-        "subtitle": "O SORROW! Why dost borrow…",
-        "poemId": "keats--song-of-the-indian-maid-from-endymion"
-      },
-      {
-        "id": "03",
-        "title": "In Drear-Nighted December",
-        "subtitle": "In drear-nighted December, Too happy, happy…",
-        "poemId": "keats--in-drear-nighted-december"
-      }
-    ]
-  },
-  {
-    "id": "shakespeare",
-    "name": "William Shakespeare",
-    "fullName": "William Shakespeare",
-    "born": 1564,
-    "died": 1616,
-    "from": "England",
-    "era": "Renaissance",
-    "tag": "Renaissance Master",
-    "essence": "The universal voice of human nature, passion, and time's decay",
-    "bio": "William Shakespeare was an English playwright and poet, widely regarded as the greatest writer in the English language. His 154 sonnets are meditations on love, beauty, mortality, and the power of time.",
-    "poemCount": 162,
-    "moods": [
-      "love",
-      "longing",
-      "joy"
-    ],
-    "portalTags": [
-      "Radiant",
-      "Warmth",
-      "Melancholic",
       "Drift"
     ],
     "works": [
       {
         "id": "01",
-        "title": "A Lover's Complaint",
-        "subtitle": "FROM off a hill whose concave…",
-        "poemId": "shakespeare--a-lovers-complaint"
+        "title": "The Road Not Taken",
+        "subtitle": "Two roads diverged in a yellow wood, And…",
+        "poemId": "robert-frost--the-road-not-taken"
       },
       {
         "id": "02",
-        "title": "Sonnet 47: Betwixt mine eye and heart a league is took",
-        "subtitle": "Betwixt mine eye and heart a…",
-        "poemId": "shakespeare--sonnet-47-betwixt-mine-eye-and-heart-a-league-is-took"
+        "title": "For Once, Then, Something",
+        "subtitle": "Others taunt me with having knelt at well-curbs…",
+        "poemId": "robert-frost--for-once-then-something"
       },
       {
         "id": "03",
-        "title": "Sonnet 101: O truant Muse what shall be thy amends",
-        "subtitle": "O truant Muse what shall be…",
-        "poemId": "shakespeare--sonnet-101-o-truant-muse-what-shall-be-thy-amends"
+        "title": "Gathering Leaves",
+        "subtitle": "Spades take up leaves No better than spoons,…",
+        "poemId": "robert-frost--gathering-leaves"
       }
-    ]
+    ],
+    "heroLabel": "American voice",
+    "resonance": "Frost’s best poems turn after the last line; the reader becomes the traveler who chose.",
+    "quote": "Two roads diverged in a wood, and I— / I took the one less traveled by,",
+    "quoteSource": "The Road Not Taken"
   },
   {
-    "id": "dickinson",
-    "name": "Emily Dickinson",
-    "fullName": "Emily Dickinson",
-    "born": 1830,
-    "died": 1886,
-    "from": "America",
-    "era": "Victorian",
-    "tag": "American Recluse",
-    "essence": "Death, eternity, and the interior life compressed into dashes and hymn",
-    "bio": "Emily Dickinson was an American poet whose unconventional syntax and imagery created a body of work unlike anything before it. Her poems speak across time with startling immediacy and psychological depth.",
-    "poemCount": 362,
-    "moods": [
-      "longing",
-      "wonder",
-      "grief"
-    ],
-    "portalTags": [
-      "Melancholic",
-      "Drift",
-      "Radiant",
-      "Ethereal"
-    ],
-    "works": [
-      {
-        "id": "01",
-        "title": "Not at Home to Callers",
-        "subtitle": "Not at Home to Callers Says…",
-        "poemId": "dickinson--not-at-home-to-callers"
-      },
-      {
-        "id": "02",
-        "title": "Estranged from Beauty -- none can be --",
-        "subtitle": "Estranged from Beauty -- none can…",
-        "poemId": "dickinson--estranged-from-beauty-none-can-be-"
-      },
-      {
-        "id": "03",
-        "title": "To lose one's faith -- surpass",
-        "subtitle": "To lose one's faith -- surpass…",
-        "poemId": "dickinson--to-lose-ones-faith-surpass"
-      }
-    ]
-  },
-  {
-    "id": "whitman",
-    "name": "Walt Whitman",
-    "fullName": "Walt Whitman",
-    "born": 1819,
-    "died": 1892,
-    "from": "America",
-    "era": "Transcendentalist",
-    "tag": "American Bard",
-    "essence": "The democratic soul — all bodies, all voices, one immense song",
-    "bio": "Walt Whitman was an American poet whose groundbreaking Leaves of Grass introduced expansive free verse. His long lines and catalogs of American life transformed what poetry could contain and express.",
-    "poemCount": 67,
-    "moods": [
-      "love",
-      "joy",
-      "grief"
-    ],
-    "portalTags": [
-      "Radiant",
-      "Melancholic",
-      "Warmth",
-      "Pulse"
-    ],
-    "works": [
-      {
-        "id": "01",
-        "title": "Primeval my Love for the Woman I Love.",
-        "subtitle": "PRIMEVAL my love for the woman…",
-        "poemId": "whitman--primeval-my-love-for-the-woman-i-love"
-      },
-      {
-        "id": "02",
-        "title": "On Journeys Through The States.",
-        "subtitle": "ON journeys through the States we…",
-        "poemId": "whitman--on-journeys-through-the-states"
-      },
-      {
-        "id": "03",
-        "title": "Song of the Universal.",
-        "subtitle": "1 COME, said the Muse,…",
-        "poemId": "whitman--song-of-the-universal"
-      }
-    ]
-  },
-  {
-    "id": "poe",
-    "name": "Edgar Allan Poe",
-    "fullName": "Edgar Allan Poe",
-    "born": 1809,
-    "died": 1849,
-    "from": "America",
-    "era": "Gothic Romanticism",
-    "tag": "Gothic Romantic",
-    "essence": "Beauty as shadow — the music of grief, madness, and the sublime dark",
-    "bio": "Edgar Allan Poe was an American writer known for poetry and stories of mystery and the macabre. His poems — The Raven, Annabel Lee, The Bells — are masterworks of sonic intensity and psychological darkness.",
-    "poemCount": 47,
-    "moods": [
-      "love",
-      "grief",
-      "longing"
-    ],
-    "portalTags": [
-      "Melancholic",
-      "Radiant",
-      "Warmth",
-      "Static"
-    ],
-    "works": [
-      {
-        "id": "01",
-        "title": "The Raven",
-        "subtitle": "Once upon a midnight dreary, while…",
-        "poemId": "poe--the-raven"
-      },
-      {
-        "id": "02",
-        "title": "The City In The Sea",
-        "subtitle": "Lo! Death has reared himself a…",
-        "poemId": "poe--the-city-in-the-sea"
-      },
-      {
-        "id": "03",
-        "title": "The Valley Of Unrest",
-        "subtitle": "_Once_ it smiled a silent dell…",
-        "poemId": "poe--the-valley-of-unrest"
-      }
-    ]
-  },
-  {
-    "id": "dunbar",
-    "name": "Paul Laurence Dunbar",
-    "fullName": "Paul Laurence Dunbar",
-    "born": 1872,
-    "died": 1906,
-    "from": "America",
-    "era": "Victorian",
-    "tag": "American Folk Voice",
-    "essence": "Dignity, music, and the double consciousness of joy worn over grief",
-    "bio": "Paul Laurence Dunbar was the first African-American poet to gain national prominence. He wrote in both standard English and dialect, weaving folk song, lyric beauty, and unflinching truth about race in America.",
-    "poemCount": 9,
-    "moods": [
-      "love",
-      "joy",
-      "longing"
-    ],
-    "portalTags": [
-      "Radiant",
-      "Warmth",
-      "Melancholic",
-      "Pulse"
-    ],
-    "works": [
-      {
-        "id": "01",
-        "title": "My Little March Girl",
-        "subtitle": "Come to the pane, draw the…",
-        "poemId": "dunbar--my-little-march-girl"
-      },
-      {
-        "id": "02",
-        "title": "Encouraged",
-        "subtitle": "Because you love me I have…",
-        "poemId": "dunbar--encouraged"
-      },
-      {
-        "id": "03",
-        "title": "Life's Tragedy",
-        "subtitle": "It may be misery not to…",
-        "poemId": "dunbar--lifes-tragedy"
-      }
-    ]
-  },
-  {
-    "id": "wheatley",
-    "name": "Phillis Wheatley",
-    "fullName": "Phillis Wheatley",
-    "born": 1753,
-    "died": 1784,
-    "from": "America",
-    "era": "Colonial",
-    "tag": "Pioneer Voice",
-    "essence": "The first published Black poet in English — breaking chains with eloquence",
-    "bio": "Phillis Wheatley was an African-American poet and the first Black author to publish a book in English. Enslaved in Boston, she proved her humanity and genius through classical verse that challenged racism itself.",
-    "poemCount": 12,
-    "moods": [
-      "love",
-      "grief",
-      "longing"
-    ],
-    "portalTags": [
-      "Warmth",
-      "Radiant",
-      "Static",
-      "Melancholic"
-    ],
-    "works": [
-      {
-        "id": "01",
-        "title": "Niobe in Distress",
-        "subtitle": "Apollo's wrath to man the dreadful…",
-        "poemId": "wheatley--niobe-in-distress"
-      },
-      {
-        "id": "02",
-        "title": "To a Gentleman and Lady on the Death of the Lady's Brother and Sister",
-        "subtitle": "On Death's domain intent I fix…",
-        "poemId": "wheatley--to-a-gentleman-and-lady-on-the-death-of-the-ladys-brother-an"
-      },
-      {
-        "id": "03",
-        "title": "To A Lady On The Death Of The Three Relations",
-        "subtitle": "WE trace the pow'r of Death…",
-        "poemId": "wheatley--to-a-lady-on-the-death-of-the-three-relations"
-      }
-    ]
-  },
-  {
-    "id": "burns",
-    "name": "Robert Burns",
-    "fullName": "Robert Burns",
-    "born": 1759,
-    "died": 1796,
-    "from": "Scotland",
-    "era": "Romantic",
-    "tag": "Scottish Bard",
-    "essence": "Love, nature, and the egalitarian warmth of the Scottish soul",
-    "bio": "Robert Burns was Scotland's national poet. Writing in Scots dialect and English, he produced love songs, drinking songs, and political verse of enduring power, from A Red, Red Rose to A Man's a Man.",
-    "poemCount": 99,
-    "moods": [
-      "love",
-      "joy",
-      "longing"
-    ],
-    "portalTags": [
-      "Radiant",
-      "Melancholic",
-      "Warmth",
-      "Pulse"
-    ],
-    "works": [
-      {
-        "id": "01",
-        "title": "292. Song—Farewell to the Highlands",
-        "subtitle": "FAREWELL to the Highlands, farewell to…",
-        "poemId": "burns--292-songfarewell-to-the-highlands"
-      },
-      {
-        "id": "02",
-        "title": "540. Inscription to Chloris",
-        "subtitle": "’TIS Friendship’s pledge, my young, fair…",
-        "poemId": "burns--540-inscription-to-chloris"
-      },
-      {
-        "id": "03",
-        "title": "83. The Cotter’s Saturday Night",
-        "subtitle": "MY lov’d, my honour’d, much respected…",
-        "poemId": "burns--83-the-cotters-saturday-night"
-      }
-    ]
-  },
-  {
-    "id": "edward-thomas",
-    "name": "Edward Thomas",
-    "fullName": "Edward Thomas",
-    "born": 1878,
-    "died": 1917,
+    "id": "robert-herrick",
+    "name": "Robert Herrick",
+    "fullName": "Robert Herrick",
+    "born": 1591,
+    "died": 1674,
     "from": "England",
-    "era": "Modern",
-    "tag": "Nature Poet",
-    "essence": "Subtle observation of landscape and memory — the ordinary made luminous",
-    "bio": "Edward Thomas was an English poet whose nature poetry subtly captures the English countryside with psychological complexity. Works like Adlestrop and The Path bridge late Romanticism and modernism, melding observation with emotional depth.",
-    "poemCount": 131,
+    "era": "Cavalier / seventeenth century",
+    "tag": "Cavalier lyric",
+    "essence": "Carpe florem—small joys, brief beauty, and wit polished like silver.",
+    "bio": "Robert Herrick’s Hesperides gathers hundreds of short lyrics: to Julia, to dew, to fleeting time. A country priest’s book that drinks deep of pagan delight.",
+    "poemCount": 1,
     "moods": [
-      "longing",
-      "grief",
-      "joy"
+      "Playful",
+      "Sensual",
+      "Ephemeral"
     ],
     "portalTags": [
       "Melancholic",
+      "Calm",
+      "Pulse",
+      "Drift"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "To the Virgins, to Make Much of Time",
+        "subtitle": "Gather ye rosebuds while ye may, Old Time…",
+        "poemId": "robert-herrick--to-the-virgins-to-make-much-of-time"
+      },
+      {
+        "id": "02",
+        "title": "To the Virgins, to Make Much of Time",
+        "subtitle": "Gather ye rosebuds while ye may, Old Time…",
+        "poemId": "robert-herrick--to-the-virgins-to-make-much-of-time"
+      },
+      {
+        "id": "03",
+        "title": "To the Virgins, to Make Much of Time",
+        "subtitle": "Gather ye rosebuds while ye may, Old Time…",
+        "poemId": "robert-herrick--to-the-virgins-to-make-much-of-time"
+      }
+    ],
+    "heroLabel": "Renaissance voice",
+    "resonance": "Herrick teaches lightness as discipline—serious craft in praise of unserious moments.",
+    "quote": "Gather ye rosebuds while ye may, / Old Time is still a-flying:",
+    "quoteSource": "To the Virgins, to Make Much of Time"
+  },
+  {
+    "id": "rudyard-kipling",
+    "name": "Rudyard Kipling",
+    "fullName": "Rudyard Kipling",
+    "born": 1865,
+    "died": 1936,
+    "from": "British India / England",
+    "era": "Victorian / Edwardian",
+    "tag": "Empire-era storyteller",
+    "essence": "Barrack-room ballads, jungle law, and the empire’s conscience in rough rhyme.",
+    "bio": "Rudyard Kipling was born in Bombay, educated in England, and returned to India as a journalist. His verse ranges from soldierly anecdote to children’s myth; read today with historical awareness of imperial power.",
+    "poemCount": 20,
+    "moods": [
+      "Narrative",
+      "Rhythmic",
+      "Colonial-era"
+    ],
+    "portalTags": [
+      "Calm",
+      "Melancholic",
       "Drift",
-      "Static",
       "Radiant"
     ],
     "works": [
       {
         "id": "01",
-        "title": "When He Should Laugh",
-        "subtitle": "WHEN he should laugh the wise…",
-        "poemId": "edward-thomas--when-he-should-laugh"
+        "title": "Cities and Thrones and Powers",
+        "subtitle": "_Cities and Thrones and Powers, Stand in Time's…",
+        "poemId": "rudyard-kipling--cities-and-thrones-and-powers"
       },
       {
         "id": "02",
-        "title": "The Gypsy",
-        "subtitle": "A FORTNIGHT before Christmas Gypsies were…",
-        "poemId": "edward-thomas--the-gypsy"
+        "title": "A Charm",
+        "subtitle": "Take of English earth as much As either…",
+        "poemId": "rudyard-kipling--a-charm"
       },
       {
         "id": "03",
-        "title": "Liberty",
-        "subtitle": "THE last light has gone out…",
-        "poemId": "edward-thomas--liberty"
+        "title": "If—",
+        "subtitle": "If you can keep your head when all…",
+        "poemId": "rudyard-kipling--if"
       }
-    ]
+    ],
+    "heroLabel": "English voice",
+    "resonance": "Kipling’s technical gifts are undeniable; his politics require critical framing—both can coexist in study.",
+    "quote": "If you can keep your head when all about you / Are losing theirs and blaming it on you,",
+    "quoteSource": "If—"
   },
   {
-    "id": "hopkins",
-    "name": "Gerard Manley Hopkins",
-    "fullName": "Gerard Manley Hopkins",
-    "born": 1844,
-    "died": 1889,
-    "from": "England",
-    "era": "Victorian",
-    "tag": "Modern Innovator",
-    "essence": "Sprung rhythm and divine radiance — language remade for beauty and faith",
-    "bio": "Gerard Manley Hopkins was an English poet whose innovative sprung rhythm and vivid language created a distinctly modern voice. His spiritual intensity and technical brilliance, as in God's Grandeur, influenced generations of poets.",
-    "poemCount": 26,
+    "id": "ryokan",
+    "name": "Ryokan",
+    "fullName": "Ryokan",
+    "born": 1758,
+    "died": 1831,
+    "from": "Japan",
+    "era": "Edo-period Zen",
+    "tag": "Zen monk poet",
+    "essence": "Humility, haikai spirit, and the joke that enlightenment might look like doing chores badly.",
+    "bio": "Ryōkan Taigu was a Sōtō Zen monk whose poems and calligraphy blend childlike simplicity with depth. He favored mendicancy over temple politics; his ink still feels like breathing room.",
+    "poemCount": 20,
     "moods": [
-      "grief",
-      "love",
-      "longing"
+      "Simple",
+      "Playful",
+      "Contemplative"
     ],
     "portalTags": [
-      "Melancholic",
-      "Radiant",
-      "Static",
-      "Warmth"
+      "Calm",
+      "Pulse",
+      "Drift",
+      "Melancholic"
     ],
     "works": [
       {
         "id": "01",
-        "title": "Thee, God, I Come from",
-        "subtitle": "Thee, God, I come from, to…",
-        "poemId": "hopkins--thee-god-i-come-from"
+        "title": "When thoughts run out",
+        "subtitle": "When thoughts run out I step into the…",
+        "poemId": "ryokan--when-thoughts-run-out"
       },
       {
         "id": "02",
-        "title": "The Sea And The Skylark",
-        "subtitle": "On ear and ear two noises…",
-        "poemId": "hopkins--the-sea-and-the-skylark"
+        "title": "Spring will open every branch",
+        "subtitle": "Spring will open every branch. Flowers will return.…",
+        "poemId": "ryokan--spring-will-open-every-branch"
       },
       {
         "id": "03",
-        "title": "The Child Is Father To The Man",
-        "subtitle": "'The child is father to the…",
-        "poemId": "hopkins--the-child-is-father-to-the-man"
+        "title": "When I was young",
+        "subtitle": "When I was young I put books aside…",
+        "poemId": "ryokan--when-i-was-young"
       }
-    ]
+    ],
+    "heroLabel": "Japanese voice",
+    "resonance": "Ryokan’s lines model how humor and holiness can share one tatami mat.",
+    "quote": "Too lazy to be ambitious, / I let the world take care of itself.",
+    "quoteSource": "Ryokan (translated tradition)"
   },
   {
-    "id": "owen",
-    "name": "Wilfred Owen",
-    "fullName": "Wilfred Owen",
-    "born": 1893,
-    "died": 1918,
-    "from": "England",
-    "era": "Modern",
-    "tag": "War Poet",
-    "essence": "The horror and pity of war — beauty twisted into terrible truth",
-    "bio": "Wilfred Owen was a British poet of World War I who used traditional forms to convey the psychological and physical devastation of trench warfare. His poems, from Dulce et Decorum Est to Strange Meeting, are testimony and elegy.",
-    "poemCount": 5,
+    "id": "sarojini-naidu",
+    "name": "Sarojini Naidu",
+    "fullName": "Sarojini Naidu",
+    "born": 1879,
+    "died": 1949,
+    "from": "India",
+    "era": "Indian independence era",
+    "tag": "Political lyric",
+    "essence": "Nightingale of India—song woven with congress speeches and feminist courage.",
+    "bio": "Sarojini Naidu was a poet, orator, and independence leader. Her English lyrics draw on Indian landscapes and folk forms while addressing modern nationhood and women’s dignity.",
+    "poemCount": 1,
     "moods": [
-      "grief",
-      "joy",
-      "longing"
+      "Musical",
+      "Patriotic",
+      "Lyrical"
     ],
     "portalTags": [
-      "Static",
+      "Radiant",
+      "Ethereal",
+      "Focus",
+      "Lush"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Coromandel Fishers",
+        "subtitle": "Rise, brothers, rise; the wakening skies pray to…",
+        "poemId": "sarojini-naidu--coromandel-fishers"
+      },
+      {
+        "id": "02",
+        "title": "Coromandel Fishers",
+        "subtitle": "Rise, brothers, rise; the wakening skies pray to…",
+        "poemId": "sarojini-naidu--coromandel-fishers"
+      },
+      {
+        "id": "03",
+        "title": "Coromandel Fishers",
+        "subtitle": "Rise, brothers, rise; the wakening skies pray to…",
+        "poemId": "sarojini-naidu--coromandel-fishers"
+      }
+    ],
+    "heroLabel": "Indian voice",
+    "resonance": "Naidu shows how public speech and private music can strengthen each other.",
+    "quote": "We shall remember when loveliness / Walks eager through the Door of Life / Liptinted with delirious bliss / In rosegold and in rose.",
+    "quoteSource": "Palanquin-Bearers"
+  },
+  {
+    "id": "siegfried-sassoon",
+    "name": "Siegfried Sassoon",
+    "fullName": "Siegfried Sassoon",
+    "born": 1886,
+    "died": 1967,
+    "from": "England",
+    "era": "World War I / modern",
+    "tag": "War poet",
+    "essence": "Trench truth in controlled anger—satire and pity sharing one gasp.",
+    "bio": "Siegfried Sassoon’s war poems record moral shock in plain English. Soldier, protester, memoirist, he helped shape how literature remembers 1914–1918.",
+    "poemCount": 1,
+    "moods": [
+      "Satirical",
+      "Grieving",
+      "Direct"
+    ],
+    "portalTags": [
+      "Melancholic",
+      "Calm",
+      "Drift",
+      "Pulse"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Suicide in the Trenches",
+        "subtitle": "I knew a simple soldier boy Who grinned…",
+        "poemId": "siegfried-sassoon--suicide-in-the-trenches"
+      },
+      {
+        "id": "02",
+        "title": "Suicide in the Trenches",
+        "subtitle": "I knew a simple soldier boy Who grinned…",
+        "poemId": "siegfried-sassoon--suicide-in-the-trenches"
+      },
+      {
+        "id": "03",
+        "title": "Suicide in the Trenches",
+        "subtitle": "I knew a simple soldier boy Who grinned…",
+        "poemId": "siegfried-sassoon--suicide-in-the-trenches"
+      }
+    ],
+    "heroLabel": "English voice",
+    "resonance": "Sassoon proves understatement can carry fury—no fireworks, only scar tissue.",
+    "quote": "Does it matter?—losing your sight? / There’s such splendid work for the blind;",
+    "quoteSource": "Does it Matter?"
+  },
+  {
+    "id": "t-s-eliot",
+    "name": "T. S. Eliot",
+    "fullName": "Thomas Stearns Eliot",
+    "born": 1888,
+    "died": 1965,
+    "from": "United States / England",
+    "era": "High modernism",
+    "tag": "Modernist",
+    "essence": "Fragment as method—city prayer, mythic collage, and the hollow men’s echo.",
+    "bio": "T. S. Eliot reshaped English poetry with The Waste Land and Four Quartets, and shaped taste through criticism. British citizen, American roots, Anglican convert—his work is as contested as it is canonical.",
+    "poemCount": 20,
+    "moods": [
+      "Fragmented",
+      "Liturgical",
+      "Urban"
+    ],
+    "portalTags": [
+      "Calm",
       "Melancholic",
       "Radiant",
       "Ethereal"
@@ -817,66 +1417,218 @@
     "works": [
       {
         "id": "01",
-        "title": "Disabled",
-        "subtitle": "He sat in a wheeled chair,…",
-        "poemId": "owen--disabled"
+        "title": "Gerontion",
+        "subtitle": "Thou hast nor youth nor age But as…",
+        "poemId": "t-s-eliot--gerontion"
       },
       {
         "id": "02",
-        "title": "Winter Song",
-        "subtitle": "The browns, the olives, and the…",
-        "poemId": "owen--winter-song"
+        "title": "Whispers of Immortality",
+        "subtitle": "Webster was much possessed by death And saw…",
+        "poemId": "t-s-eliot--whispers-of-immortality"
       },
       {
         "id": "03",
-        "title": "Spring Offensive",
-        "subtitle": "Halted against the shade of a…",
-        "poemId": "owen--spring-offensive"
+        "title": "Rhapsody on a Windy Night",
+        "subtitle": "Twelve o'clock. Along the reaches of the street…",
+        "poemId": "t-s-eliot--rhapsody-on-a-windy-night"
       }
-    ]
+    ],
+    "heroLabel": "Modernist",
+    "resonance": "Eliot rewards slow excavation—every allusion is a door, not a lock.",
+    "quote": "This is the way the world ends / Not with a bang but a whimper.",
+    "quoteSource": "The Hollow Men"
   },
   {
-    "id": "rossetti",
-    "name": "Christina Rossetti",
-    "fullName": "Christina Georgina Rossetti",
-    "born": 1830,
-    "died": 1894,
-    "from": "England",
-    "era": "Victorian",
-    "tag": "Pre-Raphaelite Voice",
-    "essence": "Devotion, longing, and the quiet persistence of love beyond death",
-    "bio": "Christina Rossetti was one of the foremost Victorian poets. Her devotional verse and sonnets, including Monna Innominata, combine formal rigour with intense emotional depth and spiritual yearning.",
-    "poemCount": 13,
+    "id": "tagore",
+    "name": "Rabindranath Tagore",
+    "fullName": "Rabindranath Tagore",
+    "born": 1861,
+    "died": 1941,
+    "from": "Bengal, British India",
+    "era": "Bengali Renaissance",
+    "tag": "Nobel laureate",
+    "essence": "Song-offerings: nature, devotion, and freedom pressed into lyric sequence.",
+    "bio": "Rabindranath Tagore wrote novels, essays, music, and poetry that helped define modern Bengali culture; Gitanjali won the Nobel Prize in Literature. His English renderings opened a global readership—always a glimpse, never the whole ocean.",
+    "poemCount": 20,
     "moods": [
-      "grief",
-      "longing",
-      "joy"
+      "Devotional",
+      "Pastoral",
+      "Philosophical"
     ],
     "portalTags": [
-      "Melancholic",
       "Radiant",
-      "Static",
-      "Drift"
+      "Ethereal",
+      "Calm",
+      "Warmth"
     ],
     "works": [
       {
         "id": "01",
-        "title": "From Sunset to Star Rise",
-        "subtitle": "Go from me, summer friends, and…",
-        "poemId": "rossetti--from-sunset-to-star-rise"
+        "title": "I ask for a moment’s indulgence to sit",
+        "subtitle": "I ask for a moment’s indulgence to sit…",
+        "poemId": "tagore--gitanjali-005"
       },
       {
         "id": "02",
-        "title": "Spring Quiet",
-        "subtitle": "Gone were but the Winter, Come…",
-        "poemId": "rossetti--spring-quiet"
+        "title": "If thou speakest not I will fill my",
+        "subtitle": "If thou speakest not I will fill my…",
+        "poemId": "tagore--gitanjali-019"
       },
       {
         "id": "03",
-        "title": "The Thread of Life",
-        "subtitle": "I The irresponsive silence of the…",
-        "poemId": "rossetti--the-thread-of-life"
+        "title": "The morning sea of silence broke into ripples",
+        "subtitle": "The morning sea of silence broke into ripples…",
+        "poemId": "tagore--gitanjali-048"
       }
-    ]
+    ],
+    "heroLabel": "Bengali voice",
+    "resonance": "Tagore’s archive presence is gentle light—invitation to widen the heart’s vocabulary.",
+    "quote": "The same stream of life that runs through my veins night and day / runs through the world and dances in rhythmic measures.",
+    "quoteSource": "Gitanjali (translation tradition)"
+  },
+  {
+    "id": "thomas-nashe",
+    "name": "Thomas Nashe",
+    "fullName": "Thomas Nashe",
+    "born": 1567,
+    "died": 1601,
+    "from": "England",
+    "era": "Elizabethan",
+    "tag": "Elizabethan satirist",
+    "essence": "Pamphlet energy, plague-year vision, and prose that snaps like a street cry.",
+    "bio": "Thomas Nashe wrote plays, satires, and fantastical prose in the fierce print culture of Elizabethan London. His verse can feel like a torch carried too close to the face—glaring, comic, uncanny.",
+    "poemCount": 1,
+    "moods": [
+      "Satiric",
+      "Grotesque",
+      "Vivid"
+    ],
+    "portalTags": [
+      "Static",
+      "Pulse",
+      "Ethereal",
+      "Calm"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "A Litany in Time of Plague",
+        "subtitle": "Adieu, farewell earth's bliss, This world uncertain is,…",
+        "poemId": "thomas-nashe--a-litany-in-time-of-plague"
+      },
+      {
+        "id": "02",
+        "title": "A Litany in Time of Plague",
+        "subtitle": "Adieu, farewell earth's bliss, This world uncertain is,…",
+        "poemId": "thomas-nashe--a-litany-in-time-of-plague"
+      },
+      {
+        "id": "03",
+        "title": "A Litany in Time of Plague",
+        "subtitle": "Adieu, farewell earth's bliss, This world uncertain is,…",
+        "poemId": "thomas-nashe--a-litany-in-time-of-plague"
+      }
+    ],
+    "heroLabel": "Renaissance voice",
+    "resonance": "Nashe reminds us that early modern English was a playground as much as a temple.",
+    "quote": "Brightness falls from the air; / Queens have died young and fair;",
+    "quoteSource": "In Time of Pestilence"
+  },
+  {
+    "id": "wallace-stevens",
+    "name": "Wallace Stevens",
+    "fullName": "Wallace Stevens",
+    "born": 1879,
+    "died": 1955,
+    "from": "United States",
+    "era": "American modernism",
+    "tag": "Philosophical modernist",
+    "essence": "Florida light in metaphysics—insurance executive by day, supreme fiction by night.",
+    "bio": "Wallace Stevens spent his career in surety law while writing some of American poetry’s most luxurious meditations on imagination, weather, and belief without God.",
+    "poemCount": 1,
+    "moods": [
+      "Luminous",
+      "Abstract",
+      "Playful"
+    ],
+    "portalTags": [
+      "Focus",
+      "Lush",
+      "Ethereal",
+      "Calm"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Anecdote of the Jar",
+        "subtitle": "I placed a jar in Tennessee, And round…",
+        "poemId": "wallace-stevens--anecdote-of-the-jar"
+      },
+      {
+        "id": "02",
+        "title": "Anecdote of the Jar",
+        "subtitle": "I placed a jar in Tennessee, And round…",
+        "poemId": "wallace-stevens--anecdote-of-the-jar"
+      },
+      {
+        "id": "03",
+        "title": "Anecdote of the Jar",
+        "subtitle": "I placed a jar in Tennessee, And round…",
+        "poemId": "wallace-stevens--anecdote-of-the-jar"
+      }
+    ],
+    "heroLabel": "American voice",
+    "resonance": "Stevens asks whether the mind’s fiction is the only sacred ground left—and answers with music.",
+    "quote": "I do not know which to prefer, / The beauty of inflections / Or the beauty of innuendoes, / The blackbird whistling / Or just after.",
+    "quoteSource": "Thirteen Ways of Looking at a Blackbird"
+  },
+  {
+    "id": "william-carlos-williams",
+    "name": "William Carlos Williams",
+    "fullName": "William Carlos Williams",
+    "born": 1883,
+    "died": 1963,
+    "from": "United States",
+    "era": "Imagist / objectivist",
+    "tag": "American modern",
+    "essence": "No ideas but in things—red wheelbarrow modernity, doctor’s-eye clarity.",
+    "bio": "William Carlos Williams practiced medicine in New Jersey while writing poems that insisted the local was universal. Paterson and the short imagist lyrics still reset poetic attention.",
+    "poemCount": 1,
+    "moods": [
+      "Concrete",
+      "Compassionate",
+      "Modern"
+    ],
+    "portalTags": [
+      "Focus",
+      "Lush",
+      "Ethereal",
+      "Calm"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "The Red Wheelbarrow",
+        "subtitle": "so much depends upon…",
+        "poemId": "william-carlos-williams--the-red-wheelbarrow"
+      },
+      {
+        "id": "02",
+        "title": "The Red Wheelbarrow",
+        "subtitle": "so much depends upon…",
+        "poemId": "william-carlos-williams--the-red-wheelbarrow"
+      },
+      {
+        "id": "03",
+        "title": "The Red Wheelbarrow",
+        "subtitle": "so much depends upon…",
+        "poemId": "william-carlos-williams--the-red-wheelbarrow"
+      }
+    ],
+    "heroLabel": "American voice",
+    "resonance": "Williams teaches seeing before judging—the poem as diagnosis of attention.",
+    "quote": "so much depends / upon / a red wheel / barrow",
+    "quoteSource": "The Red Wheelbarrow"
   }
 ]

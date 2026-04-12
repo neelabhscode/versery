@@ -1,0 +1,222 @@
+[
+  {
+    "title": "Matsuo Bashō",
+    "source": "17th century; haikai tradition",
+    "mood_chip": "Ethereal",
+    "text": "Old pond—\na frog jumps in:\nsplash, then silence.",
+    "moods": [
+      "Ethereal",
+      "Wonder",
+      "Peace"
+    ]
+  },
+  {
+    "title": "Even in Kyoto",
+    "source": "The Narrow Road to the Deep North (Oku no Hosomichi), 1689",
+    "mood_chip": "Longing",
+    "text": "Even in Kyoto,\nI miss Kyoto—\ncuckoo calling.",
+    "moods": [
+      "Longing",
+      "Mortality",
+      "Peace"
+    ]
+  },
+  {
+    "title": "On a leafless branch",
+    "source": "17th century",
+    "mood_chip": "Grief",
+    "text": "On a leafless branch\na crow sits still—\nautumn evening.",
+    "moods": [
+      "Grief",
+      "Longing",
+      "Melancholic"
+    ]
+  },
+  {
+    "title": "Winter thins the world",
+    "source": "17th century",
+    "mood_chip": "Ethereal",
+    "text": "Winter thins the world;\ngeese cry overhead—\nso much sky.",
+    "moods": [
+      "Ethereal",
+      "Wonder",
+      "Devotion"
+    ]
+  },
+  {
+    "title": "Stillness",
+    "source": "The Narrow Road to the Deep North, 1689",
+    "mood_chip": "Peace",
+    "text": "Stillness—\ncicada song\nseeping into stone.",
+    "moods": [
+      "Peace",
+      "Solitary",
+      "Longing"
+    ]
+  },
+  {
+    "title": "Lightning",
+    "source": "17th century",
+    "mood_chip": "Nature",
+    "text": "Lightning—\nwhat I mistook for faces:\nwild spring blossoms.",
+    "moods": [
+      "Nature",
+      "Wonder",
+      "Peace"
+    ]
+  },
+  {
+    "title": "First cherry white",
+    "source": "17th century",
+    "mood_chip": "Peace",
+    "text": "First cherry white—\nridges still clenched\nin winter snow.",
+    "moods": [
+      "Peace",
+      "Wonder",
+      "Devotion"
+    ]
+  },
+  {
+    "title": "Kobayashi Issa",
+    "source": "19th century",
+    "mood_chip": "Grief",
+    "text": "The world of dew—\nonly dew, they say,\nand yet… and yet.",
+    "moods": [
+      "Grief",
+      "Longing",
+      "Melancholic"
+    ]
+  },
+  {
+    "title": "The snail climbs Fuji",
+    "source": "19th century",
+    "mood_chip": "Nature",
+    "text": "The snail climbs Fuji—\ninch by inch,\nno rush.",
+    "moods": [
+      "Nature",
+      "Peace",
+      "Radiant"
+    ]
+  },
+  {
+    "title": "Under the blossoms",
+    "source": "19th century",
+    "mood_chip": "Longing",
+    "text": "Under the blossoms,\nwe are all strangers—\nno host, no guest.",
+    "moods": [
+      "Longing",
+      "Mortality",
+      "Peace"
+    ]
+  },
+  {
+    "title": "New Year's morning",
+    "source": "19th century",
+    "mood_chip": "Peace",
+    "text": "New Year's morning—\nI open my eyes:\nstill me.",
+    "moods": [
+      "Peace",
+      "Nature",
+      "Radiant"
+    ]
+  },
+  {
+    "title": "Don't kill the fly",
+    "source": "19th century",
+    "mood_chip": "Devotion",
+    "text": "Don't kill the fly—\nwatch it wring\nits thread-thin hands.",
+    "moods": [
+      "Devotion",
+      "Ethereal",
+      "Peace"
+    ]
+  },
+  {
+    "title": "This snowy dawn",
+    "source": "19th century",
+    "mood_chip": "Grief",
+    "text": "This snowy dawn—\na weeping cherry\nholds its own thin ghost.",
+    "moods": [
+      "Grief",
+      "Longing",
+      "Melancholic"
+    ]
+  },
+  {
+    "title": "The moon tonight",
+    "source": "19th century",
+    "mood_chip": "Solitary",
+    "text": "The moon tonight—\nI own no roof;\nstill, it lights my mat.",
+    "moods": [
+      "Solitary",
+      "Peace",
+      "Ethereal"
+    ]
+  },
+  {
+    "title": "Yosa Buson",
+    "source": "18th century",
+    "mood_chip": "Grief",
+    "text": "My dead wife's comb—\nunder the bed.\nWinter in my ribs.",
+    "moods": [
+      "Grief",
+      "Longing",
+      "Melancholic"
+    ]
+  },
+  {
+    "title": "Short night",
+    "source": "18th century",
+    "mood_chip": "Devotion",
+    "text": "Short night—\nI never saw it,\nbut ice is thinning.",
+    "moods": [
+      "Devotion",
+      "Ethereal",
+      "Peace"
+    ]
+  },
+  {
+    "title": "Dusk, standing still",
+    "source": "18th century",
+    "mood_chip": "Peace",
+    "text": "Dusk, standing still—\nfar off, one by one,\nwild pears fall.",
+    "moods": [
+      "Peace",
+      "Nature",
+      "Radiant"
+    ]
+  },
+  {
+    "title": "Thin moon",
+    "source": "18th century",
+    "mood_chip": "Ethereal",
+    "text": "Thin moon—\nwisteria breath\nalong the eaves.",
+    "moods": [
+      "Ethereal",
+      "Wonder",
+      "Devotion"
+    ]
+  },
+  {
+    "title": "Spring cold",
+    "source": "18th century",
+    "mood_chip": "Longing",
+    "text": "Spring cold—\nthe night opens\nslowly toward the hill.",
+    "moods": [
+      "Longing",
+      "Mortality",
+      "Nature"
+    ]
+  },
+  {
+    "title": "One candle",
+    "source": "18th century",
+    "mood_chip": "Devotion",
+    "text": "One candle\nlights another—\nspring evening.",
+    "moods": [
+      "Devotion",
+      "Ethereal",
+      "Love"
+    ]
+  }
+]

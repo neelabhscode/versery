@@ -20,22 +20,26 @@ function hasAnyUtm(utm) {
 
 export function captureFirstTouchAttribution() {
   if (typeof window === "undefined") return;
-  const utm = getCurrentUtmParams();
-  const existing = localStorage.getItem(FIRST_TOUCH_KEY);
-  if (existing) return;
+  try {
+    const utm = getCurrentUtmParams();
+    const existing = localStorage.getItem(FIRST_TOUCH_KEY);
+    if (existing) return;
 
-  const payload = {
-    ...utm,
-    referrer: document.referrer || null,
-    landing_path: window.location.pathname || "/",
-    captured_at: new Date().toISOString(),
-  };
+    const payload = {
+      ...utm,
+      referrer: document.referrer || null,
+      landing_path: window.location.pathname || "/",
+      captured_at: new Date().toISOString(),
+    };
 
-  if (!hasAnyUtm(utm) && !payload.referrer) return;
-  localStorage.setItem(FIRST_TOUCH_KEY, JSON.stringify(payload));
+    if (!hasAnyUtm(utm) && !payload.referrer) return;
+    localStorage.setItem(FIRST_TOUCH_KEY, JSON.stringify(payload));
+  } catch {
+    /* Storage disabled / quota — skip attribution */
+  }
 }
 
-export function getAttributionContext() {
+function getAttributionContext() {
   if (typeof window === "undefined") return {};
   const currentUtm = getCurrentUtmParams();
   let firstTouch = {};
@@ -61,10 +65,14 @@ export function getAttributionContext() {
 
 export function trackEvent(name, properties = {}) {
   if (typeof window === "undefined") return;
-  const payload = {
-    ...getAttributionContext(),
-    path: window.location.pathname || "/",
-    ...properties,
-  };
-  track(name, payload);
+  try {
+    const payload = {
+      ...getAttributionContext(),
+      path: window.location.pathname || "/",
+      ...properties,
+    };
+    track(name, payload);
+  } catch {
+    /* Vercel script blocked or unavailable — do not break the app */
+  }
 }

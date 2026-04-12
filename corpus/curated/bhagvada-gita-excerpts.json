@@ -1,0 +1,541 @@
+[
+  {
+    "title": "The Warrior Who Trembled",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Grief",
+    "text": "My bow slips.\nMy mouth is dry.\nThe men I must face are my teachers, my elders, my blood.\n\nWhat victory asks this price?\nWhat kingdom is worth a house on fire?\nI would rather lay down my arms\nthan rise through a river of my own people.",
+    "moods": [
+      "Grief",
+      "Longing",
+      "Melancholic"
+    ]
+  },
+  {
+    "title": "Stand Up and See Clearly",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Ethereal",
+    "text": "This collapse is not your truth.\nIt is a passing storm over a steady sky.\n\nStand.\nCut through this softness.\nA warrior does not worship confusion.",
+    "moods": [
+      "Ethereal",
+      "Wonder",
+      "Devotion"
+    ]
+  },
+  {
+    "title": "No Blade Reaches the Self",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Wonder",
+    "text": "Weapons do not cut it.\nFire does not burn it.\nWater does not drown it.\nWind does not dry it.\n\nThe Self is unborn, undying,\nolder than time,\nstill when worlds break.",
+    "moods": [
+      "Wonder",
+      "Devotion",
+      "Ethereal"
+    ]
+  },
+  {
+    "title": "Bodies Fall, Being Remains",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Devotion",
+    "text": "As a person changes worn-out clothes,\nBeing puts down one body\nand takes up another.\n\nDo not mistake the garment for the wearer.\nDo not mistake endings for extinction.",
+    "moods": [
+      "Devotion",
+      "Ethereal",
+      "Wonder"
+    ]
+  },
+  {
+    "title": "Do the Work, Release the Claim",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Nature",
+    "text": "You have authority over action,\nnever over the harvest.\n\nDo not work for reward.\nDo not fall into inaction.\nMove with full force,\nfree from the hunger to possess outcomes.",
+    "moods": [
+      "Nature",
+      "Radiant",
+      "Wonder"
+    ]
+  },
+  {
+    "title": "Skill in Action",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Grief",
+    "text": "Stay even in gain and loss,\nin praise and blame,\nin victory and defeat.\n\nThis balance is yoga—\na fierce precision in living,\na mastery of action without inner fracture.",
+    "moods": [
+      "Grief",
+      "Nature",
+      "Radiant"
+    ]
+  },
+  {
+    "title": "The Chain of Ruin",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Grief",
+    "text": "You dwell on objects.\nAttachment grows.\nAttachment turns to craving.\nCraving turns to anger.\n\nAnger clouds memory,\nmemory breaks judgment,\njudgment collapses,\nand a life goes down in flames.",
+    "moods": [
+      "Grief",
+      "Longing",
+      "Melancholic"
+    ]
+  },
+  {
+    "title": "The Sea-Mind",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Peace",
+    "text": "Rivers pour into the sea.\nThe sea is full yet unmoved.\n\nSo is the one at peace:\ndesires arrive,\ndesires pass,\nbut the center does not flood.",
+    "moods": [
+      "Peace",
+      "Solitary",
+      "Longing"
+    ]
+  },
+  {
+    "title": "Action Is Better Than Escape",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Nature",
+    "text": "No one lives even a moment without action.\nNature moves all.\n\nDo what is yours to do.\nRight action is cleaner than frozen idealism.",
+    "moods": [
+      "Nature",
+      "Radiant",
+      "Wonder"
+    ]
+  },
+  {
+    "title": "Offer Every Act",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Love",
+    "text": "Cook, fight, serve, study, build—\nmake each act an offering.\n\nWhen action is given upward,\nit stops chaining the heart\nto fear and pride.",
+    "moods": [
+      "Love",
+      "Devotion",
+      "Ethereal"
+    ]
+  },
+  {
+    "title": "Whenever Justice Fades",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Nature",
+    "text": "When truth thins,\nwhen cruelty rises,\nwhen the weak are crushed,\nI come.\n\nAge after age,\nI protect what is living,\nI break what is poisonous,\nI reset the moral axis.",
+    "moods": [
+      "Nature",
+      "Radiant",
+      "Wonder"
+    ]
+  },
+  {
+    "title": "Fire of Knowledge",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Nature",
+    "text": "As fire reduces wood to ash,\nclear knowledge burns old karma.\n\nTake up that fire.\nLet it pass through doubt,\nfear,\nand inherited darkness.",
+    "moods": [
+      "Nature",
+      "Radiant",
+      "Wonder"
+    ]
+  },
+  {
+    "title": "The True Renunciate",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Longing",
+    "text": "Not the one who quits work,\nbut the one who quits craving\nis the true renunciate.\n\nHands active.\nHeart unbound.\nThat is freedom in motion.",
+    "moods": [
+      "Longing",
+      "Love",
+      "Mortality"
+    ]
+  },
+  {
+    "title": "Lift Yourself",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Nature",
+    "text": "Lift yourself by yourself.\nDo not let yourself fall.\n\nYour mind can be your ally,\nor your sabotage.\nTrain it,\nand it becomes a clear blade.",
+    "moods": [
+      "Nature",
+      "Radiant",
+      "Wonder"
+    ]
+  },
+  {
+    "title": "The Lamp in Windless Air",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Peace",
+    "text": "In stillness,\nthe disciplined mind is a lamp in a windless place.\n\nNo flicker.\nNo scatter.\nJust steady seeing.",
+    "moods": [
+      "Peace",
+      "Solitary",
+      "Longing"
+    ]
+  },
+  {
+    "title": "Nothing Is Lost",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Devotion",
+    "text": "No effort on this path is wasted.\nNo sincere move is erased.\n\nEven a little of this practice\nrescues a life\nfrom immense fear.",
+    "moods": [
+      "Devotion",
+      "Ethereal",
+      "Love"
+    ]
+  },
+  {
+    "title": "I Am the Taste of Water",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Ethereal",
+    "text": "I am the taste in water,\nthe light in sun and moon,\nthe syllable in sacred sound,\nthe courage in the brave.\n\nWherever life shines,\nI am that shine.",
+    "moods": [
+      "Ethereal",
+      "Wonder",
+      "Devotion"
+    ]
+  },
+  {
+    "title": "Remember Me at the Last Breath",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Devotion",
+    "text": "What you remember at death,\nthat you move toward.\n\nRemember Me now,\nin work,\nin battle,\nin breath—\nthen the final moment will not betray you.",
+    "moods": [
+      "Devotion",
+      "Ethereal",
+      "Love"
+    ]
+  },
+  {
+    "title": "A Leaf, A Flower, A Heart",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Love",
+    "text": "A leaf,\na flower,\na fruit,\na little water—\nif offered with love,\nI receive it.\n\nI look at the heart,\nnot the size of the gift.",
+    "moods": [
+      "Love",
+      "Devotion",
+      "Ethereal"
+    ]
+  },
+  {
+    "title": "Take Refuge and Rise",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Nature",
+    "text": "Drop all lesser duties.\nCome to Me alone for refuge.\n\nDo not fear.\nI will free you\nfrom the burden of all past wrong.\nNow rise.",
+    "moods": [
+      "Nature",
+      "Radiant",
+      "Solitary"
+    ]
+  },
+  {
+    "title": "The Discipline of Steady Wisdom",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Solitary",
+    "text": "You ask how the one of steady wisdom lives.\nListen.\nThey are not dragged by pleasure,\nnot shattered by pain.\nThey do not chase what glitters,\nand they do not collapse when it breaks.\n\nThey gather the senses\nthe way a tortoise draws in its limbs.\nNot from fear,\nbut from sovereign control.\nTheir joy is not rented from the world.\nIt rises from within,\nself-lit,\nquiet,\nunstealable.\n\nWhen desire is denied by force,\nit waits in the dark.\nWhen truth is seen directly,\ndesire loses command.\nThen anger loosens,\nmemory clears,\nintelligence returns to its throne.\n\nNight for the crowd\nis waking for the sage.\nWhere others run after noise,\nthe sage watches.\nWhere others sleep through reality,\nthe sage stands alert.\n\nBe like the ocean:\nrivers enter,\nstorms strike,\nits depth remains.\nThis is the peace that does not bargain.\nThis is the victory no battle can reverse.",
+    "moods": [
+      "Solitary",
+      "Peace",
+      "Melancholic"
+    ]
+  },
+  {
+    "title": "The Law of Action and Offering",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Wonder",
+    "text": "No one escapes action.\nBreath acts.\nThought acts.\nSilence acts.\nEven refusal is a move in the field.\nSo stop worshiping the fantasy of neutrality.\n\nDo the work born of your nature.\nDo it well.\nDo it without ownership.\nWhen action is done as sacrifice,\nit purifies.\nWhen done for ego,\nit binds.\n\nThe world turns through exchange:\nlife feeding life,\nduty feeding order,\noffering feeding grace.\nBreak this wheel,\nand society rots in appetite.\nKeep it turning,\nand even ordinary labor becomes sacred.\n\nSet the standard by your life.\nPeople follow what the strong normalize.\nIf you stand clear,\nclarity spreads.\nIf you perform chaos,\nchaos multiplies.\n\nTherefore act—\nnot to inflate your name,\nbut to uphold the world.\nWork with full intensity,\nempty of possessiveness,\nsteady in success and failure.\nThat is freedom inside responsibility.",
+    "moods": [
+      "Wonder",
+      "Ethereal",
+      "Nature"
+    ]
+  },
+  {
+    "title": "Knowledge, Work, and the Inner Fire",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Radiant",
+    "text": "I taught this ancient yoga\nat the dawn of kings,\nthen it was worn down by time.\nNow I speak it again,\nbecause you can carry it in battle.\n\nYou ask how the timeless can be born.\nI take form by will,\nnot compulsion.\nWhen justice declines,\nI enter history—\nto protect,\nto cut through corruption,\nto re-anchor dharma.\n\nSee action in inaction,\ninaction in action.\nThis is subtle intelligence.\nThe wise move without the fever of \"I am the doer.\"\nTheir work burns clean,\nbecause ego is not fueling the fire.\n\nMany offerings exist:\nstudy,\nausterity,\nservice,\nbreath,\nself-control.\nBut knowledge-offering is highest,\nbecause it turns the whole mind into flame.\n\nEven if you were the worst among sinners,\nthis knowledge is a boat across the flood.\nAs blazing fire turns wood to ash,\nclear insight turns karma to ash.\n\nSo cut doubt with the sword of understanding.\nStand up.\nTake your place.\nMove.",
+    "moods": [
+      "Radiant",
+      "Wonder",
+      "Nature"
+    ]
+  },
+  {
+    "title": "Renunciation Without Withdrawal",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Peace",
+    "text": "You think renunciation means quitting work.\nNo.\nReal renunciation is quitting clinging.\nHands can remain fully engaged\nwhile the heart stays free.\n\nThe immature divide paths:\n\"knowledge\" here,\n\"action\" there.\nThe mature see one summit\nreached by different trails.\nWork done without attachment\narrives at the same freedom\nas disciplined insight.\n\nOffer outcomes.\nDrop the claim,\n\"This is mine, I made this, I own this.\"\nThen action does not stain.\nLike a lotus leaf in water,\nyou touch the world\nwithout being soaked by it.\n\nThe one integrated in yoga\nacts for purification,\nnot for self-advertisement.\nThey eat, walk, speak, choose,\nbut inwardly know:\n\"Nature moves through its qualities.\nI am not the chain of compulsions.\"\n\nPeace comes to the one\nwho releases the fruit.\nRestlessness haunts the one\nwho grips result after result.\n\nSo act in the city,\nin the marketplace,\nin the battlefield,\nand remain inwardly vast.\nThis is liberation\nin the middle of life.",
+    "moods": [
+      "Peace",
+      "Longing",
+      "Solitary"
+    ]
+  },
+  {
+    "title": "The Architecture of Meditation",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Peace",
+    "text": "Choose a clean place.\nSeat yourself steadily.\nBody, head, and neck aligned.\nGaze soft,\nbreath even,\nmind gathered.\n\nDo not overeat.\nDo not starve.\nDo not oversleep.\nDo not grind yourself to dust.\nYoga matures in balance,\nnot extremism.\n\nAgain and again,\nwhen the mind runs,\nbring it back.\nNot with violence,\nwith authority.\nNot once,\na thousand times.\nThat repetition is the training.\n\nWhen discipline deepens,\nmind settles like a flame\nin windless air.\nFrom that stillness,\na joy appears\nthat does not depend on objects.\nA direct contact with the Self,\nintimate,\nunshaken.\n\nThen even heavy sorrow\ncannot uproot you.\nThis is the gain\nbeyond all gains.\n\nThe restless mind is hard to master,\nyes.\nBut through practice\nand non-attachment,\nit becomes a loyal instrument.\n\nOne who sees the Self in all beings,\nand all beings in the Self,\nwalks through conflict\nwithout hatred.\nThat one is never separate from Me.",
+    "moods": [
+      "Peace",
+      "Solitary",
+      "Grief"
+    ]
+  },
+  {
+    "title": "Knowing the Vast and the Near",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Devotion",
+    "text": "I will speak complete knowledge:\nwhat is seen,\nand what sees.\nMatter and consciousness,\nfield and knower of the field.\nKnow both,\nand confusion starts to dissolve.\n\nEarth, water, fire, air, space,\nmind, intellect, and ego—\nthis is My lower nature.\nBeyond it is the higher:\nthe living force\nthat sustains worlds.\n\nEverything rests on Me\nlike pearls on a thread.\nI am the taste in water,\nthe brilliance in sunlight,\nthe syllable in sacred sound,\nthe strength free of greed.\n\nThree qualities weave experience:\nclarity,\nrestless passion,\ninertia.\nAll arise in Me,\nyet I am beyond them.\nThe world, enchanted by these modes,\ndoes not recognize the source.\n\nRare is the one\nwho breaks through this enchantment\nand turns toward the Real.\nSome seek Me in distress,\nsome for gain,\nsome for knowledge,\nsome in pure devotion.\nAll are noble,\nbut the one who loves with whole being\nlives in Me like breath in life.\n\nAfter many births,\nthe wise arrive at one knowing:\nall this is the One.\nSuch a soul is exceedingly rare.",
+    "moods": [
+      "Devotion",
+      "Ethereal",
+      "Wonder"
+    ]
+  },
+  {
+    "title": "The Two Paths at Death",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Wonder",
+    "text": "What you remember as you leave the body,\nthat current carries you.\nSo train remembrance now,\ninside action,\ninside struggle,\ninside ordinary hours.\n\nFix the mind on the Supreme,\nsteady the life-force,\nand depart through focused awareness.\nNot by panic,\nnot by chance,\nby prepared consciousness.\n\nAll worlds, even heaven-worlds,\nturn in cycles of appearing and dissolving.\nDo not settle for temporary crowns.\nReach that state beyond return,\nwhere becoming ends.\n\nThere are paths of departure:\none through light,\none through dim return.\nThe yogi who knows this\nis not confused by timing\nor celestial mechanics.\n\nTherefore at all times,\npractice union.\nRemember,\nact,\noffer.\nThen the final threshold\nis not an accident,\nbut fulfillment.",
+    "moods": [
+      "Wonder",
+      "Devotion",
+      "Ethereal"
+    ]
+  },
+  {
+    "title": "The Royal Secret",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Devotion",
+    "text": "This is the kingly knowledge,\nthe kingly secret:\nclear,\ntransforming,\npossible in daily life,\nand aligned with the deepest good.\n\nI pervade the universe,\nyet I remain unbound.\nBeings rest in Me,\nbut I am not trapped in them.\nSee the paradox and be free:\nintimacy without imprisonment.\n\nPeople miss Me\nbecause I appear in human form.\nThey see the mask,\nnot the blazing source behind it.\nBut great souls recognize,\nand they love without distraction.\n\nEven those who worship other powers\nwith sincere faith\nare reaching toward Me,\nthough they may not know the full arc.\nStill,\nworship aimed at fragments\nyields fragmentary results.\nAim at the Whole.\n\nWhatever you do,\nwhatever you eat,\nwhatever you offer,\nwhatever you endure—\ndo it as an offering to Me.\nThen action no longer binds.\n\nNo one is disqualified.\nEven one with a damaged past,\nif wholly turned in devotion,\nwalks quickly into dharma.\nMy devotee never perishes.\nLet this be known.",
+    "moods": [
+      "Devotion",
+      "Love",
+      "Peace"
+    ]
+  },
+  {
+    "title": "The Splendors of the Divine",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Ethereal",
+    "text": "You ask how to remember Me in all things.\nSee Me in what is most luminous,\nmost powerful,\nmost essential.\n\nAmong lights,\nI am the sun.\nAmong stars,\nthe moon.\nAmong scriptures,\nthe song of wisdom.\nAmong senses,\nthe mind that coordinates all.\nAmong beings,\nconsciousness itself.\n\nAmong mountains,\nI am the Himalaya.\nAmong rivers,\nthe Ganga.\nAmong trees,\nthe sacred ashvattha.\nAmong warriors,\nI am righteous courage.\nAmong rulers,\njust authority.\n\nI am time that ripens events.\nI am the beginning,\nthe middle,\nand the end of every process.\nI am memory,\nintelligence,\npatience,\nand the force that renews worlds.\n\nWherever you see beauty with strength,\nexcellence with grace,\norder with brilliance—\nknow that as a spark of My vastness.\n\nYet all these splendors\nare only a hint.\nWith a single fraction of Myself,\nI sustain the universe.",
+    "moods": [
+      "Ethereal",
+      "Wonder",
+      "Devotion"
+    ]
+  },
+  {
+    "title": "Vision of the Cosmic Form",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Ethereal",
+    "text": "You asked to see Me as I truly am.\nNo ordinary eyes can hold this vision.\nI grant divine sight—look.\n\nCountless faces,\ncountless eyes,\ncountless wonders,\nweapons lifted,\ngarlands blazing,\nlight without boundary.\nIf a thousand suns rose at once,\nthat might resemble a fragment\nof this radiance.\n\nIn that body:\nall gods,\nall beings,\nall worlds,\nall directions.\nNo beginning.\nNo middle.\nNo end.\nOnly immeasurable force.\n\nI see warriors rushing into Your mouths\nas rivers rush to sea,\nas moths rush into flame.\nTeeth of fire.\nSkulls breaking.\nTime devouring names.\n\nWho are You in this terrifying majesty?\n\nI am Time,\nworld-destroying,\nrisen to consume.\nEven without you,\nthese armies fall.\nSo rise.\nWin glory.\nBe My instrument.\nThose already struck by destiny\nwill be struck through your action.\n\nShaken,\nI bow.\nTake again the gentle form,\nfriend and guide,\nthat my heart can bear.\n\nBy devotion alone\nthis form is truly known.",
+    "moods": [
+      "Ethereal",
+      "Devotion",
+      "Wonder"
+    ]
+  },
+  {
+    "title": "The Way of Love and Steadiness",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Love",
+    "text": "Those who fix their minds on Me\nwith trust and constancy\nare deeply united.\nThose who seek the unmanifest absolute\nalso reach,\nbut their path is harder\nfor embodied minds.\n\nSo place your mind in Me.\nIf you cannot,\npractice remembrance.\nIf practice falters,\nwork for Me.\nIf that is hard,\nrenounce the fruits of your work.\nStep by step,\npeace grows.\n\nWhat kind of devotee is dearest?\nOne who harms none,\nwho is friendly,\nfree from possessiveness,\nsteady in joy and grief,\nforgiving,\ndisciplined,\nclear,\nand inwardly anchored.\n\nOne who does not disturb the world,\nand is not disturbed by it.\nOne free from agitation,\nfear,\nand explosive reaction.\nOne who is pure,\nskillful,\nquietly effective,\nand unattached to status.\n\nOne equal in honor and insult,\nin heat and cold,\nin praise and blame,\ncontent with what comes,\nwith mind dedicated,\nwith faith alive.\n\nSuch a person walks the nectar-path.\nSuch a heart is exceedingly dear to Me.",
+    "moods": [
+      "Love",
+      "Peace",
+      "Devotion"
+    ]
+  },
+  {
+    "title": "Field and Knower",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Devotion",
+    "text": "This body is the field.\nThe one aware of it is the knower.\nUnderstand both,\nand understanding matures.\n\nWhat is called knowledge?\nHumility,\nnon-violence,\nstraightforwardness,\nself-mastery,\nendurance,\ndetachment from ego,\nseeing birth, aging, illness, and death clearly,\nnot clinging,\nsteady devotion to truth,\nlove of solitude,\nconstancy in self-inquiry.\nEverything contrary to this\nis ignorance.\n\nWhat is to be known?\nThe beginningless Reality:\nnot merely being,\nnot merely non-being,\nbeyond categories.\nHands and feet everywhere,\neyes and faces everywhere,\nhearing everywhere,\npervading all.\n\nIt shines through every sense\nwhile itself beyond the senses.\nUnattached,\nyet sustaining all.\nInside and outside all beings.\nNear,\nyet seemingly far.\nUndivided,\nyet appearing divided.\n\nKnow nature and spirit:\nnature generates cause and effect,\nspirit experiences.\nAttachment to qualities\nbinds spirit to repeated birth.\n\nOne who sees\nthe same imperishable Self\nin all perishing forms\ntruly sees.\nSeeing this,\none does not wound the Self by the self.\nOne reaches the highest.",
+    "moods": [
+      "Devotion",
+      "Ethereal",
+      "Love"
+    ]
+  },
+  {
+    "title": "Beyond the Three Qualities",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Mortality",
+    "text": "Nature moves through three strands:\nclarity,\npassion,\nand inertia.\nThese qualities bind the deathless self\nto body and behavior.\n\nClarity illumines,\nbut can bind through attachment to happiness and knowledge.\nPassion drives action,\nbut binds through craving and unrest.\nInertia clouds,\nslows,\nand binds through negligence and sleep.\n\nWhen clarity dominates,\nunderstanding shines.\nWhen passion dominates,\ngreed and agitation rise.\nWhen inertia dominates,\nconfusion thickens.\nAt death,\nthese tendencies shape direction.\n\nBut the one who sees,\n\"qualities are acting on qualities,\"\nsteps back from false identification.\nNot hating when modes arise,\nnot craving when they pass,\nstable,\nself-settled,\nsame in pleasure and pain,\nsame in mud, stone, and gold,\nsame in honor and insult,\nbeyond compulsive reaction—\nthat one crosses the qualities.\n\nHow to cross fully?\nUnswerving devotion to Me.\nThen one is fit for the Infinite,\nfor immortal peace,\nfor the happiness that does not end.",
+    "moods": [
+      "Mortality",
+      "Grief",
+      "Peace"
+    ]
+  },
+  {
+    "title": "The Inverted Tree",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Ethereal",
+    "text": "There is a cosmic tree\nwith roots above\nand branches below,\nfed by the qualities,\nits leaves the hymns of wisdom.\nTo know this tree\nis to know the structure of becoming.\n\nIts branches spread through the worlds,\nits shoots are sense-objects,\nits roots sink downward\nas karmic habits in human life.\nIts form is hard to grasp here:\nno clear beginning,\nno clear end,\nno fixed ground.\n\nCut this deep-rooted tree\nwith the strong axe of non-attachment.\nThen seek the supreme state\nfrom which none return.\nTake refuge in the primal Source\nfrom whom this ancient flow began.\n\nFree from pride and delusion,\nvictorious over attachment,\nsteadfast in the inner Self,\ndesires calmed,\nbeyond the swing of opposites—\none reaches that imperishable goal.\n\nThere,\nneither sun nor moon nor fire is needed.\nThat is My supreme abode.\n\nA fragment of Me,\nbecoming the individual soul,\ndraws mind and senses into nature.\nAs wind carries fragrance,\nthe soul carries impressions\nfrom body to body.\nThe unwise do not see this movement.\nThe wise do.\n\nRemember the source.\nReturn.",
+    "moods": [
+      "Ethereal",
+      "Devotion",
+      "Wonder"
+    ]
+  },
+  {
+    "title": "Two Natures in One World",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Devotion",
+    "text": "Human beings display two broad patterns:\ndivine orientation\nand destructive orientation.\nThe divine qualities free.\nThe destructive qualities bind.\n\nFearlessness,\npurity,\ndiscipline,\ngenerosity,\ntruthfulness,\nself-control,\ncompassion,\nsteadiness,\nforgiveness,\nhumility—\nthese build a luminous life.\n\nHypocrisy,\narrogance,\nself-importance,\nanger,\nharshness,\nand ignorance\npull consciousness downward.\nSuch people say:\n\"The world has no truth, no moral base,\nonly appetite and accident.\"\nFrom that view,\ninsatiable desire grows.\n\nDriven by endless craving,\ntrapped in nets of delusion,\nthey seek wealth by unjust means,\nthinking:\n\"I gained this today.\nI will gain more tomorrow.\nI defeated that enemy.\nI am powerful,\nI am happy.\"\nThus they spiral into darker states.\n\nThree gates lead to ruin:\ncraving,\nanger,\ngreed.\nAbandon all three.\nThen one acts for the highest good,\nand rises.\n\nLet wisdom guide action.\nDo not make impulse your scripture.\nWith right discernment,\nwalk toward freedom.",
+    "moods": [
+      "Devotion",
+      "Love",
+      "Nature"
+    ]
+  },
+  {
+    "title": "Faith Shapes the Person",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Longing",
+    "text": "A person is made of faith.\nAs one's faith,\nso one becomes.\nFaith also carries the color\nof the three qualities.\n\nClarity-driven faith seeks what uplifts,\nwith discipline and balance.\nPassion-driven faith seeks display,\npower,\nand result.\nInertia-driven faith seeks distortion,\ncruelty,\nand confusion.\n\nFood reflects this too:\nclarity prefers what nourishes and steadies,\npassion chases the overstimulating,\ninertia sinks into stale and toxic.\n\nAusterity can be of body,\nspeech,\nand mind:\nrespect,\ncleanliness,\nnon-harm,\ntruth spoken kindly,\nstudy,\ninner serenity,\nself-restraint,\npurity of intent.\nDone with faith and without vanity,\nit clarifies life.\nDone for show,\nit corrodes.\nDone through delusion,\nit harms self and others.\n\nGiving also has three forms:\ngiving at the right time and place,\nto one in need,\nwithout expectation—this is clear.\nGiving for return or recognition—this is restless.\nGiving carelessly,\nwith contempt,\nwithout discernment—this is dark.\n\nLet your actions be anchored in the Real.\nLet intention be clean.\nThen faith becomes a force\nfor liberation.",
+    "moods": [
+      "Longing",
+      "Melancholic",
+      "Mortality"
+    ]
+  },
+  {
+    "title": "Renunciation and Final Freedom",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Peace",
+    "text": "You ask again about renunciation.\nHear the final clarity.\nRenouncing selfish fruits\nis wise.\nAbandoning rightful action\nout of confusion\nis not.\n\nAction cannot be fully avoided\nwhile embodied.\nWhat can be relinquished\nis possessiveness toward results.\nThat renunciation brings peace.\n\nKnowledge,\naction,\ndoer,\nintellect,\nresolve,\nand happiness—\nall appear in three modes.\nDiscern these differences,\nthen choose upward.\n\nBetter one's own duty,\nthough imperfect,\nthan another's duty done brilliantly.\nWork aligned with your nature\npurifies over time.\nEvery path has some smoke,\nas fire does.\nDo not quit because conditions are mixed.\n\nWith mind purified,\nsenses mastered,\ndesire and ego dropped,\nliving lightly,\ndevoted to meditation,\none becomes fit for union with Brahman.\nIn that state,\nno grief,\nno craving,\nequal vision toward all.\nFrom that equality,\ntrue devotion flowers.\n\nFix your mind on Me.\nBe devoted.\nOffer.\nBow.\nYou will come to Me.\nThis is My promise,\nbecause you are dear.\n\nNow the most secret teaching:\nleave all lesser refuges.\nTake refuge in Me alone.\nI will free you from all bondage.\nDo not fear.\n\nDeliberate fully.\nThen act as you choose.\n\nMy confusion is gone,\nArjuna says.\nMemory restored.\nI stand ready.\nI will act.",
+    "moods": [
+      "Peace",
+      "Solitary",
+      "Grief"
+    ]
+  },
+  {
+    "title": "The Burden of Compassion",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Longing",
+    "text": "My limbs fail,\nmy skin burns,\nmy mind reels.\nBad omens crowd the heart.\n\nI do not desire victory,\nkingdom,\nor pleasures\nbought with family blood.\nWhat joy remains\nif those for whom joy is sought\nfall by my hand?\n\nTeacher,\nuncle,\ngrandfather,\nfriend—\nhow can I strike them,\neven for dominion over three worlds?\nSin will stain us\nif we kill our own.\n\nThey are blinded by greed.\nMust we also be blind?\nSeeing clearly,\nshould we not turn away?\nIf clan-law dies,\norder collapses,\nmemory decays,\nand generations suffer.\n\nBetter to be killed unarmed\nthan to live with that ruin.\n\nSaying this,\nI sank into the chariot,\nbow slipping from my hand,\nheart split between duty and love.",
+    "moods": [
+      "Longing",
+      "Grief",
+      "Love"
+    ]
+  },
+  {
+    "title": "From Collapse to Clarity",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Nature",
+    "text": "You grieve for those\nwho need no grieving.\nThe wise do not mourn\nfor living or dead.\nThere was never a time\nwhen you,\nI,\nor these rulers did not exist,\nnor will there be a time\nwhen we cease to be.\n\nChildhood,\nyouth,\nand age pass through one body;\nso does the passage to another.\nThe steady are not confused by this.\nHeat and cold,\npleasure and pain,\narrive and depart.\nEndure them.\n\nThe unreal has no lasting being.\nThe Real never stops being.\nKnow this distinction\nand stand in it.\n\nThe embodied Self is deathless,\nimmeasurable,\nindestructible.\nBodies end.\nTherefore fight.\nWho thinks \"I kill\"\nor \"I am killed\"\ndoes not yet see.\n\nUnborn,\neternal,\nancient,\nthis Self is not slain\nwhen the body falls.\nAs old clothes are discarded,\nnew garments are taken.\nSo with embodiment.\n\nNo weapon cuts it.\nNo fire burns it.\nNo water wets it.\nNo wind dries it.\nIt is stable,\nall-pervading,\nimmovable,\never the same.\n\nIf you still believe birth and death are absolute,\neven then grief is misplaced:\nwhat is born will die,\nwhat dies will be born.\n\nTherefore rise.\nFulfill your duty with a clear heart.",
+    "moods": [
+      "Nature",
+      "Grief",
+      "Wonder"
+    ]
+  },
+  {
+    "title": "The Ethics of Equanimity",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Nature",
+    "text": "Consider your own calling:\nfor a warrior,\nno good is higher\nthan a just battle.\nTo refuse this moment\nis to abandon duty and honor.\nPeople will speak of your disgrace\nfor generations.\nTo one once honored,\ndisgrace cuts deeper than death.\n\nIf slain,\nyou gain heaven.\nIf victorious,\nyou uphold the earth.\nTherefore stand,\nresolved to fight.\n\nHold pleasure and pain alike,\ngain and loss alike,\nvictory and defeat alike.\nThen act.\nAction from this balance\ndoes not wound the soul.\n\nOn this path,\nno effort is wasted,\nno reverse is final.\nEven a small practice\nprotects from immense fear.\n\nThe steady mind is one-pointed.\nThe scattered mind\nchases countless branches:\nstatus,\nritual display,\nheavenly reward,\nendless desires dressed as virtue.\nRise beyond that noise.\n\nWhen your intelligence crosses\nthe dense forest of confusion,\nyou will become indifferent\nto what has been heard\nand what is yet to be heard.\nWhen mind stands unmoving\nin deep stillness,\nyou arrive in yoga.",
+    "moods": [
+      "Nature",
+      "Grief",
+      "Peace"
+    ]
+  },
+  {
+    "title": "How the Steady One Walks",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Longing",
+    "text": "When one drops all cravings\nborn of restless imagination,\nand is satisfied in the Self alone,\nthat one is called steady in wisdom.\n\nUnshaken in sorrow,\nfree from thirst in pleasure,\nreleased from attachment,\nfear,\nand anger—\nthat sage is anchored.\n\nWithdrawing senses\nthe way a tortoise withdraws limbs,\none protects attention.\nObjects may recede,\nbut taste remains.\nWhen the Supreme is seen,\neven that taste dissolves.\n\nThe senses are turbulent.\nThey can drag away\neven a striving mind.\nSo gather them,\ncenter in Me,\nand let understanding stand guard.\n\nFrom fixation comes attachment,\nfrom attachment desire,\nfrom desire frustration,\nfrom frustration anger,\nfrom anger delusion,\nfrom delusion memory-loss,\nfrom memory-loss ruin of intelligence,\nfrom ruined intelligence, collapse.\n\nBut one who moves among objects\nwith senses disciplined,\nfree from attraction and aversion,\nfinds peace.\nIn peace,\nall sorrow thins,\nand understanding stabilizes quickly.\n\nFor the undisciplined,\nthere is no wisdom,\nno contemplation,\nno peace.\nWithout peace,\nhow can there be joy?\n\nSo remain vigilant.\nWhen the world sleeps to truth,\nbe awake.",
+    "moods": [
+      "Longing",
+      "Solitary",
+      "Peace"
+    ]
+  },
+  {
+    "title": "Why the Wise Still Act",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Nature",
+    "text": "Two orientations were taught:\nknowledge for contemplative temperaments,\naction-yoga for those called to engaged life.\nBut understand:\nno one reaches freedom\nby refusing action.\n\nNature compels movement.\nOne who restrains the body\nbut mentally indulges desires\nis self-deceived.\nBetter to act with disciplined senses,\nwithout attachment,\nin service of what must be done.\n\nAction is superior to inertia.\nEven bodily maintenance\nrequires action.\nTherefore perform your duty\nas offering,\nnot as private consumption.\nAction done for sacrifice\nfrees.\nAction done for ego binds.\n\nAt creation,\nlife was yoked to sacrifice:\n\"Through this, prosper.\nLet this be your wish-fulfilling source.\"\nMutual nourishment between humans,\nnature,\nand the sacred order\nkeeps the world aligned.\n\nThose who take\nwithout returning\nare thieves of the common good.\nThose who share and offer\nare released from stain.\n\nThe wise do not act\nbecause they lack anything.\nThey act\nbecause the world learns by example.\nIf leaders withdraw into indifference,\nsocial order decays.\n\nSo act vigorously,\nwithout ego-claim,\nfor the welfare of all.",
+    "moods": [
+      "Nature",
+      "Radiant",
+      "Solitary"
+    ]
+  },
+  {
+    "title": "The Measure of True Offering",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Peace",
+    "text": "Some offer material gifts.\nSome offer discipline.\nSome offer study.\nSome offer breath itself,\nbalancing inhale and exhale\nas sacred exchange.\nAll sincere offerings purify.\n\nYet knowledge-offering exceeds all,\nbecause every action\nculminates in understanding.\nSeek those who see truth.\nAsk with humility.\nServe.\nQuestion clearly.\nThey will transmit what frees.\n\nKnowing this,\nyou will not fall again into delusion.\nYou will see all beings\nin your own Self,\nand your Self in Me.\n\nEven if your past is heavy,\nknowledge is a crossing.\nEven if karma is thick,\nknowledge is a fire.\nEven if doubt is sharp,\nknowledge is a sword.\n\nNothing in this world\npurifies like direct insight.\nIn time,\none perfected in yoga\nfinds it within.\n\nThe doubting self is split,\nwithout footing in this world\nor the next,\nwithout peace.\nTherefore cut doubt\nwith insight born of yoga.\nTake your stand.\nAct.",
+    "moods": [
+      "Peace",
+      "Devotion",
+      "Ethereal"
+    ]
+  },
+  {
+    "title": "Friend and Enemy Within",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Solitary",
+    "text": "Lift yourself by yourself.\nDo not degrade yourself.\nMind can be your friend,\nor your saboteur.\n\nFor one who has mastered mind,\nmind is ally.\nFor one unmastered,\nmind behaves as enemy.\nThe self-governed remain steady\nin heat and cold,\nhonor and insult,\npleasure and pain.\n\nSeated in discipline,\ncontent in knowledge and direct experience,\nthey see equally\na clod,\na stone,\nand gold.\nThey hold equal regard\nfor friend and foe,\nfor neutral and hostile,\nfor saint and sinner.\n\nChoose a clean, quiet place.\nSeat firm,\nneither too high nor too low.\nBody upright,\nattention focused,\nfear calmed,\nenergy regulated.\nPractice with determination.\n\nWhen the restless mind wanders,\nbring it back.\nAgain.\nAgain.\nNo drama.\nJust return.\n\nFrom this training comes\nsupreme quiet,\nwhere joy is discovered inwardly,\nand sorrow cannot uproot you.\nThat union,\nonce attained,\nis not traded for anything else.\n\nYes, the mind is restless,\nstrong,\nhard to restrain.\nBut with practice and non-attachment,\nit can be mastered.\nThen yoga becomes lived reality.",
+    "moods": [
+      "Solitary",
+      "Grief",
+      "Longing"
+    ]
+  },
+  {
+    "title": "Many Seek, Few Stay",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Devotion",
+    "text": "Among thousands,\none strives for realization.\nAmong those who strive,\nrarely one knows Me as I am.\nStill,\nI receive every sincere approach.\n\nFour kinds turn toward Me:\nthe distressed,\nthe seeker of benefit,\nthe seeker of truth,\nand the one of wisdom.\nAll are noble.\nThe one rooted in wisdom,\nwhose love is single-hearted,\nis especially dear.\n\nWhy?\nBecause that one does not treat Me\nas an emergency exit\nor transaction partner.\nThat one lives in union.\nI am dear to them,\nand they are dear to Me.\n\nAfter many lifetimes,\na great soul arrives at this:\n\"All this is the One.\"\nSuch a being is very rare.\n\nDesires pull minds toward lesser powers.\nFaith is granted according to that turning,\nand results are gained,\nbut they are temporary.\nThose who seek finite fruits\narrive at finite ends.\nThose who seek Me\narrive in Me.\n\nI am not revealed\nto minds veiled by delusion.\nPast,\npresent,\nfuture—I know all beings.\nFew truly know Me.\nCross beyond duality,\nand clarity opens.",
+    "moods": [
+      "Devotion",
+      "Love",
+      "Ethereal"
+    ]
+  },
+  {
+    "title": "The Practice of Remembering in Battle",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Devotion",
+    "text": "Remember Me at all times—\nand fight.\nThis is not contradiction.\nIt is integration.\nMind and action aligned.\n\nWhatever state one remembers\nat the final moment,\nthat state is reached.\nTherefore train now,\nnot at the edge of breath.\nBuild remembrance in motion.\n\nWith mind disciplined by practice,\nnot wandering to other tracks,\none reaches the Supreme Person.\nLuminous,\nancient,\nsubtle,\nsustainer of all,\nbeyond darkness.\n\nAt departure,\nwith unwavering mind,\nlife-force gathered between the brows,\none reaches the Divine.\nThis is the path of yogic exit,\nprepared through lifelong alignment.\n\nThe Absolute declared by sages,\nentered by disciplined seekers,\nattained by those who walk celibate concentration—I summarize for you.\nFix awareness.\nSteady breath.\nRemember.\n\nYet know this too:\nall realms,\nfrom highest heaven down,\ncycle through return.\nThe one who reaches Me\ndoes not return to sorrow-bound rebirth.\n\nSo in every hour:\nremember,\noffer,\nact.\nMake life a preparation for freedom.",
+    "moods": [
+      "Devotion",
+      "Grief",
+      "Nature"
+    ]
+  },
+  {
+    "title": "Love Makes the Vast Intimate",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Ethereal",
+    "text": "I am equal to all beings.\nNo one is hated,\nno one is preferred.\nYet those who love Me deeply\nlive in Me,\nand I in them.\nLove reveals reciprocity.\n\nEven one with a severe past,\nif wholly devoted,\nshould be regarded as righteous in resolve.\nSoon that person becomes aligned\nand finds lasting peace.\nKnow this firmly:\nMy devotee is never lost.\n\nBirth,\nstatus,\nand social label do not block access.\nAnyone who takes refuge\ncan reach the highest state.\nHow much more those\nalready trained in discipline.\nThis world is unstable and passing.\nTurn toward what endures.\n\nFix mind on Me.\nBe devoted.\nOffer your acts.\nBow in humility.\nUnited with Me,\nself-disciplined,\nyou will come to Me.\n\nThe path is not elitist.\nIt is relational.\nA leaf offered with love\nis greater than a palace offered in pride.\n\nWhen the heart is total,\nthe Infinite is near.",
+    "moods": [
+      "Ethereal",
+      "Love",
+      "Peace"
+    ]
+  },
+  {
+    "title": "After the Vision, the Choice",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Peace",
+    "text": "You have heard the deepest teaching:\nknowledge,\naction,\ndevotion,\nrenunciation,\nclarity of duty,\nand the way beyond sorrow.\nNow examine it fully,\nand act as you choose.\n\nIs this permission to drift?\nNo.\nIt is respect for awakened agency.\nCompulsion ends\nwhere understanding begins.\n\nIf ego says,\n\"I will not act,\"\nyour own nature will still drive you.\nBound by your constitutive force,\nyou will do what you resist.\nBetter to align consciously\nthan be dragged unconsciously.\n\nThe Lord dwells in the heart of all,\nturning beings through the machinery of nature.\nTake refuge in that indwelling source.\nThrough grace,\nyou will gain supreme peace.\n\nMost secret of all:\nyou are dear.\nSo I speak plainly.\nFix your mind on Me.\nLove Me.\nOffer to Me.\nBow to Me.\nYou will come to Me.\nThis is promise.\n\nAbandon all lesser shelters.\nTake refuge in Me alone.\nI free you from all bondage.\nDo not fear.\n\nArjuna answers:\n\"My confusion is shattered.\nMemory restored.\nI stand firm.\nI will do what must be done.\"",
+    "moods": [
+      "Peace",
+      "Solitary",
+      "Devotion"
+    ]
+  },
+  {
+    "title": "The Listener's Benediction",
+    "source": "The Bhagavad Gita",
+    "mood_chip": "Ethereal",
+    "text": "Sanjaya says:\nBy grace,\nI heard this supreme,\nsecret dialogue\nbetween the Lord of Yoga\nand the great-souled archer.\n\nAgain and again I recall it,\nand again I rejoice.\nAgain I remember the cosmic form,\nand wonder floods me.\n\nWherever Krishna,\nmaster of yoga,\nstands,\nand wherever Arjuna,\nmaster of action,\nstands—\nthere abide fortune,\nvictory,\nprosperity,\nand firm justice.\n\nThis is my conviction.\nNot sentiment,\nnot rumor.\nA law written in the structure of reality:\nwisdom joined to courageous action\nis unstoppable.",
+    "moods": [
+      "Ethereal",
+      "Wonder",
+      "Devotion"
+    ]
+  }
+]

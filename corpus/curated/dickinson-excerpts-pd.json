@@ -1,0 +1,222 @@
+[
+  {
+    "title": "This is my letter to the world",
+    "source": "Poems, 1890",
+    "mood_chip": "Love",
+    "text": "This is my letter to the world,\nThat never wrote to me,—\nThe simple news that Nature told,\nWith tender majesty.\n\nHer message is committed\nTo hands I cannot see;\nFor love of her, sweet countrymen,\nJudge tenderly of me!",
+    "moods": [
+      "Love",
+      "Devotion",
+      "Ethereal"
+    ]
+  },
+  {
+    "title": "Success is counted sweetest",
+    "source": "Poems, 1890",
+    "mood_chip": "Mortality",
+    "text": "Success is counted sweetest\nBy those who ne'er succeed.\nTo comprehend a nectar\nRequires sorest need.\n\nNot one of all the purple host\nWho took the flag to-day\nCan tell the definition,\nSo clear, of victory,\n\nAs he, defeated, dying,\nOn whose forbidden ear\nThe distant strains of triumph\nBreak, agonized and clear!",
+    "moods": [
+      "Mortality",
+      "Grief",
+      "Melancholic"
+    ]
+  },
+  {
+    "title": "If I can stop one heart from breaking",
+    "source": "Poems, 1890",
+    "mood_chip": "Grief",
+    "text": "If I can stop one heart from breaking,\nI shall not live in vain;\nIf I can ease one life the aching,\nOr cool one pain,\nOr help one fainting robin\nUnto his nest again,\nI shall not live in vain.",
+    "moods": [
+      "Grief",
+      "Love",
+      "Nature"
+    ]
+  },
+  {
+    "title": "The soul selects her own society",
+    "source": "Poems, 1890",
+    "mood_chip": "Devotion",
+    "text": "The soul selects her own society,\nThen shuts the door;\nOn her divine majority\nObtrude no more.\n\nUnmoved, she notes the chariot's pausing\nAt her low gate;\nUnmoved, an emperor is kneeling\nUpon her mat.\n\nI've known her from an ample nation\nChoose one;\nThen close the valves of her attention\nLike stone.",
+    "moods": [
+      "Devotion",
+      "Longing",
+      "Mortality"
+    ]
+  },
+  {
+    "title": "He ate and drank the precious words",
+    "source": "Poems, 1890",
+    "mood_chip": "Nature",
+    "text": "He ate and drank the precious words,\nHis spirit grew robust;\nHe knew no more that he was poor,\nNor that his frame was dust.\n\nHe danced along the dingy days,\nAnd this bequest of wings\nWas but a book. What liberty\nA loosened spirit brings!",
+    "moods": [
+      "Nature",
+      "Peace",
+      "Radiant"
+    ]
+  },
+  {
+    "title": "I had no time to hate, because",
+    "source": "Poems, 1890",
+    "mood_chip": "Mortality",
+    "text": "I had no time to hate, because\nThe grave would hinder me,\nAnd life was not so ample I\nCould finish enmity.\n\nNor had I time to love; but since\nSome industry must be,\nThe little toil of love, I thought,\nWas large enough for me.",
+    "moods": [
+      "Mortality",
+      "Longing",
+      "Love"
+    ]
+  },
+  {
+    "title": "I'm nobody! Who are you?",
+    "source": "Poems, 1890",
+    "mood_chip": "Longing",
+    "text": "I'm nobody! Who are you?\nAre you nobody, too?\nThen there's a pair of us—don't tell!\nThey'd banish us, you know.\n\nHow dreary to be somebody!\nHow public, like a frog\nTo tell your name the livelong day\nTo an admiring bog!",
+    "moods": [
+      "Longing",
+      "Mortality",
+      "Nature"
+    ]
+  },
+  {
+    "title": "Hope is the thing with feathers",
+    "source": "Poems, 1890",
+    "mood_chip": "Nature",
+    "text": "Hope is the thing with feathers\nThat perches in the soul,\nAnd sings the tune without the words,\nAnd never stops at all,\n\nAnd sweetest in the gale is heard;\nAnd sore must be the storm\nThat could abash the little bird\nThat kept so many warm.\n\nI've heard it in the chillest land,\nAnd on the strangest sea;\nYet, never, in extremity,\nIt asked a crumb of me.",
+    "moods": [
+      "Nature",
+      "Wonder",
+      "Devotion"
+    ]
+  },
+  {
+    "title": "Wild nights! Wild nights!",
+    "source": "Poems, 1890",
+    "mood_chip": "Love",
+    "text": "Wild nights! Wild nights!\nWere I with thee,\nWild nights should be\nOur luxury!\n\nFutile the winds\nTo a heart in port,—\nDone with the compass,\nDone with the chart.\n\nRowing in Eden!\nAh! the sea!\nMight I but moor\nTo-night in thee!",
+    "moods": [
+      "Love",
+      "Devotion",
+      "Ethereal"
+    ]
+  },
+  {
+    "title": "The brain is wider than the sky",
+    "source": "Poems, 1890",
+    "mood_chip": "Ethereal",
+    "text": "The brain is wider than the sky,\nFor, put them side by side,\nThe one the other will include\nWith ease, and you beside.\n\nThe brain is deeper than the sea,\nFor, hold them, blue to blue,\nThe one the other will absorb,\nAs sponges, buckets do.\n\nThe brain is just the weight of God,\nFor, lift them, pound for pound,\nAnd they will differ, if they do,\nAs syllable from sound.",
+    "moods": [
+      "Ethereal",
+      "Devotion",
+      "Wonder"
+    ]
+  },
+  {
+    "title": "I taste a liquor never brewed",
+    "source": "Poems, 1890",
+    "mood_chip": "Nature",
+    "text": "I taste a liquor never brewed,\nFrom tankards scooped in pearl;\nNot all the vats upon the Rhine\nYield such an alcohol!\n\nInebriate of air am I,\nAnd debauchee of dew,\nReeling, through endless summer days,\nFrom inns of molten blue.\n\nWhen landlords turn the drunken bee\nOut of the foxglove's door,\nWhen butterflies renounce their drams,\nI shall but drink the more!\n\nTill seraphs swing their snowy hats,\nAnd saints to windows run,\nTo see the little tippler\nLeaning against the sun!",
+    "moods": [
+      "Nature",
+      "Peace",
+      "Radiant"
+    ]
+  },
+  {
+    "title": "There's a certain slant of light",
+    "source": "Poems, 1890",
+    "mood_chip": "Melancholic",
+    "text": "There's a certain slant of light,\nOn winter afternoons,\nThat oppresses, like the weight\nOf cathedral tunes.\n\nHeavenly hurt it gives us;\nWe can find no scar,\nBut internal difference\nWhere the meanings are.\n\nNone may teach it anything,\n'T is the seal, despair,—\nAn imperial affliction\nSent us of the air.\n\nWhen it comes, the landscape listens,\nShadows hold their breath;\nWhen it goes, 't is like the distance\nOn the look of death.",
+    "moods": [
+      "Melancholic",
+      "Grief",
+      "Mortality"
+    ]
+  },
+  {
+    "title": "Because I could not stop for Death",
+    "source": "Poems, 1890",
+    "mood_chip": "Devotion",
+    "text": "Because I could not stop for Death,\nHe kindly stopped for me;\nThe carriage held but just ourselves\nAnd Immortality.\n\nWe slowly drove, he knew no haste,\nAnd I had put away\nMy labor, and my leisure too,\nFor his civility.\n\nWe passed the school where children played,\nTheir lessons scarcely done;\nWe passed the fields of gazing grain,\nWe passed the setting sun.\n\nOr rather—He passed us—\nThe dews drew quivering and chill,\nFor only gossamer my gown,\nMy tippet only tulle.\n\nWe paused before a house that seemed\nA swelling of the ground;\nThe roof was scarcely visible,\nThe cornice but a mound.\n\nSince then, 't is centuries; and yet\nFeels shorter than the day\nI first surmised the horses' heads\nWere toward eternity.",
+    "moods": [
+      "Devotion",
+      "Ethereal",
+      "Mortality"
+    ]
+  },
+  {
+    "title": "Before I got my eye put out",
+    "source": "Poems, 1890",
+    "mood_chip": "Longing",
+    "text": "Before I got my eye put out,\nI liked as well to see\nAs other creatures that have eyes,\nAnd know no other way.\n\nBut were it told to me, to-day,\nThat I might have the sky\nFor mine, I tell you that my heart\nWould split, for size of me.\n\nThe meadows mine, the mountains mine,—\nAll forests, stintless stars,\nAs much of noon as I could take\nBetween my finite eyes.\n\nThe motions of the dipping birds,\nThe lightning's jointed road,\nFor mine to look at when I liked,—\nThe news would strike me dead!",
+    "moods": [
+      "Longing",
+      "Ethereal",
+      "Love"
+    ]
+  },
+  {
+    "title": "A bird came down the walk",
+    "source": "Poems, 1890",
+    "mood_chip": "Wonder",
+    "text": "A bird came down the walk:\nHe did not know I saw;\nHe bit an angle-worm in halves\nAnd ate the fellow, raw.\n\nAnd then he drank a dew\nFrom a convenient grass,\nAnd then hopped sidewise to the wall\nTo let a beetle pass.\n\nHe glanced with rapid eyes\nThat hurried all abroad,—\nThey looked like frightened beads, I thought;\nHe stirred his velvet head\n\nLike one in danger; cautious,\nI offered him a crumb,\nAnd he unrolled his feathers,\nAnd rowed him softer home,\n\nThan oars divide the ocean,\nToo silver for a seam,\nOr butterflies, off banks of noon,\nLeap, plashless, as they swim.",
+    "moods": [
+      "Wonder",
+      "Devotion",
+      "Ethereal"
+    ]
+  },
+  {
+    "title": "A narrow fellow in the grass",
+    "source": "Poems, 1890",
+    "mood_chip": "Grief",
+    "text": "A narrow fellow in the grass\nOccasionally rides;\nYou may have met him,—did you not,\nHis notice sudden is.\n\nThe grass divides as with a comb,\nA spotted shaft is seen,\nAnd then it closes at your feet\nAnd opens further on.\n\nSeveral of nature's people\nI know, and they know me;\nI feel for them a transport\nOf cordiality;\n\nBut never met this fellow,\nAttended or alone,\nWithout a tighter breathing,\nAnd zero at the bone.",
+    "moods": [
+      "Grief",
+      "Longing",
+      "Melancholic"
+    ]
+  },
+  {
+    "title": "I felt a funeral in my brain",
+    "source": "Poems, 1890",
+    "mood_chip": "Mortality",
+    "text": "I felt a funeral in my brain,\nAnd mourners, to and fro,\nKept treading, treading, till it seemed\nThat sense was breaking through.\n\nAnd when they all were seated,\nA service like a drum\nKept beating, beating, till I thought\nMy mind was going numb.\n\nAnd then I heard them lift a box,\nAnd creak across my soul\nWith those same boots of lead, again,\nThen space began to toll,\n\nAs all the heavens were a bell,\nAnd Being but an ear,\nAnd I and silence some strange race,\nWrecked, solitary, here.\n\nAnd then a plank in reason, broke,\nAnd I dropped down and down,\nAnd hit a world at every plunge,\nAnd finished knowing—then—",
+    "moods": [
+      "Mortality",
+      "Ethereal",
+      "Grief"
+    ]
+  },
+  {
+    "title": "I heard a fly buzz when I died",
+    "source": "Poems, 1890",
+    "mood_chip": "Peace",
+    "text": "I heard a fly buzz when I died;\nThe stillness round my form\nWas like the stillness in the air\nBetween the heaves of storm.\n\nThe eyes beside had wrung them dry,\nAnd breaths were gathering sure\nFor that last onset, when the king\nBe witnessed in his power.\n\nI willed my keepsakes, signed away\nWhat portion of me I\nCould make assignable,—and then\nThere interposed a fly,\n\nWith blue, uncertain, stumbling buzz,\nBetween the light and me;\nAnd then the windows failed, and then\nI could not see to see.",
+    "moods": [
+      "Peace",
+      "Wonder",
+      "Devotion"
+    ]
+  },
+  {
+    "title": "My life had stood—a loaded gun—",
+    "source": "Poems, 1890",
+    "mood_chip": "Longing",
+    "text": "My life had stood—a loaded gun—\nIn corners, till a day\nThe owner passed—identified,\nAnd carried me away.\n\nAnd now we roam in sovereign woods,\nAnd now we hunt the doe,\nAnd every time I speak for him\nThe mountains straight reply.\n\nAnd do I smile, such cordial light\nUpon the valley glow,\nIt is as a Vesuvian face\nHad let its pleasures through.\n\nAnd when at night, our good day done,\nI guard my master's head,\n'T is better than the eider-duck's\nDeep pillow to have shared.\n\nTo foe of his I'm deadly foe;\nNone stir the second time\nOn whom I lay a yellow eye,\nOr an emphatic thumb.\n\nThough I than he may longer live,\nHe longer must than I,\nFor I have but the power to kill,\nWithout the power to die.",
+    "moods": [
+      "Longing",
+      "Mortality",
+      "Peace"
+    ]
+  },
+  {
+    "title": "It was not Death, for I stood up",
+    "source": "Poems, 1890",
+    "mood_chip": "Mortality",
+    "text": "It was not Death, for I stood up,\nAnd all the Dead, lie down—\nIt was not Night, for all the Bells\nPut out their Tongues, for Noon.\n\nIt was not Frost, for on my Flesh\nI felt Siroccos—crawl—\nNor Fire—for just my Marble feet\nCould keep a Chancel, cool—\n\nAnd yet, it tasted, like them all,\nThe Figures I have seen\nSet orderly, for Burial,\nReminded me, of mine—\n\nAs if my life were shaven,\nAnd fitted to a frame,\nAnd could not breathe without a key,\nAnd 't was like Midnight, some—\n\nWhen everything that ticked—has stopped—\nAnd Space stares all around—\nOr grisly frosts—first Autumn morns,\nRepeal the beating ground—",
+    "moods": [
+      "Mortality",
+      "Grief",
+      "Melancholic"
+    ]
+  }
+]

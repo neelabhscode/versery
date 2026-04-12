@@ -6,7 +6,7 @@
  */
 
 // The 8-mood keyword map (mirrors scripts/fetch-poems.js)
-export const MOOD_KEYWORDS = {
+const MOOD_KEYWORDS = {
   grief:    ['death','dead','died','loss','lost','mourn','grave','weep','tears',
              'sorrow','dark','shadow','cold','pale','night','never','gone','woe',
              'funeral','tomb','ghost'],
@@ -37,7 +37,7 @@ export const MOOD_KEYWORDS = {
  * Maps the 8 canonical moods → the 12 frontend portal/feeling names.
  * A poem can carry multiple portal tags (one per mood it scores on).
  */
-export const MOOD_TO_PORTALS = {
+const MOOD_TO_PORTALS = {
   grief:    ['Static', 'Melancholic'],
   longing:  ['Drift',  'Melancholic'],
   joy:      ['Pulse',  'Radiant'],
@@ -53,7 +53,7 @@ export const MOOD_TO_PORTALS = {
  * Compass portals:  Calm, Pulse, Focus, Warmth, Static, Lush, Drift, Echo
  * Feeling chips:    Melancholic, Ethereal, Radiant, Solitary
  */
-export const ALL_PORTALS = [
+const ALL_PORTALS = [
   'Calm', 'Pulse', 'Focus', 'Warmth', 'Static', 'Lush', 'Drift', 'Echo',
   'Melancholic', 'Ethereal', 'Radiant', 'Solitary',
 ]
@@ -62,7 +62,7 @@ export const ALL_PORTALS = [
  * Classify lines of text into 1–2 moods using keyword matching.
  * Returns an array of mood strings, highest score first.
  */
-export function classifyMoods(lines) {
+function classifyMoods(lines) {
   const text = lines.join(' ').toLowerCase()
   const words = text.split(/\W+/)
 
@@ -81,9 +81,20 @@ export function classifyMoods(lines) {
 }
 
 /**
+ * Portal tags for the highest keyword-ranked canonical mood (see classifyMoods).
+ * Use with app-level TAG_PASTEL_HEX / tagPastelHex to pick an accent hex.
+ */
+export function portalTagsForTopRankedMood(lines) {
+  const safe = Array.isArray(lines) ? lines.map((l) => String(l).trim()).filter(Boolean) : []
+  if (!safe.length) return MOOD_TO_PORTALS.wonder
+  const top = classifyMoods(safe)[0] ?? 'wonder'
+  return MOOD_TO_PORTALS[top] ?? MOOD_TO_PORTALS.wonder
+}
+
+/**
  * Map an array of moods to a deduplicated set of portal tags.
  */
-export function moodsToPortals(moods) {
+function moodsToPortals(moods) {
   const portals = new Set()
   for (const mood of moods) {
     for (const portal of (MOOD_TO_PORTALS[mood] ?? [])) {
