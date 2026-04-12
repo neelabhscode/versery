@@ -2333,6 +2333,9 @@ function AppLoaded({ poems, poets, collections }) {
                     aria-controls="versery-whats-new-panel"
                     onClick={handleWhatsNewPillClick}
                   >
+                    <span className="material-symbols-outlined whats-new-trigger__icon" aria-hidden="true">
+                      new_releases
+                    </span>
                     <span className="whats-new-trigger__label">What&rsquo;s new</span>
                     <span className="whats-new-trigger__dot" aria-hidden="true" />
                   </button>
