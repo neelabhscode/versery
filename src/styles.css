@@ -974,7 +974,8 @@ a {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding-inline: 1.5rem;
+  /* Parent sections (.voice-works-page, .discovery-results-page, .collection-detail) already pad inline; avoid double gutter vs .screen-actions--reader on poem detail. */
+  padding-inline: 0;
   box-sizing: border-box;
 }
 
@@ -3335,9 +3336,29 @@ html[data-theme="dark"] .voice-card__image::after {
   opacity: 0.45;
 }
 
+/* Complete Works list only (discovery rows add .discovery-results-page__meta). */
+.voice-works-page__meta:not(.discovery-results-page__meta) {
+  font-size: 0.65rem;
+  line-height: 1.35;
+}
+
+.voice-works-page__meta:not(.discovery-results-page__meta) > span:first-of-type {
+  align-self: stretch;
+  min-width: 0;
+  text-align: right;
+}
+
 .discovery-results-page__meta {
   gap: 1rem;
   padding-top: 0.15rem;
+  font-size: 0.66rem;
+  line-height: 1.35;
+}
+
+.discovery-results-page__meta > span:first-of-type {
+  align-self: stretch;
+  min-width: 0;
+  text-align: right;
 }
 
 .discovery-results-page__meta .material-symbols-outlined {
@@ -4151,11 +4172,11 @@ html[data-theme="dark"] .home-faq__item[open] {
   }
 
   .voice-works-page__meta {
-    min-width: 8.5rem;
+    min-width: 7.25rem;
   }
 
   .discovery-results-page__meta {
-    min-width: 8.75rem;
+    min-width: 7.25rem;
     gap: 1.15rem;
   }
 
