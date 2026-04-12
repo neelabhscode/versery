@@ -8,7 +8,7 @@ const mapping = {
   'Blake.png': 'william-blake',
   'Burns.png': 'burns',
   'Coleridge.png': 'coleridge',
-  'Dickinson.png': 'dickinson',
+  'Dickinson.png': 'emily-dickinson',
   'Dunbar.png': 'dunbar',
   'Hafez.png': 'hafez',
   'Herbert.png': 'george-herbert',

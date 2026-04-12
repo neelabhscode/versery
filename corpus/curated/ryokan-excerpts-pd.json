@@ -1,0 +1,222 @@
+[
+  {
+    "title": "When thoughts run out",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Devotion",
+    "text": "When thoughts run out\nI step into the woods\nand gather\nshepherd's purse.",
+    "moods": [
+      "Devotion",
+      "Ethereal",
+      "Peace"
+    ]
+  },
+  {
+    "title": "Like a small stream",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Devotion",
+    "text": "Like a small stream\nthrough mossy stone,\nI keep going quietly\nuntil I turn clear.",
+    "moods": [
+      "Devotion",
+      "Ethereal",
+      "Peace"
+    ]
+  },
+  {
+    "title": "At dusk I climb Kugami",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Longing",
+    "text": "At dusk I climb Kugami.\nA deer calls.\nIts voice sinks\ninto fallen maple leaves\nat the mountain's foot.",
+    "moods": [
+      "Longing",
+      "Mortality",
+      "Nature"
+    ]
+  },
+  {
+    "title": "How could I sleep in this moonlight?",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Radiant",
+    "text": "How could I sleep in this moonlight?\nFriends, come.\nLet us sing and dance\nuntil dawn.",
+    "moods": [
+      "Radiant",
+      "Wonder",
+      "Nature"
+    ]
+  },
+  {
+    "title": "A little drunk",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Wonder",
+    "text": "A little drunk,\nlying under the huge sky,\nI dream beautifully\nbeneath cherry blossoms.",
+    "moods": [
+      "Wonder",
+      "Ethereal",
+      "Nature"
+    ]
+  },
+  {
+    "title": "Wild roses from the field",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Nature",
+    "text": "Wild roses from the field,\nfrogs calling everywhere.\nFloat the petals in wine.\nEnjoy this brief hour.",
+    "moods": [
+      "Nature",
+      "Peace",
+      "Radiant"
+    ]
+  },
+  {
+    "title": "Spring will open every branch",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Grief",
+    "text": "Spring will open every branch.\nFlowers will return.\nBut the children\nwho fell like last autumn leaves\nwill not come back.",
+    "moods": [
+      "Grief",
+      "Longing",
+      "Melancholic"
+    ]
+  },
+  {
+    "title": "The wind is still",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Peace",
+    "text": "The wind is still.\nBlossoms are gone.\nBirdsong deepens as mountains darken.\nThis, too, is the Dharma.",
+    "moods": [
+      "Peace",
+      "Wonder",
+      "Devotion"
+    ]
+  },
+  {
+    "title": "The thief left one thing behind",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Ethereal",
+    "text": "The thief left one thing behind:\nthe moon\nat my window.",
+    "moods": [
+      "Ethereal",
+      "Wonder",
+      "Devotion"
+    ]
+  },
+  {
+    "title": "The wind gives me enough fallen leaves",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Longing",
+    "text": "The wind gives me enough fallen leaves\nto keep a small fire going.",
+    "moods": [
+      "Longing",
+      "Mortality",
+      "Nature"
+    ]
+  },
+  {
+    "title": "After many years away",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Melancholic",
+    "text": "After many years away,\nI return to my village,\nsick,\nand sleep in an inn.\n\nOne robe.\nOne bowl.\nI burn incense\nand sit through the rain.\n\nAll night the drizzle keeps falling.\nInside the dark room,\nold journeys come back one by one.",
+    "moods": [
+      "Melancholic",
+      "Grief",
+      "Longing"
+    ]
+  },
+  {
+    "title": "An old grave at the foot of a quiet hill",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Grief",
+    "text": "An old grave at the foot of a quiet hill,\nweeds high,\nno one tending it.\nOnly a woodcutter passes sometimes.\n\nI was his student once,\na rough-haired boy by the Narrow River.\nThen I left,\nand years went silent between us.\n\nNow I pour clear water on his stone\nand bow.\nThe sun drops behind the ridge,\nwind fills the pines,\nand I cannot walk away.\nMy sleeves are wet with tears.",
+    "moods": [
+      "Grief",
+      "Peace",
+      "Devotion"
+    ]
+  },
+  {
+    "title": "When I was young",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Longing",
+    "text": "When I was young\nI put books aside\nand wanted to be a saint.\nI wandered many springs as a beggar monk.\n\nAt last I came home\nand built a hut under a rough cliff.\nBirdsong became my music.\nClouds became my neighbors.\n\nBelow: a clear spring.\nAbove: pines and oaks for shade and firewood.\nDay after day,\nfree,\nI have no wish to leave.",
+    "moods": [
+      "Longing",
+      "Mortality",
+      "Nature"
+    ]
+  },
+  {
+    "title": "Yes, I am a fool",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Longing",
+    "text": "Yes, I am a fool,\nliving among trees and grass.\nDo not ask me about illusion or enlightenment.\nI only smile to myself.\n\nI wade streams on thin legs,\ncarry my bag through spring weather,\nand keep walking.\nThe world owes me nothing.",
+    "moods": [
+      "Longing",
+      "Mortality",
+      "Nature"
+    ]
+  },
+  {
+    "title": "Snow blends with wind",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Wonder",
+    "text": "Snow blends with wind.\nWind blends with snow.\n\nBy the hearth I stretch my legs,\ndoing nothing,\nkept inside this hut.\n\nCounting days,\nI see even February\nhas already passed,\nlike a dream.",
+    "moods": [
+      "Wonder",
+      "Devotion",
+      "Ethereal"
+    ]
+  },
+  {
+    "title": "No luck on my begging rounds today",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Peace",
+    "text": "No luck on my begging rounds today.\nFrom village to village\nI dragged this body.\n\nBy sunset,\nmountains still stand between me and home.\nThe wind cuts through my robe.\nMy small bowl looks emptier than ever.\n\nStill,\nthis is the path I chose:\ncold,\nhunger,\ndisappointment,\nand a strange peace inside them.",
+    "moods": [
+      "Peace",
+      "Solitary",
+      "Wonder"
+    ]
+  },
+  {
+    "title": "I found this cracked wooden bowl in bamboo",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Peace",
+    "text": "I found this cracked wooden bowl in bamboo,\nwashed it in spring water,\nand mended it.\n\nAfter meditation\nit holds morning gruel.\nAt night,\nsoup or rice.\n\nWorn,\nsplit,\nweathered,\nout of shape—\nstill,\nit is of noble stock.",
+    "moods": [
+      "Peace",
+      "Devotion",
+      "Ethereal"
+    ]
+  },
+  {
+    "title": "In midsummer I walk with my staff",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Nature",
+    "text": "In midsummer I walk with my staff.\nOld farmers see me\nand call me over for a drink.\n\nWe sit in the fields,\nusing leaves as plates.\nWarm with sake,\nhappy,\nI fall asleep\non the edge of a rice paddy.",
+    "moods": [
+      "Nature",
+      "Peace",
+      "Radiant"
+    ]
+  },
+  {
+    "title": "I watch people in this world",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Grief",
+    "text": "I watch people in this world\nwear themselves out\nchasing things.\n\nDesire never fills.\nEven when it does,\njoy vanishes quickly,\nand the grip tightens.\n\nLike monkeys reaching for the moon in water,\nthey fall into whirlpools.\nAll night I think of them,\nunable to stop these tears.",
+    "moods": [
+      "Grief",
+      "Melancholic",
+      "Longing"
+    ]
+  },
+  {
+    "title": "In this broken three-room hut",
+    "source": "Ryokan Taigu",
+    "mood_chip": "Longing",
+    "text": "In this broken three-room hut\nI have grown old.\nThis winter is the hardest yet.\n\nI sip thin gruel\nand wait through the freezing night.\nWill I last until spring?\n\nI cannot go out to beg for rice.\nHow will I survive this cold?\nEven meditation gives little warmth now.\nSo I write poems\nfor friends who have already gone.",
+    "moods": [
+      "Longing",
+      "Mortality",
+      "Nature"
+    ]
+  }
+]

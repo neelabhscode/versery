@@ -1,0 +1,103 @@
+[
+  {
+    "id": "romantics",
+    "label": "Seasonal Selection",
+    "title": "The Romantics",
+    "description": "Intensity, nature, and the sublime in lyrical focus.",
+    "archiveDescription": "Exploring nature's intensity and interior weather.",
+    "image": "/collections/romantics.jpg",
+    "artwork": "/collections/romantics.jpg",
+    "featured": true,
+    "tone": "deep",
+    "curator": {
+      "name": "Neelabh",
+      "role": "Editor-in-Chief"
+    },
+    "portalTags": [
+      "Lush",
+      "Ethereal",
+      "Drift"
+    ],
+    "count": "279 Collections"
+  },
+  {
+    "id": "mystics",
+    "label": "Eternal Knowledge",
+    "title": "Devotion & Mystery",
+    "description": "Poems of surrender, inner light, and spiritual wonder.",
+    "archiveDescription": "Where lyric prayer and philosophical awe converge.",
+    "image": "/collections/mystics.jpg",
+    "artwork": "/collections/mystics.jpg",
+    "tone": "sand",
+    "curator": {
+      "name": "Neelabh",
+      "role": "Archive Curator"
+    },
+    "portalTags": [
+      "Ethereal",
+      "Calm",
+      "Echo"
+    ],
+    "count": "276 Collections"
+  },
+  {
+    "id": "nature",
+    "label": "Living Rhythm",
+    "title": "Nature's Pulse",
+    "description": "Leaf-light, weather, seasons, and elemental movement.",
+    "archiveDescription": "Quiet observations from the living world.",
+    "image": "/collections/nature.jpg",
+    "artwork": "/collections/nature.jpg",
+    "tone": "mist",
+    "curator": {
+      "name": "Neelabh",
+      "role": "Field Editor"
+    },
+    "portalTags": [
+      "Lush",
+      "Calm",
+      "Radiant"
+    ],
+    "count": "314 Collections"
+  },
+  {
+    "id": "solitude",
+    "label": "Inner Life",
+    "title": "The Solitary Hour",
+    "description": "Poems for stillness, introspection, and private distance.",
+    "archiveDescription": "Lines for contemplative and solitary reading sessions.",
+    "image": "/collections/solitude.jpg",
+    "artwork": "/collections/solitude.jpg",
+    "tone": "plain",
+    "curator": {
+      "name": "Neelabh",
+      "role": "Resident Curator"
+    },
+    "portalTags": [
+      "Solitary",
+      "Calm",
+      "Echo"
+    ],
+    "count": "259 Collections"
+  },
+  {
+    "id": "witness",
+    "label": "Against Forgetting",
+    "title": "Conflict & Testimony",
+    "description": "Poetry shaped by pressure, rupture, and historical witness.",
+    "archiveDescription": "Testimony, memory, and difficult truth in verse.",
+    "image": "/collections/witness.jpg",
+    "artwork": "/collections/witness.jpg",
+    "tone": "plain",
+    "curator": {
+      "name": "Neelabh",
+      "role": "Guest Editor"
+    },
+    "portalTags": [
+      "Static",
+      "Pulse",
+      "Melancholic"
+    ],
+    "count": "250 Collections"
+  }
+]

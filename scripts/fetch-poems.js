@@ -16,6 +16,7 @@ import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import { processPoetImage, processCollectionImage, getDirSizeInMB, ensureDir } from './image-utils.js'
+import { MOOD_KEYWORDS, orderedPortalTagsFromLines } from './lean-portal-tags.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(__dirname, '..')
@@ -327,47 +328,8 @@ const POETS = [
 ]
 
 // ---------------------------------------------------------------------------
-// 2. MOOD CLASSIFICATION
+// 2. MOOD CLASSIFICATION (MOOD_KEYWORDS from lean-portal-tags.mjs)
 // ---------------------------------------------------------------------------
-
-const MOOD_KEYWORDS = {
-  grief:    ['death', 'dead', 'died', 'loss', 'lost', 'mourn', 'grave', 'weep',
-             'tears', 'sorrow', 'dark', 'shadow', 'cold', 'pale', 'night',
-             'never', 'gone', 'woe', 'funeral', 'tomb', 'ghost', 'pale'],
-  longing:  ['miss', 'far', 'away', 'return', 'remember', 'dream', 'wish',
-             'wait', 'seek', 'yearning', 'desire', 'hope', 'long', 'distant',
-             'apart', 'absence', 'again', 'once', 'when', 'memory', 'past'],
-  joy:      ['happy', 'joy', 'laugh', 'bright', 'sun', 'dance', 'sing', 'light',
-             'free', 'alive', 'merry', 'delight', 'glad', 'sweet', 'bliss',
-             'spring', 'morning', 'golden', 'radiant', 'smile', 'young'],
-  wonder:   ['wonder', 'star', 'sky', 'infinite', 'vast', 'heaven', 'eternity',
-             'sublime', 'mystery', 'deep', 'divine', 'beauty', 'awe', 'eternal',
-             'truth', 'silence', 'universe', 'earth', 'sea', 'mountain', 'cloud'],
-  love:     ['love', 'heart', 'kiss', 'tender', 'dear', 'embrace', 'together',
-             'beloved', 'thee', 'thy', 'gentle', 'soft', 'warm', 'sweet',
-             'beautiful', 'lips', 'arms', 'eyes', 'soul', 'mine'],
-  solitude: ['alone', 'silence', 'quiet', 'still', 'empty', 'lonely', 'single',
-             'solitary', 'apart', 'hollow', 'one', 'dark', 'shadow', 'room',
-             'door', 'window', 'wall', 'grey', 'fog'],
-  rage:     ['rage', 'anger', 'fury', 'fire', 'burn', 'fight', 'war', 'blood',
-             'violent', 'storm', 'force', 'sword', 'battle', 'hate', 'thunder',
-             'scream', 'iron', 'wound', 'slaughter', 'gun'],
-  peace:    ['peace', 'calm', 'rest', 'breathe', 'ease', 'gentle', 'soft',
-             'slow', 'still', 'tranquil', 'sleep', 'green', 'meadow', 'river',
-             'quiet', 'breeze', 'leaf', 'grass', 'shore', 'evening'],
-}
-
-// Maps PRD 8-mood vocabulary → frontend portal/feeling names
-const MOOD_TO_PORTALS = {
-  grief:    ['Static', 'Melancholic'],
-  longing:  ['Drift', 'Melancholic'],
-  joy:      ['Pulse', 'Radiant'],
-  wonder:   ['Lush', 'Ethereal', 'Focus'],
-  love:     ['Warmth', 'Radiant'],
-  solitude: ['Calm', 'Echo', 'Solitary'],
-  rage:     ['Pulse', 'Static'],
-  peace:    ['Calm', 'Ethereal'],
-}
 
 function classifyMoods(lines) {
   const text = lines.join(' ').toLowerCase()
@@ -385,16 +347,6 @@ function classifyMoods(lines) {
     .map(([mood]) => mood)
 
   return sorted.length > 0 ? sorted : ['wonder']
-}
-
-function moodsToPortals(moods) {
-  const portals = new Set()
-  for (const mood of moods) {
-    for (const portal of (MOOD_TO_PORTALS[mood] ?? [])) {
-      portals.add(portal)
-    }
-  }
-  return [...portals]
 }
 
 // ---------------------------------------------------------------------------
@@ -483,7 +435,7 @@ async function fetchFromPoetryDB(poet) {
         lines,
         linecount: lines.length,
         moods,
-        portalTags: moodsToPortals(moods),
+        portalTags: orderedPortalTagsFromLines(lines),
         excerpt: lines.slice(0, 2).join(' '),
       }
     })
@@ -602,7 +554,7 @@ function buildPoem(poet, title, rawLines) {
     lines,
     linecount: lines.length,
     moods,
-    portalTags: moodsToPortals(moods),
+    portalTags: orderedPortalTagsFromLines(lines),
     excerpt: excerpt.slice(0, 200),
   }
 }
