@@ -877,7 +877,6 @@ a {
 .portal-grid,
 .voices-header,
 .voices-grid,
-.voices-more,
 .poet-feature,
 .home-spotlight-aside,
 .home-faq {
@@ -910,7 +909,6 @@ a {
 .collections-section,
 .portal-grid,
 .voices-grid,
-.voices-more,
 .poet-feature,
 .home-faq {
   margin-top: 3rem;
@@ -2668,6 +2666,7 @@ html[data-theme="dark"] .feeling-chip[data-feeling="solitary"].is-active {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .voice-card {
@@ -2705,6 +2704,7 @@ html[data-theme="dark"] .feeling-chip[data-feeling="solitary"].is-active {
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background-color: var(--surface-low);
+  isolation: isolate;
 }
 
 .voice-card__image img {
@@ -2752,7 +2752,12 @@ html[data-theme="dark"] .voice-card__image::after {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.12) 38%, transparent 62%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.42) 0%,
+    rgba(0, 0, 0, 0.12) 38%,
+    rgba(0, 0, 0, 0) 62%
+  );
 }
 
 .voice-card__meta {
@@ -2772,12 +2777,6 @@ html[data-theme="dark"] .voice-card__image::after {
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-}
-
-.voices-more {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
 }
 
 .screen-content--collections {
@@ -3420,50 +3419,6 @@ html[data-theme="dark"] .discovery-poet-chip__avatar::after {
   font-size: 0.72rem;
   line-height: 1.25;
   text-align: center;
-}
-
-.load-more {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  border: 0;
-  background: transparent;
-  color: var(--ink-soft);
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  font-weight: 700;
-  transition: transform 160ms var(--ease-out);
-}
-
-.load-more__icon {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 999px;
-  border: 1px solid rgba(173, 179, 180, 0.3);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  color: var(--ink-soft);
-  transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .load-more:hover .load-more__icon {
-    background: var(--accent);
-    color: #faf7f6;
-  }
-}
-
-.load-more:focus-visible .load-more__icon {
-  background: var(--accent);
-  color: #faf7f6;
-}
-
-.load-more:active {
-  transform: scale(0.97);
 }
 
 .poet-feature {
@@ -4754,12 +4709,6 @@ html[data-theme="dark"] .home-faq__item[open] {
     width: 100%;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
-  }
-
-  .screen-content--voices .voices-more {
-    max-width: var(--voices-rail);
-    margin-inline: auto;
-    width: 100%;
   }
 
   .screen-content--voices .voice-card__meta {

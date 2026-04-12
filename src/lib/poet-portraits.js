@@ -16,13 +16,10 @@ const POET_PORTRAIT_FILES = {
   ryokan: "ryokan.jpg",
 };
 
-/** Bust stale CDN/browser caches after portrait asset format changes. */
-const PORTRAIT_QUERY = "v=2";
-
 export function poetPortraitUrl(poetId) {
   if (!poetId) return null;
   const file = POET_PORTRAIT_FILES[poetId] ?? `${poetId}.jpg`;
-  return `/poets/${file}?${PORTRAIT_QUERY}`;
+  return `/poets/${file}`;
 }
 
 /** Two-letter initials for avatar fallback (Today’s Poem, etc.). */

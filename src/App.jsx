@@ -1160,7 +1160,6 @@ function AppLoaded({ poems, poets, collections }) {
     previousScreen: "home",
     source: "feeling",
   });
-  const [visibleVoiceCount, setVisibleVoiceCount] = useState(6);
   const [voiceDetailContext, setVoiceDetailContext] = useState({
     previousScreen: "voices",
   });
@@ -1188,7 +1187,6 @@ function AppLoaded({ poems, poets, collections }) {
   const [isGeneratingShareCard, setIsGeneratingShareCard] = useState(false);
   const [shareCardMode, setShareCardMode] = useState("full");
   const [showShareOverflowHint, setShowShareOverflowHint] = useState(false);
-  const loadMoreButtonRef = useRef(null);
   const heroSectionRef = useRef(null);
   const shareCardRef = useRef(null);
   const poemBodyRef = useRef(null);
@@ -1385,7 +1383,7 @@ function AppLoaded({ poems, poets, collections }) {
     collectionPage * collectionsPerPage,
     collectionPage * collectionsPerPage + collectionsPerPage,
   );
-  const visibleVoices = eligibleVoices.slice(0, visibleVoiceCount);
+  const visibleVoices = eligibleVoices;
   const nextPoemData = getNextPoemForOrigin({
     origin: poemContext.sourceOrigin,
     poemId: activePoemId,
@@ -1478,7 +1476,6 @@ function AppLoaded({ poems, poets, collections }) {
       0,
       Math.max(Math.ceil(curatedCollections.length / 6) - 1, 0),
     );
-    const normalizedVisibleVoiceCount = clamp(snapshot.visibleVoiceCount ?? 6, 6, voices.length);
     const discoveryKey =
       typeof snapshot.discoveryContext?.key === "string" && discoveryConfigs[snapshot.discoveryContext.key]
         ? snapshot.discoveryContext.key
@@ -1490,7 +1487,6 @@ function AppLoaded({ poems, poets, collections }) {
       activeCollectionId: collectionId,
       collectionPage: normalizedCollectionPage,
       activeFeeling: typeof snapshot.activeFeeling === "string" ? snapshot.activeFeeling : null,
-      visibleVoiceCount: normalizedVisibleVoiceCount,
       discoveryContext: {
         key: discoveryKey,
         previousScreen: snapshot.discoveryContext?.previousScreen ?? "home",
@@ -1523,7 +1519,6 @@ function AppLoaded({ poems, poets, collections }) {
       activeCollectionId,
       collectionPage,
       activeFeeling,
-      visibleVoiceCount,
       discoveryContext,
       voiceDetailContext,
       voiceWorksContext,
@@ -1540,7 +1535,6 @@ function AppLoaded({ poems, poets, collections }) {
     setActiveCollectionId(snapshot.activeCollectionId);
     setCollectionPage(snapshot.collectionPage);
     setActiveFeeling(snapshot.activeFeeling);
-    setVisibleVoiceCount(snapshot.visibleVoiceCount);
     setDiscoveryContext(snapshot.discoveryContext);
     setVoiceDetailContext(snapshot.voiceDetailContext);
     setVoiceWorksContext(snapshot.voiceWorksContext);
@@ -1917,7 +1911,6 @@ function AppLoaded({ poems, poets, collections }) {
     : onDiscoveryResults
       ? discoveryContext.previousScreen
       : screen;
-  const canLoadMoreVoices = visibleVoiceCount < eligibleVoices.length;
   const hasCollectionPagination = curatedCollections.length > collectionsPerPage;
 
   useLayoutEffect(() => {
@@ -2008,7 +2001,6 @@ function AppLoaded({ poems, poets, collections }) {
     activeCollectionId,
     collectionPage,
     activeFeeling,
-    visibleVoiceCount,
     discoveryContext.key,
     discoveryContext.previousScreen,
     discoveryContext.source,
@@ -2025,7 +2017,7 @@ function AppLoaded({ poems, poets, collections }) {
 
   useLayoutEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [screen, activeVoiceId, activeCollectionId, activePoemId, collectionPage, visibleVoiceCount, voiceWorksPage]);
+  }, [screen, activeVoiceId, activeCollectionId, activePoemId, collectionPage, voiceWorksPage]);
 
   useEffect(() => {
     let title = DEFAULT_DOCUMENT_TITLE;
@@ -2526,25 +2518,6 @@ function AppLoaded({ poems, poets, collections }) {
                 </p>
               )}
           </section>
-
-          <div className="voices-more">
-            {canLoadMoreVoices && (
-              <button
-                ref={loadMoreButtonRef}
-                className="load-more"
-                type="button"
-                onClick={() => {
-                  setVisibleVoiceCount((count) => Math.min(count + 6, eligibleVoices.length));
-                  setTimeout(() => {
-                    loadMoreButtonRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                  }, 50);
-                }}
-              >
-                <span className="load-more__icon material-symbols-outlined">expand_more</span>
-                <span>Load More Voices</span>
-              </button>
-            )}
-          </div>
         </main>
       ) : onCollections ? (
         <main className="screen-content screen-content--collections" data-testid="screen-collections">
