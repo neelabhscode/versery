@@ -127,17 +127,17 @@
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --surface: #13120f;
-  --surface-lowest: #1a1814;
-  --surface-low: #211f1b;
-  --surface-high: #2a2724;
-  --surface-highest: #333028;
-  --surface-dim: #3d3a30;
-  --ink: #ede8e0;
-  --ink-soft: #a09890;
+  --surface: #141516;
+  --surface-lowest: #1a1c1e;
+  --surface-low: #202325;
+  --surface-high: #2a2d30;
+  --surface-highest: #32363a;
+  --surface-dim: #3a3f44;
+  --ink: #e8eaec;
+  --ink-soft: #9aa3a8;
   --accent: #b8bcbf;
   --accent-strong: #d0d4d7;
-  --line: rgba(255, 248, 235, 0.08);
+  --line: rgba(255, 255, 255, 0.08);
   --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.35);
   --shadow-medium: 0 14px 36px rgba(0, 0, 0, 0.45);
   --shadow-header: 0 8px 30px rgba(0, 0, 0, 0.4);
