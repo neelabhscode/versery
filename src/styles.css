@@ -937,8 +937,11 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
   filter: grayscale(100%) brightness(0.85);
+}
+
+.screen-content--voice-detail .voice-hero img {
+  object-position: center top;
 }
 
 .voice-hero__overlay {
@@ -4256,6 +4259,16 @@ html[data-theme="dark"] .home-faq__item[open] {
   .voice-hero {
     min-height: 42rem;
     height: 78vh;
+  }
+
+  .screen-content--voice-detail .voice-hero {
+    background-color: var(--surface-lowest);
+  }
+
+  .screen-content--voice-detail .voice-hero img {
+    object-fit: contain;
+    object-position: center top;
+    max-height: 600px;
   }
 
   .voice-hero__overlay {
