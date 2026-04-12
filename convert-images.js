@@ -1,3 +1,5 @@
+// Legacy PNG → poet JPG pipeline. For WebP delivery of /public/poets and /public/collections,
+// run: npm run optimize:images
 import sharp from 'sharp';
 import fs from 'fs-extra';
 import path from 'path';

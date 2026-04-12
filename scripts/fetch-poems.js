@@ -5,8 +5,8 @@
  * normalises them to a unified schema, classifies moods, and writes:
  *   - public/poems.json   (full corpus, ~2-3 MB)
  *   - public/poets.json   (20 poet metadata objects)
- *   - public/poets/*.jpg   (poet portraits, grayscale)
- *   - public/collections/*.jpg (collection card images, colored)
+ *   - public/poets/*.jpg   (poet portraits, grayscale; run `npm run optimize:images` for WebP)
+ *   - public/collections/*.jpg (collection card images; run `npm run optimize:images` for WebP)
  *
  * Run:  node scripts/fetch-poems.js
  */

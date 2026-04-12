@@ -6,6 +6,7 @@ import { buildShareGradientFromAccent, tagPastelHex, TAG_PASTEL_HEX } from "./li
 import { filterByPortal, filterByPortals, filterByPoet } from "./lib/search.js";
 import { captureFirstTouchAttribution, trackEvent } from "./lib/analytics.js";
 import { poetInitialsFromAuthor, poetPortraitUrl } from "./lib/poet-portraits.js";
+import { CollectionCoverImg, PoetPortraitImg } from "./lib/responsive-public-images.jsx";
 import { applyTheme, readStoredTheme, subscribeThemeStorage } from "./lib/theme.js";
 import { NewsletterForm, NEWSLETTER_SPOTLIGHT_HEADLINE } from "./components/NewsletterForm.jsx";
 import { InstallAppButton } from "./components/InstallAppButton.jsx";
@@ -281,8 +282,8 @@ const DEFAULT_COLLECTION_TEMPLATES = [
     title: "The Romantics",
     description: "Intensity, nature, and the sublime — the great English Romantics in full voice.",
     archiveDescription: "Exploring the sublime intersection of nature's chaos and the human heart.",
-    image: "/collections/romantics.jpg",
-    artwork: "/collections/romantics.jpg",
+    image: "/collections/romantics.webp",
+    artwork: "/collections/romantics.webp",
     count: "32 Collections",
     featured: true,
     tone: "deep",
@@ -295,8 +296,8 @@ const DEFAULT_COLLECTION_TEMPLATES = [
     title: "Devotion & Mystery",
     description: "Poems that reach past the visible world — spiritual light, inner surrender, and awe.",
     archiveDescription: "Where poetry becomes prayer and wonder becomes theology.",
-    image: "/collections/mystics.jpg",
-    artwork: "/collections/mystics.jpg",
+    image: "/collections/mystics.webp",
+    artwork: "/collections/mystics.webp",
     count: "24 Collections",
     tone: "sand",
     curator: { name: "Neelabh", role: "Archive Curator" },
@@ -308,8 +309,8 @@ const DEFAULT_COLLECTION_TEMPLATES = [
     title: "Nature's Pulse",
     description: "Poems rooted in the living world — leaf-light, river-sound, and the turning of seasons.",
     archiveDescription: "The biological symmetry found within the quietest corners of the wild.",
-    image: "/collections/nature.jpg",
-    artwork: "/collections/nature.jpg",
+    image: "/collections/nature.webp",
+    artwork: "/collections/nature.webp",
     count: "18 Collections",
     tone: "mist",
     curator: { name: "Neelabh", role: "Field Editor" },
@@ -321,8 +322,8 @@ const DEFAULT_COLLECTION_TEMPLATES = [
     title: "Love & Longing",
     description: "Devotion, absence, and the tender machinery of the heart across the centuries.",
     archiveDescription: "Devotion, absence, and the tender machinery of the heart across the centuries.",
-    image: "/collections/love.jpg",
-    artwork: "/collections/love.jpg",
+    image: "/collections/love.webp",
+    artwork: "/collections/love.webp",
     count: "21 Collections",
     tone: "sand",
     curator: { name: "Neelabh", role: "Guest Editor" },
@@ -334,8 +335,8 @@ const DEFAULT_COLLECTION_TEMPLATES = [
     title: "The Solitary Hour",
     description: "Poems composed in quietness, for the reader who sits apart from the noise.",
     archiveDescription: "Poems composed in quietness, for the reader who sits apart from the noise.",
-    image: "/collections/solitude.jpg",
-    artwork: "/collections/solitude.jpg",
+    image: "/collections/solitude.webp",
+    artwork: "/collections/solitude.webp",
     count: "15 Collections",
     tone: "plain",
     curator: { name: "Neelabh", role: "Resident Curator" },
@@ -347,8 +348,8 @@ const DEFAULT_COLLECTION_TEMPLATES = [
     title: "Conflict & Testimony",
     description: "Poetry forged under pressure — the weight of war, loss, and difficult truth.",
     archiveDescription: "Poetry forged in the fire of conflict — the weight of testimony.",
-    image: "/collections/witness.jpg",
-    artwork: "/collections/witness.jpg",
+    image: "/collections/witness.webp",
+    artwork: "/collections/witness.webp",
     count: "11 Collections",
     tone: "plain",
     curator: { name: "Neelabh", role: "Guest Editor" },
@@ -360,8 +361,8 @@ const DEFAULT_COLLECTION_TEMPLATES = [
     title: "The Open Road",
     description: "Expansive, democratic, radiant — poems of self-reliance, freedom, and the wide earth.",
     archiveDescription: "The moral weather of solitude, landscape, and self-reliance.",
-    image: "/collections/transcendentalists.jpg",
-    artwork: "/collections/transcendentalists.jpg",
+    image: "/collections/transcendentalists.webp",
+    artwork: "/collections/transcendentalists.webp",
     count: "14 Collections",
     tone: "mist",
     curator: { name: "Neelabh", role: "Guest Curator" },
@@ -373,8 +374,8 @@ const DEFAULT_COLLECTION_TEMPLATES = [
     title: "After Hours",
     description: "A shelf of works for insomniac rooms, dim streets, and the hush after conversation.",
     archiveDescription: "A shelf of works for insomniac rooms, dim streets, and the hush after conversation.",
-    image: "/collections/after-hours.jpg",
-    artwork: "/collections/after-hours.jpg",
+    image: "/collections/after-hours.webp",
+    artwork: "/collections/after-hours.webp",
     count: "12 Collections",
     tone: "deep",
     curator: { name: "Neelabh", role: "Night Editor" },
@@ -613,8 +614,8 @@ function generateDailyCollectionImages(collections) {
   let cachedDate;
   let cachedMapping;
   try {
-    cachedDate = localStorage.getItem("versery_collection_images_date");
-    cachedMapping = localStorage.getItem("versery_collection_images");
+    cachedDate = localStorage.getItem("versery_collection_images_date_v2");
+    cachedMapping = localStorage.getItem("versery_collection_images_v2");
   } catch {
     cachedDate = null;
     cachedMapping = null;
@@ -647,62 +648,62 @@ function generateDailyCollectionImages(collections) {
 
   // All collection images from /public/collections/ (verified files only)
   const allImages = [
-    "/collections/ahmed-hossam-5csXP8McYiA-unsplash.jpg",
-    "/collections/annie-spratt-1_w7dXWG2A0-unsplash.jpg",
-    "/collections/annie-spratt-7-E5o8Uu1iI-unsplash.jpg",
-    "/collections/annie-spratt-95LDMJuVDYA-unsplash.jpg",
-    "/collections/annie-spratt-CUdhkjtiUng-unsplash.jpg",
-    "/collections/annie-spratt-LRe9Lj0IaeY-unsplash.jpg",
-    "/collections/annie-spratt-LxFqrbjV_aE-unsplash.jpg",
-    "/collections/annie-spratt-NMbHsivBGEM-unsplash.jpg",
-    "/collections/annie-spratt-fM0F-zuKjfs-unsplash.jpg",
-    "/collections/annie-spratt-yMKimSyBLIo-unsplash.jpg",
-    "/collections/anny-cecilia-walter-2zfA9UMHSpI-unsplash.jpg",
-    "/collections/anny-cecilia-walter-YB37kGYZSls-unsplash.jpg",
-    "/collections/anny-cecilia-walter-hOJyggZpwac-unsplash.jpg",
-    "/collections/brigitte-elsner-THp4np6Jqzk-unsplash.jpg",
-    "/collections/brigitte-elsner-X_j77zf-FHA-unsplash.jpg",
-    "/collections/compagnons-22U1A5JM3EY-unsplash.jpg",
-    "/collections/compagnons-D-JfpYnIU80-unsplash.jpg",
-    "/collections/compagnons-EvMG6gjrj3s-unsplash.jpg",
-    "/collections/compagnons-_huYdLgvdcg-unsplash.jpg",
-    "/collections/deep-7Qw_5JzOATY-unsplash.jpg",
-    "/collections/deep-7cCdyCztdLM-unsplash.jpg",
-    "/collections/deep-B1bKrxnr3-c-unsplash.jpg",
-    "/collections/deep-K92pByP9tPQ-unsplash.jpg",
-    "/collections/deep-_GzJEfNZ8Mo-unsplash.jpg",
-    "/collections/deep-j-yKvTrn5c4-unsplash.jpg",
-    "/collections/deep-qAMqqo07Qrs-unsplash.jpg",
-    "/collections/deep-tWWfFo5mUjY-unsplash.jpg",
-    "/collections/deep-wst8ldk2ADw-unsplash.jpg",
-    "/collections/deep-x0fNueZl8J4-unsplash.jpg",
-    "/collections/drawchicken-studio-00xvPu7qPIs-unsplash.jpg",
-    "/collections/emily-hawke-_EeF_OOPY-g-unsplash.jpg",
-    "/collections/esma-melike-sezer-MwJbGqhRZT8-unsplash.jpg",
-    "/collections/esma-melike-sezer-WaGnNLRE9QM-unsplash.jpg",
-    "/collections/esma-melike-sezer-a2RUchb-fyM-unsplash.jpg",
-    "/collections/esma-melike-sezer-k_ZXMgQZVE8-unsplash.jpg",
-    "/collections/karacis-studio-RYPKIJdaxUg-unsplash.jpg",
-    "/collections/m-umar-farooq-G9CxsOtR-Sg-unsplash.jpg",
-    "/collections/m-umar-farooq-V5kF-1ugfBY-unsplash.jpg",
-    "/collections/m-umar-farooq-f8ijzjiFh7Q-unsplash.jpg",
-    "/collections/m-umar-farooq-w9e54BuRMIo-unsplash.jpg",
-    "/collections/mila-okta-safitri-SDZevo8oZz8-unsplash.jpg",
-    "/collections/mila-okta-safitri-hutCHBVQyyk-unsplash.jpg",
-    "/collections/muhammad-afandi-j-jxImbonQ0-unsplash.jpg",
-    "/collections/olli-kilpi-eNPNDMieh88-unsplash.jpg",
-    "/collections/pauline-loroy-UdbCZ0JdO_I-unsplash.jpg",
-    "/collections/public-domain-vectors-0mDKnbwoo4w-unsplash.jpg",
-    "/collections/public-domain-vectors-8x-sfXJdqig-unsplash.jpg",
-    "/collections/public-domain-vectors-S-CqekUvf_g-unsplash.jpg",
-    "/collections/public-domain-vectors-pXT4CFBvfyM-unsplash.jpg",
-    "/collections/public-domain-vectors-vr1v0RV5FpU-unsplash.jpg",
-    "/collections/puzzle-creative-z1sS_JPpOk4-unsplash.jpg",
-    "/collections/umm-e-hani-ali-7D1Q0huNavA-unsplash.jpg",
-    "/collections/umm-e-hani-ali-AU15WzrmKpw-unsplash.jpg",
-    "/collections/vanicon-studio-5HzFkZq-M-g-unsplash.jpg",
-    "/collections/viktoriya-lissachenko-0H9vIlJ2kDM-unsplash.jpg",
-    "/collections/viktoriya-lissachenko-OAvtXaQBl1E-unsplash.jpg",
+    "/collections/ahmed-hossam-5csXP8McYiA-unsplash.webp",
+    "/collections/annie-spratt-1_w7dXWG2A0-unsplash.webp",
+    "/collections/annie-spratt-7-E5o8Uu1iI-unsplash.webp",
+    "/collections/annie-spratt-95LDMJuVDYA-unsplash.webp",
+    "/collections/annie-spratt-CUdhkjtiUng-unsplash.webp",
+    "/collections/annie-spratt-LRe9Lj0IaeY-unsplash.webp",
+    "/collections/annie-spratt-LxFqrbjV_aE-unsplash.webp",
+    "/collections/annie-spratt-NMbHsivBGEM-unsplash.webp",
+    "/collections/annie-spratt-fM0F-zuKjfs-unsplash.webp",
+    "/collections/annie-spratt-yMKimSyBLIo-unsplash.webp",
+    "/collections/anny-cecilia-walter-2zfA9UMHSpI-unsplash.webp",
+    "/collections/anny-cecilia-walter-YB37kGYZSls-unsplash.webp",
+    "/collections/anny-cecilia-walter-hOJyggZpwac-unsplash.webp",
+    "/collections/brigitte-elsner-THp4np6Jqzk-unsplash.webp",
+    "/collections/brigitte-elsner-X_j77zf-FHA-unsplash.webp",
+    "/collections/compagnons-22U1A5JM3EY-unsplash.webp",
+    "/collections/compagnons-D-JfpYnIU80-unsplash.webp",
+    "/collections/compagnons-EvMG6gjrj3s-unsplash.webp",
+    "/collections/compagnons-_huYdLgvdcg-unsplash.webp",
+    "/collections/deep-7Qw_5JzOATY-unsplash.webp",
+    "/collections/deep-7cCdyCztdLM-unsplash.webp",
+    "/collections/deep-B1bKrxnr3-c-unsplash.webp",
+    "/collections/deep-K92pByP9tPQ-unsplash.webp",
+    "/collections/deep-_GzJEfNZ8Mo-unsplash.webp",
+    "/collections/deep-j-yKvTrn5c4-unsplash.webp",
+    "/collections/deep-qAMqqo07Qrs-unsplash.webp",
+    "/collections/deep-tWWfFo5mUjY-unsplash.webp",
+    "/collections/deep-wst8ldk2ADw-unsplash.webp",
+    "/collections/deep-x0fNueZl8J4-unsplash.webp",
+    "/collections/drawchicken-studio-00xvPu7qPIs-unsplash.webp",
+    "/collections/emily-hawke-_EeF_OOPY-g-unsplash.webp",
+    "/collections/esma-melike-sezer-MwJbGqhRZT8-unsplash.webp",
+    "/collections/esma-melike-sezer-WaGnNLRE9QM-unsplash.webp",
+    "/collections/esma-melike-sezer-a2RUchb-fyM-unsplash.webp",
+    "/collections/esma-melike-sezer-k_ZXMgQZVE8-unsplash.webp",
+    "/collections/karacis-studio-RYPKIJdaxUg-unsplash.webp",
+    "/collections/m-umar-farooq-G9CxsOtR-Sg-unsplash.webp",
+    "/collections/m-umar-farooq-V5kF-1ugfBY-unsplash.webp",
+    "/collections/m-umar-farooq-f8ijzjiFh7Q-unsplash.webp",
+    "/collections/m-umar-farooq-w9e54BuRMIo-unsplash.webp",
+    "/collections/mila-okta-safitri-SDZevo8oZz8-unsplash.webp",
+    "/collections/mila-okta-safitri-hutCHBVQyyk-unsplash.webp",
+    "/collections/muhammad-afandi-j-jxImbonQ0-unsplash.webp",
+    "/collections/olli-kilpi-eNPNDMieh88-unsplash.webp",
+    "/collections/pauline-loroy-UdbCZ0JdO_I-unsplash.webp",
+    "/collections/public-domain-vectors-0mDKnbwoo4w-unsplash.webp",
+    "/collections/public-domain-vectors-8x-sfXJdqig-unsplash.webp",
+    "/collections/public-domain-vectors-S-CqekUvf_g-unsplash.webp",
+    "/collections/public-domain-vectors-pXT4CFBvfyM-unsplash.webp",
+    "/collections/public-domain-vectors-vr1v0RV5FpU-unsplash.webp",
+    "/collections/puzzle-creative-z1sS_JPpOk4-unsplash.webp",
+    "/collections/umm-e-hani-ali-7D1Q0huNavA-unsplash.webp",
+    "/collections/umm-e-hani-ali-AU15WzrmKpw-unsplash.webp",
+    "/collections/vanicon-studio-5HzFkZq-M-g-unsplash.webp",
+    "/collections/viktoriya-lissachenko-0H9vIlJ2kDM-unsplash.webp",
+    "/collections/viktoriya-lissachenko-OAvtXaQBl1E-unsplash.webp",
   ];
 
   // Assign one image per collection from the same Unsplash pool; avoid repeats
@@ -721,8 +722,8 @@ function generateDailyCollectionImages(collections) {
   });
 
   try {
-    localStorage.setItem("versery_collection_images_date", today);
-    localStorage.setItem("versery_collection_images", JSON.stringify(mapping));
+    localStorage.setItem("versery_collection_images_date_v2", today);
+    localStorage.setItem("versery_collection_images_v2", JSON.stringify(mapping));
   } catch {
     /* Private mode / quota — mapping still valid in memory for this session */
   }
@@ -982,8 +983,8 @@ function AppLoaded({ poems, poets, collections }) {
               "Poems from voices we only keep a handful of lines from—brief guest stays in the archive.",
             archiveDescription:
               "Everything we host from the archive's smaller shelves: occasional voices and single-edition stays.",
-            image: "/collections/karacis-studio-RYPKIJdaxUg-unsplash.jpg",
-            artwork: "/collections/karacis-studio-RYPKIJdaxUg-unsplash.jpg",
+            image: "/collections/karacis-studio-RYPKIJdaxUg-unsplash.webp",
+            artwork: "/collections/karacis-studio-RYPKIJdaxUg-unsplash.webp",
             tone: "plain",
             homeShelf: true,
             featured: false,
@@ -2502,7 +2503,7 @@ function AppLoaded({ poems, poets, collections }) {
                 onClick={() => openVoice(voice.id, "voices")}
               >
                 <div className="voice-card__image">
-                  <img src={voice.image} alt={`Portrait of ${voice.name}`} loading="lazy" />
+                  <PoetPortraitImg src={voice.image} alt={`Portrait of ${voice.name}`} />
                 </div>
                 <div className="voice-card__meta">
                   <h3>{voice.name}</h3>
@@ -2549,7 +2550,10 @@ function AppLoaded({ poems, poets, collections }) {
                 >
                   {collection.image ? (
                     <div className="collections-archive-card__media">
-                      <img src={collectionImages[collection.id] || collection.image} alt={collection.title} loading="lazy" />
+                      <CollectionCoverImg
+                        src={collectionImages[collection.id] || collection.image}
+                        alt={collection.title}
+                      />
                     </div>
                   ) : (
                     <div className="collections-archive-card__media collections-archive-card__media--plain" aria-hidden="true"></div>
@@ -2694,7 +2698,7 @@ function AppLoaded({ poems, poets, collections }) {
                     onClick={() => openVoice(voice.id, "discoveryResults")}
                   >
                     <span className="discovery-poet-chip__avatar">
-                      <img src={voice.image} alt={voice.name} loading="lazy" />
+                      <PoetPortraitImg src={voice.image} alt={voice.name} intrinsicSize="chip" />
                     </span>
                     <span className="discovery-poet-chip__name">{voice.name}</span>
                   </button>
@@ -2720,7 +2724,10 @@ function AppLoaded({ poems, poets, collections }) {
             <header className="collection-detail__hero">
               <div className="collection-detail__art">
                 {activeCollection.artwork ? (
-                  <img src={collectionImages[activeCollection.id] || activeCollection.artwork} alt={activeCollection.title} loading="lazy" />
+                  <CollectionCoverImg
+                    src={collectionImages[activeCollection.id] || activeCollection.artwork}
+                    alt={activeCollection.title}
+                  />
                 ) : (
                   <div className="collection-detail__art-placeholder" aria-hidden="true"></div>
                 )}
@@ -2770,7 +2777,13 @@ function AppLoaded({ poems, poets, collections }) {
       ) : onVoiceDetail ? (
         <main className="screen-content screen-content--voice-detail" data-testid="screen-voice-detail">
           <header className="voice-hero">
-            <img src={activeVoice.image} alt={`Portrait of ${activeVoice.name}`} fetchPriority="high" />
+            <PoetPortraitImg
+              src={activeVoice.image}
+              alt={`Portrait of ${activeVoice.name}`}
+              loading="eager"
+              fetchPriority="high"
+              intrinsicSize="hero"
+            />
             <div className="voice-hero__overlay"></div>
             <div className="screen-actions screen-actions--overlay">
               <button
@@ -3231,10 +3244,10 @@ function AppLoaded({ poems, poets, collections }) {
               </h2>
               <div className="poet-feature__content">
                 <div className="poet-feature__avatar">
-                  <img
+                  <PoetPortraitImg
                     src={poetOfWeek?.image}
                     alt={`Portrait of ${poetOfWeek?.name}`}
-                    loading="lazy"
+                    intrinsicSize="chip"
                   />
                 </div>
                 <div className="poet-feature__text">
@@ -3286,10 +3299,10 @@ function AppLoaded({ poems, poets, collections }) {
                         {featuredPoemInitials}
                       </span>
                     ) : (
-                      <img
+                      <PoetPortraitImg
                         src={featuredPortraitSrc}
                         alt={`Portrait of ${featuredPoem.author}`}
-                        loading="lazy"
+                        intrinsicSize="chip"
                         onError={() => setFeaturedPortraitFailed(true)}
                       />
                     )}
@@ -3399,7 +3412,10 @@ function AppLoaded({ poems, poets, collections }) {
                 >
                   {collection.image ? (
                     <div className="collections-archive-card__media">
-                      <img src={collectionImages[collection.id] || collection.image} alt={collection.title} loading="lazy" />
+                      <CollectionCoverImg
+                        src={collectionImages[collection.id] || collection.image}
+                        alt={collection.title}
+                      />
                     </div>
                   ) : (
                     <div className="collections-archive-card__media collections-archive-card__media--plain" aria-hidden="true"></div>

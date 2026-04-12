@@ -127,17 +127,17 @@
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --surface: #141516;
-  --surface-lowest: #1a1c1e;
-  --surface-low: #202325;
-  --surface-high: #2a2d30;
-  --surface-highest: #32363a;
-  --surface-dim: #3a3f44;
-  --ink: #e8eaec;
-  --ink-soft: #9aa3a8;
+  --surface: #13120f;
+  --surface-lowest: #1a1814;
+  --surface-low: #211f1b;
+  --surface-high: #2a2724;
+  --surface-highest: #333028;
+  --surface-dim: #3d3a30;
+  --ink: #ede8e0;
+  --ink-soft: #a09890;
   --accent: #b8bcbf;
   --accent-strong: #d0d4d7;
-  --line: rgba(255, 255, 255, 0.08);
+  --line: rgba(255, 248, 235, 0.08);
   --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.35);
   --shadow-medium: 0 14px 36px rgba(0, 0, 0, 0.45);
   --shadow-header: 0 8px 30px rgba(0, 0, 0, 0.4);
@@ -2108,25 +2108,25 @@ a {
 /* Feeling button colors — Option A tones (muted pastels on surface-low family) */
 .feeling-chip[data-feeling="melancholic"] {
   background: #e6d9f0;
-  color: #8a7a9a;
+  color: #5f4d73;
   border: 2px solid transparent;
 }
 
 .feeling-chip[data-feeling="ethereal"] {
   background: #d9f0e6;
-  color: #5a8a7a;
+  color: #2d5c48;
   border: 2px solid transparent;
 }
 
 .feeling-chip[data-feeling="radiant"] {
   background: #f0e6d9;
-  color: #9a8a7a;
+  color: #6a4f38;
   border: 2px solid transparent;
 }
 
 .feeling-chip[data-feeling="solitary"] {
   background: #d9e6f0;
-  color: #6a7a9a;
+  color: #3d4d6d;
   border: 2px solid transparent;
 }
 

@@ -8,6 +8,16 @@ export default defineConfig(({ mode }) => {
   const siteUrl = (env.VITE_SITE_URL || "https://www.versery.today").replace(/\/$/, "");
 
   return {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes("node_modules/framer-motion")) return "framer-motion";
+            if (id.includes("node_modules/react-dom") || id.includes("node_modules/react/")) return "vendor";
+          },
+        },
+      },
+    },
     plugins: [
       react(),
       VitePWA({

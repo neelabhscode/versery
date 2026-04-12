@@ -10,7 +10,8 @@
     "sitemap": "node generate-sitemap.js",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "fetch-data": "node scripts/fetch-poems.js"
+    "fetch-data": "node scripts/fetch-poems.js",
+    "optimize:images": "node scripts/optimize-public-images.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

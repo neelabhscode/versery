@@ -1,24 +1,24 @@
 /**
  * Maps canonical poet ids (from poets.json) to filenames under /public/poets/.
- * Default is `${id}.jpg` when not listed here.
+ * Default is `${id}.webp` when not listed here.
  */
 const POET_PORTRAIT_FILES = {
-  "bhagavad-gita": "gita.jpeg",
-  "john-keats": "keats.jpg",
-  "kahlil-gibran": "gibran.jpg",
-  "lao-tzu": "lao.jpg",
-  "mirza-ghalib": "ghalib.jpg",
-  "rainer-maria-rilke": "rilke.jpg",
-  "robert-frost": "frost.jpg",
-  "rudyard-kipling": "kipling.jpg",
-  "t-s-eliot": "eliot.jpg",
-  tagore: "tagore.jpg",
-  ryokan: "ryokan.jpg",
+  "bhagavad-gita": "gita.webp",
+  "john-keats": "keats.webp",
+  "kahlil-gibran": "gibran.webp",
+  "lao-tzu": "lao.webp",
+  "mirza-ghalib": "ghalib.webp",
+  "rainer-maria-rilke": "rilke.webp",
+  "robert-frost": "frost.webp",
+  "rudyard-kipling": "kipling.webp",
+  "t-s-eliot": "eliot.webp",
+  tagore: "tagore.webp",
+  ryokan: "ryokan.webp",
 };
 
 export function poetPortraitUrl(poetId) {
   if (!poetId) return null;
-  const file = POET_PORTRAIT_FILES[poetId] ?? `${poetId}.jpg`;
+  const file = POET_PORTRAIT_FILES[poetId] ?? `${poetId}.webp`;
   return `/poets/${file}`;
 }
 
