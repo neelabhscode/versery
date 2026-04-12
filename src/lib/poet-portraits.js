@@ -5,15 +5,15 @@
 const POET_PORTRAIT_FILES = {
   "bhagavad-gita": "gita.jpeg",
   "john-keats": "keats.jpg",
-  "kahlil-gibran": "gibran.png",
-  "lao-tzu": "lao.png",
-  "mirza-ghalib": "ghalib.png",
-  "rainer-maria-rilke": "rilke.png",
-  "robert-frost": "frost.png",
-  "rudyard-kipling": "kipling.png",
-  "t-s-eliot": "eliot.png",
-  "tagore": "tagore.png",
-  "ryokan": "ryokan.png",
+  "kahlil-gibran": "gibran.jpg",
+  "lao-tzu": "lao.jpg",
+  "mirza-ghalib": "ghalib.jpg",
+  "rainer-maria-rilke": "rilke.jpg",
+  "robert-frost": "frost.jpg",
+  "rudyard-kipling": "kipling.jpg",
+  "t-s-eliot": "eliot.jpg",
+  tagore: "tagore.jpg",
+  ryokan: "ryokan.jpg",
 };
 
 export function poetPortraitUrl(poetId) {
