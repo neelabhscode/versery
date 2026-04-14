@@ -477,5 +477,20 @@
     "resonance": "Williams teaches seeing before judging—the poem as diagnosis of attention.",
     "quote": "so much depends / upon / a red wheel / barrow",
     "quoteSource": "The Red Wheelbarrow"
+  },
+  "wisdom-literature-kjv": {
+    "fullName": "Anonymous (Wisdom Literature / Modernized)",
+    "born": null,
+    "died": null,
+    "from": "Ancient Israel (Hebrew Bible tradition)",
+    "era": "Ancient wisdom and poetic scripture",
+    "tag": "Wisdom literature",
+    "heroLabel": "Sacred text",
+    "essence": "Existential steel, cosmic scale, and practical wisdom rendered in modern free verse.",
+    "bio": "A curated modernized rendering from the King James tradition focused on Ecclesiastes, Job, Psalms, Proverbs, and Song of Solomon. These passages retain ancient imagery and philosophical weight while removing archaic syntax for contemporary readability.",
+    "moods": ["Philosophical", "Devotional", "Melancholic"],
+    "resonance": "This voice holds both dust and firmament—stark counsel for grief, wonder, and grounded living.",
+    "quote": "Smoke of smoke—everything is smoke.",
+    "quoteSource": "Ecclesiastes (modernized rendering)"
   }
 }
