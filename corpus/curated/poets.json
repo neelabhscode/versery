@@ -1536,6 +1536,50 @@
     "quoteSource": "In Time of Pestilence"
   },
   {
+    "id": "vyasa-translated-by-edwin-arnold-modernized",
+    "name": "Vyasa (Translated By Edwin Arnold / Modernized)",
+    "fullName": "Vyasa (Translated By Edwin Arnold / Modernized)",
+    "born": null,
+    "died": null,
+    "from": "Unknown",
+    "era": "Unknown",
+    "tag": "Curated Voice",
+    "essence": "Curated poetry voice: Vyasa (Translated By Edwin Arnold / Modernized)",
+    "bio": "Vyasa (Translated By Edwin Arnold / Modernized) appears in the Versery curated corpus.",
+    "poemCount": 100,
+    "moods": [],
+    "portalTags": [
+      "Calm",
+      "Focus",
+      "Pulse",
+      "Lush"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Dust Before the Signal",
+        "subtitle": "Before the first arrow, there is only dust—…",
+        "poemId": "vyasa-translated-by-edwin-arnold-modernized--dust-before-the-signal"
+      },
+      {
+        "id": "02",
+        "title": "No Lost Effort",
+        "subtitle": "Nothing sincere is wasted. Practice deposits light…",
+        "poemId": "vyasa-translated-by-edwin-arnold-modernized--no-lost-effort"
+      },
+      {
+        "id": "03",
+        "title": "Inner Enemy Briefing",
+        "subtitle": "Name the adversary: craving. Its camouflage: pleasure.…",
+        "poemId": "vyasa-translated-by-edwin-arnold-modernized--inner-enemy-briefing"
+      }
+    ],
+    "heroLabel": null,
+    "resonance": null,
+    "quote": null,
+    "quoteSource": null
+  },
+  {
     "id": "wallace-stevens",
     "name": "Wallace Stevens",
     "fullName": "Wallace Stevens",
@@ -1630,5 +1674,53 @@
     "resonance": "Williams teaches seeing before judging—the poem as diagnosis of attention.",
     "quote": "so much depends / upon / a red wheel / barrow",
     "quoteSource": "The Red Wheelbarrow"
+  },
+  {
+    "id": "wisdom-literature-kjv",
+    "name": "Anonymous (Wisdom Literature / Modernized)",
+    "fullName": "Anonymous (Wisdom Literature / Modernized)",
+    "born": null,
+    "died": null,
+    "from": "Ancient Israel (Hebrew Bible tradition)",
+    "era": "Ancient wisdom and poetic scripture",
+    "tag": "Wisdom literature",
+    "essence": "Existential steel, cosmic scale, and practical wisdom rendered in modern free verse.",
+    "bio": "A curated modernized rendering from the King James tradition focused on Ecclesiastes, Job, Psalms, Proverbs, and Song of Solomon. These passages retain ancient imagery and philosophical weight while removing archaic syntax for contemporary readability.",
+    "poemCount": 62,
+    "moods": [
+      "Philosophical",
+      "Devotional",
+      "Melancholic"
+    ],
+    "portalTags": [
+      "Calm",
+      "Focus",
+      "Ethereal",
+      "Pulse"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Chasing the Wind",
+        "subtitle": "Smoke of smoke—everything is smoke. What does a…",
+        "poemId": "wisdom-literature-kjv--chasing-the-wind"
+      },
+      {
+        "id": "02",
+        "title": "Iron Sharpens Iron",
+        "subtitle": "Iron sharpens iron. One person…",
+        "poemId": "wisdom-literature-kjv--iron-sharpens-iron"
+      },
+      {
+        "id": "03",
+        "title": "Trust with All Your Heart",
+        "subtitle": "My son, do not forget my teaching; let…",
+        "poemId": "wisdom-literature-kjv--trust-with-all-your-heart"
+      }
+    ],
+    "heroLabel": "Sacred text",
+    "resonance": "This voice holds both dust and firmament—stark counsel for grief, wonder, and grounded living.",
+    "quote": "Smoke of smoke—everything is smoke.",
+    "quoteSource": "Ecclesiastes (modernized rendering)"
   }
 ]

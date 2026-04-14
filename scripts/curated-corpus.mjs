@@ -61,6 +61,7 @@ const SOURCE_FILE_AUTHOR_MAP = {
   "ryokan-excerpts-pd.json": "Ryokan",
   "lao-tzu-excerpts-pd.json": "Lao Tzu",
   "bhagvada-gita-excerpts.json": "Bhagavad Gita",
+  "bible-wisdom-excerpts-pd.json": "Anonymous (Wisdom Literature / Modernized)",
 };
 
 const MOOD_TO_PORTALS = {
