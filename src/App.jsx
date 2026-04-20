@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
 import html2canvas from "html2canvas";
@@ -12,8 +12,12 @@ import { applyTheme, readStoredTheme, subscribeThemeStorage, THEME_LIGHT_ONLY } 
 import { NewsletterForm } from "./components/NewsletterForm.jsx";
 import { InstallAppButton } from "./components/InstallAppButton.jsx";
 import { PoemSubscribeDialog } from "./components/PoemSubscribeDialog.jsx";
-import { ArcCarousel, ArcCarouselStaticCard } from "./components/ArcCarousel";
 import ZAxisTransition from "./components/ZAxisTransition";
+
+const ArcCarousel = lazy(() => import("./components/ArcCarousel"));
+const ArcCarouselStaticCard = lazy(() =>
+  import("./components/ArcCarousel").then((module) => ({ default: module.ArcCarouselStaticCard })),
+);
 
 const DEFAULT_META_DESCRIPTION =
   "Read poetry online by mood, poet, or theme—without noisy feeds. Versery is a calm reader for daily picks, archives, and slow discovery.";
@@ -153,7 +157,7 @@ const feelings = ["Melancholic", "Ethereal", "Radiant", "Solitary", "Calm", "Pul
 
 const POEM_AUDIO_TRACKS = {
   "rudyard-kipling--if": {
-    sources: ["/audio/if-ai-reading.wav", "/Generated Audio April 16, 2026 - 7_05PM.wav"],
+    sources: ["/audio/if-ai-reading.mp3", "/Generated Audio April 16, 2026 - 7_05PM.mp3"],
     lineStartTimes: [
       0,
       8,
@@ -180,31 +184,31 @@ const POEM_AUDIO_TRACKS = {
     ],
   },
   "robert-frost--the-road-not-taken": {
-    sources: ["/audio/roadnot-ai-reading.wav"],
+    sources: ["/audio/roadnot-ai-reading.mp3"],
   },
   "robert-frost--stopping-by-woods-on-snowy-evening": {
-    sources: ["/audio/snowy-ai-reading.wav"],
+    sources: ["/audio/snowy-ai-reading.mp3"],
   },
   "emily-dickinson--hope-is-the-thing-with-feathers": {
-    sources: ["/audio/hopefeather-ai-reading.wav"],
+    sources: ["/audio/hopefeather-ai-reading.mp3"],
   },
   "emily-dickinson--because-i-could-not-stop-for-death": {
-    sources: ["/audio/deathemily-ai-reading.wav"],
+    sources: ["/audio/deathemily-ai-reading.mp3"],
   },
   "kahlil-gibran--on-children": {
-    sources: ["/audio/onchildren-ai-reading.wav"],
+    sources: ["/audio/onchildren-ai-reading.mp3"],
   },
   "john-keats--bright-star": {
-    sources: ["/audio/brightstar-ai-reading.wav"],
+    sources: ["/audio/brightstar-ai-reading.mp3"],
   },
   "rudyard-kipling--the-way-through-the-woods": {
-    sources: ["/audio/throughwoods-ai-reading.wav"],
+    sources: ["/audio/throughwoods-ai-reading.mp3"],
   },
   "bhagavad-gita--endurance-doctrine": {
-    sources: ["/audio/edurancegita-ai-reading.wav"],
+    sources: ["/audio/edurancegita-ai-reading.mp3"],
   },
   "bhagavad-gita--from-reaction-to-ruin": {
-    sources: ["/audio/reactiontoruin-ai-reading.wav"],
+    sources: ["/audio/reactiontoruin-ai-reading.mp3"],
   },
 };
 
@@ -3131,7 +3135,7 @@ function AppLoaded({ poems, poets, collections, dailyHomeData }) {
             <audio
               ref={poemAudioRef}
               src={activePoemAudioSrc}
-              preload="metadata"
+              preload="none"
               onError={handlePoemAudioSourceError}
             />
           ) : null}
@@ -4695,12 +4699,14 @@ function AppLoaded({ poems, poets, collections, dailyHomeData }) {
               <div ref={heroCarouselRef} className="desktop-hero-mood-cluster home-hero-cluster">
                 <div className="desktop-hero-bento">
                   <div className="desktop-hero-bento__left desktop-hero-left-carousel" aria-label="Featured poems">
-                    <ArcCarousel
-                      cards={carouselCards}
-                      initialIndex={homeReturnCarouselIndex}
-                      onOpenPoem={beginHomeCarouselPoemTransition}
-                      embeddedMode="leftHero"
-                    />
+                    <Suspense fallback={null}>
+                      <ArcCarousel
+                        cards={carouselCards}
+                        initialIndex={homeReturnCarouselIndex}
+                        onOpenPoem={beginHomeCarouselPoemTransition}
+                        embeddedMode="leftHero"
+                      />
+                    </Suspense>
                   </div>
                   <div className="desktop-hero-bento__right">
                     <p
@@ -4720,14 +4726,16 @@ function AppLoaded({ poems, poets, collections, dailyHomeData }) {
                 ref={heroCarouselRef}
                 className={`mobile-hero-carousel-wrap${isHeroCarouselExited ? " mobile-hero-carousel-wrap--exited" : ""}`}
               >
-                <ArcCarousel
-                  cards={carouselCards}
-                  initialIndex={homeReturnCarouselIndex}
-                  paginationClassName={isHeroCarouselExited ? "arc-carousel-pagination--exited" : ""}
-                  onActiveIndexChange={setActiveCarouselIndex}
-                  onActiveCardAudioPlayingChange={setIsActiveCarouselAudioPlaying}
-                  onOpenPoem={beginHomeCarouselPoemTransition}
-                />
+                <Suspense fallback={null}>
+                  <ArcCarousel
+                    cards={carouselCards}
+                    initialIndex={homeReturnCarouselIndex}
+                    paginationClassName={isHeroCarouselExited ? "arc-carousel-pagination--exited" : ""}
+                    onActiveIndexChange={setActiveCarouselIndex}
+                    onActiveCardAudioPlayingChange={setIsActiveCarouselAudioPlaying}
+                    onOpenPoem={beginHomeCarouselPoemTransition}
+                  />
+                </Suspense>
               </div>
             )}
           </section>
@@ -5038,7 +5046,9 @@ function AppLoaded({ poems, poets, collections, dailyHomeData }) {
                 transformStyle: "preserve-3d",
               }}
             >
-              <ArcCarouselStaticCard card={homeTransitionCard} />
+              <Suspense fallback={null}>
+                <ArcCarouselStaticCard card={homeTransitionCard} />
+              </Suspense>
             </motion.div>
           </div>
         ) : null}

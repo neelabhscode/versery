@@ -1307,7 +1307,7 @@ function Card({
             <audio
               ref={audioRef}
               src={currentAudioSrc}
-              preload="metadata"
+              preload="none"
               onError={() => {
                 setAudioSrcIndex((prev) => (prev + 1 < audioSources.length ? prev + 1 : prev));
               }}
@@ -1426,3 +1426,5 @@ export function ArcCarouselStaticCard({ card }: { card: CardData }) {
     </div>
   );
 }
+
+export default ArcCarousel;
