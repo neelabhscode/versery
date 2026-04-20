@@ -1,0 +1,181 @@
+{
+  "date": "day-06",
+  "heroPoems": [
+    {
+      "title": "The Boston Evening Transcript",
+      "poet": "T. S. Eliot",
+      "firstStanza": "The readers of the Boston Evening Transcript\nSway in the wind like a field of ripe corn.\nWhen evening quickens faintly in the street,\nWakening the appetites of life in some\nAnd to others bringing the Boston Evening Transcript,\nI mount the steps and ring the bell, turning",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "Inner Enemy Briefing",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "Name the adversary: craving.\nIts camouflage: pleasure.\nIts appetite: endless.",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "Do not go to the garden of flowers!",
+      "poet": "Kabir",
+      "firstStanza": "Do not go to the garden of flowers!\nO Friend! go not there;\nIn your body is the garden of flowers.\nTake your seat on the thousand petals of the lotus, and there\ngaze on the Infinite Beauty.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "Set Me as a Seal",
+      "poet": "Bible Wisdom",
+      "firstStanza": "Set me as a seal upon your heart,\nas a seal upon your arm,\nfor love is strong as death,\npassion fierce as the grave.",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "Yet Do I Marvel",
+      "poet": "Countee Cullen",
+      "firstStanza": "I doubt not God is good, well-meaning, kind,\nAnd did He stoop to quibble could tell why\nThe little buried mole continues blind,\nWhy flesh that mirrors Him must someday die,\nMake plain the reason tortured Tantalus\nIs baited by the fickle fruit, declare",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "When I go from hence let this be",
+      "poet": "Rabindranath Tagore",
+      "firstStanza": "When I go from hence let this be my parting word, that what I have seen\nis unsurpassable.\nI have tasted of the hidden honey of this lotus that expands on the\nocean of light, and thus am I blessed—let this be my parting word.\nIn this playhouse of infinite forms I have had my play and here have I\ncaught sight of him that is formless.",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "I heard a fly buzz when I died",
+      "poet": "Emily Dickinson",
+      "firstStanza": "I heard a fly buzz when I died;\nThe stillness round my form\nWas like the stillness in the air\nBetween the heaves of storm.",
+      "tagline": "For rooms lit by one lamp."
+    },
+    {
+      "title": "The rose opened and the nightingale went drunk with joy",
+      "poet": "Hafez",
+      "firstStanza": "The rose opened and the nightingale went drunk with joy\nWine was announced to a thirsty world\nRepentance looked like a mountain\none small cup split it cleanly in two",
+      "tagline": "For the hush before dawn."
+    },
+    {
+      "title": "The Winners",
+      "poet": "Rudyard Kipling",
+      "firstStanza": "What is the moral? Who rides may read.\nWhen the night is thick and the tracks are blind\nA friend at a pinch is a friend indeed,\nBut a fool to wait for the laggard behind.\nDown to Gehenna or up to the Throne,\nHe travels the fastest who travels alone.",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "Fog",
+      "poet": "Carl Sandburg",
+      "firstStanza": "The fog comes\non little cat feet.",
+      "tagline": "For slow hours with a warm cup."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "The Nearness of Distant Days",
+      "tagline": "For when sleep arrives in fragments.",
+      "theme": "Poems that move through corridors, stairwells, and rooms as emotional architecture.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Order of Battle",
+        "poet": "Bhagavad Gita",
+        "firstLines": "Princes, teachers, cousins, kings—\nall arranged in perfect lines"
+      },
+      "poems": [
+        {
+          "title": "Roll Call of Mortals",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The Warrior Who Trembled",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Posture of Meditation",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Knowing the Vast and the Near",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "A bird came down the walk",
+          "poet": "Emily Dickinson"
+        },
+        {
+          "title": "Two Natures",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "A Corridor of Weather",
+      "tagline": "For rooms heavy with old light.",
+      "theme": "A restrained current of longing that never announces itself directly.",
+      "image": null,
+      "featuredPoem": {
+        "title": "The Stranger",
+        "poet": "Rudyard Kipling",
+        "firstLines": "The Stranger within my gate,\nHe may be true or kind."
+      },
+      "poems": [
+        {
+          "title": "Trust with All Your Heart",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "The Banquet of Wisdom",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "O my heart! the Supreme Spirit, the great Master, is near you",
+          "poet": "Kabir"
+        },
+        {
+          "title": "A Brook in the City",
+          "poet": "Robert Frost"
+        },
+        {
+          "title": "To Thee Thou hast drawn my love, O Fakir!",
+          "poet": "Kabir"
+        },
+        {
+          "title": "A Charm",
+          "poet": "Rudyard Kipling"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "What Remains Unsaid",
+      "tagline": "For when language is your company.",
+      "theme": "Poems for the slow pivot from day-noise toward interior quiet.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Lamps burn in every house, O blind one! and you cannot see them.",
+        "poet": "Kabir",
+        "firstLines": "Lamps burn in every house, O blind one! and you cannot see them.\nOne day your eyes shall suddenly be opened, and you shall see:"
+      },
+      "poems": [
+        {
+          "title": "Why did I laugh tonight? No voice will tell",
+          "poet": "John Keats"
+        },
+        {
+          "title": "The Market of Heavenly Promises",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Out of the Depths",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Set my glass on fire with wine",
+          "poet": "Hafez"
+        },
+        {
+          "title": "The Inverted Tree",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "A Song of Travel",
+          "poet": "Rudyard Kipling"
+        }
+      ]
+    }
+  ]
+}

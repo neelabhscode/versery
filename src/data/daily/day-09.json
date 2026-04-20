@@ -1,0 +1,181 @@
+{
+  "date": "day-09",
+  "heroPoems": [
+    {
+      "title": "I had thousands of desires, each fierce enough to take my life.",
+      "poet": "Mirza Ghalib",
+      "firstStanza": "I had thousands of desires, each fierce enough to take my life.\nMany were fulfilled, yet they still felt too few.",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "The Way through the Woods",
+      "poet": "Rudyard Kipling",
+      "firstStanza": "They shut the road through the woods\nSeventy years ago.\nWeather and rain have undone it again,\nAnd now you would never know\nThere was once a road through the woods\nBefore they planted the trees.",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "Cousin Nancy",
+      "poet": "T. S. Eliot",
+      "firstStanza": "Miss Nancy Ellicott Strode across the hills and broke them,\nRode across the hills and broke them--\nThe barren New England hills--\nRiding to hounds\nOver the cow-pasture.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "I felt a funeral in my brain",
+      "poet": "Emily Dickinson",
+      "firstStanza": "I felt a funeral in my brain,\nAnd mourners, to and fro,\nKept treading, treading, till it seemed\nThat sense was breaking through.",
+      "tagline": "For rooms lit by one lamp."
+    },
+    {
+      "title": "Sword for Uncertainty",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "Cut doubt with clear seeing—\nthen move.",
+      "tagline": "For rooms lit by one lamp."
+    },
+    {
+      "title": "Fancy",
+      "poet": "John Keats",
+      "firstStanza": "Ever let the Fancy roam,\nPleasure never is at home:\nAt a touch sweet Pleasure melteth,\nLike to bubbles when rain pelteth;\nThen let winged Fancy wander\nThrough the thought still spread beyond her:",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "Oread",
+      "poet": "H.D.",
+      "firstStanza": "Whirl up, sea—\nwhirl your pointed pines,\nsplash your great pines\non our rocks,\nhurl your green over us,\ncover us with your pools of fir.",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "No Better Thing",
+      "poet": "Bible Wisdom",
+      "firstStanza": "There is nothing better\nthan to eat,\nto drink,\nand to find good in your labor.",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "I must launch out my boat. The languid",
+      "poet": "Rabindranath Tagore",
+      "firstStanza": "I must launch out my boat. The languid hours pass by on the shore—Alas\nfor me!\nThe spring has done its flowering and taken leave. And now with the\nburden of faded futile flowers I wait and linger.\nThe waves have become clamorous, and upon the bank in the shady lane\nthe yellow leaves flutter and fall.",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "Evening in a Sugar Orchard",
+      "poet": "Robert Frost",
+      "firstStanza": "From where I lingered in a lull in March\nOutside the sugar-house one night for choice,\nI called the fireman with a careful voice\nAnd bade him leave the pan and stoke the arch:\n“O fireman, give the fire another stoke,\nAnd send more sparks up chimney with the smoke.”",
+      "tagline": "For rooms lit by one lamp."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "The Sound of Returning",
+      "tagline": "For when a chair remembers you.",
+      "theme": "Poems that hold small domestic scenes until they become almost sacred.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Many Plans",
+        "poet": "Bible Wisdom",
+        "firstLines": "Many plans live\nin a human heart,"
+      },
+      "poems": [
+        {
+          "title": "The same stream of life that runs through",
+          "poet": "Rabindranath Tagore"
+        },
+        {
+          "title": "Receiving Every River",
+          "poet": "Lao Tzu"
+        },
+        {
+          "title": "The garden bird warned the rose at dawn",
+          "poet": "Hafez"
+        },
+        {
+          "title": "The Royal Secret",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The Deer at Dry Streams",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "In a Station of the Metro",
+          "poet": "Ezra Pound"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "Before the Door Opens",
+      "tagline": "For the warmth after cold air.",
+      "theme": "Language for the suspended hour between conversation and sleep.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Tell me, O Swan, your ancient tale.",
+        "poet": "Kabir",
+        "firstLines": "Tell me, O Swan, your ancient tale.\nFrom what land do you come, O Swan? to what shore will you fly?"
+      },
+      "poems": [
+        {
+          "title": "If I can stop one heart from breaking",
+          "poet": "Emily Dickinson"
+        },
+        {
+          "title": "Autumn Day",
+          "poet": "Rainer Maria Rilke"
+        },
+        {
+          "title": "Ode to Psyche",
+          "poet": "John Keats"
+        },
+        {
+          "title": "I'm nobody! Who are you?",
+          "poet": "Emily Dickinson"
+        },
+        {
+          "title": "To the Virgins, to Make Much of Time",
+          "poet": "Robert Herrick"
+        },
+        {
+          "title": "Threefold Gift",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "A Small Province of Night",
+      "tagline": "For when breath slows at last.",
+      "theme": "A gathering of poems where memory and present tense overlap gently.",
+      "image": null,
+      "featuredPoem": {
+        "title": "At the beginning of love, why cry as if this is the end?",
+        "poet": "Mirza Ghalib",
+        "firstLines": "At the beginning of love, why cry as if this is the end?\nThere is much more to happen."
+      },
+      "poems": [
+        {
+          "title": "How the Steady One Walks",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Ash Before Glory",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Snow blends with wind",
+          "poet": "Ryokan"
+        },
+        {
+          "title": "Where Were You",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Everything hammered in the forge of life turns to nothing",
+          "poet": "Hafez"
+        },
+        {
+          "title": "Finite Gods, Finite Fruits",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    }
+  ]
+}

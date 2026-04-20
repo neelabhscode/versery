@@ -58,7 +58,7 @@
     "tag": "Sacred dialogue",
     "essence": "A battlefield counsel on duty, devotion, and the self that moves beneath appearances.",
     "bio": "The Bhagavad Gita is a philosophical dialogue set within the epic Mahabharata: the warrior Arjuna falters, and Krishna unfolds teachings on action without clinging, knowledge, and love. Its verses have guided readers across centuries and languages as a mirror for conscience and calm.",
-    "poemCount": 49,
+    "poemCount": 149,
     "moods": [
       "Contemplative",
       "Steadying",
@@ -67,8 +67,8 @@
     "portalTags": [
       "Calm",
       "Pulse",
-      "Drift",
-      "Melancholic"
+      "Focus",
+      "Ethereal"
     ],
     "works": [
       {
@@ -79,15 +79,15 @@
       },
       {
         "id": "02",
-        "title": "I Am the Taste of Water",
-        "subtitle": "I am the taste in water, the light…",
-        "poemId": "bhagavad-gita--i-am-the-taste-of-water"
+        "title": "Dust Before the Signal",
+        "subtitle": "Before the first arrow, there is only dust—…",
+        "poemId": "bhagavad-gita--dust-before-the-signal"
       },
       {
         "id": "03",
-        "title": "Beyond the Three Qualities",
-        "subtitle": "Nature moves through three strands: clarity,…",
-        "poemId": "bhagavad-gita--beyond-the-three-qualities"
+        "title": "As Is Faith, So Is the Life",
+        "subtitle": "You become what you bow to…",
+        "poemId": "bhagavad-gita--as-is-faith-so-is-the-life"
       }
     ],
     "heroLabel": "Sacred text",
@@ -1536,50 +1536,6 @@
     "quoteSource": "In Time of Pestilence"
   },
   {
-    "id": "vyasa-translated-by-edwin-arnold-modernized",
-    "name": "Vyasa (Translated By Edwin Arnold / Modernized)",
-    "fullName": "Vyasa (Translated By Edwin Arnold / Modernized)",
-    "born": null,
-    "died": null,
-    "from": "Unknown",
-    "era": "Unknown",
-    "tag": "Curated Voice",
-    "essence": "Curated poetry voice: Vyasa (Translated By Edwin Arnold / Modernized)",
-    "bio": "Vyasa (Translated By Edwin Arnold / Modernized) appears in the Versery curated corpus.",
-    "poemCount": 100,
-    "moods": [],
-    "portalTags": [
-      "Calm",
-      "Focus",
-      "Pulse",
-      "Lush"
-    ],
-    "works": [
-      {
-        "id": "01",
-        "title": "Dust Before the Signal",
-        "subtitle": "Before the first arrow, there is only dust—…",
-        "poemId": "vyasa-translated-by-edwin-arnold-modernized--dust-before-the-signal"
-      },
-      {
-        "id": "02",
-        "title": "No Lost Effort",
-        "subtitle": "Nothing sincere is wasted. Practice deposits light…",
-        "poemId": "vyasa-translated-by-edwin-arnold-modernized--no-lost-effort"
-      },
-      {
-        "id": "03",
-        "title": "Inner Enemy Briefing",
-        "subtitle": "Name the adversary: craving. Its camouflage: pleasure.…",
-        "poemId": "vyasa-translated-by-edwin-arnold-modernized--inner-enemy-briefing"
-      }
-    ],
-    "heroLabel": null,
-    "resonance": null,
-    "quote": null,
-    "quoteSource": null
-  },
-  {
     "id": "wallace-stevens",
     "name": "Wallace Stevens",
     "fullName": "Wallace Stevens",
@@ -1677,8 +1633,8 @@
   },
   {
     "id": "wisdom-literature-kjv",
-    "name": "Anonymous (Wisdom Literature / Modernized)",
-    "fullName": "Anonymous (Wisdom Literature / Modernized)",
+    "name": "Bible Wisdom",
+    "fullName": "Bible Wisdom",
     "born": null,
     "died": null,
     "from": "Ancient Israel (Hebrew Bible tradition)",

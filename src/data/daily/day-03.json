@@ -1,0 +1,181 @@
+{
+  "date": "day-03",
+  "heroPoems": [
+    {
+      "title": "Clouded by Three Currents",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "Clarity, frenzy, inertia—\nthree currents,\none ocean.",
+      "tagline": "For rooms lit by one lamp."
+    },
+    {
+      "title": "Guard the Heart",
+      "poet": "Bible Wisdom",
+      "firstStanza": "Guard your heart\nwith all vigilance,\nfor from it\nflow the springs of life.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "Rhapsody on a Windy Night",
+      "poet": "T. S. Eliot",
+      "firstStanza": "Twelve o'clock.\nAlong the reaches of the street\nHeld in a lunar synthesis,\nWhispering lunar incantations\nDisolve the floors of memory\nAnd all its clear relations,",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "The thief left one thing behind",
+      "poet": "Ryokan",
+      "firstStanza": "The thief left one thing behind:\nthe moon\nat my window.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "Coromandel Fishers",
+      "poet": "Sarojini Naidu",
+      "firstStanza": "Rise, brothers, rise; the wakening skies pray to the morning light,\nThe wind lies asleep in the arms of the dawn like a child that has cried all night.\nCome, let us gather our nets from the shore, and set our catamarans free,\nTo capture the leaping wealth of the tide, for we are the kings of the sea!",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "The Movement of the Way",
+      "poet": "Lao Tzu",
+      "firstStanza": "Returning is the motion of the Way.\nYielding is the method of the Way.",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "From the street where my beloved lives send fragrance to me",
+      "poet": "Hafez",
+      "firstStanza": "From the street where my beloved lives send fragrance to me\nI am pale with waiting\nI am ill with distance\none breath from that doorway would heal me",
+      "tagline": "For the minute before sleep."
+    },
+    {
+      "title": "Ask the wound what survives after the blade.",
+      "poet": "Mirza Ghalib",
+      "firstStanza": "Ask the wound what survives after the blade.\nAsk the scar what survives after the wound.",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "A Litany in Time of Plague",
+      "poet": "Thomas Nashe",
+      "firstStanza": "Adieu, farewell earth's bliss,\nThis world uncertain is,\nFond are life's lustful joys,\nDeath proves them all but toys,\nNone from his darts can fly,\nI am sick, I must die:",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "The Run of the Downs",
+      "poet": "Rudyard Kipling",
+      "firstStanza": "_The Weald is good, the Downs are best_--\n_I'll give you the run of 'em, East to West._\nBeachy Head and Winddoor Hill,\nThey were once and they are still,\nFirle, Mount Caburn and Mount Harry\nGo back as far as sums'll carry.",
+      "tagline": "For evenings with no audience."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "The Long Stairwell",
+      "tagline": "For moments lit by a single lamp.",
+      "theme": "A thread of attention to rain, glass, paper, and hands at rest.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Intellect and Resolve",
+        "poet": "Bhagavad Gita",
+        "firstLines": "One intellect distinguishes right from wrong.\nAnother rationalizes appetite."
+      },
+      "poems": [
+        {
+          "title": "Night and Wakefulness",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "A Time for Everything",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "The End of the Matter",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Where is my ruined life and where my noble name",
+          "poet": "Hafez"
+        },
+        {
+          "title": "The Usefulness of Emptiness",
+          "poet": "Lao Tzu"
+        },
+        {
+          "title": "The Lamp in Windless Air",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "Under the Same Lamp",
+      "tagline": "For when memory leans over your shoulder.",
+      "theme": "Poems that make waiting feel textured rather than empty.",
+      "image": null,
+      "featuredPoem": {
+        "title": "One-Pointed Intelligence",
+        "poet": "Bhagavad Gita",
+        "firstLines": "A scattered mind buys a thousand roads.\nA clear mind walks one—"
+      },
+      "poems": [
+        {
+          "title": "I carried a thousand desires, each one lethal.",
+          "poet": "Mirza Ghalib"
+        },
+        {
+          "title": "This world is a children's playground before me.",
+          "poet": "Mirza Ghalib"
+        },
+        {
+          "title": "Between Two Armies",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Sweeney Erect",
+          "poet": "T. S. Eliot"
+        },
+        {
+          "title": "On Incomplete Practice",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Never Filled",
+          "poet": "Bible Wisdom"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "When Evening Leans In",
+      "tagline": "For the pause before speaking.",
+      "theme": "A muted field of recollection, where detail carries the emotional weight.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Before I got my eye put out",
+        "poet": "Emily Dickinson",
+        "firstLines": "Before I got my eye put out,\nI liked as well to see"
+      },
+      "poems": [
+        {
+          "title": "Hope is the thing with feathers",
+          "poet": "Emily Dickinson"
+        },
+        {
+          "title": "Rarest Among Thousands",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "I had no time to hate, because",
+          "poet": "Emily Dickinson"
+        },
+        {
+          "title": "Field Manual for Humility",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Sonnets to Orpheus I, 19",
+          "poet": "Rainer Maria Rilke"
+        },
+        {
+          "title": "The Panther",
+          "poet": "Rainer Maria Rilke"
+        }
+      ]
+    }
+  ]
+}

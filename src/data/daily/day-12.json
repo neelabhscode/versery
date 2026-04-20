@@ -1,0 +1,181 @@
+{
+  "date": "day-12",
+  "heroPoems": [
+    {
+      "title": "On Giving",
+      "poet": "Kahlil Gibran",
+      "firstStanza": "And he answered:",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "Nothing Is Lost",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "No effort on this path is wasted.\nNo sincere move is erased.",
+      "tagline": "For the minute before sleep."
+    },
+    {
+      "title": "O sadhu! the simple union is the best. Since the day when I met",
+      "poet": "Kabir",
+      "firstStanza": "O sadhu!  the simple union is the best.  Since the day when I met\nwith my Lord, there has been no end to the sport of our love.\nI shut not my eyes, I close not my ears, I do not mortify my\nbody;\nI see with eyes open and smile, and behold His beauty everywhere:\nI utter His Name, and whatever I see, it reminds me of Him;",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "Lines on the Mermaid Tavern",
+      "poet": "John Keats",
+      "firstStanza": "Souls of Poets dead and gone,\nWhat Elysium have ye known,\nHappy field or mossy cavern,\nChoicer than the Mermaid Tavern?\nHave ye tippled drink more fine\nThan mine host's Canary wine?",
+      "tagline": "For the hush before dawn."
+    },
+    {
+      "title": "Mr. Apollinax",
+      "poet": "T. S. Eliot",
+      "firstStanza": "When Mr. Apollinax visited the United States\nHis laughter tinkled among the teacups.\nI thought of Fragilion, that shy figure among the birch-trees,\nAnd of Priapus in the shrubbery\nGaping at the lady in the swing.\nIn the palace of Mrs. Phlaccus, at Professor Channing-Cheetah's",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "No one in the taverns is as mad as I am",
+      "poet": "Hafez",
+      "firstStanza": "No one in the taverns is as mad as I am\nMy robe lies pawned for wine\nmy book lies pawned beside it\nboth holiness and shame spent in one night",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "Love made me poor in every useful way.",
+      "poet": "Mirza Ghalib",
+      "firstStanza": "Love made me poor in every useful way.\nI can no longer pass for practical.",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "The Heavens Declare",
+      "poet": "Bible Wisdom",
+      "firstStanza": "The heavens declare the glory of God,\nand the firmament shows his handiwork.\nDay to day pours out speech,\nand night to night reveals knowledge.",
+      "tagline": "For the hush before dawn."
+    },
+    {
+      "title": "Sonnets to Orpheus II, 1",
+      "poet": "Rainer Maria Rilke",
+      "firstStanza": "Breathing, you invisible poem.\nAgain and again exchanged in pure space.\nCounterweight in which I happen rhythmically.\nSingle wave whose gradual sea I am.",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "My desires are many and my cry is",
+      "poet": "Rabindranath Tagore",
+      "firstStanza": "My desires are many and my cry is pitiful, but ever didst thou save me\nby hard refusals; and this strong mercy has been wrought into my life\nthrough and through.\nDay by day thou art making me worthy of the simple, great gifts that\nthou gavest to me unasked—this sky and the light, this body and the\nlife and the mind—saving me from perils of overmuch desire.",
+      "tagline": "For rooms lit by one lamp."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "A Narrow Bridge of Air",
+      "tagline": "For when memory arrives uninvited.",
+      "theme": "A shelf of poems for evenings when ordinary objects feel quietly charged with meaning.",
+      "image": null,
+      "featuredPoem": {
+        "title": "My Lord hides Himself, and my Lord wonderfully reveals Himself",
+        "poet": "Kabir",
+        "firstLines": "My Lord hides Himself, and my Lord wonderfully reveals Himself:\nMy Lord has encompassed me with hardness, and my Lord has cast"
+      },
+      "poems": [
+        {
+          "title": "From Reaction to Ruin",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Transience as Training Ground",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Not to Keep",
+          "poet": "Robert Frost"
+        },
+        {
+          "title": "The Discipline of Steady Wisdom",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The Lockless Door",
+          "poet": "Robert Frost"
+        },
+        {
+          "title": "Crisis at Kurukshetra",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "Where Letters Grow Quiet",
+      "tagline": "For the hush before dawn.",
+      "theme": "Poems that stay close to thresholds, departures, and the soft mechanics of return.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Architecture of Food and Faith",
+        "poet": "Bhagavad Gita",
+        "firstLines": "What you eat,\nwhat you praise,"
+      },
+      "poems": [
+        {
+          "title": "Happiness by Type",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Siege Horns",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The Search for Wisdom",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "The Eagle",
+          "poet": "Alfred, Lord Tennyson"
+        },
+        {
+          "title": "A Crooked Thing",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "What Is Man",
+          "poet": "Bible Wisdom"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "The Grammar of Ash and Light",
+      "tagline": "For when waiting becomes gentle.",
+      "theme": "An inward territory of lamplight, weather, and private observation.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Structure of Reality, Briefed",
+        "poet": "Bhagavad Gita",
+        "firstLines": "Matter is one layer:\nelements,"
+      },
+      "poems": [
+        {
+          "title": "Why the Wise Still Act",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The song that I came to sing remains",
+          "poet": "Rabindranath Tagore"
+        },
+        {
+          "title": "Stand Up and See Clearly",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Knowledge, Work, and the Inner Fire",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "How could I sleep in this moonlight?",
+          "poet": "Ryokan"
+        },
+        {
+          "title": "This is my prayer to thee, my lord",
+          "poet": "Rabindranath Tagore"
+        }
+      ]
+    }
+  ]
+}

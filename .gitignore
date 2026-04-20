@@ -7,6 +7,10 @@ test-results/
 playwright-report/
 playwright/.cache/
 qa-screenshots/
+screenshots/
+lighthouse-*.json
+.venv/
+skills-lock.json
 .DS_Store
 *.local
 .env

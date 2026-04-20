@@ -58,7 +58,7 @@
     "tag": "Sacred dialogue",
     "essence": "A battlefield counsel on duty, devotion, and the self that moves beneath appearances.",
     "bio": "The Bhagavad Gita is a philosophical dialogue set within the epic Mahabharata: the warrior Arjuna falters, and Krishna unfolds teachings on action without clinging, knowledge, and love. Its verses have guided readers across centuries and languages as a mirror for conscience and calm.",
-    "poemCount": 49,
+    "poemCount": 149,
     "moods": [
       "Contemplative",
       "Steadying",
@@ -67,8 +67,8 @@
     "portalTags": [
       "Calm",
       "Pulse",
-      "Drift",
-      "Melancholic"
+      "Focus",
+      "Ethereal"
     ],
     "works": [
       {
@@ -79,15 +79,15 @@
       },
       {
         "id": "02",
-        "title": "I Am the Taste of Water",
-        "subtitle": "I am the taste in water, the light…",
-        "poemId": "bhagavad-gita--i-am-the-taste-of-water"
+        "title": "Dust Before the Signal",
+        "subtitle": "Before the first arrow, there is only dust—…",
+        "poemId": "bhagavad-gita--dust-before-the-signal"
       },
       {
         "id": "03",
-        "title": "Beyond the Three Qualities",
-        "subtitle": "Nature moves through three strands: clarity,…",
-        "poemId": "bhagavad-gita--beyond-the-three-qualities"
+        "title": "As Is Faith, So Is the Life",
+        "subtitle": "You become what you bow to…",
+        "poemId": "bhagavad-gita--as-is-faith-so-is-the-life"
       }
     ],
     "heroLabel": "Sacred text",
@@ -1630,5 +1630,53 @@
     "resonance": "Williams teaches seeing before judging—the poem as diagnosis of attention.",
     "quote": "so much depends / upon / a red wheel / barrow",
     "quoteSource": "The Red Wheelbarrow"
+  },
+  {
+    "id": "wisdom-literature-kjv",
+    "name": "Bible Wisdom",
+    "fullName": "Bible Wisdom",
+    "born": null,
+    "died": null,
+    "from": "Ancient Israel (Hebrew Bible tradition)",
+    "era": "Ancient wisdom and poetic scripture",
+    "tag": "Wisdom literature",
+    "essence": "Existential steel, cosmic scale, and practical wisdom rendered in modern free verse.",
+    "bio": "A curated modernized rendering from the King James tradition focused on Ecclesiastes, Job, Psalms, Proverbs, and Song of Solomon. These passages retain ancient imagery and philosophical weight while removing archaic syntax for contemporary readability.",
+    "poemCount": 62,
+    "moods": [
+      "Philosophical",
+      "Devotional",
+      "Melancholic"
+    ],
+    "portalTags": [
+      "Calm",
+      "Focus",
+      "Ethereal",
+      "Pulse"
+    ],
+    "works": [
+      {
+        "id": "01",
+        "title": "Chasing the Wind",
+        "subtitle": "Smoke of smoke—everything is smoke. What does a…",
+        "poemId": "wisdom-literature-kjv--chasing-the-wind"
+      },
+      {
+        "id": "02",
+        "title": "Iron Sharpens Iron",
+        "subtitle": "Iron sharpens iron. One person…",
+        "poemId": "wisdom-literature-kjv--iron-sharpens-iron"
+      },
+      {
+        "id": "03",
+        "title": "Trust with All Your Heart",
+        "subtitle": "My son, do not forget my teaching; let…",
+        "poemId": "wisdom-literature-kjv--trust-with-all-your-heart"
+      }
+    ],
+    "heroLabel": "Sacred text",
+    "resonance": "This voice holds both dust and firmament—stark counsel for grief, wonder, and grounded living.",
+    "quote": "Smoke of smoke—everything is smoke.",
+    "quoteSource": "Ecclesiastes (modernized rendering)"
   }
 ]

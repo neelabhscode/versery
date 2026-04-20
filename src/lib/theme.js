@@ -3,6 +3,9 @@
  * Storage key absent → follow prefers-color-scheme until user toggles (then versery-theme is always light|dark).
  */
 
+/** When true, the app stays light-only: no dark palette, no toggle, storage/system dark is ignored. */
+export const THEME_LIGHT_ONLY = true;
+
 export const THEME_STORAGE_KEY = "versery-theme";
 
 /** Matches `--theme-crossfade-duration` in `styles.css` (fallback path timeout buffer). */
@@ -48,6 +51,7 @@ function commitTheme(theme) {
 
 /** @returns {"light" | "dark"} */
 export function readStoredTheme() {
+  if (THEME_LIGHT_ONLY) return "light";
   if (typeof window === "undefined") return "light";
   try {
     const v = localStorage.getItem(THEME_STORAGE_KEY);
@@ -69,6 +73,7 @@ export function readStoredTheme() {
  *   - `onAfterThemeCommit` — runs synchronously after `dataset`/meta/localStorage update; use with `flushSync` so React-controlled UI matches the new snapshot.
  */
 export function applyTheme(theme, options = {}) {
+  if (THEME_LIGHT_ONLY) theme = "light";
   if (typeof document === "undefined") return;
   const { animate = false, onAfterThemeCommit } = options;
 
@@ -109,6 +114,7 @@ export function applyTheme(theme, options = {}) {
 
 /** Sync React state when another tab changes theme. */
 export function subscribeThemeStorage(onChange) {
+  if (THEME_LIGHT_ONLY) return () => {};
   if (typeof window === "undefined") return () => {};
   const handler = (e) => {
     if (e.key !== THEME_STORAGE_KEY) return;

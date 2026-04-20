@@ -1,0 +1,181 @@
+{
+  "date": "day-07",
+  "heroPoems": [
+    {
+      "title": "Sparks Upward",
+      "poet": "Bible Wisdom",
+      "firstStanza": "A person is born for trouble\nas surely\nas sparks fly upward.",
+      "tagline": "For the hush before dawn."
+    },
+    {
+      "title": "No Lost Effort",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "Nothing sincere is wasted.\nPractice deposits light\nacross lifetimes.",
+      "tagline": "For rooms lit by one lamp."
+    },
+    {
+      "title": "Sonnets to Orpheus II, 12",
+      "poet": "Rainer Maria Rilke",
+      "firstStanza": "Will transformation not be your work?\nEarth, beloved, I will.\nBelieve me,\nyou no longer need your springtimes\nto win me over.\nOne, ah one, is already too much for my blood.",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "No hope bears fruit, no shape of relief appears.",
+      "poet": "Mirza Ghalib",
+      "firstStanza": "No hope bears fruit, no shape of relief appears.\nWhy does night keep returning to my house?",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "Mr. Eliot's Sunday Morning Service",
+      "poet": "T. S. Eliot",
+      "firstStanza": "Look, look, master, here comes two religious\ncaterpillars.\nThe Jew of Malta.",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "When thoughts run out",
+      "poet": "Ryokan",
+      "firstStanza": "When thoughts run out\nI step into the woods\nand gather\nshepherd's purse.",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "If thou speakest not I will fill my",
+      "poet": "Rabindranath Tagore",
+      "firstStanza": "If thou speakest not I will fill my heart with thy silence and endure\nit. I will keep still and wait like the night with starry vigil and its\nhead bent low with patience.\nThe morning will surely come, the darkness will vanish, and thy voice\npour down in golden streams breaking through the sky.\nThen thy words will take wing in songs from every one of my birds’",
+      "tagline": "For the minute before sleep."
+    },
+    {
+      "title": "To Autumn",
+      "poet": "John Keats",
+      "firstStanza": "Season of mists and mellow fruitfulness,\nClose bosom-friend of the maturing sun;\nConspiring with him how to load and bless\nWith fruit the vines that round the thatch-eves run;\nTo bend with apples the moss'd cottage-trees,\nAnd fill all fruit with ripeness to the core;",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "A Boundless Moment",
+      "poet": "Robert Frost",
+      "firstStanza": "He halted in the wind, and—what was that\nFar in the maples, pale, but not a ghost?\nHe stood there bringing March against his thought,\nAnd yet too ready to believe the most.\n“Oh, that’s the Paradise-in-bloom,” I said;\nAnd truly it was fair enough for flowers",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "Holy Sonnet 10",
+      "poet": "John Donne",
+      "firstStanza": "Death, be not proud, though some have called thee\nMighty and dreadful, for thou art not so,\nFor those whom thou think'st thou dost overthrow\nDie not, poor Death, nor yet canst thou kill me.\nFrom rest and sleep, which but thy pictures be,\nMuch pleasure; then from thee much more must flow,",
+      "tagline": "For the minute before sleep."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "The Space Beside Your Name",
+      "tagline": "For the minute before the call.",
+      "theme": "Poems that make waiting feel textured rather than empty.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Open your eyes of love, and see Him who pervades this world I",
+        "poet": "Kabir",
+        "firstLines": "Open your eyes of love, and see Him who pervades this world I\nconsider it well, and know that this is your own country."
+      },
+      "poems": [
+        {
+          "title": "A little drunk",
+          "poet": "Ryokan"
+        },
+        {
+          "title": "The Battlefield as Classroom",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Transmission Lineage",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Faith is not a blanket, it is a fire alarm.",
+          "poet": "Mirza Ghalib"
+        },
+        {
+          "title": "When He Himself reveals Himself, Brahma brings into manifestation",
+          "poet": "Kabir"
+        },
+        {
+          "title": "Knowledge, Action, Doer",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "At the Edge of Warm Tea",
+      "tagline": "For when clocks feel unusually loud.",
+      "theme": "A muted field of recollection, where detail carries the emotional weight.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Endurance Doctrine",
+        "poet": "Bhagavad Gita",
+        "firstLines": "Sensation is weather.\nHeat, cold, pleasure, pain—"
+      },
+      "poems": [
+        {
+          "title": "Request to the Charioteer",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Spring is here and the rose has risen from dust",
+          "poet": "Hafez"
+        },
+        {
+          "title": "Sacrifices of Many Kinds",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "A Carol",
+          "poet": "Rudyard Kipling"
+        },
+        {
+          "title": "Strong as Death",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "You Darkness, from Which I Come",
+          "poet": "Rainer Maria Rilke"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "The Harbor of Unfinished Lines",
+      "tagline": "For when home feels slightly distant.",
+      "theme": "Poems that trace the distance between nearness and speech.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Do not throw blame at the drunkard's door",
+        "poet": "Hafez",
+        "firstLines": "Do not throw blame at the drunkard's door\nkeep your own page clean before you mark mine"
+      },
+      "poems": [
+        {
+          "title": "The wind is still",
+          "poet": "Ryokan"
+        },
+        {
+          "title": "The Kitchen Chimney",
+          "poet": "Robert Frost"
+        },
+        {
+          "title": "This heart was never made for obedience.",
+          "poet": "Mirza Ghalib"
+        },
+        {
+          "title": "Duty and Reputation",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "A Three-Part Song",
+          "poet": "Rudyard Kipling"
+        },
+        {
+          "title": "I watch people in this world",
+          "poet": "Ryokan"
+        }
+      ]
+    }
+  ]
+}

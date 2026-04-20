@@ -7,8 +7,10 @@ export function ensureCollectionWebpSrc(src) {
 /** 1x / 2x descriptors: -1x.webp (300px long edge cap) + .webp (600px cap). */
 export function collectionCoverSrcSet(webpSrc) {
   if (!webpSrc || !webpSrc.endsWith(".webp")) return undefined;
-  const stem = webpSrc.slice(0, -".webp".length);
-  return `${stem}-1x.webp 1x, ${webpSrc} 2x`;
+  // Normalize accidental low-res inputs so srcset still points at the intended base file.
+  const normalized = webpSrc.replace(/-1x\.webp$/i, ".webp");
+  const stem = normalized.slice(0, -".webp".length);
+  return `${stem}-1x.webp 1x, ${normalized} 2x`;
 }
 
 export function ensurePoetPortraitWebpSrc(src) {
@@ -35,7 +37,7 @@ export function PoetPortraitImg({ src, alt, loading = "lazy", fetchPriority, int
       src={webp}
       alt={alt}
       loading={loading}
-      fetchPriority={fetchPriority}
+      fetchpriority={fetchPriority}
       width={dims.width}
       height={dims.height}
       decoding="async"
@@ -45,7 +47,7 @@ export function PoetPortraitImg({ src, alt, loading = "lazy", fetchPriority, int
 }
 
 export function CollectionCoverImg({ src, alt, loading = "lazy", fetchPriority }) {
-  const webp = ensureCollectionWebpSrc(src);
+  const webp = ensureCollectionWebpSrc(src).replace(/-1x\.webp$/i, ".webp");
   const srcSet =
     webp.endsWith(".webp") && webp.includes("-unsplash") ? collectionCoverSrcSet(webp) : undefined;
 
@@ -55,7 +57,7 @@ export function CollectionCoverImg({ src, alt, loading = "lazy", fetchPriority }
       srcSet={srcSet}
       alt={alt}
       loading={loading}
-      fetchPriority={fetchPriority}
+      fetchpriority={fetchPriority}
       width={600}
       height={413}
       decoding="async"

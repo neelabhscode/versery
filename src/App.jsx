@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
+import { AnimatePresence, motion } from "motion/react";
 import html2canvas from "html2canvas";
 import { portalTagsForTopRankedMood } from "./lib/moods.js";
 import { buildShareGradientFromAccent, tagPastelHex, TAG_PASTEL_HEX } from "./lib/tag-pastels.js";
@@ -7,10 +8,12 @@ import { filterByPortal, filterByPortals, filterByPoet } from "./lib/search.js";
 import { captureFirstTouchAttribution, trackEvent } from "./lib/analytics.js";
 import { poetInitialsFromAuthor, poetPortraitUrl } from "./lib/poet-portraits.js";
 import { CollectionCoverImg, PoetPortraitImg } from "./lib/responsive-public-images.jsx";
-import { applyTheme, readStoredTheme, subscribeThemeStorage } from "./lib/theme.js";
-import { NewsletterForm, NEWSLETTER_SPOTLIGHT_HEADLINE } from "./components/NewsletterForm.jsx";
+import { applyTheme, readStoredTheme, subscribeThemeStorage, THEME_LIGHT_ONLY } from "./lib/theme.js";
+import { NewsletterForm } from "./components/NewsletterForm.jsx";
 import { InstallAppButton } from "./components/InstallAppButton.jsx";
 import { PoemSubscribeDialog } from "./components/PoemSubscribeDialog.jsx";
+import { ArcCarousel, ArcCarouselStaticCard } from "./components/ArcCarousel";
+import ZAxisTransition from "./components/ZAxisTransition";
 
 const DEFAULT_META_DESCRIPTION =
   "Read poetry online by mood, poet, or theme—without noisy feeds. Versery is a calm reader for daily picks, archives, and slow discovery.";
@@ -123,7 +126,7 @@ function pathFromVerserySnapshot(snap) {
   }
 }
 
-/** Home-only FAQ: visible copy must stay in sync with injected FAQPage JSON-LD. */
+/** Home-only FAQ: HTML mirror + injected FAQPage JSON-LD must stay in sync. */
 const HOME_FAQ_ITEMS = [
   {
     question: "What is Versery?",
@@ -162,54 +165,650 @@ function homeFaqJsonLd(items) {
   };
 }
 
-const FAQ_DETAILS_ANIM =
-  typeof CSS !== "undefined" &&
-  typeof CSS.supports === "function" &&
-  CSS.supports("selector(details::details-content)");
+const feelings = ["Melancholic", "Ethereal", "Radiant", "Solitary", "Calm", "Pulse"];
 
-/** Native <details> removes [open] before paint, so collapse snaps. Defer close until ::details-content exit runs. */
-function handleHomeFaqDetailsClick(event) {
-  const el = event.currentTarget;
-  if (!(el instanceof HTMLDetailsElement)) return;
-  if (!event.target.closest("summary")) return;
-  if (el.dataset.faqClosing === "1") {
-    event.preventDefault();
-    return;
-  }
-  if (!el.open) return;
-  if (!FAQ_DETAILS_ANIM) return;
-  if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    return;
-  }
+const POEM_AUDIO_TRACKS = {
+  "rudyard-kipling--if": {
+    sources: ["/audio/if-ai-reading.wav", "/Generated Audio April 16, 2026 - 7_05PM.wav"],
+    lineStartTimes: [
+      0,
+      8,
+      16,
+      21,
+      25,
+      30,
+      37,
+      43,
+      48,
+      52,
+      56,
+      66,
+      73,
+      82,
+      90,
+      98,
+      105,
+      115,
+      125,
+      132,
+      136,
+      138,
+    ],
+  },
+  "robert-frost--the-road-not-taken": {
+    sources: ["/audio/roadnot-ai-reading.wav"],
+  },
+  "robert-frost--stopping-by-woods-on-snowy-evening": {
+    sources: ["/audio/snowy-ai-reading.wav"],
+  },
+  "emily-dickinson--hope-is-the-thing-with-feathers": {
+    sources: ["/audio/hopefeather-ai-reading.wav"],
+  },
+  "emily-dickinson--because-i-could-not-stop-for-death": {
+    sources: ["/audio/deathemily-ai-reading.wav"],
+  },
+  "kahlil-gibran--on-children": {
+    sources: ["/audio/onchildren-ai-reading.wav"],
+  },
+  "john-keats--bright-star": {
+    sources: ["/audio/brightstar-ai-reading.wav"],
+  },
+  "rudyard-kipling--the-way-through-the-woods": {
+    sources: ["/audio/throughwoods-ai-reading.wav"],
+  },
+  "bhagavad-gita--endurance-doctrine": {
+    sources: ["/audio/endurancegita-ai-reading.wav"],
+  },
+  "bhagavad-gita--from-reaction-to-ruin": {
+    sources: ["/audio/reactiontoruin-ai-reading.wav"],
+  },
+};
 
-  event.preventDefault();
-  el.dataset.faqClosing = "1";
-  el.classList.add("home-faq__item--closing");
+const AUDIO_WAVE_BARS = 36;
 
-  let finished = false;
-  const cleanup = () => {
-    if (finished) return;
-    finished = true;
-    el.removeEventListener("transitionend", onTransitionEnd);
-    window.clearTimeout(fallbackTimer);
-    el.classList.remove("home-faq__item--closing");
-    el.dataset.faqClosing = "";
-    el.open = false;
-  };
-
-  const onTransitionEnd = (ev) => {
-    if (ev.target !== el) return;
-    const pe = ev.pseudoElement || "";
-    if (pe && pe !== "::details-content") return;
-    if (ev.propertyName !== "block-size" && ev.propertyName !== "height") return;
-    cleanup();
-  };
-
-  el.addEventListener("transitionend", onTransitionEnd);
-  const fallbackTimer = window.setTimeout(cleanup, 520);
+function tokenizePoemLine(lineText, lineKey) {
+  const text = String(lineText ?? "");
+  const chunks = text.match(/\S+\s*/g) ?? [text];
+  return chunks.map((chunk, index) => {
+    const trimmed = chunk.trim();
+    return {
+      id: `${lineKey}-${index}`,
+      text: trimmed,
+      trailing: chunk.slice(trimmed.length),
+      pronounceable: /[A-Za-z0-9]/.test(trimmed),
+    };
+  });
 }
 
-const feelings = ["Melancholic", "Ethereal", "Radiant", "Solitary"];
+const DAILY_HOME_DATA = import.meta.glob("./data/daily/day-*.json", {
+  eager: true,
+  import: "default",
+});
+
+const DAILY_HOME_DATA_BY_KEY = Object.fromEntries(
+  Object.entries(DAILY_HOME_DATA).map(([path, data]) => {
+    const match = path.match(/day-(\d{2})\.json$/);
+    return [match ? `day-${match[1]}` : path, data];
+  }),
+);
+
+const COLLECTION_IMAGE_ASSETS = import.meta.glob("/public/collections/*.{png,jpg,jpeg,webp,avif}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
+
+const COLLECTION_IMAGE_POOL = Object.values(COLLECTION_IMAGE_ASSETS)
+  .filter((value) => typeof value === "string" && value.length > 0)
+  .map((value) => value.replace(/\?url$/, ""))
+  // Exclude low-res derivatives from random assignment; cards should always start from base assets.
+  .filter((value) => !/-1x\.(webp|avif|png|jpe?g)$/i.test(value));
+
+function getDayFile(launchDate = "2026-04-14") {
+  const launch = new Date(launchDate);
+  const today = new Date();
+  const launchMidnight = new Date(launch.getFullYear(), launch.getMonth(), launch.getDate());
+  const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const diffDays = Math.max(
+    0,
+    Math.floor((todayMidnight.getTime() - launchMidnight.getTime()) / (1000 * 60 * 60 * 24)),
+  );
+  const dayIndex = (diffDays % 15) + 1;
+  return `day-${String(dayIndex).padStart(2, "0")}`;
+}
+
+function readDailyHomeData() {
+  const key = getDayFile();
+  const selected = DAILY_HOME_DATA_BY_KEY[key];
+  if (selected && Array.isArray(selected.heroPoems) && Array.isArray(selected.collections)) {
+    return selected;
+  }
+  return DAILY_HOME_DATA_BY_KEY["day-01"] ?? { date: "day-01", heroPoems: [], collections: [] };
+}
+
+const CAROUSEL_CARD_COLORS = [
+  "rgba(147, 197, 253, 0.7)",
+  "rgba(110, 231, 183, 0.7)",
+  "rgba(251, 191, 36, 0.6)",
+  "rgba(196, 181, 253, 0.68)",
+  "rgba(251, 146, 60, 0.65)",
+  "rgba(244, 114, 182, 0.62)",
+  "rgba(52, 211, 153, 0.64)",
+  "rgba(125, 211, 252, 0.66)",
+  "rgba(253, 186, 116, 0.63)",
+  "rgba(165, 180, 252, 0.67)",
+  "rgba(248, 180, 207, 0.66)",
+  "rgba(186, 230, 253, 0.68)",
+];
+
+const CAROUSEL_MOOD_ICON_BY_TAG = {
+  Calm: "waves",
+  Pulse: "bolt",
+  Focus: "lens_blur",
+  Warmth: "light_mode",
+  Static: "grain",
+  Lush: "eco",
+  Drift: "flare",
+  Echo: "graphic_eq",
+  Melancholic: "cloud",
+  Ethereal: "auto_awesome",
+  Radiant: "light_mode",
+  Solitary: "grain",
+};
+
+const CAROUSEL_SAFE_ICONS = [
+  "waves",
+  "bolt",
+  "lens_blur",
+  "light_mode",
+  "grain",
+  "eco",
+  "flare",
+  "graphic_eq",
+  "auto_awesome",
+  "cloud",
+  "format_quote",
+  "ink_highlighter",
+];
+
+const CAROUSEL_ICON_BY_POEM_ID = {
+  "rudyard-kipling--if": "bolt",
+  "robert-frost--the-road-not-taken": "flare",
+  "robert-frost--stopping-by-woods-on-snowy-evening": "cloud",
+  "emily-dickinson--because-i-could-not-stop-for-death": "grain",
+  "emily-dickinson--hope-is-the-thing-with-feathers": "auto_awesome",
+  "rudyard-kipling--the-way-through-the-woods": "eco",
+  "kahlil-gibran--on-children": "light_mode",
+  "john-keats--bright-star": "light_mode",
+  "bhagavad-gita--endurance-doctrine": "waves",
+  "bhagavad-gita--from-reaction-to-ruin": "graphic_eq",
+};
+
+const CAROUSEL_ICON_FALLBACKS_BY_ICON = {
+  bolt: ["flare", "lens_blur", "waves", "auto_awesome"],
+  flare: ["lens_blur", "cloud", "auto_awesome", "waves"],
+  cloud: ["grain", "waves", "auto_awesome", "flare"],
+  grain: ["lens_blur", "cloud", "waves", "ink_highlighter"],
+  auto_awesome: ["flare", "light_mode", "cloud", "eco"],
+  eco: ["waves", "cloud", "grain", "light_mode"],
+  light_mode: ["auto_awesome", "flare", "format_quote", "eco"],
+  waves: ["lens_blur", "grain", "eco", "graphic_eq"],
+  graphic_eq: ["bolt", "waves", "lens_blur", "ink_highlighter"],
+  lens_blur: ["waves", "grain", "flare", "graphic_eq"],
+  format_quote: ["ink_highlighter", "light_mode", "auto_awesome", "cloud"],
+  ink_highlighter: ["format_quote", "lens_blur", "grain", "graphic_eq"],
+};
+
+const LOCKED_CAROUSEL_START_DATE = "2026-04-17";
+const LOCKED_CAROUSEL_DURATION_DAYS = 15;
+const LOCKED_CAROUSEL_POEM_IDS = [
+  "rudyard-kipling--if",
+  "robert-frost--the-road-not-taken",
+  "robert-frost--stopping-by-woods-on-snowy-evening",
+  "emily-dickinson--because-i-could-not-stop-for-death",
+  "emily-dickinson--hope-is-the-thing-with-feathers",
+  "rudyard-kipling--the-way-through-the-woods",
+  "kahlil-gibran--on-children",
+  "john-keats--bright-star",
+  "bhagavad-gita--endurance-doctrine",
+  "bhagavad-gita--from-reaction-to-ruin",
+];
+
+function isLockedCarouselActive(today = new Date()) {
+  const start = new Date(LOCKED_CAROUSEL_START_DATE);
+  const startMidnight = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const diffDays = Math.floor((todayMidnight.getTime() - startMidnight.getTime()) / (1000 * 60 * 60 * 24));
+  return diffDays >= 0 && diffDays < LOCKED_CAROUSEL_DURATION_DAYS;
+}
+
+function resolveCarouselMoodIcon(poem) {
+  if (!poem || typeof poem !== "object") return "auto_awesome";
+  if (typeof poem.id === "string" && CAROUSEL_ICON_BY_POEM_ID[poem.id]) {
+    return CAROUSEL_ICON_BY_POEM_ID[poem.id];
+  }
+  const tags = Array.isArray(poem.portalTags) ? poem.portalTags : [];
+  for (const tag of tags) {
+    if (CAROUSEL_MOOD_ICON_BY_TAG[tag]) return CAROUSEL_MOOD_ICON_BY_TAG[tag];
+  }
+  const moods = Array.isArray(poem.moods) ? poem.moods : [];
+  for (const mood of moods) {
+    if (CAROUSEL_MOOD_ICON_BY_TAG[mood]) return CAROUSEL_MOOD_ICON_BY_TAG[mood];
+  }
+  if (typeof poem.mood_chip === "string" && CAROUSEL_MOOD_ICON_BY_TAG[poem.mood_chip]) {
+    return CAROUSEL_MOOD_ICON_BY_TAG[poem.mood_chip];
+  }
+  return "auto_awesome";
+}
+
+function carouselIconCandidatesForPoem(poem) {
+  const primary = resolveCarouselMoodIcon(poem);
+  const candidates = [primary, ...(CAROUSEL_ICON_FALLBACKS_BY_ICON[primary] ?? []), ...CAROUSEL_SAFE_ICONS];
+  return [...new Set(candidates)].filter((icon) => CAROUSEL_SAFE_ICONS.includes(icon));
+}
+
+function topSixPoemLines(poem) {
+  if (!poem || typeof poem !== "object") return "";
+  const lines = Array.isArray(poem.lines) ? poem.lines : [];
+  const cleaned = lines.map((line) => (typeof line === "string" ? line.trim() : "")).filter(Boolean);
+  if (cleaned.length) return cleaned.slice(0, 6).join("\n");
+  if (typeof poem.excerpt === "string" && poem.excerpt.trim()) return poem.excerpt.trim();
+  return "";
+}
+
+function firstStanza(poem) {
+  if (!poem || typeof poem !== "object") return "";
+  const lines = Array.isArray(poem.lines) ? poem.lines : [];
+  const cleaned = lines.map((line) => (typeof line === "string" ? line.trim() : ""));
+  const stanza = [];
+  for (const line of cleaned) {
+    if (!line) {
+      if (stanza.length) break;
+      continue;
+    }
+    stanza.push(line);
+    if (stanza.length >= 4) break;
+  }
+  if (stanza.length) return stanza.join(" ");
+  if (typeof poem.excerpt === "string" && poem.excerpt.trim()) return poem.excerpt.trim();
+  return "";
+}
+
+function cleanupTaglinePhrase(text) {
+  return String(text ?? "")
+    .replace(/["'`]/g, "")
+    .replace(/[.,;:!?()[\]{}]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function normalizePoemIdentity(text) {
+  return String(text ?? "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function isIfByRudyardKipling(poemLike) {
+  if (!poemLike || typeof poemLike !== "object") return false;
+  const title = normalizePoemIdentity(poemLike.title);
+  const author = normalizePoemIdentity(poemLike.author ?? poemLike.poet);
+  return title === "if" && author === "rudyardkipling";
+}
+
+function isRoadNotTakenByRobertFrost(poemLike) {
+  if (!poemLike || typeof poemLike !== "object") return false;
+  const title = normalizePoemIdentity(poemLike.title);
+  const author = normalizePoemIdentity(poemLike.author ?? poemLike.poet);
+  return title === "theroadnottaken" && author === "robertfrost";
+}
+
+function isStoppingByWoodsByRobertFrost(poemLike) {
+  if (!poemLike || typeof poemLike !== "object") return false;
+  const title = normalizePoemIdentity(poemLike.title);
+  const author = normalizePoemIdentity(poemLike.author ?? poemLike.poet);
+  return title === "stoppingbywoodsonsnowyevening" && author === "robertfrost";
+}
+
+function findIfByRudyardKipling(poems) {
+  if (!Array.isArray(poems)) return null;
+  return poems.find((poem) => isIfByRudyardKipling(poem)) ?? null;
+}
+
+function findRoadNotTakenByRobertFrost(poems) {
+  if (!Array.isArray(poems)) return null;
+  return poems.find((poem) => isRoadNotTakenByRobertFrost(poem)) ?? null;
+}
+
+function findStoppingByWoodsByRobertFrost(poems) {
+  if (!Array.isArray(poems)) return null;
+  return poems.find((poem) => isStoppingByWoodsByRobertFrost(poem)) ?? null;
+}
+
+function ensureRequiredPoems(chosenPoems, requiredPoems, maxCards = 10) {
+  const chosen = Array.isArray(chosenPoems) ? [...chosenPoems] : [];
+  const required = (Array.isArray(requiredPoems) ? requiredPoems : []).filter(Boolean);
+  if (!required.length) return chosen.slice(0, maxCards);
+
+  const requiredIds = new Set(required.map((poem) => poem.id).filter(Boolean));
+  const chosenIds = new Set(chosen.map((poem) => poem?.id).filter(Boolean));
+
+  for (const poem of required) {
+    if (!poem?.id || chosenIds.has(poem.id)) continue;
+    if (chosen.length < maxCards) {
+      chosen.push(poem);
+      chosenIds.add(poem.id);
+      continue;
+    }
+
+    const replaceIndex = chosen
+      .map((entry, index) => ({ entry, index }))
+      .reverse()
+      .find(({ entry }) => !requiredIds.has(entry?.id))?.index;
+
+    if (typeof replaceIndex === "number") {
+      chosenIds.delete(chosen[replaceIndex]?.id);
+      chosen[replaceIndex] = poem;
+      chosenIds.add(poem.id);
+    }
+  }
+
+  return chosen.slice(0, maxCards);
+}
+
+function ensureRequiredHeroPoems(curatedHeroes, requiredHeroEntries, maxCards = 10) {
+  const heroes = Array.isArray(curatedHeroes) ? [...curatedHeroes] : [];
+  const required = (Array.isArray(requiredHeroEntries) ? requiredHeroEntries : []).filter(Boolean);
+  if (!required.length) return heroes.slice(0, maxCards);
+
+  const identityKey = (poemLike) =>
+    `${normalizePoemIdentity(poemLike?.title)}::${normalizePoemIdentity(poemLike?.poet ?? poemLike?.author)}`;
+
+  const requiredKeys = new Set(required.map(identityKey).filter(Boolean));
+  const heroKeys = new Set(heroes.map(identityKey).filter(Boolean));
+
+  for (const requiredHero of required) {
+    const key = identityKey(requiredHero);
+    if (!key || heroKeys.has(key)) continue;
+
+    if (heroes.length < maxCards) {
+      heroes.push(requiredHero);
+      heroKeys.add(key);
+      continue;
+    }
+
+    const replaceIndex = heroes
+      .map((entry, index) => ({ entry, index }))
+      .reverse()
+      .find(({ entry }) => !requiredKeys.has(identityKey(entry)))?.index;
+
+    if (typeof replaceIndex === "number") {
+      heroKeys.delete(identityKey(heroes[replaceIndex]));
+      heroes[replaceIndex] = requiredHero;
+      heroKeys.add(key);
+    }
+  }
+
+  return heroes.slice(0, maxCards);
+}
+
+function taglineFromPoem(poem) {
+  const title = cleanupTaglinePhrase(poem?.title);
+  const poet = cleanupTaglinePhrase(poem?.author ?? poem?.poet);
+  const stanza = cleanupTaglinePhrase(firstStanza(poem));
+  const firstLine = cleanupTaglinePhrase(
+    Array.isArray(poem?.lines) && poem.lines.length ? poem.lines[0] : ""
+  );
+
+  const stanzaWords = stanza.split(" ").filter(Boolean);
+  const lineWords = firstLine.split(" ").filter(Boolean);
+
+  const candidates = [
+    stanzaWords.slice(0, 4).join(" "),
+    lineWords.slice(0, 4).join(" "),
+    title.split(" ").slice(0, 3).join(" "),
+    poet ? `${poet.split(" ")[0]} at dusk` : "",
+    "the hush before sleep",
+  ]
+    .map((phrase) => cleanupTaglinePhrase(phrase))
+    .filter(Boolean);
+
+  const phrase = candidates.find(Boolean) ?? "the hush before sleep";
+  const words = phrase.split(" ").filter(Boolean).slice(0, 6);
+  return `For ${words.join(" ")}`.trim();
+}
+
+function normalizeCarouselAuthor(poem) {
+  if (!poem || typeof poem !== "object") return "unknown";
+  const raw = (poem.author ?? poem.poet ?? poem.poetName ?? "").toString().trim().toLowerCase();
+  return raw || "unknown";
+}
+
+function reorderPoemsToAvoidAdjacentAuthors(poems) {
+  if (!Array.isArray(poems) || poems.length <= 1) return poems ?? [];
+  const byAuthor = new Map();
+  for (const poem of poems) {
+    const key = normalizeCarouselAuthor(poem);
+    if (!byAuthor.has(key)) byAuthor.set(key, []);
+    byAuthor.get(key).push(poem);
+  }
+
+  const ordered = [];
+  let previousAuthor = null;
+
+  while (ordered.length < poems.length) {
+    const availableAuthors = [...byAuthor.entries()]
+      .filter(([, bucket]) => bucket.length > 0)
+      .sort((a, b) => b[1].length - a[1].length);
+    if (!availableAuthors.length) break;
+
+    let selected = availableAuthors.find(([author]) => author !== previousAuthor);
+    if (!selected) selected = availableAuthors[0];
+
+    const [selectedAuthor, bucket] = selected;
+    const nextPoem = bucket.shift();
+    if (!nextPoem) break;
+    ordered.push(nextPoem);
+    previousAuthor = selectedAuthor;
+  }
+
+  return ordered;
+}
+
+function mapPoemsToCarouselCards(poems) {
+  const usedIcons = new Set();
+  return poems.map((poem, index) => {
+    const poemAudioTrack = POEM_AUDIO_TRACKS[poem.id] ?? null;
+    const candidates = carouselIconCandidatesForPoem(poem);
+    const moodIcon = candidates.find((icon) => !usedIcons.has(icon)) ?? candidates[0] ?? "auto_awesome";
+    usedIcons.add(moodIcon);
+
+    return {
+      id: index + 1,
+      poemId: poem.id,
+      title: poem.title ?? "Untitled",
+      author: poem.author ?? "Unknown",
+      content: topSixPoemLines(poem),
+      fullLines: Array.isArray(poem.lines) ? poem.lines.filter((line) => typeof line === "string") : [],
+      audioSources: poemAudioTrack?.sources ?? [],
+      lineStartTimes: poemAudioTrack?.lineStartTimes ?? [],
+      tagline: taglineFromPoem(poem),
+      moodIcon,
+      color: CAROUSEL_CARD_COLORS[index % CAROUSEL_CARD_COLORS.length],
+    };
+  });
+}
+
+function buildLockedCarouselCards(poems, maxCards = 10) {
+  if (!Array.isArray(poems) || !poems.length) return [];
+  const poemById = new Map(poems.map((poem) => [poem.id, poem]));
+  const lockedPoems = LOCKED_CAROUSEL_POEM_IDS
+    .map((poemId) => poemById.get(poemId))
+    .filter(Boolean)
+    .slice(0, maxCards);
+  return mapPoemsToCarouselCards(reorderPoemsToAvoidAdjacentAuthors(lockedPoems));
+}
+
+function relatabilityScoreFor2026(poem) {
+  if (!poem || typeof poem !== "object") return -Infinity;
+
+  const title = typeof poem.title === "string" ? poem.title.toLowerCase() : "";
+  const excerpt = typeof poem.excerpt === "string" ? poem.excerpt.toLowerCase() : "";
+  const subtitle = typeof poem.subtitle === "string" ? poem.subtitle.toLowerCase() : "";
+  const tags = Array.isArray(poem.portalTags) ? poem.portalTags.map((t) => String(t).toLowerCase()) : [];
+  const moods = Array.isArray(poem.moods) ? poem.moods.map((t) => String(t).toLowerCase()) : [];
+  const lines = Array.isArray(poem.lines)
+    ? poem.lines.map((line) => (typeof line === "string" ? line.toLowerCase() : "")).filter(Boolean)
+    : [];
+  const textBlob = [title, excerpt, subtitle, tags.join(" "), moods.join(" "), lines.join(" ")].join(" ");
+
+  // Emotional + contemporary-life resonance cues for readers in their 20s/30s.
+  const weightedKeywords = [
+    ["anxiety", 2.4], ["lonely", 2.2], ["alone", 1.7], ["belong", 1.5], ["identity", 1.6],
+    ["work", 1.2], ["job", 1.1], ["burnout", 2.3], ["tired", 1.4], ["hope", 1.3],
+    ["love", 1.2], ["heart", 1.0], ["home", 1.2], ["healing", 1.6], ["grief", 1.7],
+    ["change", 1.2], ["future", 1.1], ["self", 1.0], ["quiet", 1.0], ["city", 1.0],
+    ["night", 0.8], ["distance", 1.0], ["memory", 1.1], ["body", 1.0], ["friend", 0.9],
+  ];
+
+  let score = 0;
+  for (const [keyword, weight] of weightedKeywords) {
+    if (textBlob.includes(keyword)) score += weight;
+  }
+
+  // Favor concise card-friendly poems so top-six lines feel complete.
+  const lineCount = lines.length;
+  if (lineCount >= 4 && lineCount <= 18) score += 1.2;
+  else if (lineCount >= 2 && lineCount <= 28) score += 0.6;
+  else if (lineCount > 40) score -= 0.4;
+
+  // Light boost for already curated poems.
+  if (poem.poemOfDay === true) score += 1.3;
+
+  return score;
+}
+
+function buildTopCarouselCards(poems, maxCards = 10) {
+  if (!Array.isArray(poems) || !poems.length) return [];
+
+  const uniquePoems = [];
+  const seenPoemIds = new Set();
+  for (const poem of poems) {
+    if (!poem || !poem.id || seenPoemIds.has(poem.id)) continue;
+    seenPoemIds.add(poem.id);
+    uniquePoems.push(poem);
+  }
+
+  const ranked = uniquePoems
+    .map((poem) => ({ poem, score: relatabilityScoreFor2026(poem) }))
+    .sort((a, b) => b.score - a.score)
+    .map((entry) => entry.poem);
+
+  // Diversity guardrail: no poet should dominate the 10-card rail.
+  const chosen = [];
+  const authorCounts = new Map();
+  const maxPerAuthor = 2;
+
+  for (const poem of ranked) {
+    if (chosen.length >= maxCards) break;
+    const authorKey = normalizeCarouselAuthor(poem);
+    const count = authorCounts.get(authorKey) ?? 0;
+    if (count >= maxPerAuthor) continue;
+    chosen.push(poem);
+    authorCounts.set(authorKey, count + 1);
+  }
+
+  // Fill any remaining slots from ranked list if data is too author-concentrated.
+  if (chosen.length < maxCards) {
+    for (const poem of ranked) {
+      if (chosen.length >= maxCards) break;
+      if (!chosen.includes(poem)) chosen.push(poem);
+    }
+  }
+
+  const ifPoem = findIfByRudyardKipling(uniquePoems);
+  const roadNotTakenPoem = findRoadNotTakenByRobertFrost(uniquePoems);
+  const stoppingByWoodsPoem = findStoppingByWoodsByRobertFrost(uniquePoems);
+  const mustIncludePoems = [ifPoem, roadNotTakenPoem, stoppingByWoodsPoem].filter(Boolean);
+  const finalChosen = ensureRequiredPoems(chosen, mustIncludePoems, maxCards);
+  const reordered = reorderPoemsToAvoidAdjacentAuthors(finalChosen);
+
+  return mapPoemsToCarouselCards(reordered);
+}
+
+function buildTopCarouselCardsFromDaily(dailyHeroPoems, allPoems) {
+  if (!Array.isArray(dailyHeroPoems) || !dailyHeroPoems.length) return [];
+
+  const poemLookup = new Map();
+  for (const poem of allPoems ?? []) {
+    const key = `${String(poem.title ?? "").toLowerCase()}::${String(poem.author ?? "").toLowerCase()}`;
+    if (!poemLookup.has(key)) poemLookup.set(key, poem);
+  }
+
+  const curatedHeroes = dailyHeroPoems.slice(0, 10);
+  const ifPoem = findIfByRudyardKipling(allPoems ?? []);
+  const roadNotTakenPoem = findRoadNotTakenByRobertFrost(allPoems ?? []);
+  const stoppingByWoodsPoem = findStoppingByWoodsByRobertFrost(allPoems ?? []);
+
+  const requiredHeroEntries = [
+    ifPoem
+      ? {
+          title: ifPoem.title,
+          poet: ifPoem.author,
+          firstStanza: topSixPoemLines(ifPoem),
+          tagline: taglineFromPoem(ifPoem),
+        }
+      : null,
+    roadNotTakenPoem
+      ? {
+          title: roadNotTakenPoem.title,
+          poet: roadNotTakenPoem.author,
+          firstStanza: topSixPoemLines(roadNotTakenPoem),
+          tagline: taglineFromPoem(roadNotTakenPoem),
+        }
+      : null,
+    stoppingByWoodsPoem
+      ? {
+          title: stoppingByWoodsPoem.title,
+          poet: stoppingByWoodsPoem.author,
+          firstStanza: topSixPoemLines(stoppingByWoodsPoem),
+          tagline: taglineFromPoem(stoppingByWoodsPoem),
+        }
+      : null,
+  ].filter(Boolean);
+
+  const finalCuratedHeroes = reorderPoemsToAvoidAdjacentAuthors(
+    ensureRequiredHeroPoems(curatedHeroes, requiredHeroEntries, 10),
+  );
+
+  return finalCuratedHeroes.map((heroPoem, index) => {
+    const key = `${String(heroPoem.title ?? "").toLowerCase()}::${String(heroPoem.poet ?? "").toLowerCase()}`;
+    const matchedPoem =
+      poemLookup.get(key) ??
+      (isIfByRudyardKipling(heroPoem) ? ifPoem : null) ??
+      (isRoadNotTakenByRobertFrost(heroPoem) ? roadNotTakenPoem : null) ??
+      (isStoppingByWoodsByRobertFrost(heroPoem) ? stoppingByWoodsPoem : null);
+    const poemAudioTrack = matchedPoem?.id ? POEM_AUDIO_TRACKS[matchedPoem.id] ?? null : null;
+    const content =
+      typeof heroPoem.firstStanza === "string" && heroPoem.firstStanza.trim()
+        ? heroPoem.firstStanza
+        : topSixPoemLines(matchedPoem);
+
+    return {
+      id: index + 1,
+      poemId: matchedPoem?.id,
+      title: heroPoem.title ?? matchedPoem?.title ?? "Untitled",
+      author: heroPoem.poet ?? matchedPoem?.author ?? "Unknown",
+      content,
+      fullLines: Array.isArray(matchedPoem?.lines) ? matchedPoem.lines.filter((line) => typeof line === "string") : [],
+      audioSources: poemAudioTrack?.sources ?? [],
+      lineStartTimes: poemAudioTrack?.lineStartTimes ?? [],
+      tagline: heroPoem.tagline ?? taglineFromPoem(matchedPoem),
+      moodIcon: resolveCarouselMoodIcon(matchedPoem),
+      color: CAROUSEL_CARD_COLORS[index % CAROUSEL_CARD_COLORS.length],
+    };
+  });
+}
 
 const SHARE_SELECTION_LIMIT = 600;
 
@@ -658,65 +1257,8 @@ function generateDailyCollectionImages(collections) {
     return x - Math.floor(x);
   };
 
-  // All collection images from /public/collections/ (verified files only)
-  const allImages = [
-    "/collections/ahmed-hossam-5csXP8McYiA-unsplash.webp",
-    "/collections/annie-spratt-1_w7dXWG2A0-unsplash.webp",
-    "/collections/annie-spratt-7-E5o8Uu1iI-unsplash.webp",
-    "/collections/annie-spratt-95LDMJuVDYA-unsplash.webp",
-    "/collections/annie-spratt-CUdhkjtiUng-unsplash.webp",
-    "/collections/annie-spratt-LRe9Lj0IaeY-unsplash.webp",
-    "/collections/annie-spratt-LxFqrbjV_aE-unsplash.webp",
-    "/collections/annie-spratt-NMbHsivBGEM-unsplash.webp",
-    "/collections/annie-spratt-fM0F-zuKjfs-unsplash.webp",
-    "/collections/annie-spratt-yMKimSyBLIo-unsplash.webp",
-    "/collections/anny-cecilia-walter-2zfA9UMHSpI-unsplash.webp",
-    "/collections/anny-cecilia-walter-YB37kGYZSls-unsplash.webp",
-    "/collections/anny-cecilia-walter-hOJyggZpwac-unsplash.webp",
-    "/collections/brigitte-elsner-THp4np6Jqzk-unsplash.webp",
-    "/collections/brigitte-elsner-X_j77zf-FHA-unsplash.webp",
-    "/collections/compagnons-22U1A5JM3EY-unsplash.webp",
-    "/collections/compagnons-D-JfpYnIU80-unsplash.webp",
-    "/collections/compagnons-EvMG6gjrj3s-unsplash.webp",
-    "/collections/compagnons-_huYdLgvdcg-unsplash.webp",
-    "/collections/deep-7Qw_5JzOATY-unsplash.webp",
-    "/collections/deep-7cCdyCztdLM-unsplash.webp",
-    "/collections/deep-B1bKrxnr3-c-unsplash.webp",
-    "/collections/deep-K92pByP9tPQ-unsplash.webp",
-    "/collections/deep-_GzJEfNZ8Mo-unsplash.webp",
-    "/collections/deep-j-yKvTrn5c4-unsplash.webp",
-    "/collections/deep-qAMqqo07Qrs-unsplash.webp",
-    "/collections/deep-tWWfFo5mUjY-unsplash.webp",
-    "/collections/deep-wst8ldk2ADw-unsplash.webp",
-    "/collections/deep-x0fNueZl8J4-unsplash.webp",
-    "/collections/drawchicken-studio-00xvPu7qPIs-unsplash.webp",
-    "/collections/emily-hawke-_EeF_OOPY-g-unsplash.webp",
-    "/collections/esma-melike-sezer-MwJbGqhRZT8-unsplash.webp",
-    "/collections/esma-melike-sezer-WaGnNLRE9QM-unsplash.webp",
-    "/collections/esma-melike-sezer-a2RUchb-fyM-unsplash.webp",
-    "/collections/esma-melike-sezer-k_ZXMgQZVE8-unsplash.webp",
-    "/collections/karacis-studio-RYPKIJdaxUg-unsplash.webp",
-    "/collections/m-umar-farooq-G9CxsOtR-Sg-unsplash.webp",
-    "/collections/m-umar-farooq-V5kF-1ugfBY-unsplash.webp",
-    "/collections/m-umar-farooq-f8ijzjiFh7Q-unsplash.webp",
-    "/collections/m-umar-farooq-w9e54BuRMIo-unsplash.webp",
-    "/collections/mila-okta-safitri-SDZevo8oZz8-unsplash.webp",
-    "/collections/mila-okta-safitri-hutCHBVQyyk-unsplash.webp",
-    "/collections/muhammad-afandi-j-jxImbonQ0-unsplash.webp",
-    "/collections/olli-kilpi-eNPNDMieh88-unsplash.webp",
-    "/collections/pauline-loroy-UdbCZ0JdO_I-unsplash.webp",
-    "/collections/public-domain-vectors-0mDKnbwoo4w-unsplash.webp",
-    "/collections/public-domain-vectors-8x-sfXJdqig-unsplash.webp",
-    "/collections/public-domain-vectors-S-CqekUvf_g-unsplash.webp",
-    "/collections/public-domain-vectors-pXT4CFBvfyM-unsplash.webp",
-    "/collections/public-domain-vectors-vr1v0RV5FpU-unsplash.webp",
-    "/collections/puzzle-creative-z1sS_JPpOk4-unsplash.webp",
-    "/collections/umm-e-hani-ali-7D1Q0huNavA-unsplash.webp",
-    "/collections/umm-e-hani-ali-AU15WzrmKpw-unsplash.webp",
-    "/collections/vanicon-studio-5HzFkZq-M-g-unsplash.webp",
-    "/collections/viktoriya-lissachenko-0H9vIlJ2kDM-unsplash.webp",
-    "/collections/viktoriya-lissachenko-OAvtXaQBl1E-unsplash.webp",
-  ];
+  const allImages = COLLECTION_IMAGE_POOL;
+  if (!allImages.length) return {};
 
   // Assign one image per collection from the same Unsplash pool; avoid repeats
   // so the annex and themed shelves never share the same asset on a given day.
@@ -771,12 +1313,136 @@ function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
+function analyzeCollectionReadabilityMode(src) {
+  return new Promise((resolve) => {
+    if (!src) {
+      resolve("dark");
+      return;
+    }
+    const img = new Image();
+    img.decoding = "async";
+    img.onload = () => {
+      try {
+        const width = 64;
+        const height = 64;
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d", { willReadFrequently: true });
+        if (!ctx) {
+          resolve("dark");
+          return;
+        }
+        ctx.drawImage(img, 0, 0, width, height);
+        const data = ctx.getImageData(0, 0, width, height).data;
+        let luminanceSum = 0;
+        let count = 0;
+        const startY = Math.floor(height * 0.45);
+        for (let y = startY; y < height; y += 1) {
+          for (let x = 0; x < width; x += 1) {
+            const i = (y * width + x) * 4;
+            const r = data[i];
+            const g = data[i + 1];
+            const b = data[i + 2];
+            const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+            luminanceSum += luminance;
+            count += 1;
+          }
+        }
+        const avg = count > 0 ? luminanceSum / count : 140;
+        // Bright lower zones should use dark text treatment; darker zones keep light text treatment.
+        resolve(avg >= 150 ? "light" : "dark");
+      } catch {
+        resolve("dark");
+      }
+    };
+    img.onerror = () => resolve("dark");
+    img.src = src;
+  });
+}
+
+function extractCollectionDominantBorderColor(src) {
+  return new Promise((resolve) => {
+    if (!src) {
+      resolve("rgba(173, 179, 180, 0.55)");
+      return;
+    }
+
+    const img = new Image();
+    img.decoding = "async";
+    img.onload = () => {
+      try {
+        const width = 56;
+        const height = 56;
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d", { willReadFrequently: true });
+        if (!ctx) {
+          resolve("rgba(173, 179, 180, 0.55)");
+          return;
+        }
+
+        ctx.drawImage(img, 0, 0, width, height);
+        const data = ctx.getImageData(0, 0, width, height).data;
+        const bins = new Map();
+
+        for (let i = 0; i < data.length; i += 4) {
+          const alpha = data[i + 3];
+          if (alpha < 160) continue;
+          const r = data[i];
+          const g = data[i + 1];
+          const b = data[i + 2];
+          const max = Math.max(r, g, b);
+          const min = Math.min(r, g, b);
+          const saturation = max === 0 ? 0 : (max - min) / max;
+          const brightness = (r + g + b) / 3;
+          if (brightness < 18 || brightness > 242) continue;
+
+          // Favor richer, more legible tones over near-gray bins.
+          const weight = 1 + saturation * 1.4;
+          const qr = Math.round(r / 32) * 32;
+          const qg = Math.round(g / 32) * 32;
+          const qb = Math.round(b / 32) * 32;
+          const key = `${qr},${qg},${qb}`;
+          bins.set(key, (bins.get(key) ?? 0) + weight);
+        }
+
+        if (!bins.size) {
+          resolve("rgba(173, 179, 180, 0.55)");
+          return;
+        }
+
+        let bestKey = "";
+        let bestScore = -1;
+        for (const [key, score] of bins.entries()) {
+          if (score > bestScore) {
+            bestKey = key;
+            bestScore = score;
+          }
+        }
+
+        const [rRaw, gRaw, bRaw] = bestKey.split(",").map((v) => Number.parseInt(v, 10));
+        const r = clamp(Number.isFinite(rRaw) ? rRaw : 173, 28, 230);
+        const g = clamp(Number.isFinite(gRaw) ? gRaw : 179, 28, 230);
+        const b = clamp(Number.isFinite(bRaw) ? bRaw : 180, 28, 230);
+        resolve(`rgba(${r}, ${g}, ${b}, 0.95)`);
+      } catch {
+        resolve("rgba(173, 179, 180, 0.55)");
+      }
+    };
+    img.onerror = () => resolve("rgba(173, 179, 180, 0.55)");
+    img.src = src;
+  });
+}
+
 // Thin wrapper that handles data fetching. Renders AppLoaded once both JSON
 // files are available so AppLoaded always starts with non-empty data.
 export default function App() {
   const [rawPoems, setRawPoems] = useState(null);
   const [rawPoets, setRawPoets] = useState(null);
-  const [rawCollections, setRawCollections] = useState([]);
+  const [rawCollections] = useState([]);
+  const [dailyHomeData, setDailyHomeData] = useState(() => readDailyHomeData());
   const [loadError, setLoadError] = useState(false);
   const hasTrackedSessionRef = useRef(false);
 
@@ -794,25 +1460,19 @@ export default function App() {
         return r.json();
       });
 
-    Promise.all([
-      loadJson("/poems.json"),
-      loadJson("/poets.json"),
-      fetch("/collections.json")
-        .then((r) => (r.ok ? r.json() : []))
-        .catch(() => []),
-    ])
-      .then(([poemsData, poetsData, collectionsData]) => {
+    setDailyHomeData(readDailyHomeData());
+    Promise.all([loadJson("/poems.json"), loadJson("/poets.json")])
+      .then(([poemsData, poetsData]) => {
         if (!Array.isArray(poemsData) || !Array.isArray(poetsData)) {
           setLoadError(true);
           return;
         }
         setRawPoems(poemsData);
         setRawPoets(poetsData);
-        setRawCollections(Array.isArray(collectionsData) ? collectionsData : []);
         trackEvent("content_loaded", {
           poems_count: poemsData.length,
           poets_count: poetsData.length,
-          collections_count: Array.isArray(collectionsData) ? collectionsData.length : 0,
+          collections_count: 3,
         });
       })
       .catch(() => {
@@ -847,10 +1507,10 @@ export default function App() {
     );
   }
 
-  return <AppLoaded poems={rawPoems} poets={rawPoets} collections={rawCollections} />;
+  return <AppLoaded poems={rawPoems} poets={rawPoets} collections={rawCollections} dailyHomeData={dailyHomeData} />;
 }
 
-function AppLoaded({ poems, poets, collections }) {
+function AppLoaded({ poems, poets, collections, dailyHomeData }) {
   // --- Derived data (computed once, stable across re-renders) ---
   const voices = useMemo(() => {
     const voiceList = poets.map(poetToVoice);
@@ -908,6 +1568,58 @@ function AppLoaded({ poems, poets, collections }) {
     () => poems.filter((poem) => poem.poemOfDay === true),
     [poems],
   );
+  const carouselCards = useMemo(() => {
+    if (isLockedCarouselActive()) {
+      const lockedCards = buildLockedCarouselCards(poems, 10);
+      if (lockedCards.length) return lockedCards;
+    }
+    const cards = buildTopCarouselCardsFromDaily(dailyHomeData?.heroPoems ?? [], poems);
+    return cards.length ? cards : buildTopCarouselCards(poems, 10);
+  }, [dailyHomeData, poems]);
+  const [activeCarouselIndex, setActiveCarouselIndex] = useState(0);
+  useEffect(() => {
+    if (!carouselCards.length) return;
+    if (activeCarouselIndex > carouselCards.length - 1) {
+      setActiveCarouselIndex(0);
+    }
+  }, [activeCarouselIndex, carouselCards.length]);
+  const activeCarouselMoodIcon =
+    carouselCards[Math.max(0, Math.min(activeCarouselIndex, carouselCards.length - 1))]?.moodIcon ??
+    "auto_awesome";
+  const activeCarouselIconColor =
+    carouselCards[Math.max(0, Math.min(activeCarouselIndex, carouselCards.length - 1))]?.color ??
+    "#8aa0a3";
+  const [heroIconSwipeDirection, setHeroIconSwipeDirection] = useState(1);
+  const [shouldReduceMotion, setShouldReduceMotion] = useState(false);
+  const [isActiveCarouselAudioPlaying, setIsActiveCarouselAudioPlaying] = useState(false);
+  const previousCarouselIndexRef = useRef(activeCarouselIndex);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setShouldReduceMotion(media.matches);
+    sync();
+    media.addEventListener?.("change", sync);
+    return () => media.removeEventListener?.("change", sync);
+  }, []);
+
+  useEffect(() => {
+    if (!carouselCards.length) return;
+    previousCarouselIndexRef.current = Math.max(0, Math.min(previousCarouselIndexRef.current, carouselCards.length - 1));
+  }, [carouselCards.length]);
+
+  useEffect(() => {
+    const totalCards = carouselCards.length;
+    if (totalCards <= 1) return;
+    const previousIndex = previousCarouselIndexRef.current;
+    const nextIndex = Math.max(0, Math.min(activeCarouselIndex, totalCards - 1));
+    if (nextIndex === previousIndex) return;
+    const forwardDistance = (nextIndex - previousIndex + totalCards) % totalCards;
+    const backwardDistance = (previousIndex - nextIndex + totalCards) % totalCards;
+    // +1: advancing to the next card, -1: going back.
+    setHeroIconSwipeDirection(forwardDistance <= backwardDistance ? 1 : -1);
+    previousCarouselIndexRef.current = nextIndex;
+  }, [activeCarouselIndex, carouselCards.length]);
 
   const poemMap = useMemo(() => {
     const map = {};
@@ -936,7 +1648,6 @@ function AppLoaded({ poems, poets, collections }) {
     setFeaturedPortraitFailed(false);
   }, [featuredPoem.id, featuredPoem.poetId, featuredPortraitSrc]);
   const featuredPoemAvatarPlaceholder = !featuredPortraitSrc || featuredPortraitFailed;
-
   const discoveryConfigs = useMemo(() => {
     return Object.fromEntries(
       Object.entries(PORTAL_META).map(([key, meta]) => {
@@ -1054,17 +1765,92 @@ function AppLoaded({ poems, poets, collections }) {
       };
     });
 
-    return annex ? [annex, ...themed] : themed;
-  }, [poems, poets, voices, collectionTemplates]);
+    const baseCollections = annex ? [annex, ...themed] : themed;
+    const dailyCollections = Array.isArray(dailyHomeData?.collections) ? dailyHomeData.collections : [];
+    if (!dailyCollections.length) return baseCollections;
+
+    const poemLookup = new Map();
+    for (const poem of poems) {
+      const key = `${String(poem.title ?? "").toLowerCase()}::${String(poem.author ?? "").toLowerCase()}`;
+      if (!poemLookup.has(key)) poemLookup.set(key, poem);
+    }
+
+    const mappedDaily = dailyCollections.slice(0, 3).map((collection, index) => {
+      const poemEntries = [];
+
+      if (collection?.featuredPoem) {
+        const featuredKey = `${String(collection.featuredPoem.title ?? "").toLowerCase()}::${String(collection.featuredPoem.poet ?? "").toLowerCase()}`;
+        const featuredMatch = poemLookup.get(featuredKey);
+        if (featuredMatch) {
+          const voice = voices.find((v) => v.id === featuredMatch.poetId);
+          poemEntries.push({
+            poet: featuredMatch.author ?? collection.featuredPoem.poet,
+            year: String(voice?.born ?? ""),
+            title: featuredMatch.title ?? collection.featuredPoem.title,
+            excerpt: featuredMatch.excerpt ?? "",
+            poemId: featuredMatch.id,
+          });
+        }
+      }
+
+      for (const entry of collection?.poems ?? []) {
+        const key = `${String(entry.title ?? "").toLowerCase()}::${String(entry.poet ?? "").toLowerCase()}`;
+        const match = poemLookup.get(key);
+        if (!match) continue;
+        const voice = voices.find((v) => v.id === match.poetId);
+        poemEntries.push({
+          poet: match.author ?? entry.poet,
+          year: String(voice?.born ?? ""),
+          title: match.title ?? entry.title,
+          excerpt: match.excerpt ?? "",
+          poemId: match.id,
+        });
+      }
+
+      return {
+        id: `daily-${dailyHomeData?.date ?? "day-01"}-${index + 1}`,
+        label: index === 0 ? "Primary Collection" : "Secondary Collection",
+        title: collection?.name ?? "Untitled Collection",
+        description: collection?.theme ?? "",
+        archiveDescription: collection?.tagline ?? "",
+        image: null,
+        artwork: null,
+        featured: index === 0,
+        tone: "plain",
+        curator: { name: "Versery", role: "Daily Curator" },
+        portalTags: [],
+        poems: poemEntries,
+        count: `${poemEntries.length} poem${poemEntries.length === 1 ? "" : "s"}`,
+        homeShelf: index > 0,
+        dailyCard: true,
+        dailyTagline: collection?.tagline ?? "",
+        dailyFeaturedLines: collection?.featuredPoem?.firstLines ?? "",
+      };
+    });
+
+    return [...mappedDaily, ...baseCollections];
+  }, [poems, poets, voices, collectionTemplates, dailyHomeData]);
 
   const desktopCollectionLayout = useMemo(
     () => createDesktopCollectionLayout(curatedCollections),
     [curatedCollections],
   );
+  const homepageCollections = useMemo(
+    () => curatedCollections.filter((collection) => collection.dailyCard).slice(0, 3),
+    [curatedCollections],
+  );
+  const homepageCollectionTransitionItems = useMemo(
+    () => homepageCollections.map((collection, homeIndex) => ({ ...collection, homeIndex })),
+    [homepageCollections],
+  );
 
   // --- Helper functions (close over computed data) ---
   function getVoiceById(id) {
     return voices.find((v) => v.id === id) ?? voices[0];
+  }
+  function getCollectionCardImage(collection) {
+    if (!collection || typeof collection !== "object") return "";
+    return collectionImages[collection.id] || collection.image || collection.artwork || "";
   }
   function getCollectionById(id) {
     return curatedCollections.find((c) => c.id === id) ?? curatedCollections[0];
@@ -1183,6 +1969,10 @@ function AppLoaded({ poems, poets, collections }) {
     previousScreen: "collections",
   });
   const [activePoemId, setActivePoemId] = useState(featuredPoem.id);
+  const homeReturnCarouselIndex = useMemo(() => {
+    const idx = carouselCards.findIndex((card) => card.poemId === activePoemId);
+    return idx >= 0 ? idx : 0;
+  }, [carouselCards, activePoemId]);
   const [poemContext, setPoemContext] = useState({
     previousScreen: "home",
     sourceOrigin: "home",
@@ -1191,9 +1981,15 @@ function AppLoaded({ poems, poets, collections }) {
     feeling: null,
   });
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+  const [isHomeDesktopLayout, setIsHomeDesktopLayout] = useState(
+    typeof window !== "undefined" && window.matchMedia("(min-width: 1024px)").matches,
+  );
   const [searchQuery, setSearchQuery] = useState("");
+  const [voiceWorksSearchQuery, setVoiceWorksSearchQuery] = useState("");
   const [activeEraFilter, setActiveEraFilter] = useState("All Eras");
   const [collectionImages, setCollectionImages] = useState({});
+  const [collectionBorderColors, setCollectionBorderColors] = useState({});
+  const [collectionReadabilityModes, setCollectionReadabilityModes] = useState({});
   const [selectedPoemText, setSelectedPoemText] = useState("");
   const [selectedVisibleCharCount, setSelectedVisibleCharCount] = useState(0);
   const [shareToast, setShareToast] = useState("");
@@ -1201,23 +1997,62 @@ function AppLoaded({ poems, poets, collections }) {
   const [shareCardMode, setShareCardMode] = useState("full");
   const [showShareOverflowHint, setShowShareOverflowHint] = useState(false);
   const heroSectionRef = useRef(null);
+  const heroCarouselRef = useRef(null);
+  const heroViewportRef = useRef(null);
+  const moodBridgeRef = useRef(null);
+  const collectionsBridgeRef = useRef(null);
+  const collectionsPrimaryRef = useRef(null);
+  const collectionsSecondaryLeftRef = useRef(null);
+  const collectionsSecondaryRightRef = useRef(null);
   const shareCardRef = useRef(null);
   const poemBodyRef = useRef(null);
+  const poemAudioRef = useRef(null);
+  const poemWaveAnimationRef = useRef(null);
+  const poemWaveAnalyserRef = useRef(null);
+  const poemWaveSourceRef = useRef(null);
+  const poemAudioContextRef = useRef(null);
+  const skipNextFadeRef = useRef(false);
+  const [isHeroCarouselExited, setIsHeroCarouselExited] = useState(false);
+  const [isMoodBridgePrimed, setIsMoodBridgePrimed] = useState(false);
+  const [isHeroViewportCleared, setIsHeroViewportCleared] = useState(false);
+  const [hasDesktopV2SnapRun, setHasDesktopV2SnapRun] = useState(false);
+  const [isMoodBridgeVisible, setIsMoodBridgeVisible] = useState(false);
+  const [areMoodOptionsVisible, setAreMoodOptionsVisible] = useState(false);
+  const [isV2RevealLocked, setIsV2RevealLocked] = useState(false);
   const supportsCustomHighlight =
     typeof window !== "undefined" &&
     typeof CSS !== "undefined" &&
     "highlights" in CSS &&
     typeof Highlight !== "undefined";
   const [showBottomNav, setShowBottomNav] = useState(false);
+  const [pendingPoemAudioAutoplayId, setPendingPoemAudioAutoplayId] = useState(null);
+  const [isPoemAudioPlaying, setIsPoemAudioPlaying] = useState(false);
+  const [poemAudioCurrentTime, setPoemAudioCurrentTime] = useState(0);
+  const [poemAudioDuration, setPoemAudioDuration] = useState(0);
+  const [poemAudioSourceIndex, setPoemAudioSourceIndex] = useState(0);
+  const [poemWaveBars, setPoemWaveBars] = useState(() => Array.from({ length: AUDIO_WAVE_BARS }, () => 0.08));
+  const [isHomeCollectionTransitioning, setIsHomeCollectionTransitioning] = useState(false);
+  const [isHomePoemTransitioning, setIsHomePoemTransitioning] = useState(false);
+  const [homeTransitionPoemId, setHomeTransitionPoemId] = useState(null);
+  const [showHomeTransitionPoemPage, setShowHomeTransitionPoemPage] = useState(false);
   const [poemSubscribeOpen, setPoemSubscribeOpen] = useState(false);
   const [newsletterSpotlightHeadSuccess, setNewsletterSpotlightHeadSuccess] = useState(false);
   const [deferredInstallPrompt, setDeferredInstallPrompt] = useState(null);
+  const [wordmarkSecretPulse, setWordmarkSecretPulse] = useState(false);
   const [uiTheme, setUiTheme] = useState(() =>
     typeof document !== "undefined" && document.documentElement.dataset.theme === "dark" ? "dark" : "light",
   );
   const lastTrackedScreenRef = useRef(null);
   const [whatsNewMenuOpen, setWhatsNewMenuOpen] = useState(false);
   const [whatsNewMenuEntered, setWhatsNewMenuEntered] = useState(false);
+  const homePoemTransitionCompleteTimerRef = useRef(null);
+  const homePoemTransitionPageTimerRef = useRef(null);
+
+  useEffect(() => {
+    if (!curatedCollections.length) return;
+    if (curatedCollections.some((collection) => collection.id === activeCollectionId)) return;
+    setActiveCollectionId(curatedCollections[0].id);
+  }, [activeCollectionId, curatedCollections]);
   const whatsNewTriggerRef = useRef(null);
   const whatsNewPanelRef = useRef(null);
 
@@ -1248,8 +2083,291 @@ function AppLoaded({ poems, poets, collections }) {
   }, []);
 
   useEffect(() => {
+    if (typeof document === "undefined" || typeof window === "undefined") return undefined;
+    const root = document.documentElement;
+    const setDaypart = () => {
+      const hour = new Date().getHours();
+      const daypart = hour < 6 ? "night" : hour < 12 ? "morning" : hour < 18 ? "afternoon" : "evening";
+      root.dataset.daypart = daypart;
+    };
+    setDaypart();
+    const intervalId = window.setInterval(setDaypart, 60 * 60 * 1000);
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const syncHomeDesktop = () => setIsHomeDesktopLayout(mq.matches);
+    syncHomeDesktop();
+    mq.addEventListener?.("change", syncHomeDesktop);
+    return () => mq.removeEventListener?.("change", syncHomeDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (isHomeDesktopLayout) return undefined;
+    const node = heroCarouselRef.current;
+    if (!node) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeroCarouselExited(entry.intersectionRatio < 0.2);
+      },
+      {
+        threshold: [0, 0.2, 1],
+        rootMargin: "0px 0px -55% 0px",
+      },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [isHomeDesktopLayout]);
+
+  useEffect(() => {
+    if (screen !== "home") return;
+    // Mobile: carousel starts in view; desktop: no carousel — hero mood is primary, treat as "passed" for staging.
+    setIsHeroCarouselExited(isHomeDesktopLayout);
+  }, [screen, isHomeDesktopLayout]);
+
+  useEffect(() => {
+    const node = moodBridgeRef.current;
+    if (!node) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsMoodBridgePrimed(entry.isIntersecting && entry.intersectionRatio >= 0.25);
+      },
+      { threshold: [0, 0.25, 0.5, 1] },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [screen, isHomeDesktopLayout]);
+
+  const renderHomeFeelingChipButtons = () =>
+    feelings.map((feeling, index) => (
+      <button
+        key={feeling}
+        className={`feeling-chip mood-transition-chip${activeFeeling === feeling ? " is-active" : ""}${
+          areMoodOptionsVisible ? " is-visible" : ""
+        }`}
+        type="button"
+        data-feeling={feeling.toLowerCase()}
+        style={{ "--chip-stagger-index": index }}
+        aria-label={`Browse ${feeling} poems`}
+        onClick={() => {
+          setActiveFeeling(feeling);
+          trackEvent("feeling_selected", {
+            feeling,
+            source_screen: "home",
+          });
+          openDiscovery(feeling, "home", "feeling");
+        }}
+      >
+        {feeling}
+      </button>
+    ));
+
+  useEffect(() => {
+    if (screen !== "home") {
+      setIsHeroViewportCleared(false);
+      setHasDesktopV2SnapRun(false);
+      return undefined;
+    }
+    if (!isDesktop) {
+      setIsHeroViewportCleared(true);
+      setHasDesktopV2SnapRun(false);
+      return undefined;
+    }
+
+    const compute = () => {
+      const heroViewport = heroViewportRef.current;
+      if (!heroViewport) {
+        setIsHeroViewportCleared(false);
+        return;
+      }
+      const header = document.querySelector(".top-app-bar");
+      const headerHeight = header instanceof HTMLElement ? header.getBoundingClientRect().height : 0;
+      const rect = heroViewport.getBoundingClientRect();
+      setIsHeroViewportCleared(rect.bottom <= headerHeight + 1);
+    };
+
+    compute();
+    window.addEventListener("scroll", compute, { passive: true });
+    window.addEventListener("resize", compute);
+    return () => {
+      window.removeEventListener("scroll", compute);
+      window.removeEventListener("resize", compute);
+    };
+  }, [screen, isDesktop]);
+
+  useEffect(() => {
+    if (screen !== "home" || !isDesktop || !isHeroViewportCleared || hasDesktopV2SnapRun) {
+      return undefined;
+    }
+    const target = heroSectionRef.current;
+    if (!target) return undefined;
+
+    const header = document.querySelector(".top-app-bar");
+    const headerHeight = header instanceof HTMLElement ? header.getBoundingClientRect().height : 0;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+    setHasDesktopV2SnapRun(true);
+    window.scrollTo({
+      top: Math.max(0, targetTop),
+      behavior: "smooth",
+    });
+    return undefined;
+  }, [screen, isDesktop, isHeroViewportCleared, hasDesktopV2SnapRun]);
+
+  useEffect(() => {
+    if (screen !== "home") {
+      setIsMoodBridgePrimed(false);
+      setIsMoodBridgeVisible(false);
+      setAreMoodOptionsVisible(false);
+      setIsV2RevealLocked(false);
+      return undefined;
+    }
+
+    // Once revealed, keep v2 stable while scrolling forward so it doesn't fade out.
+    if (isMoodBridgeVisible && areMoodOptionsVisible) {
+      setIsV2RevealLocked(false);
+      return undefined;
+    }
+
+    const canRevealDesktop = isHomeDesktopLayout ? true : isDesktop ? isHeroViewportCleared : true;
+    const shouldWaitForPrime = !isDesktop;
+    const heroGateOk = isHomeDesktopLayout ? true : isHeroCarouselExited;
+    if (!heroGateOk || !canRevealDesktop || (shouldWaitForPrime && !isMoodBridgePrimed)) {
+      return undefined;
+    }
+
+    // Sequence: recede -> brief silence -> question -> options.
+    setIsV2RevealLocked(false);
+    const questionDelay = isHomeDesktopLayout ? 0 : isDesktop ? 0 : 240;
+    const optionsDelay = isHomeDesktopLayout ? 80 : isDesktop ? 120 : 860;
+    const unlockDelay = isHomeDesktopLayout ? 900 : isDesktop ? 1200 : 3700;
+    const questionTimer = window.setTimeout(() => {
+      setIsMoodBridgeVisible(true);
+    }, questionDelay);
+
+    const optionsTimer = window.setTimeout(() => {
+      setAreMoodOptionsVisible(true);
+    }, optionsDelay);
+
+    return () => {
+      window.clearTimeout(questionTimer);
+      window.clearTimeout(optionsTimer);
+    };
+  }, [
+    isHeroCarouselExited,
+    isMoodBridgePrimed,
+    isDesktop,
+    isHomeDesktopLayout,
+    isHeroViewportCleared,
+    screen,
+    isMoodBridgeVisible,
+    areMoodOptionsVisible,
+  ]);
+
+  useEffect(() => {
+    if (!isV2RevealLocked || screen !== "home") return undefined;
+
+    let lastTouchY = 0;
+    const shouldBlock = (deltaY) => deltaY > 0;
+
+    const onWheel = (event) => {
+      if (!shouldBlock(event.deltaY)) return;
+      event.preventDefault();
+    };
+
+    const onTouchStart = (event) => {
+      if (!event.touches?.length) return;
+      lastTouchY = event.touches[0].clientY;
+    };
+
+    const onTouchMove = (event) => {
+      if (!event.touches?.length) return;
+      const nextY = event.touches[0].clientY;
+      const deltaY = lastTouchY - nextY;
+      if (shouldBlock(deltaY)) {
+        event.preventDefault();
+      }
+      lastTouchY = nextY;
+    };
+
+    const onKeyDown = (event) => {
+      const blockedKeys = ["PageDown", " ", "ArrowDown"];
+      if (!blockedKeys.includes(event.key)) return;
+      event.preventDefault();
+    };
+
+    const root = document.documentElement;
+    const body = document.body;
+    const prevRootOverflow = root.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+    const prevRootTouchAction = root.style.touchAction;
+    const prevBodyTouchAction = body.style.touchAction;
+
+    root.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    root.style.touchAction = "none";
+    body.style.touchAction = "none";
+
+    window.addEventListener("wheel", onWheel, { passive: false });
+    document.addEventListener("touchstart", onTouchStart, { passive: false });
+    document.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("wheel", onWheel);
+      document.removeEventListener("touchstart", onTouchStart);
+      document.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("keydown", onKeyDown);
+      root.style.overflow = prevRootOverflow;
+      body.style.overflow = prevBodyOverflow;
+      root.style.touchAction = prevRootTouchAction;
+      body.style.touchAction = prevBodyTouchAction;
+    };
+  }, [isV2RevealLocked, screen]);
+
+  useEffect(() => {
     if (screen !== "poemDetail") setPoemSubscribeOpen(false);
   }, [screen]);
+
+  useEffect(() => {
+    if (screen !== "home") {
+      setIsHomeCollectionTransitioning(false);
+    }
+  }, [screen]);
+
+  useEffect(() => () => {
+    if (homePoemTransitionCompleteTimerRef.current !== null) {
+      window.clearTimeout(homePoemTransitionCompleteTimerRef.current);
+    }
+    if (homePoemTransitionPageTimerRef.current !== null) {
+      window.clearTimeout(homePoemTransitionPageTimerRef.current);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isHomePoemTransitioning) return undefined;
+    const html = document.documentElement;
+    const body = document.body;
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+    const prevBodyPaddingRight = body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - html.clientWidth;
+
+    html.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    return () => {
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overflow = prevBodyOverflow;
+      body.style.paddingRight = prevBodyPaddingRight;
+    };
+  }, [isHomePoemTransitioning]);
 
   useEffect(() => {
     if (screen !== "home") {
@@ -1296,6 +2414,10 @@ function AppLoaded({ poems, poets, collections }) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    setVoiceWorksPage(0);
+  }, [voiceWorksSearchQuery, activeVoiceId]);
 
   useEffect(() => {
     if (lastTrackedScreenRef.current === screen) return;
@@ -1346,6 +2468,92 @@ function AppLoaded({ poems, poets, collections }) {
     setCollectionImages(mapping);
   }, [curatedCollections]);
 
+  useEffect(() => {
+    if (screen !== "home") return undefined;
+    const cards = homepageCollections
+      .map((collection) => ({
+        id: collection.id,
+        src: collectionImages[collection.id] || "",
+      }))
+      .filter((item) => item.src);
+
+    if (!cards.length) return undefined;
+
+    let cancelled = false;
+    (async () => {
+      const nextModes = {};
+      for (const card of cards) {
+        nextModes[card.id] = await analyzeCollectionReadabilityMode(card.src);
+      }
+      if (!cancelled) {
+        setCollectionReadabilityModes((prev) => ({ ...prev, ...nextModes }));
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [screen, homepageCollections, collectionImages]);
+
+  useEffect(() => {
+    if (screen !== "home") return undefined;
+    const cards = homepageCollections
+      .map((collection) => ({
+        id: collection.id,
+        src: collectionImages[collection.id] || "",
+      }))
+      .filter((item) => item.src);
+
+    if (!cards.length) return undefined;
+
+    let cancelled = false;
+    (async () => {
+      const nextColors = {};
+      for (const card of cards) {
+        nextColors[card.id] = await extractCollectionDominantBorderColor(card.src);
+      }
+      if (!cancelled) {
+        setCollectionBorderColors((prev) => ({ ...prev, ...nextColors }));
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [screen, homepageCollections, collectionImages]);
+
+  useEffect(() => {
+    if (screen !== "home") return undefined;
+    const nodes = [
+      collectionsBridgeRef.current,
+      collectionsPrimaryRef.current,
+      collectionsSecondaryLeftRef.current,
+      collectionsSecondaryRightRef.current,
+    ].filter(Boolean);
+    if (!nodes.length) return undefined;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      nodes.forEach((node) => node.classList.add("in-view"));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: "0px 0px -40px 0px",
+    });
+
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, [screen, homepageCollections.length]);
+
   const onCompass = screen === "compass";
   const onVoices = screen === "voices";
   const onCollections = screen === "collections";
@@ -1380,16 +2588,44 @@ function AppLoaded({ poems, poets, collections }) {
     .map(getVoiceById)
     .filter(Boolean);
   const activePoem = getPoemById(activePoemId);
+  const activePoemAudioTrack = POEM_AUDIO_TRACKS[activePoem.id] ?? null;
+  const activePoemAudioSrc = activePoemAudioTrack?.sources?.[poemAudioSourceIndex] ?? null;
+  const homeTransitionPoem = homeTransitionPoemId ? getPoemById(homeTransitionPoemId) : null;
+  const homeTransitionCard = useMemo(
+    () => carouselCards.find((card) => card.poemId === homeTransitionPoemId) ?? null,
+    [carouselCards, homeTransitionPoemId],
+  );
   const worksPerPage = 20;
   const activeVoiceAllPoems = useMemo(
     () => filterByPoet(poems, activeVoiceId),
     [poems, activeVoiceId],
   );
-  const totalWorksPages = Math.ceil(activeVoiceAllPoems.length / worksPerPage);
-  const visibleWorks = activeVoiceAllPoems.slice(
+  const filteredVoiceWorks = useMemo(() => {
+    const query = voiceWorksSearchQuery.trim().toLowerCase();
+    if (!query) return activeVoiceAllPoems;
+    return activeVoiceAllPoems.filter((poem) => {
+      const haystack = [
+        poem.title,
+        poem.author,
+        poem.excerpt,
+        ...(Array.isArray(poem.moods) ? poem.moods : []),
+        ...(Array.isArray(poem.portalTags) ? poem.portalTags : []),
+        ...(Array.isArray(poem.lines) ? poem.lines.flat() : []),
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      return haystack.includes(query);
+    });
+  }, [activeVoiceAllPoems, voiceWorksSearchQuery]);
+  const totalWorksPages = Math.max(1, Math.ceil(filteredVoiceWorks.length / worksPerPage));
+  const visibleWorks = filteredVoiceWorks.slice(
     voiceWorksPage * worksPerPage,
     voiceWorksPage * worksPerPage + worksPerPage,
   );
+  useEffect(() => {
+    setVoiceWorksPage((page) => Math.min(page, Math.max(totalWorksPages - 1, 0)));
+  }, [totalWorksPages]);
   const collectionsPerPage = 6;
   const totalCollectionPages = Math.ceil(curatedCollections.length / collectionsPerPage);
   const visibleCollections = curatedCollections.slice(
@@ -1405,6 +2641,48 @@ function AppLoaded({ poems, poets, collections }) {
     feeling: poemContext.feeling,
   });
   const flattenedPoemLines = useMemo(() => activePoem.lines.flat(), [activePoem.lines]);
+  const poemTokenLines = useMemo(
+    () =>
+      activePoem.lines.map((stanza, stanzaIndex) =>
+        stanza.map((line, lineIndex) => tokenizePoemLine(line, `${activePoem.id}-${stanzaIndex}-${lineIndex}`)),
+      ),
+    [activePoem.id, activePoem.lines],
+  );
+  const poemWordTimeline = useMemo(() => {
+    if (!poemAudioDuration || !Number.isFinite(poemAudioDuration) || poemAudioDuration <= 0) return [];
+    const entries = [];
+    let cursor = 0;
+    poemTokenLines.forEach((stanza, stanzaIndex) => {
+      stanza.forEach((lineTokens, lineIndex) => {
+        lineTokens.forEach((token, tokenIndex) => {
+          if (!token.pronounceable) return;
+          entries.push({
+            key: `${stanzaIndex}-${lineIndex}-${tokenIndex}`,
+            weight: Math.max(1, token.text.length * 0.72),
+          });
+        });
+      });
+    });
+    const totalWeight = entries.reduce((sum, item) => sum + item.weight, 0) || 1;
+    const leadIn = Math.min(0.55, poemAudioDuration * 0.03);
+    const tail = Math.min(0.7, poemAudioDuration * 0.04);
+    const speakingDuration = Math.max(0.2, poemAudioDuration - leadIn - tail);
+    return entries.map((item) => {
+      const duration = (item.weight / totalWeight) * speakingDuration;
+      const start = cursor + leadIn;
+      const end = start + duration;
+      cursor += duration;
+      return { ...item, start, end };
+    });
+  }, [poemTokenLines, poemAudioDuration]);
+  const activePoemWordKey = useMemo(() => {
+    if (!poemWordTimeline.length || !isPoemAudioPlaying) return null;
+    const now = poemAudioCurrentTime;
+    const idx = poemWordTimeline.findIndex((entry) => now >= entry.start && now < entry.end);
+    if (idx >= 0) return poemWordTimeline[idx].key;
+    if (now >= poemWordTimeline[poemWordTimeline.length - 1].end) return poemWordTimeline[poemWordTimeline.length - 1].key;
+    return null;
+  }, [poemWordTimeline, poemAudioCurrentTime, isPoemAudioPlaying]);
   const fullPoemCharCount = useMemo(
     () => flattenedPoemLines.join("\n").length,
     [flattenedPoemLines],
@@ -1687,6 +2965,22 @@ function AppLoaded({ poems, poets, collections }) {
     setScreen("collectionDetail");
   }
 
+  function openCollectionFromTransition(collectionId, previousScreen) {
+    // Atomically reset scroll + commit screen change in one synchronous paint.
+    // flushSync forces React to flush state synchronously so the real page
+    // never paints at a stale scroll offset, eliminating the load-shift jitter.
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    flushSync(() => {
+      setActiveCollectionId(collectionId);
+      setCollectionDetailContext({ previousScreen });
+      setScreen("collectionDetail");
+      trackEvent("collection_opened", {
+        collection_id: collectionId,
+        source_screen: previousScreen,
+      });
+    });
+  }
+
   function openDiscovery(key, previousScreen, source) {
     trackEvent("discovery_opened", {
       discovery_key: key,
@@ -1705,6 +2999,290 @@ function AppLoaded({ poems, poets, collections }) {
     navigateBack(() => setScreen(collectionDetailContext.previousScreen));
   }
 
+  function renderCollectionDetailContent(collection, onBack) {
+    return (
+      <main className="screen-content screen-content--collection-detail" data-testid="screen-collection-detail">
+        <section className="collection-detail">
+          <header className="screen-actions screen-actions--static screen-actions--split collection-detail__back">
+            <button className="screen-action-btn" type="button" aria-label="Back to collections" onClick={onBack}>
+              <span className="material-symbols-outlined">arrow_back</span>
+            </button>
+          </header>
+
+          <header className="collection-detail__hero">
+            <div className="collection-detail__art">
+              {getCollectionCardImage(collection) ? (
+                <CollectionCoverImg src={getCollectionCardImage(collection)} alt={collection.title} />
+              ) : (
+                <div className="collection-detail__art-placeholder" aria-hidden="true"></div>
+              )}
+            </div>
+            <h1>{collection.title}</h1>
+            <p>{collection.description}</p>
+          </header>
+
+          <section className="collection-detail__list" aria-label={`${collection.title} poems`}>
+            {collection.poems.map((poem) => (
+              <article key={poem.poemId} className="collection-poem-card">
+                <div className="collection-poem-card__head">
+                  <div>
+                    <span>{poem.poet} • {poem.year}</span>
+                    <h2>{poem.title}</h2>
+                  </div>
+                </div>
+                <div className="collection-poem-card__excerpt">
+                  <p>{poem.excerpt}</p>
+                </div>
+                <button
+                  type="button"
+                  className="collection-poem-card__link inline-action"
+                  onClick={() =>
+                    openPoem({
+                      poemId: poem.poemId,
+                      previousScreen: "collectionDetail",
+                      sourceOrigin: "collection",
+                      sourceCollectionId: collection.id,
+                    })
+                  }
+                >
+                  Read Full Poem
+                </button>
+              </article>
+            ))}
+          </section>
+
+          {collection.curator && (
+            <footer className="collection-detail__curator">
+              <p>Curated by {collection.curator.name}</p>
+              <span>{collection.curator.role}</span>
+            </footer>
+          )}
+        </section>
+      </main>
+    );
+  }
+
+  function renderPoemDetailContent(
+    poem,
+    onBack,
+    { isTransitionPreview = false } = {},
+  ) {
+    if (!poem) return null;
+
+    return (
+      <main className="screen-content screen-content--poem-detail" data-testid={isTransitionPreview ? undefined : "screen-poem"}>
+        <header className="screen-actions screen-actions--reader">
+          <button
+            className="screen-action-btn"
+            type="button"
+            aria-label="Go back"
+            onClick={isTransitionPreview ? undefined : onBack}
+            disabled={isTransitionPreview}
+          >
+            <span className="material-symbols-outlined">arrow_back</span>
+          </button>
+          {isTransitionPreview ? (
+            <button className="screen-action-btn" type="button" aria-hidden="true" disabled>
+              <span className="material-symbols-outlined">download</span>
+            </button>
+          ) : (
+            <InstallAppButton
+              surface="poem"
+              className="screen-action-btn"
+              deferredPrompt={deferredInstallPrompt}
+              onConsumedPrompt={() => setDeferredInstallPrompt(null)}
+              movingBorder
+              tooltip="Add Versery to your home screen for quicker access—like an app shortcut on your device."
+            />
+          )}
+        </header>
+
+        <article className="poem-reader">
+          <div className="poem-reader__meta">
+            <div className="poem-reader__meta-row">
+              <span className="poem-reader__meta-label">Poem Selection</span>
+              <div className="poem-reader__meta-actions">
+                {!isTransitionPreview && activePoemAudioTrack ? (
+                  <>
+                    <button
+                      type="button"
+                      className={`poem-reader__audio-btn${isPoemAudioPlaying ? " is-playing" : ""}`}
+                      onClick={togglePoemAudio}
+                      aria-label={isPoemAudioPlaying ? "Pause poem audio" : "Play poem audio"}
+                    >
+                      <span className="material-symbols-outlined" aria-hidden="true">
+                        {isPoemAudioPlaying ? "pause" : "play_arrow"}
+                      </span>
+                    </button>
+                    {isPoemAudioPlaying ? (
+                      <div className="poem-reader__meta-wave is-waveform-active">
+                        <svg viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true">
+                          <polyline
+                            points={poemWaveBars
+                              .map((value, index) => {
+                                const x = (index / (poemWaveBars.length - 1 || 1)) * 100;
+                                const y = 6 - value * 4.5;
+                                return `${x},${y}`;
+                              })
+                              .join(" ")}
+                          />
+                        </svg>
+                      </div>
+                    ) : null}
+                  </>
+                ) : null}
+              </div>
+            </div>
+          </div>
+
+          <header className="poem-reader__title">
+            <h1>{poem.title}</h1>
+            <p>{poem.translator}</p>
+          </header>
+
+          <div className="poem-reader__mark">
+            <span className="material-symbols-outlined">{poem.icon}</span>
+          </div>
+
+          <section
+            ref={isTransitionPreview ? null : poemBodyRef}
+            className={`poem-reader__body${!isTransitionPreview ? " poem-reader__body--page-scroll" : ""}${
+              !isTransitionPreview && supportsCustomHighlight ? " has-custom-highlight" : ""
+            }${
+              !isTransitionPreview && selectedSnippetOverflow && !supportsCustomHighlight ? " is-selection-overflow" : ""
+            }${!isTransitionPreview && isPoemAudioPlaying ? " is-audio-playing" : ""}`}
+          >
+            {poem.lines.map((stanza, index) => (
+              <div key={`${poem.id}-${index}`} className="poem-reader__stanza">
+                {stanza.map((line, lineIndex) => {
+                  const lineTokens = poemTokenLines[index]?.[lineIndex] ?? [];
+                  return (
+                  <p key={`${poem.id}-${index}-${lineIndex}`} className="poem-reader__line">
+                    {lineTokens.map((token, tokenIndex) => {
+                      const wordKey = `${index}-${lineIndex}-${tokenIndex}`;
+                      const isActiveWord = wordKey === activePoemWordKey;
+                      return (
+                        <span
+                          key={token.id}
+                          data-word-key={token.pronounceable ? wordKey : undefined}
+                          className={isActiveWord ? "poem-reader__word is-active" : "poem-reader__word"}
+                        >
+                          {token.text}
+                          {token.trailing}
+                        </span>
+                      );
+                    })}
+                  </p>
+                  );
+                })}
+              </div>
+            ))}
+          </section>
+          {!isTransitionPreview && activePoemAudioTrack && activePoemAudioSrc ? (
+            <audio
+              ref={poemAudioRef}
+              src={activePoemAudioSrc}
+              preload="metadata"
+              onError={handlePoemAudioSourceError}
+            />
+          ) : null}
+
+          <div className="poem-reader__actions">
+            <button
+              className="secondary-action poem-reader__share-btn"
+              type="button"
+              disabled={isTransitionPreview || isGeneratingShareCard}
+              onClick={isTransitionPreview ? undefined : handleShareButtonClick}
+            >
+              <span className="material-symbols-outlined" aria-hidden="true">ios_share</span>
+              <span>{isGeneratingShareCard ? "Generating..." : shareButtonLabel}</span>
+            </button>
+          </div>
+          {!isTransitionPreview && shareHelperText ? <p className="poem-reader__share-hint">{shareHelperText}</p> : null}
+          {!isTransitionPreview ? (
+            <p className="poem-reader__subscribe-teaser">
+              Weekly curated poems in your inbox —{" "}
+              <button
+                type="button"
+                className="poem-reader__subscribe-link"
+                onClick={() => {
+                  setPoemSubscribeOpen(true);
+                  trackEvent("newsletter_subscribe_link_clicked", { surface: "poem_reader" });
+                }}
+              >
+                Subscribe
+              </button>
+            </p>
+          ) : null}
+
+          <div className="poem-reader__mark poem-reader__mark--bottom">
+            <span className="material-symbols-outlined">{poem.footerIcon}</span>
+          </div>
+        </article>
+
+        {!isTransitionPreview && shareToast ? (
+          <div className="share-toast" role="status" aria-live="polite">
+            {shareToast}
+          </div>
+        ) : null}
+
+        {!isTransitionPreview ? (
+          <>
+            <div className="share-card-render-shell" aria-hidden="true">
+              <article
+                ref={shareCardRef}
+                className={`share-card share-card--${shareCardMode}`}
+                style={shareCardSurfaceStyle}
+              >
+                <div
+                  className="share-card__mood-dot"
+                  style={{ backgroundColor: shareAccentHex }}
+                  aria-hidden="true"
+                />
+                <div className="share-card__main">
+                  <div className="share-card__body-wrap">
+                    <div className="share-card__frame">
+                      <div className="share-card__content">
+                        {shareCardLines.map((line, index) => (
+                          <p key={`${shareCardMode}-${index}`}>{line}</p>
+                        ))}
+                      </div>
+                      <p className="share-card__poet">— {poemPoetName}</p>
+                    </div>
+                  </div>
+                  <p className="share-card__brand">Versery</p>
+                </div>
+              </article>
+            </div>
+
+            <PoemSubscribeDialog open={poemSubscribeOpen} onClose={() => setPoemSubscribeOpen(false)} />
+
+            <aside className="poem-next">
+              <div className="poem-next__glow poem-next__glow--one"></div>
+              <div className="poem-next__glow poem-next__glow--two"></div>
+              <div className="poem-next__content">
+                <div>
+                  <span>Continue Reading</span>
+                  <h3>{nextPoemData.poem.title}</h3>
+                </div>
+                <p>{nextPoemData.poem.subtitle}</p>
+                <button
+                  className="primary-action"
+                  type="button"
+                  aria-label={`Open next poem: ${nextPoemData.poem.title}`}
+                  onClick={openNextPoem}
+                >
+                  Open Poem
+                </button>
+                <div className="poem-next__divider"></div>
+              </div>
+            </aside>
+          </>
+        ) : null}
+      </main>
+    );
+  }
+
   function openVoiceWorks(previousScreen = "voiceDetail") {
     trackEvent("voice_works_opened", {
       voice_id: activeVoiceId,
@@ -1719,7 +3297,7 @@ function AppLoaded({ poems, poets, collections }) {
     navigateBack(() => setScreen(voiceWorksContext.previousScreen));
   }
 
-  function openPoem({
+  function commitPoemOpen({
     poemId,
     previousScreen,
     sourceOrigin,
@@ -1738,6 +3316,46 @@ function AppLoaded({ poems, poets, collections }) {
     setActivePoemId(poemId);
     setPoemContext({ previousScreen, sourceOrigin, sourceVoiceId, sourceCollectionId, feeling });
     setScreen("poemDetail");
+  }
+
+  function openPoem(args) {
+    commitPoemOpen(args);
+  }
+
+  function openPoemFromTransition(args) {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    flushSync(() => {
+      setShowHomeTransitionPoemPage(false);
+      setIsHomePoemTransitioning(false);
+      setHomeTransitionPoemId(null);
+      commitPoemOpen(args);
+    });
+  }
+
+  function beginHomeCarouselPoemTransition(poemId) {
+    if (!poemId || isHomePoemTransitioning) return;
+    if (homePoemTransitionCompleteTimerRef.current !== null) {
+      window.clearTimeout(homePoemTransitionCompleteTimerRef.current);
+    }
+    if (homePoemTransitionPageTimerRef.current !== null) {
+      window.clearTimeout(homePoemTransitionPageTimerRef.current);
+    }
+
+    setHomeTransitionPoemId(poemId);
+    setShowHomeTransitionPoemPage(false);
+    setIsHomePoemTransitioning(true);
+
+    homePoemTransitionPageTimerRef.current = window.setTimeout(() => {
+      setShowHomeTransitionPoemPage(true);
+    }, 1760);
+
+    homePoemTransitionCompleteTimerRef.current = window.setTimeout(() => {
+      openPoemFromTransition({
+        poemId,
+        previousScreen: "home",
+        sourceOrigin: "home_carousel",
+      });
+    }, 2080);
   }
 
   function openRandomPoemFromHome() {
@@ -2194,6 +3812,138 @@ function AppLoaded({ poems, poets, collections }) {
   }, [activePoemId]);
 
   useEffect(() => {
+    setPoemAudioSourceIndex(0);
+    setPoemAudioCurrentTime(0);
+    setPoemAudioDuration(0);
+    setIsPoemAudioPlaying(false);
+    setPoemWaveBars(Array.from({ length: AUDIO_WAVE_BARS }, () => 0.08));
+  }, [activePoemId]);
+
+  useEffect(() => {
+    if (screen !== "poemDetail") return;
+    if (!pendingPoemAudioAutoplayId || pendingPoemAudioAutoplayId !== activePoem.id) return;
+    const audio = poemAudioRef.current;
+    if (!audio || !activePoemAudioTrack) return;
+    const tryPlay = async () => {
+      try {
+        await audio.play();
+      } catch {
+        // Browser autoplay policies may block play until user gesture.
+      } finally {
+        setPendingPoemAudioAutoplayId(null);
+      }
+    };
+    tryPlay();
+  }, [screen, activePoem.id, pendingPoemAudioAutoplayId, activePoemAudioTrack]);
+
+  useEffect(() => {
+    const audio = poemAudioRef.current;
+    if (!audio || !activePoemAudioTrack) return;
+    let cancelled = false;
+
+    const tickWave = () => {
+      if (cancelled) return;
+      const analyser = poemWaveAnalyserRef.current;
+      if (!analyser) return;
+      const bins = new Uint8Array(analyser.frequencyBinCount);
+      analyser.getByteFrequencyData(bins);
+      const bars = Array.from({ length: AUDIO_WAVE_BARS }, (_, index) => {
+        const from = Math.floor((index / AUDIO_WAVE_BARS) * bins.length);
+        const to = Math.floor(((index + 1) / AUDIO_WAVE_BARS) * bins.length);
+        let total = 0;
+        let count = 0;
+        for (let i = from; i < to; i += 1) {
+          total += bins[i] ?? 0;
+          count += 1;
+        }
+        const avg = count ? total / count : 0;
+        return Math.max(0.06, Math.min(1, avg / 178));
+      });
+      setPoemWaveBars(bars);
+      poemWaveAnimationRef.current = window.requestAnimationFrame(tickWave);
+    };
+
+    const handlePlay = async () => {
+      try {
+        if (!poemAudioContextRef.current) {
+          poemAudioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        const audioContext = poemAudioContextRef.current;
+        if (!poemWaveAnalyserRef.current) {
+          poemWaveAnalyserRef.current = audioContext.createAnalyser();
+          poemWaveAnalyserRef.current.fftSize = 512;
+          poemWaveAnalyserRef.current.smoothingTimeConstant = 0.88;
+        }
+        if (!poemWaveSourceRef.current) {
+          poemWaveSourceRef.current = audioContext.createMediaElementSource(audio);
+          poemWaveSourceRef.current.connect(poemWaveAnalyserRef.current);
+          poemWaveAnalyserRef.current.connect(audioContext.destination);
+        }
+        if (audioContext.state === "suspended") {
+          await audioContext.resume();
+        }
+      } catch {
+        // If audio analyzer setup fails, playback still continues.
+      }
+      setIsPoemAudioPlaying(true);
+      if (poemWaveAnimationRef.current) {
+        window.cancelAnimationFrame(poemWaveAnimationRef.current);
+      }
+      poemWaveAnimationRef.current = window.requestAnimationFrame(tickWave);
+    };
+
+    const handlePause = () => {
+      setIsPoemAudioPlaying(false);
+      if (poemWaveAnimationRef.current) {
+        window.cancelAnimationFrame(poemWaveAnimationRef.current);
+      }
+      setPoemWaveBars(Array.from({ length: AUDIO_WAVE_BARS }, () => 0.08));
+    };
+
+    const handleLoaded = () => {
+      setPoemAudioDuration(Number.isFinite(audio.duration) ? audio.duration : 0);
+      setPoemAudioCurrentTime(audio.currentTime || 0);
+    };
+    const handleTime = () => setPoemAudioCurrentTime(audio.currentTime || 0);
+    const handleEnded = () => {
+      handlePause();
+      setPoemAudioCurrentTime(audio.duration || 0);
+    };
+
+    audio.addEventListener("play", handlePlay);
+    audio.addEventListener("pause", handlePause);
+    audio.addEventListener("loadedmetadata", handleLoaded);
+    audio.addEventListener("timeupdate", handleTime);
+    audio.addEventListener("ended", handleEnded);
+    return () => {
+      cancelled = true;
+      audio.removeEventListener("play", handlePlay);
+      audio.removeEventListener("pause", handlePause);
+      audio.removeEventListener("loadedmetadata", handleLoaded);
+      audio.removeEventListener("timeupdate", handleTime);
+      audio.removeEventListener("ended", handleEnded);
+      handlePause();
+    };
+  }, [activePoemAudioTrack, activePoem.id]);
+
+  useEffect(() => {
+    if (!isPoemAudioPlaying || !activePoemWordKey) return;
+    const body = poemBodyRef.current;
+    if (!body) return;
+    const target = body.querySelector(`[data-word-key="${activePoemWordKey}"]`);
+    if (!(target instanceof HTMLElement)) return;
+    const bodyRect = body.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+    const targetMid = targetRect.top + targetRect.height / 2;
+    const desired = bodyRect.top + bodyRect.height * 0.34;
+    const delta = targetMid - desired;
+    body.scrollTo({
+      top: body.scrollTop + delta,
+      behavior: "smooth",
+    });
+  }, [activePoemWordKey, isPoemAudioPlaying]);
+
+  useEffect(() => {
     function clearSelectionHighlights() {
       if (!supportsCustomHighlight) return;
       CSS.highlights.delete("share-within");
@@ -2220,24 +3970,38 @@ function AppLoaded({ poems, poets, collections }) {
       const selectedParts = [];
       const selectedOffsets = [];
       lineNodes.forEach((lineNode) => {
-        const textNode = lineNode.firstChild;
-        const lineText = lineNode.textContent ?? "";
-        if (!textNode || !range.intersectsNode(textNode) || !lineText.length) return;
-        let start = 0;
-        let end = lineText.length;
-        if (lineNode.contains(range.startContainer)) {
-          start = range.startOffset;
-        }
-        if (lineNode.contains(range.endContainer)) {
-          end = range.endOffset;
-        }
-        start = Math.max(0, Math.min(start, lineText.length));
-        end = Math.max(0, Math.min(end, lineText.length));
-        if (end <= start) return;
-        const text = lineText.slice(start, end);
-        if (!text.trim()) return;
-        selectedParts.push(text);
-        selectedOffsets.push({ textNode, start, end });
+        const wordNodes = lineNode.querySelectorAll(".poem-reader__word");
+        const nodes = wordNodes.length ? Array.from(wordNodes) : [lineNode];
+        nodes.forEach((node) => {
+          const textNodes = Array.from(node.childNodes).filter(
+            (child) => child instanceof Text && child.textContent?.length,
+          );
+          if (!textNodes.length) return;
+
+          textNodes.forEach((textNode) => {
+            if (!range.intersectsNode(textNode)) return;
+
+            const textValue = textNode.textContent ?? "";
+            let start = 0;
+            let end = textValue.length;
+
+            if (textNode === range.startContainer) {
+              start = range.startOffset;
+            }
+            if (textNode === range.endContainer) {
+              end = range.endOffset;
+            }
+
+            start = Math.max(0, Math.min(start, textValue.length));
+            end = Math.max(0, Math.min(end, textValue.length));
+            if (end <= start) return;
+
+            const text = textValue.slice(start, end);
+            if (!text.trim()) return;
+            selectedParts.push(text);
+            selectedOffsets.push({ textNode, start, end });
+          });
+        });
       });
       const visibleCount = selectedParts.reduce((total, part) => total + part.length, 0);
       setSelectedPoemText(selectedParts.join("\n"));
@@ -2314,6 +4078,28 @@ function AppLoaded({ poems, poets, collections }) {
     if (!whatsNewMenuEntered) {
       setWhatsNewMenuOpen(false);
     }
+  }
+
+  async function togglePoemAudio() {
+    const audio = poemAudioRef.current;
+    if (!audio || !activePoemAudioTrack) return;
+    if (audio.paused) {
+      try {
+        await audio.play();
+      } catch {
+        // Playback remains user-controlled when blocked.
+      }
+      return;
+    }
+    audio.pause();
+  }
+
+  function handlePoemAudioSourceError() {
+    if (!activePoemAudioTrack?.sources?.length) return;
+    setPoemAudioSourceIndex((prev) => {
+      if (prev + 1 >= activePoemAudioTrack.sources.length) return prev;
+      return prev + 1;
+    });
   }
 
   return (
@@ -2393,12 +4179,17 @@ function AppLoaded({ poems, poets, collections }) {
               )}
             </div>
             <p
-              className="top-app-bar__title"
+              className={`top-app-bar__title${wordmarkSecretPulse ? " top-app-bar__title--secret" : ""}`}
               onClick={() => {
                 if (isDesktop && screen !== "home") {
                   setScreen("home");
                 }
               }}
+              onDoubleClick={() => {
+                setWordmarkSecretPulse(true);
+                window.setTimeout(() => setWordmarkSecretPulse(false), 1150);
+              }}
+              title="Double-click for a quiet spark."
               style={{ cursor: isDesktop ? "pointer" : "default" }}
             >
               Versery
@@ -2413,27 +4204,29 @@ function AppLoaded({ poems, poets, collections }) {
                     onConsumedPrompt={() => setDeferredInstallPrompt(null)}
                     tooltip="Add Versery to your home screen for quicker access—like an app shortcut on your device."
                   />
-                  <button
-                    type="button"
-                    className="top-app-bar__theme icon-surface"
-                    aria-label={uiTheme === "dark" ? "Switch to light appearance" : "Switch to dark appearance"}
-                    onClick={() => {
-                      const next = uiTheme === "dark" ? "light" : "dark";
-                      applyTheme(next, {
-                        animate: true,
-                        onAfterThemeCommit: () => {
-                          flushSync(() => {
-                            setUiTheme(next);
-                          });
-                        },
-                      });
-                      trackEvent("theme_changed", { theme: next });
-                    }}
-                  >
-                    <span className="material-symbols-outlined" aria-hidden="true">
-                      {uiTheme === "dark" ? "light_mode" : "dark_mode"}
-                    </span>
-                  </button>
+                  {!THEME_LIGHT_ONLY ? (
+                    <button
+                      type="button"
+                      className="top-app-bar__theme icon-surface"
+                      aria-label={uiTheme === "dark" ? "Switch to light appearance" : "Switch to dark appearance"}
+                      onClick={() => {
+                        const next = uiTheme === "dark" ? "light" : "dark";
+                        applyTheme(next, {
+                          animate: true,
+                          onAfterThemeCommit: () => {
+                            flushSync(() => {
+                              setUiTheme(next);
+                            });
+                          },
+                        });
+                        trackEvent("theme_changed", { theme: next });
+                      }}
+                    >
+                      <span className="material-symbols-outlined" aria-hidden="true">
+                        {uiTheme === "dark" ? "light_mode" : "dark_mode"}
+                      </span>
+                    </button>
+                  ) : null}
                 </>
               ) : null}
             </div>
@@ -2550,7 +4343,7 @@ function AppLoaded({ poems, poets, collections }) {
                   key={collection.id}
                   className={`collections-archive-card${
                     collection.featured ? " collections-archive-card--featured" : ""
-                  }${collection.image ? " collections-archive-card--image" : ""}${
+                  }${getCollectionCardImage(collection) ? " collections-archive-card--image" : ""}${
                     collection.tone ? ` collections-archive-card--${collection.tone}` : ""
                   }${
                     desktopCollectionLayout[collection.id] === "full"
@@ -2560,10 +4353,10 @@ function AppLoaded({ poems, poets, collections }) {
                   type="button"
                   onClick={() => openCollection(collection.id, "collections")}
                 >
-                  {collection.image ? (
+                  {getCollectionCardImage(collection) ? (
                     <div className="collections-archive-card__media">
                       <CollectionCoverImg
-                        src={collectionImages[collection.id] || collection.image}
+                        src={getCollectionCardImage(collection)}
                         alt={collection.title}
                       />
                     </div>
@@ -2591,7 +4384,6 @@ function AppLoaded({ poems, poets, collections }) {
                     disabled={collectionPage === 0}
                     onClick={() => setCollectionPage((page) => Math.max(page - 1, 0))}
                   >
-                    <span className="material-symbols-outlined">west</span>
                     <span>Previous</span>
                   </button>
                   <p>{String(collectionPage + 1).padStart(2, "0")} / {String(totalCollectionPages).padStart(2, "0")}</p>
@@ -2604,7 +4396,6 @@ function AppLoaded({ poems, poets, collections }) {
                     }
                   >
                     <span>Next</span>
-                    <span className="material-symbols-outlined">east</span>
                   </button>
                 </div>
               </div>
@@ -2720,72 +4511,7 @@ function AppLoaded({ poems, poets, collections }) {
           </section>
         </main>
       ) : onCollectionDetail ? (
-        <main className="screen-content screen-content--collection-detail" data-testid="screen-collection-detail">
-          <section className="collection-detail">
-            <header className="screen-actions screen-actions--static screen-actions--split collection-detail__back">
-              <button
-                className="screen-action-btn"
-                type="button"
-                aria-label="Back to collections"
-                onClick={handleCollectionBack}
-              >
-                <span className="material-symbols-outlined">arrow_back</span>
-              </button>
-            </header>
-
-            <header className="collection-detail__hero">
-              <div className="collection-detail__art">
-                {activeCollection.artwork ? (
-                  <CollectionCoverImg
-                    src={collectionImages[activeCollection.id] || activeCollection.artwork}
-                    alt={activeCollection.title}
-                  />
-                ) : (
-                  <div className="collection-detail__art-placeholder" aria-hidden="true"></div>
-                )}
-              </div>
-              <h1>{activeCollection.title}</h1>
-              <p>{activeCollection.description}</p>
-            </header>
-
-            <section className="collection-detail__list" aria-label={`${activeCollection.title} poems`}>
-              {activeCollection.poems.map((poem) => (
-                <article key={poem.poemId} className="collection-poem-card">
-                  <div className="collection-poem-card__head">
-                    <div>
-                      <span>{poem.poet} • {poem.year}</span>
-                      <h2>{poem.title}</h2>
-                    </div>
-                  </div>
-                  <div className="collection-poem-card__excerpt">
-                    <p>{poem.excerpt}</p>
-                  </div>
-                  <button
-                    type="button"
-                    className="collection-poem-card__link inline-action"
-                    onClick={() =>
-                      openPoem({
-                        poemId: poem.poemId,
-                        previousScreen: "collectionDetail",
-                        sourceOrigin: "collection",
-                        sourceCollectionId: activeCollection.id,
-                      })
-                    }
-                  >
-                    Read Full Poem
-                  </button>
-                </article>
-              ))}
-            </section>
-
-            {activeCollection.curator && (
-              <footer className="collection-detail__curator">
-                <p>Curated by {activeCollection.curator.name}</p>
-                <span>{activeCollection.curator.role}</span>
-              </footer>
-            )}
-          </section>
-        </main>
+        renderCollectionDetailContent(activeCollection, handleCollectionBack)
       ) : onVoiceDetail ? (
         <main className="screen-content screen-content--voice-detail" data-testid="screen-voice-detail">
           <header className="voice-hero">
@@ -2958,7 +4684,12 @@ function AppLoaded({ poems, poets, collections }) {
 
             <label className="voices-search voice-works-page__search" aria-label="Search poems">
               <span className="material-symbols-outlined">search</span>
-              <input placeholder="Search poems, themes, or keywords..." type="text" />
+              <input
+                placeholder="Search poems, themes, or keywords..."
+                type="text"
+                value={voiceWorksSearchQuery}
+                onChange={(e) => setVoiceWorksSearchQuery(e.target.value)}
+              />
             </label>
 
             <section className="voice-works-page__list" aria-label={`Works by ${activeVoice.name}`}>
@@ -2986,6 +4717,11 @@ function AppLoaded({ poems, poets, collections }) {
                   </div>
                 </button>
               ))}
+              {visibleWorks.length === 0 && voiceWorksSearchQuery.trim() && (
+                <p style={{ textAlign: "center", padding: "2rem", color: "var(--ink-soft)" }}>
+                  No poems match "{voiceWorksSearchQuery.trim()}".
+                </p>
+              )}
             </section>
             {totalWorksPages > 1 && (
               <div className="collections-archive__footer">
@@ -2997,7 +4733,6 @@ function AppLoaded({ poems, poets, collections }) {
                     disabled={voiceWorksPage === 0}
                     onClick={() => setVoiceWorksPage((p) => Math.max(p - 1, 0))}
                   >
-                    <span className="material-symbols-outlined">west</span>
                     <span>Previous</span>
                   </button>
                   <p>
@@ -3011,7 +4746,6 @@ function AppLoaded({ poems, poets, collections }) {
                     onClick={() => setVoiceWorksPage((p) => Math.min(p + 1, totalWorksPages - 1))}
                   >
                     <span>Next</span>
-                    <span className="material-symbols-outlined">east</span>
                   </button>
                 </div>
               </div>
@@ -3019,187 +4753,262 @@ function AppLoaded({ poems, poets, collections }) {
           </section>
         </main>
       ) : onPoemDetail ? (
-        <main className="screen-content screen-content--poem-detail" data-testid="screen-poem">
-          <header className="screen-actions screen-actions--reader">
-            <button className="screen-action-btn" type="button" aria-label="Go back" onClick={handlePoemBack}>
-              <span className="material-symbols-outlined">arrow_back</span>
-            </button>
-            <InstallAppButton
-              surface="poem"
-              className="screen-action-btn"
-              deferredPrompt={deferredInstallPrompt}
-              onConsumedPrompt={() => setDeferredInstallPrompt(null)}
-              movingBorder
-              tooltip="Add Versery to your home screen for quicker access—like an app shortcut on your device."
-            />
-          </header>
-
-          <article className="poem-reader">
-            <div className="poem-reader__meta">
-              <span>Poem Selection</span>
-              <div></div>
+        renderPoemDetailContent(activePoem, handlePoemBack)
+      ) : (
+        <main
+          className={`screen-content screen-content--home${isHomeCollectionTransitioning ? " is-collection-transitioning" : ""}${
+            isHomePoemTransitioning ? " is-poem-transitioning" : ""
+          }`}
+          data-testid="screen-home"
+        >
+          <section
+            ref={heroViewportRef}
+            className="mobile-hero-clean-viewport"
+            aria-label={isHomeDesktopLayout ? "Home hero" : "Mobile hero carousel"}
+          >
+            <div className="mobile-hero-intro-bridge">
+              <div className="mobile-hero-intro-bridge__inner seo-hidden">
+                <h1 className="mobile-hero-intro-bridge__headline">Curated poetry for how you feel</h1>
+                <p className="mobile-hero-intro-bridge__lead">
+                  Versery is a calm place to read poems online.
+                </p>
+              </div>
+              {!isHomeDesktopLayout ? (
+                <p
+                  className="mobile-hero-intro-bridge__tagline"
+                  aria-live="polite"
+                >
+                  <span
+                    className={`mobile-hero-intro-bridge__tagline-frame${isActiveCarouselAudioPlaying ? " mobile-hero-intro-bridge__tagline-frame--audio-playing" : ""}`}
+                    style={{ "--tagline-icon-accent": activeCarouselIconColor }}
+                    aria-hidden="true"
+                  >
+                    <span className="mobile-hero-intro-bridge__tagline-halo" />
+                    <span className="mobile-hero-intro-bridge__tagline-icon-slot">
+                      <AnimatePresence initial={false} custom={heroIconSwipeDirection} mode="sync">
+                        <motion.span
+                          key={`${activeCarouselMoodIcon}-${activeCarouselIndex}`}
+                          className="material-symbols-outlined mobile-hero-intro-bridge__tagline-icon"
+                          custom={heroIconSwipeDirection}
+                          style={{ color: activeCarouselIconColor }}
+                          initial={
+                            shouldReduceMotion
+                              ? { opacity: 1 }
+                              : (direction) => ({ opacity: 0, x: direction > 0 ? 12 : -12, filter: "blur(0.35px)" })
+                          }
+                          animate={
+                            shouldReduceMotion
+                              ? { opacity: 1 }
+                              : { opacity: 1, x: 0, filter: "blur(0px)" }
+                          }
+                          exit={
+                            shouldReduceMotion
+                              ? { opacity: 1 }
+                              : (direction) => ({ opacity: 0, x: direction > 0 ? -12 : 12, filter: "blur(0.35px)" })
+                          }
+                          transition={
+                            shouldReduceMotion
+                              ? { duration: 0 }
+                              : { duration: 0.34, ease: [0.22, 1, 0.36, 1] }
+                          }
+                        >
+                          {activeCarouselMoodIcon}
+                        </motion.span>
+                      </AnimatePresence>
+                    </span>
+                  </span>
+                </p>
+              ) : null}
             </div>
-
-            <header className="poem-reader__title">
-              <h1>{activePoem.title}</h1>
-              <p>{activePoem.translator}</p>
-            </header>
-
-            <div className="poem-reader__mark">
-              <span className="material-symbols-outlined">{activePoem.icon}</span>
-            </div>
-
-            <section
-              ref={poemBodyRef}
-              className={`poem-reader__body${supportsCustomHighlight ? " has-custom-highlight" : ""}${
-                selectedSnippetOverflow && !supportsCustomHighlight ? " is-selection-overflow" : ""
-              }`}
-            >
-              {activePoem.lines.map((stanza, index) => (
-                <div key={`${activePoem.id}-${index}`} className="poem-reader__stanza">
-                  {stanza.map((line, lineIndex) => (
-                    <p key={`${activePoem.id}-${index}-${lineIndex}`} className="poem-reader__line">
-                      {line}
+            {isHomeDesktopLayout ? (
+              <div ref={heroCarouselRef} className="desktop-hero-mood-cluster home-hero-cluster">
+                <div className="desktop-hero-bento">
+                  <div className="desktop-hero-bento__left desktop-hero-left-carousel" aria-label="Featured poems">
+                    <ArcCarousel
+                      cards={carouselCards}
+                      initialIndex={homeReturnCarouselIndex}
+                      onOpenPoem={beginHomeCarouselPoemTransition}
+                      embeddedMode="leftHero"
+                    />
+                  </div>
+                  <div className="desktop-hero-bento__right">
+                    <p
+                      ref={moodBridgeRef}
+                      className={`mood-transition-bridge${isMoodBridgeVisible ? " is-visible" : ""}`}
+                    >
+                      Start with your mood.
                     </p>
-                  ))}
-                </div>
-              ))}
-            </section>
-
-            <div className="poem-reader__actions">
-              <button
-                className="secondary-action poem-reader__share-btn"
-                type="button"
-                disabled={isGeneratingShareCard}
-                onClick={handleShareButtonClick}
-              >
-                <span className="material-symbols-outlined" aria-hidden="true">ios_share</span>
-                <span>{isGeneratingShareCard ? "Generating..." : shareButtonLabel}</span>
-              </button>
-            </div>
-            {shareHelperText && <p className="poem-reader__share-hint">{shareHelperText}</p>}
-            <p className="poem-reader__subscribe-teaser">
-              Weekly curated poems in your inbox —{" "}
-              <button
-                type="button"
-                className="poem-reader__subscribe-link"
-                onClick={() => {
-                  setPoemSubscribeOpen(true);
-                  trackEvent("newsletter_subscribe_link_clicked", { surface: "poem_reader" });
-                }}
-              >
-                Subscribe
-              </button>
-            </p>
-
-            <div className="poem-reader__mark poem-reader__mark--bottom">
-              <span className="material-symbols-outlined">{activePoem.footerIcon}</span>
-            </div>
-
-          </article>
-
-          {shareToast && (
-            <div className="share-toast" role="status" aria-live="polite">
-              {shareToast}
-            </div>
-          )}
-
-          <div className="share-card-render-shell" aria-hidden="true">
-            <article
-              ref={shareCardRef}
-              className={`share-card share-card--${shareCardMode}`}
-              style={shareCardSurfaceStyle}
-            >
-              <div
-                className="share-card__mood-dot"
-                style={{ backgroundColor: shareAccentHex }}
-                aria-hidden="true"
-              />
-              <div className="share-card__main">
-                <div className="share-card__body-wrap">
-                  <div className="share-card__frame">
-                    <div className="share-card__content">
-                      {shareCardLines.map((line, index) => (
-                        <p key={`${shareCardMode}-${index}`}>{line}</p>
-                      ))}
+                    <div className="feeling-grid mood-transition-grid" aria-label="Feeling options">
+                      {renderHomeFeelingChipButtons()}
                     </div>
-                    <p className="share-card__poet">— {poemPoetName}</p>
                   </div>
                 </div>
-                <p className="share-card__brand">Versery</p>
               </div>
-            </article>
-          </div>
-
-          <PoemSubscribeDialog open={poemSubscribeOpen} onClose={() => setPoemSubscribeOpen(false)} />
-
-          <aside className="poem-next">
-            <div className="poem-next__glow poem-next__glow--one"></div>
-            <div className="poem-next__glow poem-next__glow--two"></div>
-            <div className="poem-next__content">
-              <div>
-                <span>Continue Reading</span>
-                <h3>{nextPoemData.poem.title}</h3>
-              </div>
-              <p>{nextPoemData.poem.subtitle}</p>
-              <button
-                className="primary-action"
-                type="button"
-                aria-label={`Open next poem: ${nextPoemData.poem.title}`}
-                onClick={openNextPoem}
+            ) : (
+              <div
+                ref={heroCarouselRef}
+                className={`mobile-hero-carousel-wrap${isHeroCarouselExited ? " mobile-hero-carousel-wrap--exited" : ""}`}
               >
-                Open Poem
-              </button>
-              <div className="poem-next__divider"></div>
-            </div>
-          </aside>
-        </main>
-      ) : (
-        <main className="screen-content screen-content--home" data-testid="screen-home">
-          <section ref={heroSectionRef} className="feeling-section">
-            <div className="eyebrow-pill">Daily Resonance</div>
+                <ArcCarousel
+                  cards={carouselCards}
+                  initialIndex={homeReturnCarouselIndex}
+                  paginationClassName={isHeroCarouselExited ? "arc-carousel-pagination--exited" : ""}
+                  onActiveIndexChange={setActiveCarouselIndex}
+                  onActiveCardAudioPlayingChange={setIsActiveCarouselAudioPlaying}
+                  onOpenPoem={beginHomeCarouselPoemTransition}
+                />
+              </div>
+            )}
+          </section>
 
-            <div className="home-intro home-intro--hero">
-              <p className="home-intro__headline">Curated poetry for how you feel</p>
+          <div className="home-desktop-lower-flow">
+          <section
+            className="collections-section collections-section--v2"
+            aria-labelledby="home-collections-heading"
+          >
+            <ZAxisTransition
+              items={homepageCollectionTransitionItems}
+              renderCard={(collection) => {
+                const isPrimary = collection.homeIndex === 0;
+                const isLight = collectionReadabilityModes[collection.id] === "light";
+                const delay = isPrimary ? "200ms" : collection.homeIndex === 1 ? "350ms" : "450ms";
+                const cardClass = isPrimary
+                  ? `v2-collection-card v2-collection-card--primary animate-in${
+                      collectionImages[collection.id] ? " v2-collection-card--has-image" : ""
+                    }${isLight ? " v2-collection-card--readability-light" : " v2-collection-card--readability-dark"}`
+                  : `v2-collection-card v2-collection-card--secondary animate-in${
+                      collectionImages[collection.id] ? " v2-collection-card--has-image" : ""
+                    }${isLight ? " v2-collection-card--readability-light" : " v2-collection-card--readability-dark"}`;
+
+                return (
+                  <button
+                    ref={
+                      isPrimary
+                        ? collectionsPrimaryRef
+                        : collection.homeIndex === 1
+                          ? collectionsSecondaryLeftRef
+                          : collectionsSecondaryRightRef
+                    }
+                    className={cardClass}
+                    style={{
+                      transitionDelay: delay,
+                      borderWidth: collectionImages[collection.id] ? "6px" : undefined,
+                      borderColor: collectionBorderColors[collection.id] || undefined,
+                      "--collection-accent": collectionBorderColors[collection.id] || "rgba(173, 179, 180, 0.55)",
+                    }}
+                    type="button"
+                  >
+                    {collectionImages[collection.id] ? (
+                      <div
+                        className={
+                          isPrimary
+                            ? "v2-collection-card__image v2-collection-card__image--primary"
+                            : "v2-collection-card__image v2-collection-card__image--secondary"
+                        }
+                      >
+                        <CollectionCoverImg src={collectionImages[collection.id]} alt={collection.title} />
+                      </div>
+                    ) : null}
+                    <div
+                      className={
+                        isPrimary
+                          ? "v2-collection-card__body"
+                          : "v2-collection-card__body v2-collection-card__body--secondary"
+                      }
+                    >
+                      <h3
+                        className={
+                          isPrimary
+                            ? "v2-collection-card__title v2-collection-card__title--primary"
+                            : "v2-collection-card__title"
+                        }
+                      >
+                        {collection.title}
+                      </h3>
+                      <p className="v2-collection-card__tagline">{collection.dailyTagline}</p>
+                      {isPrimary ? (
+                        <div className="v2-collection-card__preview">
+                          <p className="v2-collection-card__preview-poet">
+                            {collection.poems?.[0]?.poet ?? "Versery Archive"}
+                          </p>
+                          <p className="v2-collection-card__preview-lines">
+                            {String(collection.dailyFeaturedLines ?? "")
+                              .split("\n")
+                              .filter(Boolean)
+                              .slice(0, 2)
+                              .join("\n")}
+                          </p>
+                        </div>
+                      ) : null}
+                    </div>
+                  </button>
+                );
+              }}
+              renderGrid={(cards) => (
+                <>
+                  <h2
+                    id="home-collections-heading"
+                    ref={collectionsBridgeRef}
+                    className="collections-thread-bridge animate-in"
+                    style={{ transitionDelay: "100ms" }}
+                  >
+                    Or start with a collection
+                  </h2>
+                  {cards[0] ?? null}
+                  <div className="v2-collection-secondary-grid">
+                    {cards.slice(1, 3)}
+                  </div>
+                </>
+              )}
+              renderNextPage={({ activeItem }) =>
+                renderCollectionDetailContent(activeItem, () => openCollection(activeItem.id, "home"))
+              }
+              onTransitionStart={() => setIsHomeCollectionTransitioning(true)}
+              onTransitionComplete={(collectionId) => {
+                setIsHomeCollectionTransitioning(false);
+                openCollectionFromTransition(collectionId, "home");
+              }}
+            />
+          </section>
+
+          <section ref={heroSectionRef} className="feeling-section">
+            <div
+              className={`eyebrow-pill home-v2-stage${isHeroCarouselExited ? " is-ready" : ""}`}
+              style={{ "--v2-stage-delay": "70ms" }}
+            >
+              Prefer a quick read?
+            </div>
+
+            <div
+              className={`home-intro home-intro--hero home-v2-stage${isHeroCarouselExited ? " is-ready" : ""}`}
+              style={{ "--v2-stage-delay": "130ms" }}
+            >
+              <p className="home-intro__headline">Read today, or leave it to chance.</p>
               <p className="home-intro__lead">
-                Versery is a calm place to read poems online: follow a mood, follow a voice, or open a themed
-                archive.
+                Start with today&apos;s poem or open a random page from the archive.
               </p>
             </div>
 
             <div className="home-hero-cluster">
-              <div className="home-daily-resonance-heading">
-                <p className="daily-resonance-label">Daily Resonance</p>
-              </div>
+              {!isHomeDesktopLayout ? (
+                <>
+                  <p
+                    ref={moodBridgeRef}
+                    className={`mood-transition-bridge${isMoodBridgeVisible ? " is-visible" : ""}`}
+                  >
+                    What are you carrying today?
+                  </p>
 
-              <div className="feeling-card">
-                <h2>How are you feeling today?</h2>
-                <p className="feeling-card__hint">Tap a mood to see poems tuned to that tone.</p>
+                  <div className="feeling-grid mood-transition-grid" aria-label="Feeling options">
+                    {renderHomeFeelingChipButtons()}
+                  </div>
+                </>
+              ) : null}
 
-                <div className="feeling-grid" aria-label="Feeling options">
-                  {feelings.map((feeling) => (
-                    <button
-                      key={feeling}
-                      className={`feeling-chip${activeFeeling === feeling ? " is-active" : ""}`}
-                      type="button"
-                      data-feeling={feeling.toLowerCase()}
-                      aria-label={`Browse ${feeling} poems`}
-                      onClick={() => {
-                        setActiveFeeling(feeling);
-                        trackEvent("feeling_selected", {
-                          feeling,
-                          source_screen: "home",
-                        });
-                        openDiscovery(feeling, "home", "feeling");
-                      }}
-                    >
-                      {feeling}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="daily-resonance-wrap">
+              <div
+                className={`daily-resonance-wrap home-v2-stage${isHeroCarouselExited ? " is-ready" : ""}`}
+                style={{ "--v2-stage-delay": "230ms" }}
+              >
                 <div
                   className="daily-resonance-actions"
                   role="group"
@@ -3250,100 +5059,12 @@ function AppLoaded({ poems, poets, collections }) {
           </section>
 
           <div className="home-mid-stack">
-            <section className="poet-feature" aria-labelledby="poet-week-heading">
-              <h2 id="poet-week-heading" className="poet-feature__badge">
-                Poet of the week
-              </h2>
-              <div className="poet-feature__content">
-                <div className="poet-feature__avatar">
-                  <PoetPortraitImg
-                    src={poetOfWeek?.image}
-                    alt={`Portrait of ${poetOfWeek?.name}`}
-                    intrinsicSize="chip"
-                  />
-                </div>
-                <div className="poet-feature__text">
-                  <h3>{poetOfWeek?.name}</h3>
-                  <p>"{poetOfWeek?.quote}"</p>
-                </div>
-              </div>
-            </section>
-
-            <section className="feature-stack" aria-labelledby="home-featured-heading">
-              <div className="feature-stack__layer feature-stack__layer--back"></div>
-              <div className="feature-stack__layer feature-stack__layer--mid"></div>
-
-              <article className="feature-card-main">
-                <div className="feature-card-main__badge">
-                  <span className="material-symbols-outlined">auto_awesome</span>
-                  <span>4m read</span>
-                </div>
-
-                <div className="feature-card-main__content">
-                  <h2 id="home-featured-heading" className="feature-card-main__heading">
-                    Today&rsquo;s poem
-                  </h2>
-                  <div className="feature-card-main__icon">
-                    <span className="material-symbols-outlined">cloud</span>
-                  </div>
-
-                  <div className="feature-card-main__copy">
-                    <h3>{featuredPoem.title}</h3>
-                    <p className="feature-card-main__author">{featuredPoem.translator}</p>
-                    <p className="feature-card-main__excerpt">
-                      "{featuredPoem.subtitle}"
-                    </p>
-                  </div>
-                </div>
-
-                <div className="feature-card-main__footer">
-                  <div
-                    className={`poet-avatar${featuredPoemAvatarPlaceholder ? " poet-avatar--initials" : ""}`}
-                    role={featuredPoemAvatarPlaceholder ? "img" : undefined}
-                    aria-label={
-                      featuredPoemAvatarPlaceholder
-                        ? `${featuredPoem.author ?? "Poet"} (initials)` 
-                        : undefined
-                    }
-                  >
-                    {featuredPoemAvatarPlaceholder ? (
-                      <span className="poet-avatar__initials" aria-hidden="true">
-                        {featuredPoemInitials}
-                      </span>
-                    ) : (
-                      <PoetPortraitImg
-                        src={featuredPortraitSrc}
-                        alt={`Portrait of ${featuredPoem.author}`}
-                        intrinsicSize="chip"
-                        onError={() => setFeaturedPortraitFailed(true)}
-                      />
-                    )}
-                  </div>
-
-                  <button
-                    className="excerpt-link"
-                    type="button"
-                    aria-label={`Read featured poem: ${featuredPoem.title}`}
-                    onClick={() =>
-                      openPoem({
-                        poemId: featuredPoem.id,
-                        previousScreen: "home",
-                        sourceOrigin: "home",
-                      })
-                    }
-                  >
-                    <span>Read Excerpt</span>
-                    <span className="material-symbols-outlined">arrow_forward</span>
-                  </button>
-                </div>
-              </article>
-            </section>
-
             <section
-              className="home-spotlight-aside"
-              aria-labelledby={
-                newsletterSpotlightHeadSuccess ? "home-spotlight-success" : "home-spotlight-heading home-spotlight-title"
+              className={
+                "home-spotlight-aside" +
+                (newsletterSpotlightHeadSuccess ? " home-spotlight-aside--success" : "")
               }
+              aria-labelledby="home-spotlight-heading"
             >
               <div
                 className={
@@ -3351,25 +5072,11 @@ function AppLoaded({ poems, poets, collections }) {
                   (newsletterSpotlightHeadSuccess ? " home-spotlight-aside__head--success" : "")
                 }
               >
-                <div
-                  className="home-spotlight-aside__head-pair"
-                  aria-hidden={newsletterSpotlightHeadSuccess}
-                >
-                  <h2 id="home-spotlight-heading" className="poet-feature__badge">
-                    Newsletter
+                <div className="home-spotlight-aside__head-pair">
+                  <h2 id="home-spotlight-heading" className="poet-feature__badge home-spotlight-aside__solo-label">
+                    A POEM IN YOUR INBOX, EVERY WEEK.
                   </h2>
-                  <h3 id="home-spotlight-title" className="newsletter-form__title">
-                    {NEWSLETTER_SPOTLIGHT_HEADLINE}
-                  </h3>
                 </div>
-                <p
-                  id="home-spotlight-success"
-                  className="home-spotlight-aside__head-success"
-                  role="status"
-                  aria-live="polite"
-                >
-                  You&rsquo;re in. A poem finds you soon.
-                </p>
               </div>
               <div className="home-spotlight-aside__body">
                 <NewsletterForm
@@ -3382,88 +5089,16 @@ function AppLoaded({ poems, poets, collections }) {
               </div>
             </section>
           </div>
-
-          <section className="home-intro home-intro--between-sections" aria-label="Homepage introduction">
-            <h1>Curated poetry for how you feel</h1>
-            <p className="home-intro__lead">
-              Versery is a calm place to read poems online: follow a mood, follow a voice, or open a themed archive.
-            </p>
-          </section>
-
-          <section className="collections-section" aria-label="Curated collections">
-            <div className="section-header">
-              <div>
-                <p className="section-label">Archives</p>
-                <h2>Curated Collections</h2>
-              </div>
-
-              <button
-                className="section-link inline-action"
-                type="button"
-                aria-label="View all curated collections"
-                onClick={() => {
-                  trackEvent("collections_view_all_clicked", { source_screen: "home" });
-                  setScreen("collections");
-                }}
-              >
-                View All
-              </button>
-            </div>
-
-            <div className="collection-grid">
-              {curatedCollections.slice(0, 3).map((collection, index) => (
-                <button
-                  key={collection.id}
-                  className={`collections-archive-card home-collection-card${
-                    index === 2 ? " home-collection-card--wide" : ""
-                  }${collection.homeShelf ? " home-collection-card--shelf" : ""}${
-                    collection.image ? " collections-archive-card--image" : ""
-                  }${collection.tone ? ` collections-archive-card--${collection.tone}` : ""}`}
-                  type="button"
-                  onClick={() => openCollection(collection.id, "home")}
-                >
-                  {collection.image ? (
-                    <div className="collections-archive-card__media">
-                      <CollectionCoverImg
-                        src={collectionImages[collection.id] || collection.image}
-                        alt={collection.title}
-                      />
-                    </div>
-                  ) : (
-                    <div className="collections-archive-card__media collections-archive-card__media--plain" aria-hidden="true"></div>
-                  )}
-
-                  <div className="collections-archive-card__body">
-                    <span
-                      className={
-                        collection.homeShelf ? "collections-archive-card__label--shelf-gold" : undefined
-                      }
-                    >
-                      {collection.label}
-                    </span>
-                    <h3>{collection.title}</h3>
-                    <p>{collection.archiveDescription ?? collection.description}</p>
-                    <strong>{collection.count}</strong>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </section>
+          </div>
 
           <section className="home-faq" aria-labelledby="home-faq-heading">
             <h2 id="home-faq-heading" className="home-faq__title">
               Quick answers
             </h2>
-            <p className="home-faq__intro">
-              A few things readers often ask before settling in.
-            </p>
+            <p className="home-faq__intro">A few things readers often ask before settling in.</p>
             <div className="home-faq__list">
               {HOME_FAQ_ITEMS.map((item) => (
-                <details
-                  key={item.question}
-                  className="home-faq__item"
-                  onClick={handleHomeFaqDetailsClick}
-                >
+                <details key={item.question} className="home-faq__item">
                   <summary>
                     <span className="home-faq__summary-text">{item.question}</span>
                     <span className="home-faq__disclosure" aria-hidden="true">
@@ -3478,6 +5113,65 @@ function AppLoaded({ poems, poets, collections }) {
           </section>
         </main>
       )}
+
+      <AnimatePresence>
+        {isHomePoemTransitioning && homeTransitionPoem && showHomeTransitionPoemPage ? (
+          <motion.div
+            key={`home-poem-transition-page-${homeTransitionPoem.id}`}
+            className="fixed inset-0 z-40 bg-[var(--surface-lowest)] overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.32, ease: "easeOut" }}
+          >
+            {renderPoemDetailContent(homeTransitionPoem, () => {}, { isTransitionPreview: true })}
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isHomePoemTransitioning && homeTransitionCard ? (
+          <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
+            <motion.div
+              animate={{
+                scale: isDesktop ? [1, 1.01, 1.22] : [1, 1.03, 30],
+                rotateZ: isDesktop ? [0, -1.2, 0.8] : [0, -5, 14],
+                rotateY: isDesktop ? [0, -3, 0] : [0, -10, 0],
+                opacity: [1, 1, 0],
+              }}
+              transition={{
+                scale: {
+                  times: [0, 0.6, 1],
+                  duration: isDesktop ? 0.55 : 2,
+                  ease: [0.4, 0, 0.2, 1],
+                },
+                rotateZ: {
+                  times: [0, 0.5, 1],
+                  duration: isDesktop ? 0.55 : 2,
+                  ease: [0.4, 0, 0.2, 1],
+                },
+                rotateY: {
+                  times: [0, 0.45, 1],
+                  duration: isDesktop ? 0.55 : 2,
+                  ease: [0.4, 0, 0.2, 1],
+                },
+                opacity: {
+                  times: [0, 0.7, 1],
+                  duration: isDesktop ? 0.48 : 2,
+                  ease: "easeOut",
+                },
+              }}
+              style={{
+                willChange: "transform, opacity",
+                backfaceVisibility: "hidden",
+                transformPerspective: 1200,
+                transformStyle: "preserve-3d",
+              }}
+            >
+              <ArcCarouselStaticCard card={homeTransitionCard} />
+            </motion.div>
+          </div>
+        ) : null}
+      </AnimatePresence>
 
       <nav className={`bottom-nav${showBottomNav ? " is-visible" : " is-hidden"}`} aria-label="Primary">
         <div className="bottom-nav__inner">

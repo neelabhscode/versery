@@ -1,0 +1,181 @@
+{
+  "date": "day-10",
+  "heroPoems": [
+    {
+      "title": "If We Must Die",
+      "poet": "Claude McKay",
+      "firstStanza": "If we must die—let it not be like hogs\nHunted and penned in an inglorious spot,\nWhile round us bark the mad and hungry dogs,\nMaking their mock at our accursed lot.\nIf we must die—O let us nobly die,\nSo that our precious blood may not be shed",
+      "tagline": "For the minute before sleep."
+    },
+    {
+      "title": "The wind gives me enough fallen leaves",
+      "poet": "Ryokan",
+      "firstStanza": "The wind gives me enough fallen leaves\nto keep a small fire going.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "Qualities in Rotation",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "Clarity lifts.\nPassion drives.\nInertia drags.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "Sonnets to Orpheus I, 9",
+      "poet": "Rainer Maria Rilke",
+      "firstStanza": "Only he who raised the lyre\namong shadows\nmay also guess\nwhat endless praise is.",
+      "tagline": "For the minute before sleep."
+    },
+    {
+      "title": "A Cooking Egg",
+      "poet": "T. S. Eliot",
+      "firstStanza": "En l'an trentiesme de mon aage\nQue toutes mes hontes j'ay beues...",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "Still Waters",
+      "poet": "Bible Wisdom",
+      "firstStanza": "He leads me\nbeside still waters.\nHe restores\nmy soul.",
+      "tagline": "For when language keeps you company."
+    },
+    {
+      "title": "A sigh needs a lifetime to arrive at impact.",
+      "poet": "Mirza Ghalib",
+      "firstStanza": "A sigh needs a lifetime to arrive at impact.\nWho rushes grief misunderstands physics.",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "The Recall",
+      "poet": "Rudyard Kipling",
+      "firstStanza": "I am the land of their fathers.\nIn me the virtue stays.\nI will bring back my children,\nAfter certain days.",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "Bright Star",
+      "poet": "John Keats",
+      "firstStanza": "Bright star, would I were stedfast as thou art—\nNot in lone splendour hung aloft the night\nAnd watching, with eternal lids apart,\nLike Nature's patient, sleepless Eremite,\nThe moving waters at their priestlike task\nOf pure ablution round earth's human shores,",
+      "tagline": "For when language keeps you company."
+    },
+    {
+      "title": "Within this earthen vessel are bowers and groves, and within it",
+      "poet": "Kabir",
+      "firstStanza": "Within this earthen vessel are bowers and groves, and within it\nis the Creator:\nWithin this vessel are the seven oceans and the unnumbered stars.\nThe touchstone and the jewel-appraiser are within;\nAnd within this vessel the Eternal soundeth, and the spring wells\nup.",
+      "tagline": "For evenings with no audience."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "Where Stone Learns Water",
+      "tagline": "For when silence feels inhabited.",
+      "theme": "A restrained current of longing that never announces itself directly.",
+      "image": null,
+      "featuredPoem": {
+        "title": "First Fig",
+        "poet": "Edna St. Vincent Millay",
+        "firstLines": "My candle burns at both ends;\nIt will not last the night;"
+      },
+      "poems": [
+        {
+          "title": "Doctrine of Necessary Action",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Ode on a Grecian Urn",
+          "poet": "John Keats"
+        },
+        {
+          "title": "The Hollow Vessel",
+          "poet": "Lao Tzu"
+        },
+        {
+          "title": "On Seeing the Elgin Marbles",
+          "poet": "John Keats"
+        },
+        {
+          "title": "I found this cracked wooden bowl in bamboo",
+          "poet": "Ryokan"
+        },
+        {
+          "title": "Gathering Leaves",
+          "poet": "Robert Frost"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "The Distance Inside Home",
+      "tagline": "For when letters stay unsent.",
+      "theme": "Poems for the slow pivot from day-noise toward interior quiet.",
+      "image": null,
+      "featuredPoem": {
+        "title": "As Is Faith, So Is the Life",
+        "poet": "Bhagavad Gita",
+        "firstLines": "You become\nwhat you bow to"
+      },
+      "poems": [
+        {
+          "title": "Love Makes the Vast Intimate",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Hysteria",
+          "poet": "T. S. Eliot"
+        },
+        {
+          "title": "Treasuries of Snow",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "The Burden of Compassion",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "At dusk I climb Kugami",
+          "poet": "Ryokan"
+        },
+        {
+          "title": "An old grave at the foot of a quiet hill",
+          "poet": "Ryokan"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "A Room Made of Waiting",
+      "tagline": "For when the night keeps watch.",
+      "theme": "A thread of attention to rain, glass, paper, and hands at rest.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Chasing the Wind",
+        "poet": "Bible Wisdom",
+        "firstLines": "Smoke of smoke—everything is smoke.\nWhat does a person gain"
+      },
+      "poems": [
+        {
+          "title": "The Way of Love and Steadiness",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "My life had stood—a loaded gun—",
+          "poet": "Emily Dickinson"
+        },
+        {
+          "title": "From heaven's garden a west wind crossed my field",
+          "poet": "Hafez"
+        },
+        {
+          "title": "Stopping by Woods on Snowy Evening",
+          "poet": "Robert Frost"
+        },
+        {
+          "title": "No Extremes Doctrine",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Better One's Own Work",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    }
+  ]
+}
