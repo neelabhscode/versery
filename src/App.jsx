@@ -26,22 +26,6 @@ const DEFAULT_TWITTER_DESCRIPTION =
 
 const DEFAULT_DOCUMENT_TITLE = "Versery — Curated poetry for quiet reading";
 
-const WHATS_NEW_BULLETS = [
-  "Dark mode — switch anytime from the navbar",
-  "More voices — Ghalib, Tagore, Rilke, Hafez, and more",
-  "Share a poem — pick lines, generate a card, send it",
-  "Weekly poem — sign up to get one in your inbox",
-  "Install as App — add Versery to your home screen",
-];
-
-const WHATS_NEW_EMDASH = " — ";
-
-function splitWhatsNewBulletLine(text) {
-  const idx = text.indexOf(WHATS_NEW_EMDASH);
-  if (idx === -1) return { lead: text, rest: null };
-  return { lead: text.slice(0, idx), rest: text.slice(idx + WHATS_NEW_EMDASH.length) };
-}
-
 function trimTo160Chars(text) {
   if (!text || typeof text !== "string") return "";
   const t = text.trim();
@@ -217,7 +201,7 @@ const POEM_AUDIO_TRACKS = {
     sources: ["/audio/throughwoods-ai-reading.wav"],
   },
   "bhagavad-gita--endurance-doctrine": {
-    sources: ["/audio/endurancegita-ai-reading.wav"],
+    sources: ["/audio/edurancegita-ai-reading.wav"],
   },
   "bhagavad-gita--from-reaction-to-ruin": {
     sources: ["/audio/reactiontoruin-ai-reading.wav"],
@@ -2043,8 +2027,6 @@ function AppLoaded({ poems, poets, collections, dailyHomeData }) {
     typeof document !== "undefined" && document.documentElement.dataset.theme === "dark" ? "dark" : "light",
   );
   const lastTrackedScreenRef = useRef(null);
-  const [whatsNewMenuOpen, setWhatsNewMenuOpen] = useState(false);
-  const [whatsNewMenuEntered, setWhatsNewMenuEntered] = useState(false);
   const homePoemTransitionCompleteTimerRef = useRef(null);
   const homePoemTransitionPageTimerRef = useRef(null);
 
@@ -2053,9 +2035,6 @@ function AppLoaded({ poems, poets, collections, dailyHomeData }) {
     if (curatedCollections.some((collection) => collection.id === activeCollectionId)) return;
     setActiveCollectionId(curatedCollections[0].id);
   }, [activeCollectionId, curatedCollections]);
-  const whatsNewTriggerRef = useRef(null);
-  const whatsNewPanelRef = useRef(null);
-
   useLayoutEffect(() => {
     const t = readStoredTheme();
     applyTheme(t, { animate: false });
@@ -2371,39 +2350,9 @@ function AppLoaded({ poems, poets, collections, dailyHomeData }) {
 
   useEffect(() => {
     if (screen !== "home") {
-      setWhatsNewMenuOpen(false);
-      setWhatsNewMenuEntered(false);
       setNewsletterSpotlightHeadSuccess(false);
     }
   }, [screen]);
-
-  useLayoutEffect(() => {
-    if (!whatsNewMenuOpen) {
-      setWhatsNewMenuEntered(false);
-      return undefined;
-    }
-    const id = window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => {
-        setWhatsNewMenuEntered(true);
-      });
-    });
-    return () => window.cancelAnimationFrame(id);
-  }, [whatsNewMenuOpen]);
-
-  useEffect(() => {
-    if (!whatsNewMenuOpen) return undefined;
-
-    function onPointerDown(event) {
-      const t = event.target;
-      if (!(t instanceof Node)) return;
-      if (whatsNewTriggerRef.current?.contains(t)) return;
-      if (whatsNewPanelRef.current?.contains(t)) return;
-      setWhatsNewMenuEntered(false);
-    }
-
-    document.addEventListener("pointerdown", onPointerDown, true);
-    return () => document.removeEventListener("pointerdown", onPointerDown, true);
-  }, [whatsNewMenuOpen]);
 
   useEffect(() => {
     setPoemSubscribeOpen(false);
@@ -4060,26 +4009,6 @@ function AppLoaded({ poems, poets, collections, dailyHomeData }) {
     }
   }, [hasSelectionContent, canShareFullPoem, activePoemId]);
 
-  function handleWhatsNewPillClick() {
-    if (whatsNewMenuOpen) {
-      setWhatsNewMenuEntered(false);
-      return;
-    }
-    setWhatsNewMenuOpen(true);
-  }
-
-  function handleWhatsNewGotIt() {
-    setWhatsNewMenuEntered(false);
-  }
-
-  function handleWhatsNewPanelTransitionEnd(event) {
-    if (event.target !== whatsNewPanelRef.current) return;
-    if (event.propertyName !== "opacity") return;
-    if (!whatsNewMenuEntered) {
-      setWhatsNewMenuOpen(false);
-    }
-  }
-
   async function togglePoemAudio() {
     const audio = poemAudioRef.current;
     if (!audio || !activePoemAudioTrack) return;
@@ -4115,65 +4044,7 @@ function AppLoaded({ poems, poets, collections, dailyHomeData }) {
           <div className="top-app-bar__inner top-app-bar__inner--home">
             <div className="top-app-bar__leading">
               {screen === "home" ? (
-                <div className="whats-new-anchor" ref={whatsNewTriggerRef}>
-                  <button
-                    type="button"
-                    className="whats-new-trigger"
-                    aria-haspopup="true"
-                    aria-expanded={whatsNewMenuOpen}
-                    aria-controls="versery-whats-new-panel"
-                    onClick={handleWhatsNewPillClick}
-                  >
-                    <span className="material-symbols-outlined whats-new-trigger__icon" aria-hidden="true">
-                      notifications
-                    </span>
-                    <span className="whats-new-trigger__label">What&rsquo;s new</span>
-                    <span className="whats-new-trigger__dot" aria-hidden="true" />
-                  </button>
-                  {whatsNewMenuOpen ? (
-                    <div
-                      ref={whatsNewPanelRef}
-                      id="versery-whats-new-panel"
-                      role="region"
-                      aria-label="What is new in Versery version 2"
-                      className={`whats-new-panel${whatsNewMenuEntered ? " whats-new-panel--visible" : ""}`}
-                      onTransitionEnd={handleWhatsNewPanelTransitionEnd}
-                    >
-                      <div className="whats-new-panel__head">
-                        <p className="feature-card-main__heading">What&rsquo;s new in v2</p>
-                        <button
-                          type="button"
-                          className="whats-new-panel__close"
-                          aria-label="Close"
-                          onClick={handleWhatsNewGotIt}
-                        >
-                          <span className="material-symbols-outlined" aria-hidden="true">
-                            close
-                          </span>
-                        </button>
-                      </div>
-                      <ul className="whats-new-panel__list">
-                        {WHATS_NEW_BULLETS.map((text, index) => {
-                          const { lead, rest } = splitWhatsNewBulletLine(text);
-                          return (
-                            <li key={index} className="whats-new-panel__item">
-                              <span className="whats-new-panel__item-dot" aria-hidden="true" />
-                              <span className="whats-new-panel__item-text">
-                                <span className="whats-new-panel__item-lead">{lead}</span>
-                                {rest != null ? (
-                                  <span className="whats-new-panel__item-rest">
-                                    {WHATS_NEW_EMDASH}
-                                    {rest}
-                                  </span>
-                                ) : null}
-                              </span>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  ) : null}
-                </div>
+                <span className="top-app-bar__pad" aria-hidden="true" />
               ) : (
                 <span className="top-app-bar__pad" aria-hidden="true" />
               )}
