@@ -1,0 +1,181 @@
+{
+  "date": "day-02",
+  "heroPoems": [
+    {
+      "title": "This is my letter to the world",
+      "poet": "Emily Dickinson",
+      "firstStanza": "This is my letter to the world,\nThat never wrote to me,—\nThe simple news that Nature told,\nWith tender majesty.",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "Bodies Fall, Being Remains",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "As a person changes worn-out clothes,\nBeing puts down one body\nand takes up another.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "The Return of the Children",
+      "poet": "Rudyard Kipling",
+      "firstStanza": "Neither the harps nor the crowns amused, nor the cherubs' dove-winged races--\nHolding hands forlornly the Children wandered beneath the Dome,\nPlucking the splendid robes of the passers-by, and with pitiful faces\nBegging what Princes and Powers refused:--'Ah, please will you let us go home?'",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "Sonnets to Orpheus I, 3",
+      "poet": "Rainer Maria Rilke",
+      "firstStanza": "A god can do it. But tell me how\nshould a man follow him through the narrow lyre?\nHis senses divide him.\nAt the crossing of two heart-paths there is no temple for Apollo.",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "The cup returns because thirst remembers.",
+      "poet": "Mirza Ghalib",
+      "firstStanza": "The cup returns because thirst remembers.\nI keep refusing, and still I drink.",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "The Four Great",
+      "poet": "Lao Tzu",
+      "firstStanza": "There is something whole\nbefore heaven and earth.\nSilent.\nFormless.\nAlone.\nUnchanging.",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "I laugh when I hear that the fish in the water is thirsty",
+      "poet": "Kabir",
+      "firstStanza": "I laugh when I hear that the fish in the water is thirsty:\nYou do not see that the Real is in your home, and you wander from\nforest to forest listlessly!\nHere is the truth!  Go where you will, to Benares or to Mathura;\nif you do not find your soul, the world is unreal to you.",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "Thou hast made me known to friends whom",
+      "poet": "Rabindranath Tagore",
+      "firstStanza": "Thou hast made me known to friends whom I knew not. Thou hast given me\nseats in homes not my own. Thou hast brought the distant near and made\na brother of the stranger.\nI am uneasy at heart when I have to leave my accustomed shelter; I\nforget that there abides the old in the new, and that there also thou\nabidest.",
+      "tagline": "For the hush before dawn."
+    },
+    {
+      "title": "Soft Answer",
+      "poet": "Bible Wisdom",
+      "firstStanza": "A soft answer\nturns away wrath.\nA harsh word\nstirs anger.",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "Lady you hold my heart and still you do not listen",
+      "poet": "Hafez",
+      "firstStanza": "Lady you hold my heart and still you do not listen\nI spoke clearly the fault was never in the words\nMy drunk mind made a storm\nbut each wave called your name",
+      "tagline": "For when memory sits nearby."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "The Weight of Small Things",
+      "tagline": "For nights that move without noise.",
+      "theme": "A gathering of poems where memory and present tense overlap gently.",
+      "image": null,
+      "featuredPoem": {
+        "title": "I Know My Redeemer Lives",
+        "poet": "Bible Wisdom",
+        "firstLines": "My words are poured out,\nmy friends have become my scorn,"
+      },
+      "poems": [
+        {
+          "title": "Renunciation Without Withdrawal",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "I am only waiting for love to give",
+          "poet": "Rabindranath Tagore"
+        },
+        {
+          "title": "The moon shines in my body, but my blind eyes cannot see it",
+          "poet": "Kabir"
+        },
+        {
+          "title": "Thread Through Pearls",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Preludes",
+          "poet": "T. S. Eliot"
+        },
+        {
+          "title": "Do Not Boast of Tomorrow",
+          "poet": "Bible Wisdom"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "A Window Left Open",
+      "tagline": "For when the kettle cools untouched.",
+      "theme": "Poems that move through corridors, stairwells, and rooms as emotional architecture.",
+      "image": null,
+      "featuredPoem": {
+        "title": "The Listener's Benediction",
+        "poet": "Bhagavad Gita",
+        "firstLines": "Sanjaya says:\nBy grace,"
+      },
+      "poems": [
+        {
+          "title": "The Two Paths at Death",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "I had gone a-begging from door to door",
+          "poet": "Rabindranath Tagore"
+        },
+        {
+          "title": "Before Choice, There Is Seeing",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Night Search",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Childhood",
+          "poet": "Rainer Maria Rilke"
+        },
+        {
+          "title": "This Living Hand",
+          "poet": "John Keats"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "What Stays After Rain",
+      "tagline": "For when footsteps feel far away.",
+      "theme": "A restrained current of longing that never announces itself directly.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Knowing the Invisible",
+        "poet": "Lao Tzu",
+        "firstLines": "Those who know\nrarely need to announce it."
+      },
+      "poems": [
+        {
+          "title": "Return the Mind",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Friend and Enemy Within",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Even Misdirected Worship Reaches",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Singer scatter fresh notes over the night",
+          "poet": "Hafez"
+        },
+        {
+          "title": "On the Grasshopper and Cricket",
+          "poet": "John Keats"
+        },
+        {
+          "title": "Yoga Interrupted",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    }
+  ]
+}

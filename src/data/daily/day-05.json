@@ -1,0 +1,181 @@
+{
+  "date": "day-05",
+  "heroPoems": [
+    {
+      "title": "If—",
+      "poet": "Rudyard Kipling",
+      "firstStanza": "If you can keep your head when all about you\nAre losing theirs and blaming it on you;\nIf you can trust yourself when all men doubt you,\nBut make allowance for their doubting too;\nIf you can wait and not be tired by waiting,\nOr being lied about, don't deal in lies,",
+      "tagline": "For rooms lit by one lamp."
+    },
+    {
+      "title": "Public Duty of the Wise",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "The wise do not need anything,\nyet they still act.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "On the Sea",
+      "poet": "John Keats",
+      "firstStanza": "It keeps eternal whisperings around\nDesolate shores, and with its mighty swell\nGluts twice ten thousand Caverns, till the spell\nOf Hecate leaves them their old shadowy sound.\nOften 'tis in such gentle temper found,\nThat scarcely will the very smallest shell",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "Looking for a Sunset Bird in Winter",
+      "poet": "Robert Frost",
+      "firstStanza": "The west was getting out of gold,\nThe breath of air had died of cold,\nWhen shoeing home across the white,\nI thought I saw a bird alight.\nIn summer when I passed the place\nI had to stop and lift my face;",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "Two Are Better",
+      "poet": "Bible Wisdom",
+      "firstStanza": "Two are better than one,\nbecause they have good return for their labor.",
+      "tagline": "For when language keeps you company."
+    },
+    {
+      "title": "On Pain",
+      "poet": "Kahlil Gibran",
+      "firstStanza": "And he said:",
+      "tagline": "For when language keeps you company."
+    },
+    {
+      "title": "Spring will open every branch",
+      "poet": "Ryokan",
+      "firstStanza": "Spring will open every branch.\nFlowers will return.\nBut the children\nwho fell like last autumn leaves\nwill not come back.",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "Not all the wealth of earth equals one bowed head in pain",
+      "poet": "Hafez",
+      "firstStanza": "Not all the wealth of earth equals one bowed head in pain\nIf I sell my patched cloak for wine\nwhat I receive is greater than what I lose",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "I was not aware of the moment when",
+      "poet": "Rabindranath Tagore",
+      "firstStanza": "I was not aware of the moment when I first crossed the threshold of\nthis life.\nWhat was the power that made me open out into this vast mystery like a\nbud in the forest at midnight!\nWhen in the morning I looked upon the light I felt in a moment that I\nwas no stranger in this world, that the inscrutable without name and",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "O servant, where dost thou seek Me?",
+      "poet": "Kabir",
+      "firstStanza": "O servant, where dost thou seek Me?\nLo!  I am beside thee.\nI am neither in temple nor in mosque: I am neither in Kaaba nor\nin Kailash:\nNeither am I in rites and ceremonies, nor in Yoga and\nrenunciation.",
+      "tagline": "For when rain taps the window."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "After the Last Footstep",
+      "tagline": "For evenings with no clear ending.",
+      "theme": "An inward territory of lamplight, weather, and private observation.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Skin and Bones",
+        "poet": "Bible Wisdom",
+        "firstLines": "My bones cling to my skin.\nMy days race by."
+      },
+      "poems": [
+        {
+          "title": "Dawn Gate and Dusk Gate",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Many Seek, Few Stay",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Where is the night, when the sun is shining? If it is night",
+          "poet": "Kabir"
+        },
+        {
+          "title": "Gorakhnath asks Kabîr",
+          "poet": "Kabir"
+        },
+        {
+          "title": "The Architecture of Meditation",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Dust of Snow",
+          "poet": "Robert Frost"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "The Hour of Thin Light",
+      "tagline": "For when names return softly.",
+      "theme": "Poems that hold small domestic scenes until they become almost sacred.",
+      "image": null,
+      "featuredPoem": {
+        "title": "My house became heaven when she lived in it",
+        "poet": "Hafez",
+        "firstLines": "My house became heaven when she lived in it\nfrom head to foot she was grace in motion"
+      },
+      "poems": [
+        {
+          "title": "Three Gates to Ruin",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Misgiving",
+          "poet": "Robert Frost"
+        },
+        {
+          "title": "The Highest Good is Like Water",
+          "poet": "Lao Tzu"
+        },
+        {
+          "title": "You, Neighbor God",
+          "poet": "Rainer Maria Rilke"
+        },
+        {
+          "title": "The Splendors of the Divine",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "It was never in my fate to meet you.",
+          "poet": "Mirza Ghalib"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "Where Pages Breathe",
+      "tagline": "For the quiet after long days.",
+      "theme": "Language for the suspended hour between conversation and sleep.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Endure the Weather of Mind",
+        "poet": "Bhagavad Gita",
+        "firstLines": "Pleasure and pain pass through.\nDo not build a house"
+      },
+      "poems": [
+        {
+          "title": "Heat and Cold Lesson",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Action Is Better Than Escape",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The Cry from the Ash Heap",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "No Neutral Gear",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The mirror lends me a face and sends me the bill.",
+          "poet": "Mirza Ghalib"
+        },
+        {
+          "title": "Undisturbed and Undisturbing",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    }
+  ]
+}

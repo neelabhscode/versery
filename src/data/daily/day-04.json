@@ -1,0 +1,181 @@
+{
+  "date": "day-04",
+  "heroPoems": [
+    {
+      "title": "Beyond the Three Qualities",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "Nature moves through three strands:\nclarity,\npassion,\nand inertia.\nThese qualities bind the deathless self\nto body and behavior.",
+      "tagline": "For the hush before dawn."
+    },
+    {
+      "title": "On Children",
+      "poet": "Kahlil Gibran",
+      "firstStanza": "And he said:",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "No luck on my begging rounds today",
+      "poet": "Ryokan",
+      "firstStanza": "No luck on my begging rounds today.\nFrom village to village\nI dragged this body.",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "Wild nights! Wild nights!",
+      "poet": "Emily Dickinson",
+      "firstStanza": "Wild nights! Wild nights!\nWere I with thee,\nWild nights should be\nOur luxury!",
+      "tagline": "For the hush before dawn."
+    },
+    {
+      "title": "Dust Returning",
+      "poet": "Bible Wisdom",
+      "firstStanza": "Dust returns to the earth\nas it was.\nBreath returns to God\nwho gave it.",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "Where the mind is without fear and the",
+      "poet": "Rabindranath Tagore",
+      "firstStanza": "Where the mind is without fear and the head is held high;\nWhere knowledge is free;\nWhere the world has not been broken up into fragments by narrow\ndomestic walls;\nWhere words come out from the depth of truth;\nWhere tireless striving stretches its arms towards perfection;",
+      "tagline": "For when language keeps you company."
+    },
+    {
+      "title": "The Need of Being Versed in Country Things",
+      "poet": "Robert Frost",
+      "firstStanza": "The house had gone to bring again\nTo the midnight sky a sunset glow.\nNow the chimney was all of the house that stood,\nLike a pistil after the petals go.\nThe barn opposed across the way,\nThat would have joined the house in flame",
+      "tagline": "For rooms lit by one lamp."
+    },
+    {
+      "title": "I Live My Life in Widening Circles",
+      "poet": "Rainer Maria Rilke",
+      "firstStanza": "I live my life in widening circles\nthat stretch over all things.\nI may not complete this final one,\nbut I give myself to it.",
+      "tagline": "For when language keeps you company."
+    },
+    {
+      "title": "I Am!",
+      "poet": "John Clare",
+      "firstStanza": "I am! yet what I am none cares or knows,\nMy friends forsake me like a memory lost;\nI am the self-consumer of my woes—\nThey rise and vanish in oblivious host,\nLike shadows in love's frenzied, stifled throes,\nAnd yet I am, and live—like vapours tost.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "Valley Spirit",
+      "poet": "Lao Tzu",
+      "firstStanza": "The valley spirit never dies.\nThis is the dark, fertile source.",
+      "tagline": "For the hush before dawn."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "The Folded Map",
+      "tagline": "For when rain writes on windows.",
+      "theme": "An atmosphere of low light, small rituals, and unhurried noticing.",
+      "image": null,
+      "featuredPoem": {
+        "title": "History Needs Exemplars",
+        "poet": "Bhagavad Gita",
+        "firstLines": "If the best stop showing up,\nstandards collapse"
+      },
+      "poems": [
+        {
+          "title": "Tarrant Moss",
+          "poet": "Rudyard Kipling"
+        },
+        {
+          "title": "Bards of Passion and of Mirth",
+          "poet": "John Keats"
+        },
+        {
+          "title": "The Lord Is My Shepherd",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "The rose is nothing without the beloved's face",
+          "poet": "Hafez"
+        },
+        {
+          "title": "The Onset",
+          "poet": "Robert Frost"
+        },
+        {
+          "title": "Honor Is a Blade Too",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "A House of Soft Echoes",
+      "tagline": "For when pages feel like shelter.",
+      "theme": "A compact emotional landscape of return, pause, and half-spoken thought.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Sonnets to Orpheus II, 10",
+        "poet": "Rainer Maria Rilke",
+        "firstLines": "Everything calls us to celebrate.\nNo season refuses us."
+      },
+      "poems": [
+        {
+          "title": "Two Natures in One World",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The Road Not Taken",
+          "poet": "Robert Frost"
+        },
+        {
+          "title": "The brain is wider than the sky",
+          "poet": "Emily Dickinson"
+        },
+        {
+          "title": "Remember Me at the Last Breath",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Lift Every Voice and Sing",
+          "poet": "James Weldon Johnson"
+        },
+        {
+          "title": "Fire of Knowledge",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "What the Silence Kept",
+      "tagline": "For when the hallway feels endless.",
+      "theme": "A shelf of poems for evenings when ordinary objects feel quietly charged with meaning.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Do Not Awaken Love",
+        "poet": "Bible Wisdom",
+        "firstLines": "I charge you, daughters of Jerusalem,\nby gazelles and does of the field:"
+      },
+      "poems": [
+        {
+          "title": "The Ethics of Equanimity",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "After the Vision, the Choice",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The nights of separation are over at last",
+          "poet": "Hafez"
+        },
+        {
+          "title": "Teach Us to Number",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Mother to Son",
+          "poet": "Langston Hughes"
+        },
+        {
+          "title": "Archaic Torso of Apollo",
+          "poet": "Rainer Maria Rilke"
+        }
+      ]
+    }
+  ]
+}

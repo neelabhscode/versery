@@ -1,0 +1,181 @@
+{
+  "date": "day-13",
+  "heroPoems": [
+    {
+      "title": "The Nameless",
+      "poet": "Lao Tzu",
+      "firstStanza": "The way you can explain\nis not the constant Way.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "Vision of the Cosmic Form",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "You asked to see Me as I truly am.\nNo ordinary eyes can hold this vision.\nI grant divine sight—look.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "Sweeney Among the Nightingales",
+      "poet": "T. S. Eliot",
+      "firstStanza": "[Greek text inserted here]",
+      "tagline": "For when language keeps you company."
+    },
+    {
+      "title": "The Prairie",
+      "poet": "Rudyard Kipling",
+      "firstStanza": "'I see the grass shake in the sun for leagues on either hand,\nI see a river loop and run about a treeless land--\nAn empty plain, a steely pond, a distance diamond-clear,\nAnd low blue naked hills beyond. And what is that to fear?'",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "Brahma",
+      "poet": "Ralph Waldo Emerson",
+      "firstStanza": "If the red slayer think he slays,\nOr if the slain think he is slain,\nThey know not well the subtle ways\nI keep, and pass, and turn again.",
+      "tagline": "For when language keeps you company."
+    },
+    {
+      "title": "To Sleep",
+      "poet": "John Keats",
+      "firstStanza": "O soft embalmer of the still midnight,\nShutting, with careful fingers and benign,\nOur gloom-pleas'd eyes, embower'd from the light,\nEnshaded in forgetfulness divine:\nO soothest Sleep! if so it please thee, close,\nIn midst of this thine hymn my willing eyes,",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "Depth Calls",
+      "poet": "Bible Wisdom",
+      "firstStanza": "Deep calls to deep\nin the roar of your waters.\nAll your waves\nbreak over me.",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "Sonnets to Orpheus II, 29",
+      "poet": "Rainer Maria Rilke",
+      "firstStanza": "Silent friend of many distances,\nfeel how your breathing enlarges space.\nLet your presence ring\non the dark bell-wood.\nWhatever feeds itself on you\nwill become strong.",
+      "tagline": "For when language keeps you company."
+    },
+    {
+      "title": "How could the love between Thee and me sever?",
+      "poet": "Kabir",
+      "firstStanza": "How could the love between Thee and me sever?\nAs the leaf of the lotus abides on the water: so thou art my\nLord, and I am Thy servant.\nAs the night-bird Chakor gazes all night at the moon: so Thou art\nmy Lord and I am Thy servant.\nFrom the beginning until the ending of time, there is love",
+      "tagline": "For the minute before sleep."
+    },
+    {
+      "title": "Every task feels impossible, and calling it easy is hardest of all.",
+      "poet": "Mirza Ghalib",
+      "firstStanza": "Every task feels impossible, and calling it easy is hardest of all.\nTo become human itself is no small work.",
+      "tagline": "For when rain taps the window."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "A Field Behind Memory",
+      "tagline": "For evenings touched by old songs.",
+      "theme": "Language for the suspended hour between conversation and sleep.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Equal to Soil and Gold",
+        "poet": "Bhagavad Gita",
+        "firstLines": "Clod, stone, gold—\nlabels change,"
+      },
+      "poems": [
+        {
+          "title": "A Pilot in Rough Water",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Divine Descent Protocol",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Conversation Galante",
+          "poet": "T. S. Eliot"
+        },
+        {
+          "title": "Strength Without Lust",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Conches of Bone and Breath",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Blue-Butterfly Day",
+          "poet": "Robert Frost"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "The Kindness of Empty Chairs",
+      "tagline": "For when pages smell like rain.",
+      "theme": "A gathering of poems where memory and present tense overlap gently.",
+      "image": null,
+      "featuredPoem": {
+        "title": "On Houses",
+        "poet": "Kahlil Gibran",
+        "firstLines": "And he answered and said:\nBuild of your imaginings a bower in the wilderness ere you build a house within the city walls."
+      },
+      "poems": [
+        {
+          "title": "In midsummer I walk with my staff",
+          "poet": "Ryokan"
+        },
+        {
+          "title": "Lift Yourself",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Return to the Root",
+          "poet": "Lao Tzu"
+        },
+        {
+          "title": "Divine and Undivine Profiles",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Field and Knower Expanded",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The Practice of Remembering in Battle",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "What Lingers in Hallways",
+      "tagline": "For when windows hold moonlight.",
+      "theme": "Poems that move through corridors, stairwells, and rooms as emotional architecture.",
+      "image": null,
+      "featuredPoem": {
+        "title": "The Hypocrite Posture",
+        "poet": "Bhagavad Gita",
+        "firstLines": "Frozen hands,\nracing appetite—"
+      },
+      "poems": [
+        {
+          "title": "Refusal at Full Draw",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The Measure of True Offering",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Balanced Seat",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "I Am the Taste of Water",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Fallen Yogi, Not Failed",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Manual for Mastering Desire",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    }
+  ]
+}

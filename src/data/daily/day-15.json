@@ -1,0 +1,181 @@
+{
+  "date": "day-15",
+  "heroPoems": [
+    {
+      "title": "Mother o' Mine",
+      "poet": "Rudyard Kipling",
+      "firstStanza": "If I were hanged on the highest hill,\n_Mother o' mine, O mother o' mine!_\nI know whose love would follow me still,\n_Mother o' mine, O mother o' mine!_",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "Meditation as Repeated Return",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "Prepare the body.\nRegulate habits.\nSimplify environment.",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "Counsel in the Heart",
+      "poet": "Bible Wisdom",
+      "firstStanza": "Anxiety in a person's heart weighs it down,\nbut a good word makes it glad.\nThe righteous choose friends carefully,\nbut the way of the wicked leads astray.",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "Entrance",
+      "poet": "Rainer Maria Rilke",
+      "firstStanza": "Whoever you are step out in the evening\nfrom your room where everything is known;\nyour house lies as the last thing before the distance.",
+      "tagline": "For the minute before sleep."
+    },
+    {
+      "title": "The Quiet Power",
+      "poet": "Lao Tzu",
+      "firstStanza": "Know others,\nand you are perceptive.\nKnow yourself,\nand you are clear.",
+      "tagline": "For rooms lit by one lamp."
+    },
+    {
+      "title": "Wild roses from the field",
+      "poet": "Ryokan",
+      "firstStanza": "Wild roses from the field,\nfrogs calling everywhere.\nFloat the petals in wine.\nEnjoy this brief hour.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "Leave this chanting and singing and telling of",
+      "poet": "Rabindranath Tagore",
+      "firstStanza": "Leave this chanting and singing and telling of beads! Whom dost thou\nworship in this lonely dark corner of a temple with doors all shut?\nOpen thine eyes and see thy God is not before thee!\nHe is there where the tiller is tilling the hard ground and where the\npathmaker is breaking stones. He is with them in sun and in shower, and\nhis garment is covered with dust. Put of thy holy mantle and even like",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "Aunt Helen",
+      "poet": "T. S. Eliot",
+      "firstStanza": "Miss Helen Slingsby was my maiden aunt,\nAnd lived in a small house near a fashionable square\nCared for by servants to the number of four.\nNow when she died there was silence in heaven\nAnd silence at her end of the street.\nThe shutters were drawn and the undertaker wiped his feet--",
+      "tagline": "For the minute before sleep."
+    },
+    {
+      "title": "The Runaway",
+      "poet": "Robert Frost",
+      "firstStanza": "Once when the snow of the year was beginning to fall,\nWe stopped by a mountain pasture to say, “Whose colt?”\nA little Morgan had one forefoot on the wall,\nThe other curled at his breast. He dipped his head\nAnd snorted at us. And then he had to bolt.\nWe heard the miniature thunder where he fled,",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "On Love",
+      "poet": "Kahlil Gibran",
+      "firstStanza": "And he raised his head and looked upon the people, and there fell a stillness upon them. And with a great voice he said:",
+      "tagline": "For when memory sits nearby."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "The Drift of Old Keys",
+      "tagline": "For slow hours with open books.",
+      "theme": "Poems that trace the distance between nearness and speech.",
+      "image": null,
+      "featuredPoem": {
+        "title": "From Hearing to Decision",
+        "poet": "Bhagavad Gita",
+        "firstLines": "Instruction was given.\nDoubt was examined."
+      },
+      "poems": [
+        {
+          "title": "The Voice of My Beloved",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Dust Before the Signal",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Sanjaya's Witness",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Forest of Confusion",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Public Consequence of Private Confusion",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Thieves of the Common Table",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "A Margin for Breathing",
+      "tagline": "For when light falls in stripes.",
+      "theme": "An atmosphere of low light, small rituals, and unhurried noticing.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Whenever Justice Fades",
+        "poet": "Bhagavad Gita",
+        "firstLines": "When truth thins,\nwhen cruelty rises,"
+      },
+      "poems": [
+        {
+          "title": "Without Leaving Home",
+          "poet": "Lao Tzu"
+        },
+        {
+          "title": "The Chain of Ruin",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Renunciation and Final Freedom",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The Nearness in Darkness",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "The Crushed Heart",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Remember in Motion",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "The Quiet That Carries",
+      "tagline": "For when small sounds matter most.",
+      "theme": "A compact emotional landscape of return, pause, and half-spoken thought.",
+      "image": null,
+      "featuredPoem": {
+        "title": "A Bundle of Myrrh",
+        "poet": "Bible Wisdom",
+        "firstLines": "Let him kiss me with the kisses of his mouth—\nyour love is better than wine."
+      },
+      "poems": [
+        {
+          "title": "He Raises the Poor",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Unforced Governance",
+          "poet": "Lao Tzu"
+        },
+        {
+          "title": "Desire, the Permanent Enemy",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Nothing Gold Can Stay",
+          "poet": "Robert Frost"
+        },
+        {
+          "title": "I Am Much Too Alone in This World",
+          "poet": "Rainer Maria Rilke"
+        },
+        {
+          "title": "Ritual Smoke",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    }
+  ]
+}

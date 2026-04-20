@@ -1,0 +1,181 @@
+{
+  "date": "day-01",
+  "heroPoems": [
+    {
+      "title": "From Collapse to Clarity",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "You grieve for those\nwho need no grieving.\nThe wise do not mourn\nfor living or dead.\nThere was never a time\nwhen you,",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "Whispers of Immortality",
+      "poet": "T. S. Eliot",
+      "firstStanza": "Webster was much possessed by death\nAnd saw the skull beneath the skin;\nAnd breastless creatures under ground\nLeaned backward with a lipless grin.",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "Time is endless in thy hands, my lord",
+      "poet": "Rabindranath Tagore",
+      "firstStanza": "Time is endless in thy hands, my lord. There is none to count thy\nminutes.\nDays and nights pass and ages bloom and fade like flowers. Thou knowest\nhow to wait.\nThy centuries follow each other perfecting a small wild flower.\nWe have no time to lose, and having no time we must scramble for a",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "The Power of the Dog",
+      "poet": "Rudyard Kipling",
+      "firstStanza": "There is sorrow enough in the natural way\nFrom men and women to fill our day;\nBut when we are certain of sorrow in store,\nWhy do we always arrange for more?\n_Brothers and Sisters, I bid you beware\nOf giving your heart to a dog to tear._",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "I do not call this love; call it obsession if you prefer.",
+      "poet": "Mirza Ghalib",
+      "firstStanza": "I do not call this love; call it obsession if you prefer.\nNames do not alter the fever.",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "Success is counted sweetest",
+      "poet": "Emily Dickinson",
+      "firstStanza": "Success is counted sweetest\nBy those who ne'er succeed.\nTo comprehend a nectar\nRequires sorest need.",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "Leviathan Laughs",
+      "poet": "Bible Wisdom",
+      "firstStanza": "Can you pull Leviathan out\nwith a hook?\nHe laughs at spears\nas if they were straw.",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "Sea Fever",
+      "poet": "John Masefield",
+      "firstStanza": "I must go down to the seas again, to the lonely sea and the sky,\nAnd all I ask is a tall ship and a star to steer her by;\nAnd the wheel's kick and the wind's song and the white sail's shaking,\nAnd a grey mist on the sea's face, and a grey dawn breaking.",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "Sonnets to Orpheus II, 13",
+      "poet": "Rainer Maria Rilke",
+      "firstStanza": "Be ahead of all parting,\nas if it were already behind you,\nlike the winter that has just gone.\nFor among winters one is so endless\nthat, wintering through it,\nyour heart survives all seasons.",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "Ode on Melancholy",
+      "poet": "John Keats",
+      "firstStanza": "No, no, go not to Lethe, neither twist\nWolf's-bane, tight-rooted, for its poisonous wine;\nNor suffer thy pale forehead to be kiss'd\nBy nightshade, ruby grape of Proserpine;\nMake not your rosary of yew-berries,\nNor let the beetle, nor the death-moth be",
+      "tagline": "For when the street goes quiet."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "The Quiet Between Bells",
+      "tagline": "For when dusk sits beside you.",
+      "theme": "Poems that stay close to thresholds, departures, and the soft mechanics of return.",
+      "image": null,
+      "featuredPoem": {
+        "title": "The Director",
+        "poet": "T. S. Eliot",
+        "firstLines": "The Director\nWoe to unhappy Thames!"
+      },
+      "poems": [
+        {
+          "title": "When Pride Walks In",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Hidden in Human Form",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Before anything existed, there was God.",
+          "poet": "Mirza Ghalib"
+        },
+        {
+          "title": "Under the Sun",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Boat Through the Dark Flood",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Restrain at the Gate",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "Where Dust Remembers",
+      "tagline": "For the hour after everyone leaves.",
+      "theme": "An inward territory of lamplight, weather, and private observation.",
+      "image": null,
+      "featuredPoem": {
+        "title": "A Leaf, A Flower, A Heart",
+        "poet": "Bhagavad Gita",
+        "firstLines": "A leaf,\na flower,"
+      },
+      "poems": [
+        {
+          "title": "Number My Days",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "The Necessitarian",
+          "poet": "Rudyard Kipling"
+        },
+        {
+          "title": "Love made me what I am: a city after bombardment.",
+          "poet": "Mirza Ghalib"
+        },
+        {
+          "title": "One Moment, One Direction",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Wake Before Dawn",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "For Once, Then, Something",
+          "poet": "Robert Frost"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "Rooms Without Clocks",
+      "tagline": "For when the room keeps listening.",
+      "theme": "Poems that hold small domestic scenes until they become almost sacred.",
+      "image": null,
+      "featuredPoem": {
+        "title": "On First Looking into Chapman's Homer",
+        "poet": "John Keats",
+        "firstLines": "Much have I travell'd in the realms of gold,\nAnd many goodly states and kingdoms seen;"
+      },
+      "poems": [
+        {
+          "title": "The Human Seasons",
+          "poet": "John Keats"
+        },
+        {
+          "title": "Many Days of Darkness",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Fear of the Lord",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Return and let courage enter this wounded heart",
+          "poet": "Hafez"
+        },
+        {
+          "title": "Bellows of Sky",
+          "poet": "Lao Tzu"
+        },
+        {
+          "title": "I taste a liquor never brewed",
+          "poet": "Emily Dickinson"
+        }
+      ]
+    }
+  ]
+}

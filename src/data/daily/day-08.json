@@ -1,0 +1,181 @@
+{
+  "date": "day-08",
+  "heroPoems": [
+    {
+      "title": "The Soft Overcomes",
+      "poet": "Lao Tzu",
+      "firstStanza": "Nothing is softer than water.\nNothing is stronger\nat wearing down stone.",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "O brother, my heart yearns for that true Guru, who fills the cup",
+      "poet": "Kabir",
+      "firstStanza": "O brother, my heart yearns for that true Guru, who fills the cup\nof true love, and drinks of it himself, and offers it then to\nme.\nHe removes the veil from the eyes, and gives the true Vision of\nBrahma:\nHe reveals the worlds in Him, and makes me to hear the Unstruck",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "The Aim Was Song",
+      "poet": "Robert Frost",
+      "firstStanza": "Before man came to blow it right\nThe wind once blew itself untaught,\nAnd did its loudest day and night\nIn any rough place where it caught.\nMan came to tell it what was wrong:\nIt hadn’t found the place to blow;",
+      "tagline": "For rooms lit by one lamp."
+    },
+    {
+      "title": "Morning at the Window",
+      "poet": "T. S. Eliot",
+      "firstStanza": "They are rattling breakfast plates in basement kitchens,\nAnd along the trampled edges of the street\nI am aware of the damp souls of housemaids\nSprouting despondently at area gates.\nThe brown waves of fog toss up to me\nTwisted faces from the bottom of the street,",
+      "tagline": "For the hush before dawn."
+    },
+    {
+      "title": "Ode to a Nightingale",
+      "poet": "John Keats",
+      "firstStanza": "My heart aches, and a drowsy numbness pains\nMy sense, as though of hemlock I had drunk,\nOr emptied some dull opiate to the drains\nOne minute past, and Lethe-wards had sunk:\n'Tis not through envy of thy happy lot,\nBut being too happy in thine happiness,—",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "Smoke in Every Fire",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "Every duty carries flaws—\ndo it anyway,\ncleanly.",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "When I was young",
+      "poet": "Ryokan",
+      "firstStanza": "When I was young\nI put books aside\nand wanted to be a saint.\nI wandered many springs as a beggar monk.",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "Naive heart, what has happened to you?",
+      "poet": "Mirza Ghalib",
+      "firstStanza": "Naive heart, what has happened to you?\nWhat is this pain that has no diagnosis?",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "When the heart is hard and parched up",
+      "poet": "Rabindranath Tagore",
+      "firstStanza": "When the heart is hard and parched up, come upon me with a shower of\nmercy.\nWhen grace is lost from life, come with a burst of song.\nWhen tumultuous work raises its din on all sides shutting me out from\nbeyond, come to me, my lord of silence, with thy peace and rest.\nWhen my beggarly heart sits crouched, shut up in a corner, break open",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "Pour the cup again I thought love would be easy",
+      "poet": "Hafez",
+      "firstStanza": "Pour the cup again I thought love would be easy\nbut every step has turned to steep stone\nI asked the wind for the scent of her hair\nit returned with blood-warm tears",
+      "tagline": "For rooms lit by one lamp."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "Where Winter Listens",
+      "tagline": "For hours held by thin sunlight.",
+      "theme": "A compact emotional landscape of return, pause, and half-spoken thought.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Training for Final Memory",
+        "poet": "Bhagavad Gita",
+        "firstLines": "Final thought is not random.\nIt is trained by repetition."
+      },
+      "poems": [
+        {
+          "title": "The Sea-Mind",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Wisdom Calls in the Street",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "When Compassion Buckles the Knees",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "What intoxication is this that suddenly gives me hope",
+          "poet": "Hafez"
+        },
+        {
+          "title": "Remember Your Maker",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "The time that my journey takes is long",
+          "poet": "Rabindranath Tagore"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "The Stillness Near Departure",
+      "tagline": "For when doors stay half-open.",
+      "theme": "A shelf of poems for evenings when ordinary objects feel quietly charged with meaning.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Skill in Action",
+        "poet": "Bhagavad Gita",
+        "firstLines": "Stay even in gain and loss,\nin praise and blame,"
+      },
+      "poems": [
+        {
+          "title": "Fire and Ice",
+          "poet": "Robert Frost"
+        },
+        {
+          "title": "Action Seen Correctly",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The Two-Sided Man",
+          "poet": "Rudyard Kipling"
+        },
+        {
+          "title": "The Love Song of J. Alfred Prufrock",
+          "poet": "T. S. Eliot"
+        },
+        {
+          "title": "Take Refuge and Rise",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Less and Less",
+          "poet": "Lao Tzu"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "A Pocket of Late Sun",
+      "tagline": "For when streets empty too early.",
+      "theme": "Poems that stay close to thresholds, departures, and the soft mechanics of return.",
+      "image": null,
+      "featuredPoem": {
+        "title": "La Belle Dame sans Merci",
+        "poet": "John Keats",
+        "firstLines": "O what can ail thee, knight-at-arms,\nAlone and palely loitering?"
+      },
+      "poems": [
+        {
+          "title": "On Joy and Sorrow",
+          "poet": "Kahlil Gibran"
+        },
+        {
+          "title": "The Thousandth Man",
+          "poet": "Rudyard Kipling"
+        },
+        {
+          "title": "The Hippopotamus",
+          "poet": "T. S. Eliot"
+        },
+        {
+          "title": "A narrow fellow in the grass",
+          "poet": "Emily Dickinson"
+        },
+        {
+          "title": "The light of the sun, the moon, and the stars shines bright",
+          "poet": "Kabir"
+        },
+        {
+          "title": "The Price of Victory",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    }
+  ]
+}

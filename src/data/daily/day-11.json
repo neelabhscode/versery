@@ -1,0 +1,181 @@
+{
+  "date": "day-11",
+  "heroPoems": [
+    {
+      "title": "Instruction to Rise",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "The first correction was embodied:\nstand.",
+      "tagline": "For the hush before dawn."
+    },
+    {
+      "title": "On Friendship",
+      "poet": "Kahlil Gibran",
+      "firstStanza": "And he answered, saying:",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "Like a small stream",
+      "poet": "Ryokan",
+      "firstStanza": "Like a small stream\nthrough mossy stone,\nI keep going quietly\nuntil I turn clear.",
+      "tagline": "For the minute before sleep."
+    },
+    {
+      "title": "The Path of the Just",
+      "poet": "Bible Wisdom",
+      "firstStanza": "Hear, my son, and accept my words,\nand the years of your life will be many.\nI have taught you the way of wisdom;\nI have led you in straight paths.",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "Rivers to the Sea",
+      "poet": "Lao Tzu",
+      "firstStanza": "The Way is nameless in its original simplicity.\nSmall, yet nothing can rule it.",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "Sonnets to Orpheus I, 1",
+      "poet": "Rainer Maria Rilke",
+      "firstStanza": "A tree rose there. O pure ascension.\nO Orpheus sings. O tall tree in the ear.\nAnd everything fell silent.\nYet in this silence new beginning, sign, and change appeared.",
+      "tagline": "For when footsteps fade downstairs."
+    },
+    {
+      "title": "How Do I Love Thee?",
+      "poet": "Elizabeth Barrett Browning",
+      "firstStanza": "How do I love thee? Let me count the ways.\nI love thee to the depth and breadth and height\nMy soul can reach, when feeling out of sight\nFor the ends of Being and ideal Grace.\nI love thee to the level of everyday's\nMost quiet need, by sun and candle-light.",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "What you call clarity is often fear in clean clothes.",
+      "poet": "Mirza Ghalib",
+      "firstStanza": "What you call clarity is often fear in clean clothes.\nI trust the fog more than certainty.",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "The Red Wheelbarrow",
+      "poet": "William Carlos Williams",
+      "firstStanza": "so much depends\nupon",
+      "tagline": "For evenings with no audience."
+    },
+    {
+      "title": "He ate and drank the precious words",
+      "poet": "Emily Dickinson",
+      "firstStanza": "He ate and drank the precious words,\nHis spirit grew robust;\nHe knew no more that he was poor,\nNor that his frame was dust.",
+      "tagline": "For when footsteps fade downstairs."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "The Shape of Lingering",
+      "tagline": "For mornings that begin quietly.",
+      "theme": "A muted field of recollection, where detail carries the emotional weight.",
+      "image": null,
+      "featuredPoem": {
+        "title": "By the Rivers of Babylon",
+        "poet": "Bible Wisdom",
+        "firstLines": "By the rivers of Babylon,\nthere we sat and wept"
+      },
+      "poems": [
+        {
+          "title": "He Draws Up the Drops",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "The Jester",
+          "poet": "Rudyard Kipling"
+        },
+        {
+          "title": "Deliverance is not for me in renunciation. I",
+          "poet": "Rabindranath Tagore"
+        },
+        {
+          "title": "Faith Shapes the Person",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "No Blade Reaches the Self",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Cities and Thrones and Powers",
+          "poet": "Rudyard Kipling"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "When Lamps Forget to Sleep",
+      "tagline": "For when shadows soften the room.",
+      "theme": "Poems that trace the distance between nearness and speech.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Do the Work, Release the Claim",
+        "poet": "Bhagavad Gita",
+        "firstLines": "You have authority over action,\nnever over the harvest."
+      },
+      "poems": [
+        {
+          "title": "On Work",
+          "poet": "Kahlil Gibran"
+        },
+        {
+          "title": "The True Renunciate",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Yes, I am a fool",
+          "poet": "Ryokan"
+        },
+        {
+          "title": "Better a Dry Crust",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "The morning sea of silence broke into ripples",
+          "poet": "Rabindranath Tagore"
+        },
+        {
+          "title": "Iron Sharpens Iron",
+          "poet": "Bible Wisdom"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "The Province of Faint Music",
+      "tagline": "For when footsteps fade downstairs.",
+      "theme": "An atmosphere of low light, small rituals, and unhurried noticing.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Suicide in the Trenches",
+        "poet": "Siegfried Sassoon",
+        "firstLines": "I knew a simple soldier boy\nWho grinned at life in empty joy,"
+      },
+      "poems": [
+        {
+          "title": "Ode on Indolence",
+          "poet": "John Keats"
+        },
+        {
+          "title": "The soul selects her own society",
+          "poet": "Emily Dickinson"
+        },
+        {
+          "title": "After Achievement",
+          "poet": "Lao Tzu"
+        },
+        {
+          "title": "Burbank with a Baedeker: Bleistein with a Cigar",
+          "poet": "T. S. Eliot"
+        },
+        {
+          "title": "There's a certain slant of light",
+          "poet": "Emily Dickinson"
+        },
+        {
+          "title": "Field and Knower",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    }
+  ]
+}

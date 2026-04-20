@@ -1,0 +1,181 @@
+{
+  "date": "day-14",
+  "heroPoems": [
+    {
+      "title": "Leviathan",
+      "poet": "Bible Wisdom",
+      "firstStanza": "Can you draw Leviathan out with a hook,\nor press down his tongue with a cord?\nWill he beg you for mercy,\nor speak gentle words to you?",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "The Uncarving of Excess",
+      "poet": "Lao Tzu",
+      "firstStanza": "Drop cleverness.\nPeople become simple.",
+      "tagline": "For the minute before sleep."
+    },
+    {
+      "title": "Fuel the Wheel",
+      "poet": "Bhagavad Gita",
+      "firstStanza": "Life feeds life.\nGive back,\nor the wheel of order cracks.",
+      "tagline": "For slow hours with a warm cup."
+    },
+    {
+      "title": "It was not Death, for I stood up",
+      "poet": "Emily Dickinson",
+      "firstStanza": "It was not Death, for I stood up,\nAnd all the Dead, lie down—\nIt was not Night, for all the Bells\nPut out their Tongues, for Noon.",
+      "tagline": "For when language keeps you company."
+    },
+    {
+      "title": "On Reason and Passion",
+      "poet": "Kahlil Gibran",
+      "firstStanza": "And he answered, saying:",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "I rehearsed my death until it felt like craft.",
+      "poet": "Mirza Ghalib",
+      "firstStanza": "I rehearsed my death until it felt like craft.\nI learned posture, silence, and exit.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "Gerontion",
+      "poet": "T. S. Eliot",
+      "firstStanza": "Thou hast nor youth nor age\nBut as it were an after dinner sleep\nDreaming of both.",
+      "tagline": "For when memory sits nearby."
+    },
+    {
+      "title": "I ask for a moment’s indulgence to sit",
+      "poet": "Rabindranath Tagore",
+      "firstStanza": "I ask for a moment’s indulgence to sit by thy side. The works that I\nhave in hand I will finish afterwards.\nAway from the sight of thy face my heart knows no rest nor respite, and\nmy work becomes an endless toil in a shoreless sea of toil.\nToday the summer has come at my window with its sighs and murmurs; and\nthe bees are plying their minstrelsy at the court of the flowering",
+      "tagline": "For when the street goes quiet."
+    },
+    {
+      "title": "Sonnets to Orpheus I, 5",
+      "poet": "Rainer Maria Rilke",
+      "firstStanza": "Set up no monument.\nLet the rose bloom for him each year.\nFor this is Orpheus.\nHis metamorphosis in one thing and another.",
+      "tagline": "For when rain taps the window."
+    },
+    {
+      "title": "Where Spring, the lord of the seasons, reigneth, there the",
+      "poet": "Kabir",
+      "firstStanza": "Where Spring, the lord of the seasons, reigneth, there the\nUnstruck Music sounds of itself,\nThere the streams of light flow in all directions;\nFew are the men who can cross to that shore!\nThere, where millions of Krishnas stand with hands folded,\nWhere millions of Vishnus bow their heads,",
+      "tagline": "For when memory sits nearby."
+    }
+  ],
+  "collections": [
+    {
+      "id": "primary",
+      "name": "The Far End of Tenderness",
+      "tagline": "For when the kettle starts again.",
+      "theme": "Poems for the slow pivot from day-noise toward interior quiet.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Count each passing hour as certain profit",
+        "poet": "Hafez",
+        "firstLines": "Count each passing hour as certain profit\nwhat leaves the hand of fate does not return"
+      },
+      "poems": [
+        {
+          "title": "On Freedom",
+          "poet": "Kahlil Gibran"
+        },
+        {
+          "title": "When I have fears that I may cease to be",
+          "poet": "John Keats"
+        },
+        {
+          "title": "Have you not heard his silent steps? He",
+          "poet": "Rabindranath Tagore"
+        },
+        {
+          "title": "Renunciation Clarified",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "The Returning Circuit",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Offer Every Act",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "A Weather of Half-Voices",
+      "tagline": "For rooms full of held breaths.",
+      "theme": "A thread of attention to rain, glass, paper, and hands at rest.",
+      "image": null,
+      "featuredPoem": {
+        "title": "My Witness in Heaven",
+        "poet": "Bible Wisdom",
+        "firstLines": "My spirit is broken,\nmy days are extinct,"
+      },
+      "poems": [
+        {
+          "title": "Moral Injury, Named Early",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Stronger Than Wine",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "When I Consider Your Heavens",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Love Song",
+          "poet": "Rainer Maria Rilke"
+        },
+        {
+          "title": "The Law of Action and Offering",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Hang up the swing of love to-day! Hang the body and the mind",
+          "poet": "Kabir"
+        }
+      ]
+    },
+    {
+      "id": "secondary",
+      "name": "Where Morning Arrives Slowly",
+      "tagline": "For when words stay close.",
+      "theme": "Poems that make waiting feel textured rather than empty.",
+      "image": null,
+      "featuredPoem": {
+        "title": "Anecdote of the Jar",
+        "poet": "Wallace Stevens",
+        "firstLines": "I placed a jar in Tennessee,\nAnd round it was, upon a hill."
+      },
+      "poems": [
+        {
+          "title": "The Whole Duty",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Tortoise Doctrine",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Ritual as Engine",
+          "poet": "Bhagavad Gita"
+        },
+        {
+          "title": "Because I could not stop for Death",
+          "poet": "Emily Dickinson"
+        },
+        {
+          "title": "A Virtuous Woman",
+          "poet": "Bible Wisdom"
+        },
+        {
+          "title": "Tree with Roots Above",
+          "poet": "Bhagavad Gita"
+        }
+      ]
+    }
+  ]
+}
