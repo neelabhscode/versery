@@ -773,10 +773,10 @@ function Card({
   const audioSources = Array.isArray(card.audioSources) && card.audioSources.length
     ? card.audioSources
     : (isIfByKipling
-      ? ["/audio/if-ai-reading.wav"]
+      ? ["/audio/if-ai-reading.mp3"]
       : (isRoadNotTakenByFrost
-        ? ["/audio/roadnot-ai-reading.wav"]
-        : (isStoppingByWoodsByFrost ? ["/audio/snowy-ai-reading.wav"] : [])));
+        ? ["/audio/roadnot-ai-reading.mp3"]
+        : (isStoppingByWoodsByFrost ? ["/audio/snowy-ai-reading.mp3"] : [])));
   const currentAudioSrc = audioSources[audioSrcIndex] ?? null;
   const fullLines = Array.isArray(card.fullLines) && card.fullLines.length
     ? card.fullLines
