@@ -19,3 +19,8 @@ skills-lock.json
 .vercel
 .env*.local
 .impeccable.md
+.agents/
+.claude/skills/
+.goose/
+.kiro/
+.codex/
